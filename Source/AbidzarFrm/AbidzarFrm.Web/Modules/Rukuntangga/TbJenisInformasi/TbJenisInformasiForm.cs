@@ -15,7 +15,6 @@ namespace AbidzarFrm.Rukuntangga.Forms
     public class TbJenisInformasiForm
     {
         public String JenisInformasi { get; set; }
-        public String KodeRt { get; set; }
 
 
         [Category("Detail Jenis Informasi"), Collapsible(true, Collapsed = false)]

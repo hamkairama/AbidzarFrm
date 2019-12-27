@@ -14,7 +14,8 @@ namespace AbidzarFrm.Rukuntangga.Forms
     [BasedOnRow(typeof(Entities.TbKtpRow), CheckNames = true)]
     public class TbKtpForm
     {
-        [Category("Data Sesuai KTP")]
+        [Tab("KTP")]
+        [Category("General")]
         [HalfWidth]
         public String Kk { get; set; }
         [HalfWidth]
@@ -73,7 +74,7 @@ namespace AbidzarFrm.Rukuntangga.Forms
         public String NamaAyah { get; set; }
         [HalfWidth]
         public String NamaIbu { get; set; }
-        [Category("Alamat Tempat Tinggal")]
+        [Tab("Alamat Tinggal")]
         [HalfWidth]
         [DisplayName("Kelurahan")]
         public Int32 IdKelurahanTinggal { get; set; }
@@ -88,7 +89,7 @@ namespace AbidzarFrm.Rukuntangga.Forms
         public String RwTinggal { get; set; }
         [Category("Kode RT ")]
         public String KodeRt { get; set; }
-        [Category("Document")]
+        [Tab("Dokumen")]
         public String Attachment { get; set; }
     }
 }

@@ -1,0 +1,244 @@
+﻿@model  List<AbidzarFrm.Administration.Entities.UserRow>
+
+@{
+    ViewData["Title"] = "List User";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-warning direct-chat direct-chat-warning">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Direct Chat</h3>
+                        <div class="box-tools pull-right">
+                            <span data-toggle="tooltip" title="3 New Messages" class="badge bg-yellow">3</span>
+                            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                            <button class="btn btn-box-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle"><i class="fa fa-comments"></i></button>
+                            <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="direct-chat-messages">
+                            <div class="direct-chat-msg">
+                                <div class="direct-chat-info clearfix">
+                                    <span class="direct-chat-name pull-left">Alexander Pierce</span>
+                                    <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
+                                </div>
+                                <img class="direct-chat-img" src="~/Content/adminlte/img/avatar2.png" alt="message user image">
+                                <div class="direct-chat-text">
+                                    Is this template really for free? That's unbelievable!
+                                </div>
+                            </div>
+                            <div class="direct-chat-msg right">
+                                <div class="direct-chat-info clearfix">
+                                    <span class="direct-chat-name pull-right">Sarah Bullock</span>
+                                    <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
+                                </div>
+                                <img class="direct-chat-img" src="~/Content/adminlte/img/avatar3.png" alt="message user image">
+                                <div class="direct-chat-text">
+                                    You better believe it!
+                                </div>
+                            </div>
+                            <div class="direct-chat-msg">
+                                <div class="direct-chat-info clearfix">
+                                    <span class="direct-chat-name pull-left">Alexander Pierce</span>
+                                    <span class="direct-chat-timestamp pull-right">23 Jan 5:37 pm</span>
+                                </div>
+                                <img class="direct-chat-img" src="~/Content/adminlte/img/avatar04.png" alt="message user image">
+                                <div class="direct-chat-text">
+                                    Working with AdminLTE on a great new app! Wanna join?
+                                </div>
+                            </div>
+                            <div class="direct-chat-msg right">
+                                <div class="direct-chat-info clearfix">
+                                    <span class="direct-chat-name pull-right">Sarah Bullock</span>
+                                    <span class="direct-chat-timestamp pull-left">23 Jan 6:10 pm</span>
+                                </div>
+                                <img class="direct-chat-img" src="~/Content/adminlte/img/avatar5.png" alt="message user image">
+                                <div class="direct-chat-text">
+                                    I would love to.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="direct-chat-contacts">
+                            <ul class="contacts-list">
+                                <li>
+                                    <a href="#">
+                                        <img class="contacts-list-img" src="~/Content/adminlte/img/avatar3.png">
+                                        <div class="contacts-list-info">
+                                            <span class="contacts-list-name">
+                                                Count Dracula
+                                                <small class="contacts-list-date pull-right">2/28/2015</small>
+                                            </span>
+                                            <span class="contacts-list-msg">How have you been? I was...</span>
+                                        </div><!-- /.contacts-list-info -->
+                                    </a>
+                                </li><!-- End Contact Item -->
+                                <li>
+                                    <a href="#">
+                                        <img class="contacts-list-img" src="~/Content/adminlte/img/avatar2.png">
+                                        <div class="contacts-list-info">
+                                            <span class="contacts-list-name">
+                                                Sarah Doe
+                                                <small class="contacts-list-date pull-right">2/23/2015</small>
+                                            </span>
+                                            <span class="contacts-list-msg">I will be waiting for...</span>
+                                        </div><!-- /.contacts-list-info -->
+                                    </a>
+                                </li><!-- End Contact Item -->
+                                <li>
+                                    <a href="#">
+                                        <img class="contacts-list-img" src="~/Content/adminlte/img/avatar04.png">
+                                        <div class="contacts-list-info">
+                                            <span class="contacts-list-name">
+                                                Nadia Jolie
+                                                <small class="contacts-list-date pull-right">2/20/2015</small>
+                                            </span>
+                                            <span class="contacts-list-msg">I'll call you back at...</span>
+                                        </div><!-- /.contacts-list-info -->
+                                    </a>
+                                </li><!-- End Contact Item -->
+                                <li>
+                                    <a href="#">
+                                        <img class="contacts-list-img" src="~/Content/adminlte/img/avatar3.png">
+                                        <div class="contacts-list-info">
+                                            <span class="contacts-list-name">
+                                                Nora S. Vans
+                                                <small class="contacts-list-date pull-right">2/10/2015</small>
+                                            </span>
+                                            <span class="contacts-list-msg">Where is your new...</span>
+                                        </div><!-- /.contacts-list-info -->
+                                    </a>
+                                </li><!-- End Contact Item -->
+                                <li>
+                                    <a href="#">
+                                        <img class="contacts-list-img" src="~/Content/adminlte/img/avatar5.png">
+                                        <div class="contacts-list-info">
+                                            <span class="contacts-list-name">
+                                                John K.
+                                                <small class="contacts-list-date pull-right">1/27/2015</small>
+                                            </span>
+                                            <span class="contacts-list-msg">Can I take a look at...</span>
+                                        </div><!-- /.contacts-list-info -->
+                                    </a>
+                                </li><!-- End Contact Item -->
+                                <li>
+                                    <a href="#">
+                                        <img class="contacts-list-img" src="~/Content/adminlte/img/avatar.png">
+                                        <div class="contacts-list-info">
+                                            <span class="contacts-list-name">
+                                                Kenneth M.
+                                                <small class="contacts-list-date pull-right">1/4/2015</small>
+                                            </span>
+                                            <span class="contacts-list-msg">Never mind I found...</span>
+                                        </div><!-- /.contacts-list-info -->
+                                    </a>
+                                </li><!-- End Contact Item -->
+                            </ul><!-- /.contatcts-list -->
+                        </div><!-- /.direct-chat-pane -->
+                    </div><!-- /.box-body -->
+                    <div class="box-footer">
+                        <form action="#" method="post">
+                            <div class="input-group">
+                                <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-warning btn-flat">Send</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div><!-- /.box-footer-->
+                </div><!--/.direct-chat -->
+            </div>
+            <div class="col-md-12">
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Latest Members</h3>
+                        <div class="box-tools pull-right">
+                            <span class="label label-danger">8 New Members</span>
+                            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                            <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <div class="box-body no-padding">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <div class="form-group input-group-sm" style="margin-top:5px;margin-left:5px;margin-right:5px;">
+                                    <select class="form-control" id="ddlTotalCount">
+                                        <option selected="selected">1</option>
+                                        <option>50</option>
+                                        <option>100</option>
+                                        <option>1000</option>
+                                        <option value="1000000">All</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="input-group input-group-sm" style="margin-top:5px;margin-left:5px;margin-right:5px;">
+                                    <input type="text" id="txtInput" onkeypress="return SearchUserKey(event)" class="form-control">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-info btn-flat" onclick="SearchUser()" type="button">Go!</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="users-list clearfix">
+                            @Html.Partial("../../Modules/Rukuntangga/UserMember/_UserMemberList")
+                        </ul>
+                    </div>
+                    <div class="box-footer text-center">
+                        <a href="javascript:SearchUser(1000000)" class="uppercase">View All Users</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#ddlTotalCount").change(function () {
+            SearchUser();
+        });
+    })
+
+    function SearchUser(totalCount) {
+        var path = location.origin + "/Rukuntangga/UserMember/GetUser/";
+        var txtTotalcount;
+        if (totalCount == null) {
+            var e = document.getElementById("ddlTotalCount");
+            txtTotalcount = e.options[e.selectedIndex].value;
+        } else {
+            var e = document.getElementById("ddlTotalCount");
+            e.value = 1000000;
+            txtTotalcount = totalCount;
+        }
+
+        var txtFilter = $("#txtInput").val()
+
+        $.ajax({
+            data: {
+                filter: txtFilter,
+                totalcount: txtTotalcount
+            },
+            cache: false,
+            url: path,
+            //traditional: true,
+            //type: 'POST',
+            //dataType: "json",
+            async: true,
+            success: function (data) {
+                $("#divUserMember").html(data);
+            },
+            error: function (jqXHR, textStatus, errorMessage) {
+                console.log(errorMessage);
+            }
+        });
+
+    }
+    function SearchUserKey(e) {
+        if (e.keyCode == 13) {
+            SearchUser();
+        }
+    }
+</script>

@@ -1,0 +1,14 @@
+﻿@model  List<AbidzarFrm.Administration.Entities.UserRow>
+
+<ul class="users-list clearfix" id="divUserMember">
+    @foreach (var item in Model)
+    {
+        var userImage = (item.UserImage == null || string.IsNullOrEmpty(item.UserImage)) ? "../../Content/adminlte/img/avatar0.png" : VirtualPathUtility.ToAbsolute("~/upload/") + item.UserImage;
+
+        <li>
+            <img src="@userImage" alt="User Image">
+            <a class="users-list-name" href="#">@item.DisplayName</a>
+            <span class="users-list-name">@item.Nik</span>
+        </li>
+    }
+</ul>

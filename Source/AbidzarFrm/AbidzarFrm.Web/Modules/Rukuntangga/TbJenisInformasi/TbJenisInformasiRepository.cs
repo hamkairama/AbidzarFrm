@@ -1,6 +1,7 @@
 ﻿
 namespace AbidzarFrm.Rukuntangga.Repositories
 {
+    using AbidzarFrm.Modules.Common.Helpers;
     using AbidzarFrm.Rukuntangga.Entities;
     using Serenity;
     using Serenity.Data;
@@ -15,13 +16,14 @@ namespace AbidzarFrm.Rukuntangga.Repositories
 
         public SaveResponse Create(IUnitOfWork uow, SaveRequest<MyRow> request)
         {
-            request.Entity.DibuatOleh = Authorization.UserId;
+            request.Entity.DibuatOleh = CurrentSession.Ktp().Nik;
+            request.Entity.KodeRt = CurrentSession.Ktp().KodeRt;
             return new MySaveHandler().Process(uow, request, SaveRequestType.Create);
         }
 
         public SaveResponse Update(IUnitOfWork uow, SaveRequest<MyRow> request)
         {
-            request.Entity.DieditOleh = Authorization.UserId;
+            request.Entity.DieditOleh = CurrentSession.Ktp().Nik;
             request.Entity.DieditTanggal = DateTime.Now;
             return new MySaveHandler().Process(uow, request, SaveRequestType.Update);
         }
@@ -38,6 +40,7 @@ namespace AbidzarFrm.Rukuntangga.Repositories
 
         public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
         {
+            request.IncludeField(MyRow.Fields.tbDetailJenisInformasiRow);
             return new MyListHandler().Process(connection, request);
         }
 
@@ -73,11 +76,11 @@ namespace AbidzarFrm.Rukuntangga.Repositories
                         }
                     }
 
-                    this.Connection.Execute(string.Format("DELETE dbo.TbDetailJenisInformasi WHERE Id Not In ({0})", idIn));
+                    this.Connection.Execute(string.Format("DELETE dbo.TbDetailJenisInformasi WHERE Id Not In ({0}) and IdJenisInformasi = {1}", idIn, this.Row.Id));
                 }
                 else
                 {
-                    this.Connection.Execute(string.Format("DELETE dbo.TbDetailJenisInformasi WHERE IdJenisInformasi = {0}", this.Row.Id));
+                    this.Connection.Execute(string.Format("DELETE dbo.TbDetailJenisInformasi WHERE IdJenisInformasi = {0} ", this.Row.Id));
                 }
                 #endregion
 

@@ -1,5 +1,6 @@
 ﻿namespace AbidzarFrm.Administration.Forms
 {
+    using AbidzarFrm.Common.Lookup;
     using Serenity.ComponentModel;
     using System;
 
@@ -18,5 +19,7 @@
         public String PasswordConfirm { get; set; }
         [OneWay]
         public string Source { get; set; }
+        [LookupEditor(typeof(NikKtpLookup))]
+        public string Nik { get; set; }
     }
 }

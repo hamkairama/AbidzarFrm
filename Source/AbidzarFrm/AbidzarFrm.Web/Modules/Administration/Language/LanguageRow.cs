@@ -9,8 +9,8 @@ namespace AbidzarFrm.Administration.Entities
 
     [ConnectionKey("Rukuntangga"), Module("Administration"), TableName("TbLanguages")]
     [DisplayName("Languages"), InstanceName("Language")]
-    [ReadPermission(PermissionKeys.Translation)]
-    [ModifyPermission(PermissionKeys.Translation)]
+    [ReadPermission(AbidzarFrm.Rukuntangga.PermissionKeys.Language)]
+    [ModifyPermission(AbidzarFrm.Rukuntangga.PermissionKeys.Language)]
     [LookupScript(typeof(Lookups.LanguageLookup))]
     public sealed class LanguageRow : Row, IIdRow, INameRow
     {

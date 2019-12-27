@@ -5,7 +5,7 @@ namespace AbidzarFrm.Administration.Pages
     using System.Web.Mvc;
 
     [RoutePrefix("Administration/Translation"), Route("{action=index}")]
-    [PageAuthorize(PermissionKeys.Translation)]
+    [PageAuthorize(Rukuntangga.PermissionKeys.Translation)]
     public class TranslationController : Controller
     {  
         public ActionResult Index()

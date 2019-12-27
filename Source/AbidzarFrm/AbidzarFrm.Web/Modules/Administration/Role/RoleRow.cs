@@ -9,8 +9,8 @@ namespace AbidzarFrm.Administration.Entities
 
     [ConnectionKey("Rukuntangga"), Module("Administration"), TableName("TbRoles")]
     [DisplayName("Roles"), InstanceName("Role")]
-    [ReadPermission(PermissionKeys.Security)]
-    [ModifyPermission(PermissionKeys.Security)]
+    [ReadPermission(AbidzarFrm.Rukuntangga.PermissionKeys.Role)]
+    [ModifyPermission(AbidzarFrm.Rukuntangga.PermissionKeys.Role)]
     [LookupScript]
     public sealed class RoleRow : Row, IIdRow, INameRow
     {

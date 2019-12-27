@@ -102,7 +102,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
             set { Fields.SystemStatus[this] = value; }
         }
 
-        [DisplayName("Jenis Informasi"), Expression("jIdJenisInformasi.[JenisInformasi]")]
+        [DisplayName("Jenis Informasi"), Expression("jIdJenisInformasi.[JenisInformasi]"), LookupInclude]
         public String IdJenisInformasiJenisInformasi
         {
             get { return Fields.IdJenisInformasiJenisInformasi[this]; }

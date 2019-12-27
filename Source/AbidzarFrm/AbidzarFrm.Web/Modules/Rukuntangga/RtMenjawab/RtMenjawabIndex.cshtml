@@ -1,0 +1,86 @@
+﻿@model  List<AbidzarFrm.Rukuntangga.Entities.TbTanyaRtRow>
+@using AbidzarFrm.Modules.Common.Helpers
+
+@{
+    ViewData["Title"] = "Tanya RT";
+}
+
+@{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="box box-warning direct-chat direct-chat-warning">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Subject</h3>
+                            <div class="box-tools pull-right">
+                                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="direct-chat-messages">
+                                @foreach (var item in Model)
+                                {
+                                    //var userImage = (item.PhotoKtp == null || string.IsNullOrEmpty(Model.PhotoKtp)) ? "../../Content/adminlte/img/avatar0.png" : VirtualPathUtility.ToAbsolute("~/upload/") + Model.PhotoKtp;
+
+                                    <div class="direct-chat-msg right">
+                                        <div class="direct-chat-info clearfix">
+                                            @*<span class="direct-chat-name pull-right">@CurrentSession.Ktp().Nama</span>*@
+                                            <span class="direct-chat-timestamp pull-left">@item.DibuatTanggal.Value.ToString("dd MMM yyyy HH:mm")</span>
+                                        </div>
+                                        <img class="direct-chat-img" src="~/Content/adminlte/img/avatar5.png" alt="message user image">
+                                        <div class="direct-chat-text">
+                                            <a href="javascript:SearchDetailTanyaRt(@item.Id)">@item.Judul</a>                                            
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <form action="#" method="post">
+                                <div class="input-group">
+                                    <input type="text" name="message" placeholder="Tulis Subject Baru ..." class="form-control">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-warning btn-flat">Send</button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-9">
+                    @Html.Partial("../../Modules/Rukuntangga/RtMenjawab/_RtMenjawabDetail")
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<script>
+    function SearchDetailTanyaRt(idTanyaRtx) {
+        var path = location.origin + "/Rukuntangga/RtMenjawab/GetDetailTanyaRt/";
+
+        $.ajax({
+            data: {
+                idTanyaRt: idTanyaRtx
+            },
+            cache: false,
+            url: path,
+            //traditional: true,
+            //type: 'POST',
+            //dataType: "json",
+            async: true,
+            success: function (data) {
+                $("#divRtMenjawab").html(data);
+            },
+            error: function (jqXHR, textStatus, errorMessage) {
+                console.log(errorMessage);
+            }
+        });
+
+    }
+</script>

@@ -16,7 +16,6 @@ namespace AbidzarFrm.Rukuntangga.Columns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 Id { get; set; }
-        [KecamatanEditor, QuickFilter]
         public String IdKecamatanNamaKecamatan { get; set; }
         [EditLink]
         public String KodeKelurahan { get; set; }

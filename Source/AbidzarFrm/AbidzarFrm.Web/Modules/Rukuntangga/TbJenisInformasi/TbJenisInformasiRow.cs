@@ -113,4 +113,5 @@ namespace AbidzarFrm.Rukuntangga.Entities
             public RowListField<TbDetailJenisInformasiRow> tbDetailJenisInformasiRow;
         }
     }
+
 }

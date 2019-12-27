@@ -168,6 +168,11 @@
       <Link>wkhtmltopdf.exe</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="App_Data\upload\Ktp\00000\00000016_2vif5nvpm4qec.png" />
+    <Content Include="App_Data\upload\Ktp\00000\avatar2.png" />
+    <Content Include="Content\adminlte\img\00000002_4pduxgwx4h6v4.jpg" />
+    <Content Include="Content\adminlte\img\00000003_kih45djwrvfqi.jpg" />
+    <Content Include="Content\adminlte\img\00000006_ct3lurvqhf5w2.png" />
     <Content Include="Content\aristo\aristo.css" />
     <Content Include="Content\aristo\images\icon_sprite.png" />
     <Content Include="Content\aristo\images\progress_bar.gif" />
@@ -761,6 +766,7 @@
     <Content Include="Scripts\ckeditor\skins\moono\images\refresh.png" />
     <Content Include="Scripts\ckeditor\skins\moono\images\spinner.gif" />
     <Content Include="Scripts\ckeditor\styles.js" />
+    <Content Include="Scripts\common\modal.js" />
     <Content Include="Scripts\flot\excanvas.js" />
     <Content Include="Scripts\flot\excanvas.min.js" />
     <Content Include="Scripts\flot\jquery.colorhelpers.js" />
@@ -828,6 +834,20 @@
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="wkhtmltopdf-license.txt" />
     <Content Include="Modules\Rukuntangga\TbMailLog\TbMailLogIndex.cshtml" />
+    <Content Include="Modules\Rukuntangga\QuickEmail\QuickEmailIndex.cshtml" />
+    <Content Include="Modules\Rukuntangga\Profile\ProfileIndex.cshtml" />
+    <Content Include="Modules\Rukuntangga\UserMember\UserMemberIndex.cshtml" />
+    <Content Include="Modules\Rukuntangga\Warga\WargaIndex.cshtml" />
+    <Content Include="Modules\Rukuntangga\Berita\BeritaIndex.cshtml" />
+    <Content Include="Modules\Rukuntangga\Berita\_BeritaDetail.cshtml" />
+    <Content Include="Modules\Rukuntangga\Warga\WargaDetail.cshtml" />
+    <Content Include="Modules\Rukuntangga\Warga\_WargaList.cshtml" />
+    <Content Include="Modules\Rukuntangga\Berita\_BeritaList.cshtml" />
+    <Content Include="Modules\Rukuntangga\UserMember\_UserMemberList.cshtml" />
+    <Content Include="Modules\Rukuntangga\Berita\_BeritaTerbaru.cshtml" />
+    <Content Include="Modules\Rukuntangga\RtMenjawab\_RtMenjawabDetail.cshtml" />
+    <Content Include="Modules\Rukuntangga\RtMenjawab\RtMenjawabIndex.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -1027,6 +1047,12 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Modules.Common.Helpers.ResultStatusResponse.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Modules.Rukuntangga.Berita.BeritaRequest.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Modules.Rukuntangga.Berita.BeritaResponse.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Northwind.PermissionKeys.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1158,6 +1184,7 @@
     <TypeScriptCompile Include="Modules\Rukuntangga\TbPollingPemilu\TbPollingPemiluEditor.ts" />
     <TypeScriptCompile Include="Modules\Rukuntangga\TbRw\PickRwDialog.ts" />
     <TypeScriptCompile Include="Modules\Rukuntangga\TbRw\PickRwGrid.ts" />
+    <TypeScriptCompile Include="Modules\Rukuntangga\Warga\WargaDialog.ts" />
     <TypeScriptCompile Include="node_modules\%40types\jquery\index.d.ts" />
     <TypeScriptCompile Include="node_modules\%40types\jqueryui\index.d.ts" />
     <TypeScriptCompile Include="node_modules\%40types\jquery.blockui\index.d.ts" />
@@ -1178,7 +1205,7 @@
     <Content Include="Scripts\vue.min.js" />
     <EmbeddedResource Include="Migrations\NorthwindDB\NorthwindDBScript_SqlServer.sql" />
     <Content Include="Content\adminlte\img\avatar.png" />
-    <Content Include="Content\adminlte\img\avatar04.png" />
+    <Content Include="Content\adminlte\img\avatar0.png" />
     <Content Include="Content\adminlte\img\avatar2.png" />
     <Content Include="Content\adminlte\img\avatar3.png" />
     <Content Include="Content\adminlte\img\avatar5.png" />
@@ -2515,6 +2542,7 @@
     <Compile Include="Modules\BasicSamples\Grids\StoredProcedureGrid\CustomerGrossSalesListRequest.cs" />
     <Compile Include="Modules\BasicSamples\Grids\StoredProcedureGrid\CustomerGrossSalesEndpoint.cs" />
     <Compile Include="Modules\BasicSamples\Grids\StoredProcedureGrid\CustomerGrossSalesRepository.cs" />
+    <Compile Include="Modules\Common\Helpers\CurrentSession.cs" />
     <Compile Include="Modules\Common\Helpers\ResultStatusResponse.cs" />
     <Compile Include="Modules\Common\Lookup\Lookup.cs" />
     <Compile Include="Modules\Northwind\Customer\CustomerGrossSalesRow.cs" />
@@ -2666,6 +2694,13 @@
     <Compile Include="Modules\Northwind\Supplier\SupplierCountryLookup.cs" />
     <Compile Include="Modules\Northwind\Territory\TerritoryColumns.cs" />
     <Compile Include="Modules\Northwind\NorthwindTexts.cs" />
+    <Compile Include="Modules\Rukuntangga\Berita\BeritaController.cs" />
+    <Compile Include="Modules\Rukuntangga\Berita\BeritaObject.cs" />
+    <Compile Include="Modules\Rukuntangga\Profile\ProfileController.cs" />
+    <Compile Include="Modules\Rukuntangga\RtMenjawab\RtMenjawabController.cs" />
+    <Compile Include="Modules\Rukuntangga\Warga\WargaController.cs" />
+    <Compile Include="Modules\Rukuntangga\UserMember\UserMemberController.cs" />
+    <Compile Include="Modules\Rukuntangga\QuickEmail\QuickEmailController.cs" />
     <Compile Include="Modules\Rukuntangga\RukuntanggaPermissionKeys.cs" />
     <Compile Include="Modules\Rukuntangga\TbMailLog\TbMailLogColumns.cs" />
     <Compile Include="Modules\Rukuntangga\TbMailLog\TbMailLogEndpoint.cs" />
@@ -2975,9 +3010,7 @@
     <Compile Include="Modules\Rukuntangga\TbUserApi\TbUserApiColumns.cs" />
     <Compile Include="Modules\Rukuntangga\TbUserApi\TbUserApiForm.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

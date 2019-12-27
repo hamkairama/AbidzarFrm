@@ -1,0 +1,56 @@
+﻿@model  List<AbidzarFrm.Rukuntangga.Entities.TbTanyaRtRow>
+
+<div id="divRtMenjawab">
+    <div class="box box-warning direct-chat direct-chat-warning">
+        <div class="box-header with-border">
+            <h3 class="box-title">Detail Percakapan</h3>
+            <div class="box-tools pull-right">
+                <span data-toggle="tooltip" title="3 New Messages" class="badge bg-yellow">3</span>
+                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                <button class="btn btn-box-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle"><i class="fa fa-comments"></i></button>
+                <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+        </div>
+        <div class="box-body">
+            <div class="direct-chat-messages">
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        <div class="direct-chat-msg">
+                            <div class="direct-chat-info clearfix">
+                                <span class="direct-chat-name pull-left">Alexander Pierce</span>
+                                <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
+                            </div>
+                            <img class="direct-chat-img" src="~/Content/adminlte/img/avatar2.png" alt="message user image">
+                            <div class="direct-chat-text">
+                                Is this template really for free? That's unbelievable!
+                            </div>
+                        </div>
+                        <div class="direct-chat-msg right">
+                            <div class="direct-chat-info clearfix">
+                                <span class="direct-chat-name pull-right">Sarah Bullock</span>
+                                <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
+                            </div>
+                            <img class="direct-chat-img" src="~/Content/adminlte/img/avatar3.png" alt="message user image">
+                            <div class="direct-chat-text">
+                                You better believe it!
+                            </div>
+                        </div>
+                    }
+
+                }
+            </div>
+        </div>
+        <div class="box-footer">
+            <form action="#" method="post">
+                <div class="input-group">
+                    <input type="text" name="message" placeholder="Buat Pertanyaan ..." class="form-control">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-warning btn-flat">Send</button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

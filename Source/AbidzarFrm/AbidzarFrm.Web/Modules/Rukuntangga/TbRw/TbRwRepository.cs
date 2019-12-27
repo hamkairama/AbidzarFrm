@@ -1,6 +1,7 @@
 ﻿
 namespace AbidzarFrm.Rukuntangga.Repositories
 {
+    using AbidzarFrm.Modules.Common.Helpers;
     using AbidzarFrm.Rukuntangga.Entities;
     using Serenity;
     using Serenity.Data;
@@ -15,13 +16,13 @@ namespace AbidzarFrm.Rukuntangga.Repositories
 
         public SaveResponse Create(IUnitOfWork uow, SaveRequest<MyRow> request)
         {
-            request.Entity.DibuatOleh = Authorization.UserId;
+            request.Entity.DibuatOleh = CurrentSession.Ktp().Nik;
             return new MySaveHandler().Process(uow, request, SaveRequestType.Create);
         }
 
         public SaveResponse Update(IUnitOfWork uow, SaveRequest<MyRow> request)
         {
-            request.Entity.DieditOleh = Authorization.UserId;
+            request.Entity.DieditOleh = CurrentSession.Ktp().Nik;
             request.Entity.DieditTanggal = DateTime.Now;
             return new MySaveHandler().Process(uow, request, SaveRequestType.Update);
         }

@@ -9,8 +9,8 @@ namespace AbidzarFrm.Administration.Entities
 
     [ConnectionKey("Rukuntangga"), Module("Administration"), TableName("TbUserRoles")]
     [DisplayName("UserRoles"), InstanceName("UserRoles")]
-    [ReadPermission(PermissionKeys.Security)]
-    [ModifyPermission(PermissionKeys.Security)]
+    [ReadPermission(AbidzarFrm.Rukuntangga.PermissionKeys.UserRoles)]
+    [ModifyPermission(AbidzarFrm.Rukuntangga.PermissionKeys.UserRoles)]
     public sealed class UserRoleRow : Row, IIdRow
     {
         [DisplayName("User Role Id"), Identity]

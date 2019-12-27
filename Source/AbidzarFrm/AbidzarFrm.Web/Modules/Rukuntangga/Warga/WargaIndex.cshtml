@@ -1,0 +1,102 @@
+﻿@model  List<AbidzarFrm.Rukuntangga.Entities.TbKtpRow>
+@{
+    ViewData["Title"] = "List Warga";
+}
+
+<script src="~/Scripts/adminlte/demo.js"></script>
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-danger">
+            <div class="box-header with-border">
+                <h3 class="box-title">Daftar Warga</h3>
+                <div class="box-tools pull-right">
+                    <span class="label label-danger">8 Warga Baru</span>
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                </div>
+            </div>
+            <div class="box-body no-padding">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="form-group input-group-sm" style="margin-top:5px;margin-left:5px;margin-right:5px;">
+                            <select class="form-control" id="ddlTotalCount">
+                                <option selected="selected">2</option>
+                                <option>50</option>
+                                <option>100</option>
+                                <option>1000</option>
+                                <option value="1000000">All</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-10">
+                        <div class="input-group input-group-sm" style="margin-top:5px;margin-left:5px;margin-right:5px;">
+                            <input type="text" id="txtInput" onkeypress="return SearchWargaKey(event)" class="form-control">
+                            <span class="input-group-btn">
+                                <button class="btn btn-info btn-flat" onclick="SearchWarga()" type="button">Go!</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <ul class="users-list clearfix">
+                    @Html.Partial("../../Modules/Rukuntangga/Warga/_WargaList")
+                </ul>
+            </div>
+            <div class="box-footer text-center">
+                <a href="javascript:SearchWarga(1000000)" class="uppercase">View All Users</a>
+            </div>
+
+            <!-- Button trigger modal -->
+            @*<button type="button" class="btn btn-primary" data-target="#AbidzarFrameModalFormEdit" data-url="@Url.Action("Details", "Warga", new { id = 1 })" data-toggle="modal">
+                    Launch demo modal
+                </button>*@
+        </div>
+
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#ddlTotalCount").change(function () {
+            SearchWarga();
+        });
+    })
+
+    function SearchWarga(totalCount) {
+        var path = location.origin + "/Rukuntangga/Warga/GetWarga/";
+        var txtTotalcount;
+        if (totalCount == null) {
+            var e = document.getElementById("ddlTotalCount");
+            txtTotalcount = e.options[e.selectedIndex].value;
+        } else {
+            var e = document.getElementById("ddlTotalCount");
+            e.value = 1000000;
+            txtTotalcount = totalCount;
+        }
+
+        var txtFilter = $("#txtInput").val()
+
+        $.ajax({
+            data: {
+                filter: txtFilter,
+                totalcount: txtTotalcount
+            },
+            cache: false,
+            url: path,
+            //traditional: true,
+            //type: 'POST',
+            //dataType: "json",
+            async: true,
+            success: function (data) {
+                $("#divWarga").html(data);
+            },
+            error: function (jqXHR, textStatus, errorMessage) {
+                console.log(errorMessage);
+            }
+        });
+
+    }
+    function SearchWargaKey(e) {
+        if (e.keyCode == 13) {
+            SearchWarga();
+        }
+    }
+</script>

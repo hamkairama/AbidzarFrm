@@ -9,3 +9,5 @@ namespace AbidzarFrm.Rukuntangga {
         protected getNameProperty() { return TbAutentikasiTokenRow.nameProperty; }
         protected getService() { return TbAutentikasiTokenService.baseUrl; }
         protected getDeletePermission() { return TbAutentikasiTokenRow.insertPermission; }
+    }
+}

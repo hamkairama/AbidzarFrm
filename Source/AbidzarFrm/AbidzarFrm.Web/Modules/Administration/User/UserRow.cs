@@ -9,8 +9,8 @@ namespace AbidzarFrm.Administration.Entities
 
     [ConnectionKey("Rukuntangga"), Module("Administration"), TableName("TbUsers")]
     [DisplayName("Users"), InstanceName("User")]
-    [ReadPermission(PermissionKeys.Security)]
-    [ModifyPermission(PermissionKeys.Security)]
+    [ReadPermission(AbidzarFrm.Rukuntangga.PermissionKeys.UserMember)]
+    [ModifyPermission(AbidzarFrm.Rukuntangga.PermissionKeys.UserMember)]
     [LookupScript(Permission = PermissionKeys.Security)]
     public sealed class UserRow : LoggingRow, IIdRow, INameRow, IIsActiveRow
     {
@@ -99,6 +99,20 @@ namespace AbidzarFrm.Administration.Entities
             set { Fields.LastDirectoryUpdate[this] = value; }
         }
 
+        [DisplayName("Nik"), Size(16), NotNull, LookupInclude, ForeignKey("[dbo].[TbKtp]", "Nik"), LeftJoin("jKtp")]
+        public String Nik
+        {
+            get { return Fields.Nik[this]; }
+            set { Fields.Nik[this] = value; }
+        }
+
+        [DisplayName("KodeRt"), Expression("jKtp.[KodeRt]"), LookupInclude]
+        public String KtpKodeRt
+        {
+            get { return Fields.KtpKodeRt[this]; }
+            set { Fields.KtpKodeRt[this] = value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.UserId; }
@@ -136,6 +150,8 @@ namespace AbidzarFrm.Administration.Entities
 
             public StringField Password;
             public StringField PasswordConfirm;
+            public StringField Nik;
+            public StringField KtpKodeRt;
         }
     }
 }

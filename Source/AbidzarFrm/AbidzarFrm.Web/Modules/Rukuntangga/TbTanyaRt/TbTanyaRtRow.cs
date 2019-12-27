@@ -6,6 +6,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
     using Serenity.Data;
     using Serenity.Data.Mapping;
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel;
     using System.IO;
 
@@ -66,6 +67,13 @@ namespace AbidzarFrm.Rukuntangga.Entities
             set { Fields.SystemStatus[this] = value; }
         }
 
+        [DisplayName("Detail Tanya Rt"), MasterDetailRelation(foreignKey: "IdTanyaRt"), NotMapped]
+        public List<TbTanyaRtDetailRow> tbTanyaRtDetailRow
+        {
+            get { return Fields.tbTanyaRtDetailRow[this]; }
+            set { Fields.tbTanyaRtDetailRow[this] = value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.Id; }
@@ -92,6 +100,9 @@ namespace AbidzarFrm.Rukuntangga.Entities
             public StringField DieditOleh;
             public DateTimeField DieditTanggal;
             public BooleanField SystemStatus;
+
+            //relationship
+            public RowListField<TbTanyaRtDetailRow> tbTanyaRtDetailRow;
         }
     }
 }

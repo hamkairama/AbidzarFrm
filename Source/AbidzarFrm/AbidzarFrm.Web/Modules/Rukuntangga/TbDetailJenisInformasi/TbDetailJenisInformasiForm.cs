@@ -15,8 +15,9 @@ namespace AbidzarFrm.Rukuntangga.Forms
     public class TbDetailJenisInformasiForm
     {
         public String Judul { get; set; }
+        [DisplayName("Photo Thumbnail")]
         public String NamaFile { get; set; }
-        [TextAreaEditor(Rows = 5)]
+        [HtmlContentEditor(Rows = 10)]
         public String Deskripsi { get; set; }
         [LevelAreaEditor]
         public String LevelArea { get; set; }

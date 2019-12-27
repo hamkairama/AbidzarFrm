@@ -1,6 +1,7 @@
 ﻿
 namespace AbidzarFrm.Rukuntangga.Endpoints
 {
+    using AbidzarFrm.Modules.Common.Helpers;
     using Serenity;
     using Serenity.Data;
     using Serenity.Services;
@@ -17,14 +18,14 @@ namespace AbidzarFrm.Rukuntangga.Endpoints
         [HttpPost, AuthorizeCreate(typeof(MyRow))]
         public SaveResponse Create(IUnitOfWork uow, SaveRequest<MyRow> request)
         {
-            request.Entity.DibuatOleh = Authorization.UserId;
+            request.Entity.DibuatOleh = CurrentSession.Ktp().Nik;
             return new MyRepository().Create(uow, request);
         }
 
         [HttpPost, AuthorizeUpdate(typeof(MyRow))]
         public SaveResponse Update(IUnitOfWork uow, SaveRequest<MyRow> request)
         {
-            request.Entity.DieditOleh = Authorization.UserId;
+            request.Entity.DieditOleh = CurrentSession.Ktp().Nik;
             request.Entity.DieditTanggal = DateTime.Now;
             return new MyRepository().Update(uow, request);
         }
