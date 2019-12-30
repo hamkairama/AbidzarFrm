@@ -17,21 +17,21 @@ namespace AbidzarFrm.Rukuntangga.Entities
     [DeletePermission("Master", "TanyaRt", "Delete")]
     public sealed class TbTanyaRtDetailRow : Row, IIdRow, INameRow
     {
-        [DisplayName("Id"), Identity]
+        [DisplayName("Id"), Identity, LookupInclude]
         public Int32? Id
         {
             get { return Fields.Id[this]; }
             set { Fields.Id[this] = value; }
         }
 
-        [DisplayName("Id Tanya Rt"), NotNull, ForeignKey("[dbo].[TbTanyaRt]", "Id"), LeftJoin("jIdTanyaRt"), TextualField("IdTanyaRtJudul")]
+        [DisplayName("Id Tanya Rt"), LookupInclude, NotNull, ForeignKey("[dbo].[TbTanyaRt]", "Id"), LeftJoin("jIdTanyaRt"), TextualField("IdTanyaRtJudul")]
         public Int32? IdTanyaRt
         {
             get { return Fields.IdTanyaRt[this]; }
             set { Fields.IdTanyaRt[this] = value; }
         }
 
-        [DisplayName("Deskripsi"), Size(2147483647), NotNull, QuickSearch]
+        [DisplayName("Deskripsi"), Size(2147483647), NotNull, QuickSearch, LookupInclude]
         public String Deskripsi
         {
             get { return Fields.Deskripsi[this]; }

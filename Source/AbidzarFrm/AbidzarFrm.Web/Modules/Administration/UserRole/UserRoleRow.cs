@@ -20,14 +20,14 @@ namespace AbidzarFrm.Administration.Entities
             set { Fields.UserRoleId[this] = value; }
         }
 
-        [DisplayName("User Id"), NotNull, ForeignKey("Users", "UserId"), LeftJoin("jUser")]
+        [DisplayName("User Id"), NotNull, ForeignKey("TbUsers", "UserId"), LeftJoin("jUser")]
         public Int32? UserId
         {
             get { return Fields.UserId[this]; }
             set { Fields.UserId[this] = value; }
         }
 
-        [DisplayName("Role Id"), NotNull]
+        [DisplayName("Role Id"), NotNull, ForeignKey("TbRoles", "RoleId"), LeftJoin("jRole")]
         public Int32? RoleId
         {
             get { return Fields.RoleId[this]; }
@@ -46,6 +46,12 @@ namespace AbidzarFrm.Administration.Entities
         {
             get { return Fields.User[this]; }
             set { Fields.User[this] = value; }
+        }
+        [DisplayName("Role Name"), Expression("jRole.[RoleName]")]
+        public String RoleName
+        {
+            get { return Fields.RoleName[this]; }
+            set { Fields.RoleName[this] = value; }
         }
 
         IIdField IIdRow.IdField
@@ -68,6 +74,7 @@ namespace AbidzarFrm.Administration.Entities
 
             public StringField Username;
             public StringField User;
+            public StringField RoleName;
         }
     }
 }

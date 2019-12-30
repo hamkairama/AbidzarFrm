@@ -33,12 +33,16 @@ namespace AbidzarFrm.Rukuntangga.Repositories
 
         public RetrieveResponse<MyRow> Retrieve(IDbConnection connection, RetrieveRequest request)
         {
+            request.IncludeField(MyRow.Fields.tbTanyaRtDetailRow);
             return new MyRetrieveHandler().Process(connection, request);
         }
 
         public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
         {
             request.IncludeField(MyRow.Fields.tbTanyaRtDetailRow);
+            request.IncludeField(MyRow.Fields.KtpIdKtp);
+            request.IncludeField(MyRow.Fields.KtpPhotoKtp);
+            request.IncludeField(MyRow.Fields.KtpNama);
             return new MyListHandler().Process(connection, request);
         }
 

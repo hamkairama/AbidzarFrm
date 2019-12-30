@@ -5,8 +5,9 @@
             var data = $(e.relatedTarget).data();
             $.ajax({
                 cache: false,
-                async: true,
+                async: false,
                 type: "POST",
+                traditional: false,
                 url: data.url,
                 contentType: "application/json; charset=utf-8",
                 data: JSON.stringify({
@@ -20,12 +21,10 @@
                     $(this).modal('hide');
                     alertError("Failed to open form, please try again");
                 }
-            }).done(function (ret) {
-                //markRequired();
-            });
+            })                
 
-            $('.description', this).text(data.itemDescription);
-            $('#btnSaveForm', this).data('urlAction', data.urlAction);
+                //$('.description', this).text(data.itemDescription);
+                //$('#btnSaveForm', this).data('urlAction', data.urlAction);
         }
     });
 

@@ -9,7 +9,7 @@ using System.Web;
 
 namespace AbidzarFrm.Modules.Common.Helpers
 {
-    public class CurrentSession
+    public class CurrentSession : AuthorizeLogin
     {
         public static TbKtpRow Ktp()
         {

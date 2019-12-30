@@ -2542,8 +2542,10 @@
     <Compile Include="Modules\BasicSamples\Grids\StoredProcedureGrid\CustomerGrossSalesListRequest.cs" />
     <Compile Include="Modules\BasicSamples\Grids\StoredProcedureGrid\CustomerGrossSalesEndpoint.cs" />
     <Compile Include="Modules\BasicSamples\Grids\StoredProcedureGrid\CustomerGrossSalesRepository.cs" />
+    <Compile Include="Modules\Common\Helpers\AuthorizeLogin.cs" />
     <Compile Include="Modules\Common\Helpers\CurrentSession.cs" />
     <Compile Include="Modules\Common\Helpers\ResultStatusResponse.cs" />
+    <Compile Include="Modules\Common\Helpers\UserAdditionalInfo.cs" />
     <Compile Include="Modules\Common\Lookup\Lookup.cs" />
     <Compile Include="Modules\Northwind\Customer\CustomerGrossSalesRow.cs" />
     <Compile Include="Modules\BasicSamples\Grids\VSGalleryQA\VSGalleryQAColumns.cs" />

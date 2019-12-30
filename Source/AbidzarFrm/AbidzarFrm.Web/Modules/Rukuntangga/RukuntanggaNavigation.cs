@@ -8,9 +8,14 @@ using MyPages = AbidzarFrm.Rukuntangga.Pages;
 
 [assembly: NavigationLink(int.MaxValue, "Tanya RT", "~/Rukuntangga/RtMenjawab/Index", permission: "", icon: "fa-comments")]
 
+[assembly: NavigationLink(int.MaxValue, "KTP Ku", "~/Rukuntangga/Profile/Index", permission: "", icon: "fa-user")]
+
+[assembly: NavigationLink(int.MaxValue, "Galery", "~/Rukuntangga/Profile/Index", permission: "", icon: "fa-user")]
+
+[assembly: NavigationLink(int.MaxValue, "Aktifitas", "~/Rukuntangga/Profile/Index", permission: "", icon: "fa-user")]
+
 [assembly: NavigationMenu(int.MaxValue, "Informasi", icon: "fa-info-circle")]
 [assembly: NavigationLink(int.MaxValue, "Informasi/Jenis Informasi", typeof(MyPages.TbJenisInformasiController), icon: "fa-info-circle")]
-[assembly: NavigationLink(int.MaxValue, "Informasi/My Profile", "~/Rukuntangga/Profile/Index", permission: "", icon: "fa-user")]
 
 [assembly: NavigationMenu(int.MaxValue, "Kegiatan", icon: "fa-tasks")]
 [assembly: NavigationLink(int.MaxValue, "Kegiatan/Jenis Kegiatan", typeof(MyPages.TbJenisKegiatanController), icon: "fa-tasks")]
@@ -48,7 +53,7 @@ using MyPages = AbidzarFrm.Rukuntangga.Pages;
 [assembly: NavigationLink(int.MaxValue, "Security/Parameter", typeof(MyPages.TbParameterController), icon: "fa-code-fork")]
 [assembly: NavigationLink(int.MaxValue, "Security/User", typeof(MyPages.TbUserController), icon: "fa-users")]
 [assembly: NavigationLink(int.MaxValue, "Security/User Api", typeof(MyPages.TbUserApiController), icon: "fa-user-secret")]
-[assembly: NavigationLink(int.MaxValue, "Security/Mail Log", "~/Rukuntangga/TbMailLog/", permission: "Security:MailLog", icon: "fa-envelope")]
+[assembly: NavigationLink(int.MaxValue, "Security/Mail Log", "~/Rukuntangga/MailLog/Index", permission: "Security:MailLog", icon: "fa-envelope")]
 [assembly: NavigationLink(int.MaxValue, "Security/Quick Email", "~/Rukuntangga/QuickEmail/Create", permission: "Security:MailLog", icon: "fa-arrow-circle-right")]
 [assembly: NavigationLink(int.MaxValue, "Security/User Member", "~/Rukuntangga/UserMember/Index", permission: "", icon: "fa-users")]
 [assembly: NavigationLink(int.MaxValue, "Security/Exceptions Log", url: "~/errorlog.axd", permission: AbidzarFrm.Administration.PermissionKeys.Security, icon: "fa-ban", Target = "_blank")]

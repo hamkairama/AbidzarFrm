@@ -1,56 +1,71 @@
 ﻿@model  List<AbidzarFrm.Rukuntangga.Entities.TbTanyaRtRow>
+@using AbidzarFrm.Modules.Common.Helpers
 
-<div id="divRtMenjawab">
-    <div class="box box-warning direct-chat direct-chat-warning">
-        <div class="box-header with-border">
-            <h3 class="box-title">Detail Percakapan</h3>
-            <div class="box-tools pull-right">
-                <span data-toggle="tooltip" title="3 New Messages" class="badge bg-yellow">3</span>
-                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                <button class="btn btn-box-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle"><i class="fa fa-comments"></i></button>
-                <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-            </div>
-        </div>
-        <div class="box-body">
-            <div class="direct-chat-messages">
-                @if (Model != null)
-                {
-                    foreach (var item in Model)
-                    {
-                        <div class="direct-chat-msg">
-                            <div class="direct-chat-info clearfix">
-                                <span class="direct-chat-name pull-left">Alexander Pierce</span>
-                                <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
-                            </div>
-                            <img class="direct-chat-img" src="~/Content/adminlte/img/avatar2.png" alt="message user image">
-                            <div class="direct-chat-text">
-                                Is this template really for free? That's unbelievable!
-                            </div>
-                        </div>
-                        <div class="direct-chat-msg right">
-                            <div class="direct-chat-info clearfix">
-                                <span class="direct-chat-name pull-right">Sarah Bullock</span>
-                                <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
-                            </div>
-                            <img class="direct-chat-img" src="~/Content/adminlte/img/avatar3.png" alt="message user image">
-                            <div class="direct-chat-text">
-                                You better believe it!
-                            </div>
-                        </div>
-                    }
-
-                }
-            </div>
-        </div>
-        <div class="box-footer">
-            <form action="#" method="post">
-                <div class="input-group">
-                    <input type="text" name="message" placeholder="Buat Pertanyaan ..." class="form-control">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-warning btn-flat">Send</button>
-                    </span>
+@{
+    <div id="divRtMenjawab">
+        <div class="box box-warning direct-chat direct-chat-warning">
+            <div class="box-header with-border">
+                <h3 class="box-title"> @Model.FirstOrDefault().Judul</h3>
+                <div class="box-tools pull-right">
+                    <span data-toggle="tooltip" title="3 New Messages" class="badge bg-yellow">3</span>
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                 </div>
-            </form>
+            </div>
+            <div class="box-body">
+                <div class="direct-chat-messages" style="height:450px;">
+                    @if (Model.Count > 0)
+                    {
+                        //List<AbidzarFrm.Rukuntangga.Entities.TbTanyaRtDetailRow> newList = new List<AbidzarFrm.Rukuntangga.Entities.TbTanyaRtDetailRow>();
+                        //newList = Model.FirstOrDefault().tbTanyaRtDetailRow.Sort();
+                        var tanyaRtDetail = Model.FirstOrDefault();
+                        foreach (var item in tanyaRtDetail.tbTanyaRtDetailRow.OrderBy(x => x.Id).ToList())
+                        {
+                            if (item.DibuatOleh == CurrentSession.Ktp().Nik)
+                            {
+                                var userImage = (string.IsNullOrEmpty(CurrentSession.Ktp().PhotoKtp)) ? "../../Content/adminlte/img/avatar0.png" :
+                                    VirtualPathUtility.ToAbsolute("~/upload/") + CurrentSession.Ktp().PhotoKtp;
+                                <div class="direct-chat-msg right">
+                                    <div class="direct-chat-info clearfix">
+                                        <span class="direct-chat-name pull-right">@CurrentSession.Ktp().Nama</span>
+                                        <span class="direct-chat-timestamp pull-left">@item.DibuatTanggal.Value.ToString("dd MMM yyyy hh:mm")</span>
+                                    </div>
+                                    <img class="direct-chat-img" src="@userImage" alt="message user image">
+                                    <div class="direct-chat-text">
+                                        @item.Deskripsi
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                var userImage = (string.IsNullOrEmpty(tanyaRtDetail.KtpPhotoKtp)) ? "../../Content/adminlte/img/avatar0.png" :
+                                    VirtualPathUtility.ToAbsolute("~/upload/") + tanyaRtDetail.KtpPhotoKtp;
+                                <div class="direct-chat-msg">
+                                    <div class="direct-chat-info clearfix">
+                                        <span class="direct-chat-name pull-left">@tanyaRtDetail.KtpNama</span>
+                                        <span class="direct-chat-timestamp pull-right">@item.DibuatTanggal.Value.ToString("dd MMM yyyy hh:mm")</span>
+                                    </div>
+                                    <img class="direct-chat-img" src="@userImage" alt="message user image">
+                                    <div class="direct-chat-text">
+                                        @item.Deskripsi
+                                    </div>
+                                </div>
+                            }
+                        }
+
+                    }
+                </div>
+            </div>
+            <div class="box-footer">
+                <form action="#" method="post">
+                    <div class="input-group">
+                        <input type="text" name="message" id="deskripsiTxt" onkeypress="return CreateDetailTanyaRtRtKey(event, @Model.FirstOrDefault().Id)" placeholder="Buat Pertanyaan ..." class="form-control">
+                        <span class="input-group-btn">
+                            <button type="button" onclick="CreateDetailTanyaRt(@Model.FirstOrDefault().Id)" class="btn btn-warning btn-flat">Send</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+}

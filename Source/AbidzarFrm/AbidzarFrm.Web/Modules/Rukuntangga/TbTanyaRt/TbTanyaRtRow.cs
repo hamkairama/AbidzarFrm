@@ -32,7 +32,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
             set { Fields.Judul[this] = value; }
         }
 
-        [DisplayName("Dibuat Oleh"), Size(20), NotNull]
+        [DisplayName("Dibuat Oleh"), NotNull, ForeignKey("TbKtp", "Nik"), LeftJoin("jKtp")]
         public String DibuatOleh
         {
             get { return Fields.DibuatOleh[this]; }
@@ -73,6 +73,30 @@ namespace AbidzarFrm.Rukuntangga.Entities
             get { return Fields.tbTanyaRtDetailRow[this]; }
             set { Fields.tbTanyaRtDetailRow[this] = value; }
         }
+        [DisplayName("KodeRt"), Expression("jKtp.[KodeRt]"), LookupInclude]
+        public String KtpKodeRt
+        {
+            get { return Fields.KtpKodeRt[this]; }
+            set { Fields.KtpKodeRt[this] = value; }
+        }
+        [DisplayName("PhotoKtp"), Expression("jKtp.[PhotoKtp]"), LookupInclude]
+        public String KtpPhotoKtp
+        {
+            get { return Fields.KtpPhotoKtp[this]; }
+            set { Fields.KtpPhotoKtp[this] = value; }
+        }
+        [DisplayName("Nama"), Expression("jKtp.[Nama]"), LookupInclude]
+        public String KtpNama
+        {
+            get { return Fields.KtpNama[this]; }
+            set { Fields.KtpNama[this] = value; }
+        }
+        [DisplayName("IdKtp"), Expression("jKtp.[Id]"), LookupInclude]
+        public Int32? KtpIdKtp
+        {
+            get { return Fields.KtpIdKtp[this]; }
+            set { Fields.KtpIdKtp[this] = value; }
+        }
 
         IIdField IIdRow.IdField
         {
@@ -100,6 +124,10 @@ namespace AbidzarFrm.Rukuntangga.Entities
             public StringField DieditOleh;
             public DateTimeField DieditTanggal;
             public BooleanField SystemStatus;
+            public StringField KtpKodeRt;
+            public StringField KtpPhotoKtp;
+            public StringField KtpNama;
+            public Int32Field KtpIdKtp;
 
             //relationship
             public RowListField<TbTanyaRtDetailRow> tbTanyaRtDetailRow;

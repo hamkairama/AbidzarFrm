@@ -160,7 +160,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
         }
 
         [DisplayName("Photo Ktp")]
-        [ImageUploadEditor(FilenameFormat = "Ktp/~", CopyToHistory = true)]
+        [ImageUploadEditor(FilenameFormat = "Ktp/~", CopyToHistory = true), LookupInclude]
         public String PhotoKtp
         {
             get { return Fields.PhotoKtp[this]; }

@@ -38,6 +38,7 @@ namespace AbidzarFrm.Rukuntangga.Repositories
 
         public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
         {
+            request.Sort = new[] { new SortBy("Id", descending: false) };
             return new MyListHandler().Process(connection, request);
         }
 
