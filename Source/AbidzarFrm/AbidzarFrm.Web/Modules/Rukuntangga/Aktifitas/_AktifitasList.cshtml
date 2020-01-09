@@ -1,0 +1,35 @@
+﻿@model List<AbidzarFrm.Rukuntangga.Entities.TbJenisKegiatanRow>
+
+@{
+    AbidzarFrm.Rukuntangga.Entities.TbJenisKegiatanRow jenisKegiatan = null;
+    jenisKegiatan = Model.FirstOrDefault();
+
+    <div id="divAktifitas">
+        @if (jenisKegiatan.tbDetailJenisKegiatanRow != null)
+        {
+            foreach (var item in jenisKegiatan.tbDetailJenisKegiatanRow)
+            {
+                var img = (item.NamaFile == null || string.IsNullOrEmpty(item.NamaFile)) ? "../../Content/adminlte/img/avatar0.png" : VirtualPathUtility.ToAbsolute("~/upload/") + item.NamaFile;
+
+                <div class="col-md-3 col-md-3 col-xs-6">
+                    <div class="box box-primary">
+                        <div class="box-header with-border overflow" style="color:dodgerblue; text-shadow: 1px 1px 0 rgba(0, 0, 0, .2)">
+                            <a href="@Url.Action("Detail", "Aktifitas", new { id = item.Id })" title="@item.NamaKegiatan"><i class="fa fa-bullhorn margin-r-5"></i>@item.NamaKegiatan</a>
+                            <div class="box-tools pull-right">
+                                <span class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></span>
+                            </div>
+                        </div>
+
+                        <div class="box-body" style="height:150px;background-image: url(@img);background-repeat:no-repeat; background-size: 100% 100%;">
+                        </div>
+                        <div class="box-footer">
+                            <a href="javascript:GetAktifitas(@item.IdJenisKegiatan)"><h7 class="text-muted">@item.IdJenisKegiatanJenisKegiatan</h7></a> 
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+}
+
+

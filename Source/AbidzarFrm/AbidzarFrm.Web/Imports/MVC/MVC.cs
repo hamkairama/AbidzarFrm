@@ -373,9 +373,59 @@ namespace MVC
 
         public static class Rukuntangga
         {
+            public static class Aktifitas
+            {
+                public const string _AktifitasDetail = "~/Modules/Rukuntangga/Aktifitas/_AktifitasDetail.cshtml";
+                public const string _AktifitasList = "~/Modules/Rukuntangga/Aktifitas/_AktifitasList.cshtml";
+                public const string _AktifitasTerbaru = "~/Modules/Rukuntangga/Aktifitas/_AktifitasTerbaru.cshtml";
+                public const string AktifitasIndex = "~/Modules/Rukuntangga/Aktifitas/AktifitasIndex.cshtml";
+            }
+
             public static class AppointmentDiary
             {
                 public const string AppointmentDiaryIndex = "~/Modules/Rukuntangga/AppointmentDiary/AppointmentDiaryIndex.cshtml";
+            }
+
+            public static class Berita
+            {
+                public const string _BeritaDetail = "~/Modules/Rukuntangga/Berita/_BeritaDetail.cshtml";
+                public const string _BeritaList = "~/Modules/Rukuntangga/Berita/_BeritaList.cshtml";
+                public const string _BeritaTerbaru = "~/Modules/Rukuntangga/Berita/_BeritaTerbaru.cshtml";
+                public const string BeritaIndex = "~/Modules/Rukuntangga/Berita/BeritaIndex.cshtml";
+            }
+
+            public static class Galery
+            {
+                public const string Detail = "~/Modules/Rukuntangga/Galery/Detail.cshtml";
+                public const string Index = "~/Modules/Rukuntangga/Galery/Index.cshtml";
+            }
+
+            public static class Profile
+            {
+                public const string ProfileIndex = "~/Modules/Rukuntangga/Profile/ProfileIndex.cshtml";
+            }
+
+            public static class Questioner
+            {
+                public const string _QuestionerDetailPemilu = "~/Modules/Rukuntangga/Questioner/_QuestionerDetailPemilu.cshtml";
+                public const string QuestionerDetail = "~/Modules/Rukuntangga/Questioner/QuestionerDetail.cshtml";
+                public const string QuestionerIndex = "~/Modules/Rukuntangga/Questioner/QuestionerIndex.cshtml";
+            }
+
+            public static class QuickEmail
+            {
+                public const string QuickEmailIndex = "~/Modules/Rukuntangga/QuickEmail/QuickEmailIndex.cshtml";
+            }
+
+            public static class Registrasi
+            {
+                public const string Index = "~/Modules/Rukuntangga/Registrasi/Index.cshtml";
+            }
+
+            public static class RtMenjawab
+            {
+                public const string _RtMenjawabDetail = "~/Modules/Rukuntangga/RtMenjawab/_RtMenjawabDetail.cshtml";
+                public const string RtMenjawabIndex = "~/Modules/Rukuntangga/RtMenjawab/RtMenjawabIndex.cshtml";
             }
 
             public static class TbAutentikasiToken
@@ -416,6 +466,11 @@ namespace MVC
             public static class TbErrorLogs
             {
                 public const string TbErrorLogsIndex = "~/Modules/Rukuntangga/TbErrorLogs/TbErrorLogsIndex.cshtml";
+            }
+
+            public static class TbGalery
+            {
+                public const string TbGaleryIndex = "~/Modules/Rukuntangga/TbGalery/TbGaleryIndex.cshtml";
             }
 
             public static class TbHistoricalUserLogin
@@ -538,6 +593,26 @@ namespace MVC
                 public const string TbTestimoniIndex = "~/Modules/Rukuntangga/TbTestimoni/TbTestimoniIndex.cshtml";
             }
 
+            public static class TbTransactionDocumentCode
+            {
+                public const string TbTransactionDocumentCodeIndex = "~/Modules/Rukuntangga/TbTransactionDocumentCode/TbTransactionDocumentCodeIndex.cshtml";
+            }
+
+            public static class TbTransactionFlow
+            {
+                public const string TbTransactionFlowIndex = "~/Modules/Rukuntangga/TbTransactionFlow/TbTransactionFlowIndex.cshtml";
+            }
+
+            public static class TbTransactionFlowDetail
+            {
+                public const string TbTransactionFlowDetailIndex = "~/Modules/Rukuntangga/TbTransactionFlowDetail/TbTransactionFlowDetailIndex.cshtml";
+            }
+
+            public static class TbTransactionStatus
+            {
+                public const string TbTransactionStatusIndex = "~/Modules/Rukuntangga/TbTransactionStatus/TbTransactionStatusIndex.cshtml";
+            }
+
             public static class TbUser
             {
                 public const string TbUserIndex = "~/Modules/Rukuntangga/TbUser/TbUserIndex.cshtml";
@@ -546,6 +621,19 @@ namespace MVC
             public static class TbUserApi
             {
                 public const string TbUserApiIndex = "~/Modules/Rukuntangga/TbUserApi/TbUserApiIndex.cshtml";
+            }
+
+            public static class UserMember
+            {
+                public const string _UserMemberList = "~/Modules/Rukuntangga/UserMember/_UserMemberList.cshtml";
+                public const string UserMemberIndex = "~/Modules/Rukuntangga/UserMember/UserMemberIndex.cshtml";
+            }
+
+            public static class Warga
+            {
+                public const string _WargaList = "~/Modules/Rukuntangga/Warga/_WargaList.cshtml";
+                public const string WargaDetail = "~/Modules/Rukuntangga/Warga/WargaDetail.cshtml";
+                public const string WargaIndex = "~/Modules/Rukuntangga/Warga/WargaIndex.cshtml";
             }
         }
 

@@ -39,6 +39,7 @@ namespace AbidzarFrm.Rukuntangga.Repositories
 
         public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
         {
+            request.IncludeField(MyRow.Fields.tbDetailJenisKegiatanRow);
             return new MyListHandler().Process(connection, request);
         }
 
@@ -74,7 +75,7 @@ namespace AbidzarFrm.Rukuntangga.Repositories
                         }
                     }
 
-                    this.Connection.Execute(string.Format("DELETE dbo.TbDetailJenisKegiatan WHERE Id Not In ({0} and IdJenisKegiatan = {1})", idIn, this.Row.Id));
+                    this.Connection.Execute(string.Format("DELETE dbo.TbDetailJenisKegiatan WHERE Id Not In ({0}) and IdJenisKegiatan = {1}", idIn, this.Row.Id));
                 }
                 else
                 {

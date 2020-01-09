@@ -12,6 +12,9 @@
         IsActive?: number;
         Password?: string;
         PasswordConfirm?: string;
+        Nik?: string;
+        KtpKodeRt?: string;
+        KtpId?: number;
         InsertUserId?: number;
         InsertDate?: string;
         UpdateUserId?: number;
@@ -28,10 +31,10 @@
         export function getLookup(): Q.Lookup<UserRow> {
             return Q.getLookup<UserRow>('Administration.User');
         }
-        export const deletePermission = 'Administration:Security';
-        export const insertPermission = 'Administration:Security';
-        export const readPermission = 'Administration:Security';
-        export const updatePermission = 'Administration:Security';
+        export const deletePermission = 'Security:UserMember';
+        export const insertPermission = 'Security:UserMember';
+        export const readPermission = 'Security:UserMember';
+        export const updatePermission = 'Security:UserMember';
 
         export declare const enum Fields {
             UserId = "UserId",
@@ -46,6 +49,9 @@
             IsActive = "IsActive",
             Password = "Password",
             PasswordConfirm = "PasswordConfirm",
+            Nik = "Nik",
+            KtpKodeRt = "KtpKodeRt",
+            KtpId = "KtpId",
             InsertUserId = "InsertUserId",
             InsertDate = "InsertDate",
             UpdateUserId = "UpdateUserId",

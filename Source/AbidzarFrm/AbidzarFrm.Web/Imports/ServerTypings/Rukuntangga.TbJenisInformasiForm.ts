@@ -1,7 +1,6 @@
 ﻿namespace AbidzarFrm.Rukuntangga {
     export interface TbJenisInformasiForm {
         JenisInformasi: Serenity.StringEditor;
-        KodeRt: Serenity.StringEditor;
         tbDetailJenisInformasiRow: TbDetailJenisInformasiEditor;
     }
 
@@ -21,7 +20,6 @@
 
                 Q.initFormType(TbJenisInformasiForm, [
                     'JenisInformasi', w0,
-                    'KodeRt', w0,
                     'tbDetailJenisInformasiRow', w1
                 ]);
             }

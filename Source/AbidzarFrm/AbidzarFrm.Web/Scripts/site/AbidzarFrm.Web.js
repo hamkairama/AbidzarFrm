@@ -2072,17 +2072,21 @@ var AbidzarFrm;
                     TbDetailJenisKegiatanForm.init = true;
                     var s = Serenity;
                     var w0 = s.StringEditor;
-                    var w1 = s.TextAreaEditor;
-                    var w2 = s.DateEditor;
-                    var w3 = AbidzarFrm.Common.Editor.WarnaEditor;
-                    var w4 = AbidzarFrm.Common.Editor.LevelAreaEditor;
+                    var w1 = s.ImageUploadEditor;
+                    var w2 = s.TextAreaEditor;
+                    var w3 = s.DateEditor;
+                    var w4 = AbidzarFrm.Common.Editor.WarnaEditor;
+                    var w5 = AbidzarFrm.Common.Editor.LevelAreaEditor;
+                    var w6 = s.MultipleImageUploadEditor;
                     Q.initFormType(TbDetailJenisKegiatanForm, [
                         'NamaKegiatan', w0,
+                        'NamaFile', w1,
                         'Lokasi', w0,
-                        'Deskripsi', w1,
-                        'TanggalKegiatan', w2,
-                        'WarnaLatar', w3,
-                        'LevelArea', w4
+                        'Deskripsi', w2,
+                        'TanggalKegiatan', w3,
+                        'WarnaLatar', w4,
+                        'LevelArea', w5,
+                        'Dokumentasi', w6
                     ]);
                 }
                 return _this;
@@ -2144,12 +2148,12 @@ var AbidzarFrm;
                     var w0 = s.IntegerEditor;
                     var w1 = s.StringEditor;
                     var w2 = s.ImageUploadEditor;
-                    var w3 = Rukuntangga.TbPollingPemiluEditor;
+                    var w3 = s.HtmlContentEditor;
                     Q.initFormType(TbDetailPemiluForm, [
                         'NoUrut', w0,
                         'Kandidat', w1,
                         'FileName', w2,
-                        'tbPollingPemiluRow', w3
+                        'Deskripsi', w3
                     ]);
                 }
                 return _this;
@@ -2296,6 +2300,11 @@ var AbidzarFrm;
             TbEmailTemplateRow.idProperty = 'Id';
             TbEmailTemplateRow.nameProperty = 'KodeTemplate';
             TbEmailTemplateRow.localTextPrefix = 'Rukuntangga.TbEmailTemplate';
+            TbEmailTemplateRow.lookupKey = 'Rukuntangga.EmailTemplate';
+            function getLookup() {
+                return Q.getLookup('Rukuntangga.EmailTemplate');
+            }
+            TbEmailTemplateRow.getLookup = getLookup;
             TbEmailTemplateRow.deletePermission = 'Security:EmailTemplate';
             TbEmailTemplateRow.insertPermission = 'Security:EmailTemplate';
             TbEmailTemplateRow.readPermission = 'Security:EmailTemplate';
@@ -2322,6 +2331,78 @@ var AbidzarFrm;
                 };
             });
         })(TbEmailTemplateService = Rukuntangga.TbEmailTemplateService || (Rukuntangga.TbEmailTemplateService = {}));
+    })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
+})(AbidzarFrm || (AbidzarFrm = {}));
+var AbidzarFrm;
+(function (AbidzarFrm) {
+    var Rukuntangga;
+    (function (Rukuntangga) {
+        var TbGaleryForm = /** @class */ (function (_super) {
+            __extends(TbGaleryForm, _super);
+            function TbGaleryForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!TbGaleryForm.init) {
+                    TbGaleryForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    var w1 = AbidzarFrm.Common.Editor.LevelAreaEditor;
+                    var w2 = s.ImageUploadEditor;
+                    var w3 = s.MultipleImageUploadEditor;
+                    Q.initFormType(TbGaleryForm, [
+                        'Deskripsi', w0,
+                        'LevelArea', w1,
+                        'Thumbnail', w2,
+                        'Photos', w3
+                    ]);
+                }
+                return _this;
+            }
+            TbGaleryForm.formKey = 'Rukuntangga.TbGalery';
+            return TbGaleryForm;
+        }(Serenity.PrefixedContext));
+        Rukuntangga.TbGaleryForm = TbGaleryForm;
+    })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
+})(AbidzarFrm || (AbidzarFrm = {}));
+var AbidzarFrm;
+(function (AbidzarFrm) {
+    var Rukuntangga;
+    (function (Rukuntangga) {
+        var TbGaleryRow;
+        (function (TbGaleryRow) {
+            TbGaleryRow.idProperty = 'Id';
+            TbGaleryRow.nameProperty = 'Deskripsi';
+            TbGaleryRow.localTextPrefix = 'Rukuntangga.TbGalery';
+            TbGaleryRow.lookupKey = 'Rukuntangga.Galery';
+            function getLookup() {
+                return Q.getLookup('Rukuntangga.Galery');
+            }
+            TbGaleryRow.getLookup = getLookup;
+            TbGaleryRow.deletePermission = 'Master:Galery:Delete';
+            TbGaleryRow.insertPermission = 'Master:Galery:Insert';
+            TbGaleryRow.readPermission = 'Master:Galery:View';
+            TbGaleryRow.updatePermission = 'Master:Galery:Modify';
+        })(TbGaleryRow = Rukuntangga.TbGaleryRow || (Rukuntangga.TbGaleryRow = {}));
+    })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
+})(AbidzarFrm || (AbidzarFrm = {}));
+var AbidzarFrm;
+(function (AbidzarFrm) {
+    var Rukuntangga;
+    (function (Rukuntangga) {
+        var TbGaleryService;
+        (function (TbGaleryService) {
+            TbGaleryService.baseUrl = 'Rukuntangga/TbGalery';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                TbGaleryService[x] = function (r, s, o) {
+                    return Q.serviceRequest(TbGaleryService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(TbGaleryService = Rukuntangga.TbGaleryService || (Rukuntangga.TbGaleryService = {}));
     })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
 })(AbidzarFrm || (AbidzarFrm = {}));
 var AbidzarFrm;
@@ -2873,52 +2954,58 @@ var AbidzarFrm;
                     TbKtpForm.init = true;
                     var s = Serenity;
                     var w0 = s.StringEditor;
-                    var w1 = s.DateEditor;
-                    var w2 = AbidzarFrm.Common.Editor.AgamaEditor;
-                    var w3 = AbidzarFrm.Common.Editor.JenisKelaminEditor;
-                    var w4 = s.LookupEditor;
-                    var w5 = s.TextAreaEditor;
-                    var w6 = AbidzarFrm.Common.Editor.Sequens3Editor;
-                    var w7 = AbidzarFrm.Common.Editor.StatusEditor;
-                    var w8 = AbidzarFrm.Common.Editor.WargaNegaraEditor;
-                    var w9 = AbidzarFrm.Common.Editor.PekerjaanEditor;
-                    var w10 = AbidzarFrm.Common.Editor.GolonganDarahEditor;
-                    var w11 = AbidzarFrm.Common.Editor.PendidikanEditor;
-                    var w12 = s.ImageUploadEditor;
-                    var w13 = s.IntegerEditor;
-                    var w14 = s.MultipleImageUploadEditor;
+                    var w1 = AbidzarFrm.Common.Editor.DataStatusEditor;
+                    var w2 = s.DateEditor;
+                    var w3 = AbidzarFrm.Common.Editor.AgamaEditor;
+                    var w4 = AbidzarFrm.Common.Editor.JenisKelaminEditor;
+                    var w5 = s.LookupEditor;
+                    var w6 = AbidzarFrm.Common.Editor.SelectEditor;
+                    var w7 = s.TextAreaEditor;
+                    var w8 = AbidzarFrm.Common.Editor.Sequens3Editor;
+                    var w9 = AbidzarFrm.Common.Editor.StatusEditor;
+                    var w10 = AbidzarFrm.Common.Editor.WargaNegaraEditor;
+                    var w11 = AbidzarFrm.Common.Editor.PekerjaanEditor;
+                    var w12 = AbidzarFrm.Common.Editor.GolonganDarahEditor;
+                    var w13 = AbidzarFrm.Common.Editor.PendidikanEditor;
+                    var w14 = s.ImageUploadEditor;
+                    var w15 = s.MultipleImageUploadEditor;
                     Q.initFormType(TbKtpForm, [
                         'Kk', w0,
                         'Nik', w0,
                         'Nama', w0,
+                        'DataStatus', w1,
                         'TempatLahir', w0,
-                        'TanggalLahir', w1,
-                        'Agama', w2,
-                        'JenisKelamin', w3,
-                        'IdProvinsi', w4,
-                        'IdKota', w4,
-                        'IdKecamatan', w4,
-                        'IdKelurahan', w4,
-                        'Alamat', w5,
-                        'Rt', w6,
-                        'Rw', w6,
+                        'TanggalLahir', w2,
+                        'Agama', w3,
+                        'JenisKelamin', w4,
+                        'IdProvinsi', w5,
+                        'IdKota', w6,
+                        'IdKecamatan', w6,
+                        'IdKelurahan', w6,
+                        'Alamat', w7,
+                        'Rt', w8,
+                        'Rw', w8,
                         'KodePos', w0,
-                        'StatusPerkawinan', w7,
-                        'TanggalPerkawinan', w1,
-                        'Kewarganegaraan', w8,
-                        'JenisPekerjaan', w9,
-                        'GolonganDarah', w10,
-                        'Pendidikan', w11,
-                        'PhotoKtp', w12,
-                        'SignatureKtp', w12,
+                        'StatusPerkawinan', w9,
+                        'TanggalPerkawinan', w2,
+                        'Kewarganegaraan', w10,
+                        'JenisPekerjaan', w11,
+                        'GolonganDarah', w12,
+                        'Pendidikan', w13,
+                        'PhotoKtp', w14,
+                        'SignatureKtp', w14,
                         'NamaAyah', w0,
                         'NamaIbu', w0,
-                        'IdKelurahanTinggal', w13,
+                        'IdProvinsiTinggal', w5,
+                        'IdKotaTinggal', w6,
+                        'IdKecamatanTinggal', w6,
+                        'IdKelurahanTinggal', w6,
                         'AlamatTinggal', w0,
-                        'RtTinggal', w6,
-                        'RwTinggal', w6,
+                        'RtTinggal', w8,
+                        'RwTinggal', w8,
+                        'PhotoRumah', w14,
                         'KodeRt', w0,
-                        'Attachment', w14
+                        'Attachment', w15
                     ]);
                 }
                 return _this;
@@ -3999,6 +4086,290 @@ var AbidzarFrm;
 (function (AbidzarFrm) {
     var Rukuntangga;
     (function (Rukuntangga) {
+        var TbTransactionDocumentCodeForm = /** @class */ (function (_super) {
+            __extends(TbTransactionDocumentCodeForm, _super);
+            function TbTransactionDocumentCodeForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!TbTransactionDocumentCodeForm.init) {
+                    TbTransactionDocumentCodeForm.init = true;
+                    var s = Serenity;
+                    var w0 = s.StringEditor;
+                    Q.initFormType(TbTransactionDocumentCodeForm, [
+                        'DocumentCode', w0,
+                        'Description', w0
+                    ]);
+                }
+                return _this;
+            }
+            TbTransactionDocumentCodeForm.formKey = 'Rukuntangga.TbTransactionDocumentCode';
+            return TbTransactionDocumentCodeForm;
+        }(Serenity.PrefixedContext));
+        Rukuntangga.TbTransactionDocumentCodeForm = TbTransactionDocumentCodeForm;
+    })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
+})(AbidzarFrm || (AbidzarFrm = {}));
+var AbidzarFrm;
+(function (AbidzarFrm) {
+    var Rukuntangga;
+    (function (Rukuntangga) {
+        var TbTransactionDocumentCodeRow;
+        (function (TbTransactionDocumentCodeRow) {
+            TbTransactionDocumentCodeRow.idProperty = 'Id';
+            TbTransactionDocumentCodeRow.nameProperty = 'DocumentCode';
+            TbTransactionDocumentCodeRow.localTextPrefix = 'Rukuntangga.TbTransactionDocumentCode';
+            TbTransactionDocumentCodeRow.lookupKey = 'Rukuntangga.TransactionDocumentCode';
+            function getLookup() {
+                return Q.getLookup('Rukuntangga.TransactionDocumentCode');
+            }
+            TbTransactionDocumentCodeRow.getLookup = getLookup;
+            TbTransactionDocumentCodeRow.deletePermission = 'Security:DocumentCode';
+            TbTransactionDocumentCodeRow.insertPermission = 'Security:DocumentCode';
+            TbTransactionDocumentCodeRow.readPermission = 'Security:DocumentCode';
+            TbTransactionDocumentCodeRow.updatePermission = 'Security:DocumentCode';
+        })(TbTransactionDocumentCodeRow = Rukuntangga.TbTransactionDocumentCodeRow || (Rukuntangga.TbTransactionDocumentCodeRow = {}));
+    })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
+})(AbidzarFrm || (AbidzarFrm = {}));
+var AbidzarFrm;
+(function (AbidzarFrm) {
+    var Rukuntangga;
+    (function (Rukuntangga) {
+        var TbTransactionDocumentCodeService;
+        (function (TbTransactionDocumentCodeService) {
+            TbTransactionDocumentCodeService.baseUrl = 'Rukuntangga/TbTransactionDocumentCode';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                TbTransactionDocumentCodeService[x] = function (r, s, o) {
+                    return Q.serviceRequest(TbTransactionDocumentCodeService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(TbTransactionDocumentCodeService = Rukuntangga.TbTransactionDocumentCodeService || (Rukuntangga.TbTransactionDocumentCodeService = {}));
+    })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
+})(AbidzarFrm || (AbidzarFrm = {}));
+var AbidzarFrm;
+(function (AbidzarFrm) {
+    var Rukuntangga;
+    (function (Rukuntangga) {
+        var TbTransactionFlowDetailForm = /** @class */ (function (_super) {
+            __extends(TbTransactionFlowDetailForm, _super);
+            function TbTransactionFlowDetailForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!TbTransactionFlowDetailForm.init) {
+                    TbTransactionFlowDetailForm.init = true;
+                    var s = Serenity;
+                    var w0 = AbidzarFrm.Common.Editor.TransactionStatusEditor;
+                    var w1 = s.StringEditor;
+                    var w2 = s.BooleanEditor;
+                    var w3 = AbidzarFrm.Common.Editor.AdministrationRoleEditor;
+                    var w4 = s.TextAreaEditor;
+                    var w5 = AbidzarFrm.Common.Editor.SendEmailTypeEditor;
+                    var w6 = AbidzarFrm.Common.Editor.EmailTemplateEditor;
+                    Q.initFormType(TbTransactionFlowDetailForm, [
+                        'TransactionStatusCode', w0,
+                        'Name', w1,
+                        'StartStatus', w2,
+                        'FinalStatus', w2,
+                        'AccessButton', w3,
+                        'NextStatus', w0,
+                        'PopupMessage', w4,
+                        'IsSendEmail', w2,
+                        'SendEmailType', w5,
+                        'SendEmailTo', w4,
+                        'TemplateEmailType', w6,
+                        'CcCreator', w2,
+                        'CcRequestor', w2
+                    ]);
+                }
+                return _this;
+            }
+            TbTransactionFlowDetailForm.formKey = 'Rukuntangga.TbTransactionFlowDetail';
+            return TbTransactionFlowDetailForm;
+        }(Serenity.PrefixedContext));
+        Rukuntangga.TbTransactionFlowDetailForm = TbTransactionFlowDetailForm;
+    })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
+})(AbidzarFrm || (AbidzarFrm = {}));
+var AbidzarFrm;
+(function (AbidzarFrm) {
+    var Rukuntangga;
+    (function (Rukuntangga) {
+        var TbTransactionFlowDetailRow;
+        (function (TbTransactionFlowDetailRow) {
+            TbTransactionFlowDetailRow.idProperty = 'Id';
+            TbTransactionFlowDetailRow.nameProperty = 'TransactionStatusCode';
+            TbTransactionFlowDetailRow.localTextPrefix = 'Rukuntangga.TbTransactionFlowDetail';
+            TbTransactionFlowDetailRow.deletePermission = 'Security:Flow';
+            TbTransactionFlowDetailRow.insertPermission = 'Security:Flow';
+            TbTransactionFlowDetailRow.readPermission = 'Security:Flow';
+            TbTransactionFlowDetailRow.updatePermission = 'Security:Flow';
+        })(TbTransactionFlowDetailRow = Rukuntangga.TbTransactionFlowDetailRow || (Rukuntangga.TbTransactionFlowDetailRow = {}));
+    })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
+})(AbidzarFrm || (AbidzarFrm = {}));
+var AbidzarFrm;
+(function (AbidzarFrm) {
+    var Rukuntangga;
+    (function (Rukuntangga) {
+        var TbTransactionFlowDetailService;
+        (function (TbTransactionFlowDetailService) {
+            TbTransactionFlowDetailService.baseUrl = 'Rukuntangga/TbTransactionFlowDetail';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                TbTransactionFlowDetailService[x] = function (r, s, o) {
+                    return Q.serviceRequest(TbTransactionFlowDetailService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(TbTransactionFlowDetailService = Rukuntangga.TbTransactionFlowDetailService || (Rukuntangga.TbTransactionFlowDetailService = {}));
+    })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
+})(AbidzarFrm || (AbidzarFrm = {}));
+var AbidzarFrm;
+(function (AbidzarFrm) {
+    var Rukuntangga;
+    (function (Rukuntangga) {
+        var TbTransactionFlowForm = /** @class */ (function (_super) {
+            __extends(TbTransactionFlowForm, _super);
+            function TbTransactionFlowForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!TbTransactionFlowForm.init) {
+                    TbTransactionFlowForm.init = true;
+                    var s = Serenity;
+                    var w0 = AbidzarFrm.Common.Editor.TransactionDocumentCodeEditor;
+                    var w1 = s.StringEditor;
+                    var w2 = s.BooleanEditor;
+                    var w3 = Rukuntangga.TbTransactionFlowDetailEditor;
+                    Q.initFormType(TbTransactionFlowForm, [
+                        'DocumentCode', w0,
+                        'Code', w1,
+                        'Description', w1,
+                        'IsActive', w2,
+                        'tbTransactionFlowDetailRow', w3
+                    ]);
+                }
+                return _this;
+            }
+            TbTransactionFlowForm.formKey = 'Rukuntangga.TbTransactionFlow';
+            return TbTransactionFlowForm;
+        }(Serenity.PrefixedContext));
+        Rukuntangga.TbTransactionFlowForm = TbTransactionFlowForm;
+    })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
+})(AbidzarFrm || (AbidzarFrm = {}));
+var AbidzarFrm;
+(function (AbidzarFrm) {
+    var Rukuntangga;
+    (function (Rukuntangga) {
+        var TbTransactionFlowRow;
+        (function (TbTransactionFlowRow) {
+            TbTransactionFlowRow.idProperty = 'Id';
+            TbTransactionFlowRow.nameProperty = 'DocumentCode';
+            TbTransactionFlowRow.localTextPrefix = 'Rukuntangga.TbTransactionFlow';
+            TbTransactionFlowRow.deletePermission = 'Security:Flow';
+            TbTransactionFlowRow.insertPermission = 'Security:Flow';
+            TbTransactionFlowRow.readPermission = 'Security:Flow';
+            TbTransactionFlowRow.updatePermission = 'Security:Flow';
+        })(TbTransactionFlowRow = Rukuntangga.TbTransactionFlowRow || (Rukuntangga.TbTransactionFlowRow = {}));
+    })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
+})(AbidzarFrm || (AbidzarFrm = {}));
+var AbidzarFrm;
+(function (AbidzarFrm) {
+    var Rukuntangga;
+    (function (Rukuntangga) {
+        var TbTransactionFlowService;
+        (function (TbTransactionFlowService) {
+            TbTransactionFlowService.baseUrl = 'Rukuntangga/TbTransactionFlow';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                TbTransactionFlowService[x] = function (r, s, o) {
+                    return Q.serviceRequest(TbTransactionFlowService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(TbTransactionFlowService = Rukuntangga.TbTransactionFlowService || (Rukuntangga.TbTransactionFlowService = {}));
+    })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
+})(AbidzarFrm || (AbidzarFrm = {}));
+var AbidzarFrm;
+(function (AbidzarFrm) {
+    var Rukuntangga;
+    (function (Rukuntangga) {
+        var TbTransactionStatusForm = /** @class */ (function (_super) {
+            __extends(TbTransactionStatusForm, _super);
+            function TbTransactionStatusForm(prefix) {
+                var _this = _super.call(this, prefix) || this;
+                if (!TbTransactionStatusForm.init) {
+                    TbTransactionStatusForm.init = true;
+                    var s = Serenity;
+                    var w0 = AbidzarFrm.Common.Editor.TransactionDocumentCodeEditor;
+                    var w1 = s.StringEditor;
+                    Q.initFormType(TbTransactionStatusForm, [
+                        'DocumentCode', w0,
+                        'Code', w1,
+                        'Internal', w1,
+                        'External', w1
+                    ]);
+                }
+                return _this;
+            }
+            TbTransactionStatusForm.formKey = 'Rukuntangga.TbTransactionStatus';
+            return TbTransactionStatusForm;
+        }(Serenity.PrefixedContext));
+        Rukuntangga.TbTransactionStatusForm = TbTransactionStatusForm;
+    })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
+})(AbidzarFrm || (AbidzarFrm = {}));
+var AbidzarFrm;
+(function (AbidzarFrm) {
+    var Rukuntangga;
+    (function (Rukuntangga) {
+        var TbTransactionStatusRow;
+        (function (TbTransactionStatusRow) {
+            TbTransactionStatusRow.idProperty = 'Id';
+            TbTransactionStatusRow.nameProperty = 'DocumentCode';
+            TbTransactionStatusRow.localTextPrefix = 'Rukuntangga.TbTransactionStatus';
+            TbTransactionStatusRow.lookupKey = 'Rukuntangga.TransactionStatus';
+            function getLookup() {
+                return Q.getLookup('Rukuntangga.TransactionStatus');
+            }
+            TbTransactionStatusRow.getLookup = getLookup;
+            TbTransactionStatusRow.deletePermission = 'Security:TransactionStatus';
+            TbTransactionStatusRow.insertPermission = 'Security:TransactionStatus';
+            TbTransactionStatusRow.readPermission = 'Security:TransactionStatus';
+            TbTransactionStatusRow.updatePermission = 'Security:TransactionStatus';
+        })(TbTransactionStatusRow = Rukuntangga.TbTransactionStatusRow || (Rukuntangga.TbTransactionStatusRow = {}));
+    })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
+})(AbidzarFrm || (AbidzarFrm = {}));
+var AbidzarFrm;
+(function (AbidzarFrm) {
+    var Rukuntangga;
+    (function (Rukuntangga) {
+        var TbTransactionStatusService;
+        (function (TbTransactionStatusService) {
+            TbTransactionStatusService.baseUrl = 'Rukuntangga/TbTransactionStatus';
+            [
+                'Create',
+                'Update',
+                'Delete',
+                'Retrieve',
+                'List'
+            ].forEach(function (x) {
+                TbTransactionStatusService[x] = function (r, s, o) {
+                    return Q.serviceRequest(TbTransactionStatusService.baseUrl + '/' + x, r, s, o);
+                };
+            });
+        })(TbTransactionStatusService = Rukuntangga.TbTransactionStatusService || (Rukuntangga.TbTransactionStatusService = {}));
+    })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
+})(AbidzarFrm || (AbidzarFrm = {}));
+var AbidzarFrm;
+(function (AbidzarFrm) {
+    var Rukuntangga;
+    (function (Rukuntangga) {
         var TbUserApiForm = /** @class */ (function (_super) {
             __extends(TbUserApiForm, _super);
             function TbUserApiForm(prefix) {
@@ -4144,7 +4515,7 @@ var AbidzarFrm;
 (function (AbidzarFrm) {
     var Texts;
     (function (Texts) {
-        AbidzarFrm['Texts'] = Q.proxyTexts(Texts, '', { Db: { Administration: { Language: { Id: 1, LanguageId: 1, LanguageName: 1 }, Role: { RoleId: 1, RoleName: 1 }, RolePermission: { PermissionKey: 1, RoleId: 1, RolePermissionId: 1, RoleRoleName: 1 }, Translation: { CustomText: 1, EntityPlural: 1, Key: 1, OverrideConfirmation: 1, SaveChangesButton: 1, SourceLanguage: 1, SourceText: 1, TargetLanguage: 1, TargetText: 1 }, User: { DisplayName: 1, Email: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, KtpKodeRt: 1, LastDirectoryUpdate: 1, Nik: 1, Password: 1, PasswordConfirm: 1, PasswordHash: 1, PasswordSalt: 1, Source: 1, UpdateDate: 1, UpdateUserId: 1, UserId: 1, UserImage: 1, Username: 1 }, UserPermission: { Granted: 1, PermissionKey: 1, User: 1, UserId: 1, UserPermissionId: 1, Username: 1 }, UserRole: { RoleId: 1, User: 1, UserId: 1, UserRoleId: 1, Username: 1 } }, Common: { UserPreference: { Name: 1, PreferenceType: 1, UserId: 1, UserPreferenceId: 1, Value: 1 } }, Northwind: { Category: { CategoryID: 1, CategoryName: 1, Description: 1, Picture: 1 }, CategoryLang: { CategoryId: 1, CategoryName: 1, Description: 1, Id: 1, LanguageId: 1 }, Customer: { Address: 1, City: 1, CompanyName: 1, ContactName: 1, ContactTitle: 1, Country: 1, CustomerID: 1, Email: 1, Fax: 1, ID: 1, LastContactDate: 1, LastContactedBy: 1, NoteList: 1, Phone: 1, PostalCode: 1, Region: 1, Representatives: 1, SendBulletin: 1 }, CustomerCustomerDemo: { CustomerAddress: 1, CustomerCity: 1, CustomerCompanyName: 1, CustomerContactName: 1, CustomerContactTitle: 1, CustomerCountry: 1, CustomerFax: 1, CustomerID: 1, CustomerPhone: 1, CustomerPostalCode: 1, CustomerRegion: 1, CustomerTypeCustomerDesc: 1, CustomerTypeID: 1, ID: 1 }, CustomerDemographic: { CustomerDesc: 1, CustomerTypeID: 1, ID: 1 }, CustomerDetails: { Email: 1, Id: 1, LastContactDate: 1, LastContactedBy: 1, LastContactedByAddress: 1, LastContactedByBirthDate: 1, LastContactedByCity: 1, LastContactedByCountry: 1, LastContactedByExtension: 1, LastContactedByFirstName: 1, LastContactedByHireDate: 1, LastContactedByHomePhone: 1, LastContactedByLastName: 1, LastContactedByNotes: 1, LastContactedByPhoto: 1, LastContactedByPhotoPath: 1, LastContactedByPostalCode: 1, LastContactedByRegion: 1, LastContactedByReportsTo: 1, LastContactedByTitle: 1, LastContactedByTitleOfCourtesy: 1, SendBulletin: 1 }, CustomerGrossSales: { ContactName: 1, CustomerId: 1, GrossAmount: 1, ProductId: 1, ProductName: 1 }, CustomerRepresentatives: { CustomerId: 1, EmployeeId: 1, RepresentativeId: 1 }, DragDropSample: { Id: 1, ParentId: 1, Title: 1 }, Employee: { Address: 1, BirthDate: 1, City: 1, Country: 1, EmployeeID: 1, Extension: 1, FirstName: 1, FullName: 1, Gender: 1, HireDate: 1, HomePhone: 1, LastName: 1, Notes: 1, Photo: 1, PhotoPath: 1, PostalCode: 1, Region: 1, ReportsTo: 1, ReportsToAddress: 1, ReportsToBirthDate: 1, ReportsToCity: 1, ReportsToCountry: 1, ReportsToExtension: 1, ReportsToFirstName: 1, ReportsToFullName: 1, ReportsToHireDate: 1, ReportsToHomePhone: 1, ReportsToLastName: 1, ReportsToNotes: 1, ReportsToPhoto: 1, ReportsToPhotoPath: 1, ReportsToPostalCode: 1, ReportsToRegion: 1, ReportsToReportsTo: 1, ReportsToTitle: 1, ReportsToTitleOfCourtesy: 1, Title: 1, TitleOfCourtesy: 1 }, EmployeeTerritory: { EmployeeAddress: 1, EmployeeBirthDate: 1, EmployeeCity: 1, EmployeeCountry: 1, EmployeeExtension: 1, EmployeeFirstName: 1, EmployeeHireDate: 1, EmployeeHomePhone: 1, EmployeeID: 1, EmployeeLastName: 1, EmployeeNotes: 1, EmployeePhoto: 1, EmployeePhotoPath: 1, EmployeePostalCode: 1, EmployeeRegion: 1, EmployeeReportsTo: 1, EmployeeTitle: 1, EmployeeTitleOfCourtesy: 1, TerritoryID: 1, TerritoryRegionID: 1, TerritoryTerritoryDescription: 1 }, Note: { EntityId: 1, EntityType: 1, InsertDate: 1, InsertUserDisplayName: 1, InsertUserId: 1, NoteId: 1, Text: 1 }, Order: { CustomerCity: 1, CustomerCompanyName: 1, CustomerContactName: 1, CustomerContactTitle: 1, CustomerCountry: 1, CustomerFax: 1, CustomerID: 1, CustomerPhone: 1, CustomerRegion: 1, DetailList: 1, EmployeeFullName: 1, EmployeeGender: 1, EmployeeID: 1, EmployeeReportsToFullName: 1, Freight: 1, OrderDate: 1, OrderID: 1, RequiredDate: 1, ShipAddress: 1, ShipCity: 1, ShipCountry: 1, ShipName: 1, ShipPostalCode: 1, ShipRegion: 1, ShipVia: 1, ShipViaCompanyName: 1, ShipViaPhone: 1, ShippedDate: 1, ShippingState: 1 }, OrderDetail: { DetailID: 1, Discount: 1, LineTotal: 1, OrderCustomerID: 1, OrderDate: 1, OrderEmployeeID: 1, OrderID: 1, OrderShipCity: 1, OrderShipCountry: 1, OrderShipVia: 1, OrderShippedDate: 1, ProductDiscontinued: 1, ProductID: 1, ProductName: 1, ProductQuantityPerUnit: 1, ProductSupplierID: 1, ProductUnitPrice: 1, Quantity: 1, UnitPrice: 1 }, Product: { CategoryDescription: 1, CategoryID: 1, CategoryName: 1, CategoryPicture: 1, Discontinued: 1, ProductID: 1, ProductImage: 1, ProductName: 1, QuantityPerUnit: 1, ReorderLevel: 1, SupplierAddress: 1, SupplierCity: 1, SupplierCompanyName: 1, SupplierContactName: 1, SupplierContactTitle: 1, SupplierCountry: 1, SupplierFax: 1, SupplierHomePage: 1, SupplierID: 1, SupplierPhone: 1, SupplierPostalCode: 1, SupplierRegion: 1, UnitPrice: 1, UnitsInStock: 1, UnitsOnOrder: 1 }, ProductLang: { Id: 1, LanguageId: 1, ProductId: 1, ProductName: 1 }, ProductLog: { CategoryID: 1, ChangingUserId: 1, Discontinued: 1, OperationType: 1, ProductID: 1, ProductImage: 1, ProductLogID: 1, ProductName: 1, QuantityPerUnit: 1, ReorderLevel: 1, SupplierID: 1, UnitPrice: 1, UnitsInStock: 1, UnitsOnOrder: 1, ValidFrom: 1, ValidUntil: 1 }, Region: { RegionDescription: 1, RegionID: 1 }, SalesByCategory: { CategoryId: 1, CategoryName: 1, ProductName: 1, ProductSales: 1 }, Shipper: { CompanyName: 1, Phone: 1, ShipperID: 1 }, Supplier: { Address: 1, City: 1, CompanyName: 1, ContactName: 1, ContactTitle: 1, Country: 1, Fax: 1, HomePage: 1, Phone: 1, PostalCode: 1, Region: 1, SupplierID: 1 }, Territory: { ID: 1, RegionDescription: 1, RegionID: 1, TerritoryDescription: 1, TerritoryID: 1 } }, Rukuntangga: { AppointmentDiary: { AppointmentLength: 1, DateTimeScheduled: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, KodeRt: 1, SomeImportantKey: 1, StatusEnum: 1, SystemStatus: 1, Title: 1 }, TbAutentikasiToken: { Aplikasi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, SystemStatus: 1, Token: 1 }, TbBiodata: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Gelar: 1, Id: 1, Nik: 1, SystemStatus: 1, Tahun: 1 }, TbDetailJenisInformasi: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdJenisInformasi: 1, IdJenisInformasiDibuatOleh: 1, IdJenisInformasiDibuatTanggal: 1, IdJenisInformasiDieditOleh: 1, IdJenisInformasiDieditTanggal: 1, IdJenisInformasiJenisInformasi: 1, IdJenisInformasiKodeRt: 1, IdJenisInformasiSystemStatus: 1, IsLandingPage: 1, Judul: 1, LevelArea: 1, NamaFile: 1, SystemStatus: 1 }, TbDetailJenisKegiatan: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdJenisKegiatan: 1, IdJenisKegiatanDeskripsi: 1, IdJenisKegiatanDibuatOleh: 1, IdJenisKegiatanDibuatTanggal: 1, IdJenisKegiatanDieditOleh: 1, IdJenisKegiatanDieditTanggal: 1, IdJenisKegiatanJenisKegiatan: 1, IdJenisKegiatanKodeRt: 1, IdJenisKegiatanSystemStatus: 1, LevelArea: 1, Lokasi: 1, NamaKegiatan: 1, SystemStatus: 1, TanggalKegiatan: 1, WarnaLatar: 1 }, TbDetailPemilu: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, FileName: 1, Id: 1, IdPemilu: 1, IdPemiluDibuatOleh: 1, IdPemiluDibuatTanggal: 1, IdPemiluDieditOleh: 1, IdPemiluDieditTanggal: 1, IdPemiluFileName: 1, IdPemiluJudul: 1, IdPemiluKodeRt: 1, IdPemiluSystemStatus: 1, Kandidat: 1, NoUrut: 1, SystemStatus: 1, tbPollingPemiluRow: 1 }, TbDokumentasiDetailJenisKegiatan: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdDetailJenisKegiatan: 1, IdDetailJenisKegiatanDeskripsi: 1, IdDetailJenisKegiatanDibuatOleh: 1, IdDetailJenisKegiatanDibuatTanggal: 1, IdDetailJenisKegiatanDieditOleh: 1, IdDetailJenisKegiatanDieditTanggal: 1, IdDetailJenisKegiatanIdJenisKegiatan: 1, IdDetailJenisKegiatanLevelArea: 1, IdDetailJenisKegiatanLokasi: 1, IdDetailJenisKegiatanNamaKegiatan: 1, IdDetailJenisKegiatanSystemStatus: 1, IdDetailJenisKegiatanTanggalKegiatan: 1, IdDetailJenisKegiatanWarnaLatar: 1, NamaFile: 1, SystemStatus: 1 }, TbEmailTemplate: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, KodeTemplate: 1, Subject: 1, SystemStatus: 1, Template: 1 }, TbHistoricalUserLogin: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IsMobile: 1, Login: 1, Logout: 1, Nik: 1, SystemStatus: 1 }, TbJabatan: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, NamaJabatan: 1, SystemStatus: 1 }, TbJadwalSiskamlim: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, Nama: 1, Nik: 1, SystemStatus: 1, Tanggal: 1 }, TbJenisInformasi: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, JenisInformasi: 1, KodeRt: 1, SystemStatus: 1, tbDetailJenisInformasiRow: 1 }, TbJenisKegiatan: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, JenisKegiatan: 1, KodeRt: 1, SystemStatus: 1, tbDetailJenisKegiatanRow: 1 }, TbKecamatan: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdKota: 1, IdKotaDibuatOleh: 1, IdKotaDibuatTanggal: 1, IdKotaDieditOleh: 1, IdKotaDieditTanggal: 1, IdKotaIdProvinsi: 1, IdKotaKodeKota: 1, IdKotaNamaKota: 1, IdKotaSystemStatus: 1, KodeKecamatan: 1, NamaKecamatan: 1, SystemStatus: 1 }, TbKelurahan: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdKecamatan: 1, IdKecamatanDibuatOleh: 1, IdKecamatanDibuatTanggal: 1, IdKecamatanDieditOleh: 1, IdKecamatanDieditTanggal: 1, IdKecamatanIdKota: 1, IdKecamatanKodeKecamatan: 1, IdKecamatanNamaKecamatan: 1, IdKecamatanSystemStatus: 1, KodeKelurahan: 1, NamaKelurahan: 1, SystemStatus: 1 }, TbKota: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdProvinsi: 1, IdProvinsiDibuatOleh: 1, IdProvinsiDibuatTanggal: 1, IdProvinsiDieditOleh: 1, IdProvinsiDieditTanggal: 1, IdProvinsiKodeProvinsi: 1, IdProvinsiNamaProvinsi: 1, IdProvinsiSystemStatus: 1, KodeKota: 1, NamaKota: 1, SystemStatus: 1 }, TbKtp: { Agama: 1, Alamat: 1, AlamatTinggal: 1, Attachment: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, GolonganDarah: 1, Id: 1, IdKecamatan: 1, IdKelurahan: 1, IdKelurahanTinggal: 1, IdKota: 1, IdProvinsi: 1, JenisKelamin: 1, JenisPekerjaan: 1, Kewarganegaraan: 1, Kk: 1, KodePos: 1, KodeRt: 1, Nama: 1, NamaAyah: 1, NamaIbu: 1, Nik: 1, Pendidikan: 1, PhotoKtp: 1, Rt: 1, RtTinggal: 1, Rw: 1, RwTinggal: 1, SignatureKtp: 1, StatusPerkawinan: 1, SystemStatus: 1, TanggalLahir: 1, TanggalPerkawinan: 1, TempatLahir: 1 }, TbLaporanKas: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, KodeRt: 1, SystemStatus: 1, Tanggal: 1, Tipe: 1, Total: 1 }, TbListOfValue: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Group: 1, Id: 1, Kode: 1, SystemStatus: 1, Value: 1 }, TbMailLog: { Body: 1, Cc: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, ErrorMessage: 1, From: 1, Id: 1, Status: 1, Subject: 1, To: 1 }, TbParameter: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, Kode: 1, SystemStatus: 1, Value: 1 }, TbPemilu: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, FileName: 1, Id: 1, Judul: 1, KodeRt: 1, SystemStatus: 1, tbDetailPemiluRow: 1 }, TbPhotoKtp: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, NamaFile: 1, SystemStatus: 1 }, TbPollingPemilu: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdDetailPemilu: 1, IdDetailPemiluDibuatOleh: 1, IdDetailPemiluDibuatTanggal: 1, IdDetailPemiluDieditOleh: 1, IdDetailPemiluDieditTanggal: 1, IdDetailPemiluFileName: 1, IdDetailPemiluIdPemilu: 1, IdDetailPemiluKandidat: 1, IdDetailPemiluNoUrut: 1, IdDetailPemiluSystemStatus: 1, Nik: 1, NikAgama: 1, NikAlamat: 1, NikAlamatTinggal: 1, NikDibuatOleh: 1, NikDibuatTanggal: 1, NikDieditOleh: 1, NikDieditTanggal: 1, NikGolonganDarah: 1, NikId: 1, NikIdKelurahan: 1, NikIdKelurahanTinggal: 1, NikIdPhotoKtp: 1, NikIdSignatureKtp: 1, NikJenisKelamin: 1, NikJenisPekerjaan: 1, NikKewarganegaraan: 1, NikKk: 1, NikKodePos: 1, NikKodeRt: 1, NikNama: 1, NikNamaAyah: 1, NikNamaIbu: 1, NikPendidikan: 1, NikRt: 1, NikRtTinggal: 1, NikRw: 1, NikRwTinggal: 1, NikStatusPerkawinan: 1, NikSystemStatus: 1, NikTanggalLahir: 1, NikTanggalPerkawinan: 1, NikTempatLahir: 1, SystemStatus: 1 }, TbProvinsi: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, KodeProvinsi: 1, NamaProvinsi: 1, SystemStatus: 1 }, TbRt: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Facebook: 1, Id: 1, IdRw: 1, IdRwKodeRw: 1, IdRwNamaRw: 1, Instagram: 1, KodeLogin: 1, KodeRt: 1, Misi: 1, NamaRt: 1, Nik: 1, NoRt: 1, Photo: 1, Quotes: 1, SystemStatus: 1, Twitter: 1, Visi: 1, Whatsapp: 1 }, TbRw: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Facebook: 1, Footer: 1, Header: 1, Id: 1, IdKecamatan: 1, IdKelurahan: 1, IdKota: 1, IdProvinsi: 1, Instagram: 1, KodeRw: 1, Misi: 1, NamaRw: 1, Nik: 1, NoRw: 1, Photo: 1, Quotes: 1, SystemStatus: 1, Twitter: 1, Visi: 1, Whatsapp: 1 }, TbSlideShow: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, FileName: 1, Id: 1, Judul: 1, KodeRt: 1, PathUrl: 1, Posisi: 1, SystemStatus: 1, Tipe: 1 }, TbStruktur: { AkhirPeriode: 1, AwalPeriode: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdJabatan: 1, IdJabatanDibuatOleh: 1, IdJabatanDibuatTanggal: 1, IdJabatanDieditOleh: 1, IdJabatanDieditTanggal: 1, IdJabatanNamaJabatan: 1, IdJabatanSystemStatus: 1, IdKtp: 1, SystemStatus: 1 }, TbTanyaRt: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, Judul: 1, SystemStatus: 1 }, TbTanyaRtDetail: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdTanyaRt: 1, IdTanyaRtDibuatOleh: 1, IdTanyaRtDibuatTanggal: 1, IdTanyaRtDieditOleh: 1, IdTanyaRtDieditTanggal: 1, IdTanyaRtJudul: 1, IdTanyaRtSystemStatus: 1, SystemStatus: 1 }, TbTestimoni: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, Nik: 1, SystemStatus: 1 }, TbUser: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Email: 1, Id: 1, IdRole: 1, IsMobile: 1, KodeVerifikasi: 1, Nik: 1, Sandi: 1, Status: 1, SystemStatus: 1 }, TbUserApi: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdUser: 1, NamaApi: 1, Sandi: 1, Status: 1, SystemStatus: 1 } } }, Forms: { Membership: { ChangePassword: { FormTitle: 1, SubmitButton: 1, Success: 1 }, ForgotPassword: { BackToLogin: 1, FormInfo: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, Login: { FacebookButton: 1, ForgotPassword: 1, FormTitle: 1, GoogleButton: 1, OR: 1, RememberMe: 1, SignInButton: 1, SignUpButton: 1 }, ResetPassword: { BackToLogin: 1, EmailSubject: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, SignUp: { AcceptTerms: 1, ActivateEmailSubject: 1, ActivationCompleteMessage: 1, BackToLogin: 1, ConfirmEmail: 1, ConfirmPassword: 1, DisplayName: 1, Email: 1, FormInfo: 1, FormTitle: 1, Password: 1, SubmitButton: 1, Success: 1 } } }, Site: { AccessDenied: { ClickToChangeUser: 1, ClickToLogin: 1, LackPermissions: 1, NotLoggedIn: 1, PageTitle: 1 }, BasicProgressDialog: { CancelTitle: 1, PleaseWait: 1 }, BulkServiceAction: { AllHadErrorsFormat: 1, AllSuccessFormat: 1, ConfirmationFormat: 1, ErrorCount: 1, NothingToProcess: 1, SomeHadErrorsFormat: 1, SuccessCount: 1 }, Dashboard: { ContentDescription: 1 }, Layout: { FooterCopyright: 1, FooterInfo: 1, FooterRights: 1, GeneralSettings: 1, Language: 1, Theme: 1, ThemeBlack: 1, ThemeBlackLight: 1, ThemeBlue: 1, ThemeBlueLight: 1, ThemeGreen: 1, ThemeGreenLight: 1, ThemePurple: 1, ThemePurpleLight: 1, ThemeRed: 1, ThemeRedLight: 1, ThemeYellow: 1, ThemeYellowLight: 1 }, RolePermissionDialog: { DialogTitle: 1, EditButton: 1, SaveSuccess: 1 }, UserDialog: { EditPermissionsButton: 1, EditRolesButton: 1 }, UserPermissionDialog: { DialogTitle: 1, Grant: 1, Permission: 1, Revoke: 1, SaveSuccess: 1 }, UserRoleDialog: { DialogTitle: 1, SaveSuccess: 1 }, ValidationError: { Title: 1 } }, Validation: { AuthenticationError: 1, CantFindUserWithEmail: 1, CurrentPasswordMismatch: 1, DeleteForeignKeyError: 1, EmailConfirm: 1, EmailInUse: 1, InvalidActivateToken: 1, InvalidResetToken: 1, MinRequiredPasswordLength: 1, NorthwindPhone: 1, NorthwindPhoneMultiple: 1, SavePrimaryKeyError: 1 } });
+        AbidzarFrm['Texts'] = Q.proxyTexts(Texts, '', { Db: { Administration: { Language: { Id: 1, LanguageId: 1, LanguageName: 1 }, Role: { RoleId: 1, RoleName: 1 }, RolePermission: { PermissionKey: 1, RoleId: 1, RolePermissionId: 1, RoleRoleName: 1 }, Translation: { CustomText: 1, EntityPlural: 1, Key: 1, OverrideConfirmation: 1, SaveChangesButton: 1, SourceLanguage: 1, SourceText: 1, TargetLanguage: 1, TargetText: 1 }, User: { DisplayName: 1, Email: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, KtpId: 1, KtpKodeRt: 1, LastDirectoryUpdate: 1, Nik: 1, Password: 1, PasswordConfirm: 1, PasswordHash: 1, PasswordSalt: 1, Source: 1, UpdateDate: 1, UpdateUserId: 1, UserId: 1, UserImage: 1, Username: 1 }, UserPermission: { Granted: 1, PermissionKey: 1, User: 1, UserId: 1, UserPermissionId: 1, Username: 1 }, UserRole: { RoleId: 1, RoleName: 1, User: 1, UserId: 1, UserRoleId: 1, Username: 1 } }, Common: { UserPreference: { Name: 1, PreferenceType: 1, UserId: 1, UserPreferenceId: 1, Value: 1 } }, Northwind: { Category: { CategoryID: 1, CategoryName: 1, Description: 1, Picture: 1 }, CategoryLang: { CategoryId: 1, CategoryName: 1, Description: 1, Id: 1, LanguageId: 1 }, Customer: { Address: 1, City: 1, CompanyName: 1, ContactName: 1, ContactTitle: 1, Country: 1, CustomerID: 1, Email: 1, Fax: 1, ID: 1, LastContactDate: 1, LastContactedBy: 1, NoteList: 1, Phone: 1, PostalCode: 1, Region: 1, Representatives: 1, SendBulletin: 1 }, CustomerCustomerDemo: { CustomerAddress: 1, CustomerCity: 1, CustomerCompanyName: 1, CustomerContactName: 1, CustomerContactTitle: 1, CustomerCountry: 1, CustomerFax: 1, CustomerID: 1, CustomerPhone: 1, CustomerPostalCode: 1, CustomerRegion: 1, CustomerTypeCustomerDesc: 1, CustomerTypeID: 1, ID: 1 }, CustomerDemographic: { CustomerDesc: 1, CustomerTypeID: 1, ID: 1 }, CustomerDetails: { Email: 1, Id: 1, LastContactDate: 1, LastContactedBy: 1, LastContactedByAddress: 1, LastContactedByBirthDate: 1, LastContactedByCity: 1, LastContactedByCountry: 1, LastContactedByExtension: 1, LastContactedByFirstName: 1, LastContactedByHireDate: 1, LastContactedByHomePhone: 1, LastContactedByLastName: 1, LastContactedByNotes: 1, LastContactedByPhoto: 1, LastContactedByPhotoPath: 1, LastContactedByPostalCode: 1, LastContactedByRegion: 1, LastContactedByReportsTo: 1, LastContactedByTitle: 1, LastContactedByTitleOfCourtesy: 1, SendBulletin: 1 }, CustomerGrossSales: { ContactName: 1, CustomerId: 1, GrossAmount: 1, ProductId: 1, ProductName: 1 }, CustomerRepresentatives: { CustomerId: 1, EmployeeId: 1, RepresentativeId: 1 }, DragDropSample: { Id: 1, ParentId: 1, Title: 1 }, Employee: { Address: 1, BirthDate: 1, City: 1, Country: 1, EmployeeID: 1, Extension: 1, FirstName: 1, FullName: 1, Gender: 1, HireDate: 1, HomePhone: 1, LastName: 1, Notes: 1, Photo: 1, PhotoPath: 1, PostalCode: 1, Region: 1, ReportsTo: 1, ReportsToAddress: 1, ReportsToBirthDate: 1, ReportsToCity: 1, ReportsToCountry: 1, ReportsToExtension: 1, ReportsToFirstName: 1, ReportsToFullName: 1, ReportsToHireDate: 1, ReportsToHomePhone: 1, ReportsToLastName: 1, ReportsToNotes: 1, ReportsToPhoto: 1, ReportsToPhotoPath: 1, ReportsToPostalCode: 1, ReportsToRegion: 1, ReportsToReportsTo: 1, ReportsToTitle: 1, ReportsToTitleOfCourtesy: 1, Title: 1, TitleOfCourtesy: 1 }, EmployeeTerritory: { EmployeeAddress: 1, EmployeeBirthDate: 1, EmployeeCity: 1, EmployeeCountry: 1, EmployeeExtension: 1, EmployeeFirstName: 1, EmployeeHireDate: 1, EmployeeHomePhone: 1, EmployeeID: 1, EmployeeLastName: 1, EmployeeNotes: 1, EmployeePhoto: 1, EmployeePhotoPath: 1, EmployeePostalCode: 1, EmployeeRegion: 1, EmployeeReportsTo: 1, EmployeeTitle: 1, EmployeeTitleOfCourtesy: 1, TerritoryID: 1, TerritoryRegionID: 1, TerritoryTerritoryDescription: 1 }, Note: { EntityId: 1, EntityType: 1, InsertDate: 1, InsertUserDisplayName: 1, InsertUserId: 1, NoteId: 1, Text: 1 }, Order: { CustomerCity: 1, CustomerCompanyName: 1, CustomerContactName: 1, CustomerContactTitle: 1, CustomerCountry: 1, CustomerFax: 1, CustomerID: 1, CustomerPhone: 1, CustomerRegion: 1, DetailList: 1, EmployeeFullName: 1, EmployeeGender: 1, EmployeeID: 1, EmployeeReportsToFullName: 1, Freight: 1, OrderDate: 1, OrderID: 1, RequiredDate: 1, ShipAddress: 1, ShipCity: 1, ShipCountry: 1, ShipName: 1, ShipPostalCode: 1, ShipRegion: 1, ShipVia: 1, ShipViaCompanyName: 1, ShipViaPhone: 1, ShippedDate: 1, ShippingState: 1 }, OrderDetail: { DetailID: 1, Discount: 1, LineTotal: 1, OrderCustomerID: 1, OrderDate: 1, OrderEmployeeID: 1, OrderID: 1, OrderShipCity: 1, OrderShipCountry: 1, OrderShipVia: 1, OrderShippedDate: 1, ProductDiscontinued: 1, ProductID: 1, ProductName: 1, ProductQuantityPerUnit: 1, ProductSupplierID: 1, ProductUnitPrice: 1, Quantity: 1, UnitPrice: 1 }, Product: { CategoryDescription: 1, CategoryID: 1, CategoryName: 1, CategoryPicture: 1, Discontinued: 1, ProductID: 1, ProductImage: 1, ProductName: 1, QuantityPerUnit: 1, ReorderLevel: 1, SupplierAddress: 1, SupplierCity: 1, SupplierCompanyName: 1, SupplierContactName: 1, SupplierContactTitle: 1, SupplierCountry: 1, SupplierFax: 1, SupplierHomePage: 1, SupplierID: 1, SupplierPhone: 1, SupplierPostalCode: 1, SupplierRegion: 1, UnitPrice: 1, UnitsInStock: 1, UnitsOnOrder: 1 }, ProductLang: { Id: 1, LanguageId: 1, ProductId: 1, ProductName: 1 }, ProductLog: { CategoryID: 1, ChangingUserId: 1, Discontinued: 1, OperationType: 1, ProductID: 1, ProductImage: 1, ProductLogID: 1, ProductName: 1, QuantityPerUnit: 1, ReorderLevel: 1, SupplierID: 1, UnitPrice: 1, UnitsInStock: 1, UnitsOnOrder: 1, ValidFrom: 1, ValidUntil: 1 }, Region: { RegionDescription: 1, RegionID: 1 }, SalesByCategory: { CategoryId: 1, CategoryName: 1, ProductName: 1, ProductSales: 1 }, Shipper: { CompanyName: 1, Phone: 1, ShipperID: 1 }, Supplier: { Address: 1, City: 1, CompanyName: 1, ContactName: 1, ContactTitle: 1, Country: 1, Fax: 1, HomePage: 1, Phone: 1, PostalCode: 1, Region: 1, SupplierID: 1 }, Territory: { ID: 1, RegionDescription: 1, RegionID: 1, TerritoryDescription: 1, TerritoryID: 1 } }, Rukuntangga: { AppointmentDiary: { AppointmentLength: 1, DateTimeScheduled: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, KodeRt: 1, SomeImportantKey: 1, StatusEnum: 1, SystemStatus: 1, Title: 1 }, TbAutentikasiToken: { Aplikasi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, SystemStatus: 1, Token: 1 }, TbBiodata: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Gelar: 1, Id: 1, Nik: 1, SystemStatus: 1, Tahun: 1 }, TbDetailJenisInformasi: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdJenisInformasi: 1, IdJenisInformasiDibuatOleh: 1, IdJenisInformasiDibuatTanggal: 1, IdJenisInformasiDieditOleh: 1, IdJenisInformasiDieditTanggal: 1, IdJenisInformasiJenisInformasi: 1, IdJenisInformasiKodeRt: 1, IdJenisInformasiSystemStatus: 1, IsLandingPage: 1, Judul: 1, LevelArea: 1, NamaFile: 1, SystemStatus: 1 }, TbDetailJenisKegiatan: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Dokumentasi: 1, Id: 1, IdJenisKegiatan: 1, IdJenisKegiatanDeskripsi: 1, IdJenisKegiatanDibuatOleh: 1, IdJenisKegiatanDibuatTanggal: 1, IdJenisKegiatanDieditOleh: 1, IdJenisKegiatanDieditTanggal: 1, IdJenisKegiatanJenisKegiatan: 1, IdJenisKegiatanKodeRt: 1, IdJenisKegiatanSystemStatus: 1, LevelArea: 1, Lokasi: 1, NamaFile: 1, NamaKegiatan: 1, SystemStatus: 1, TanggalKegiatan: 1, WarnaLatar: 1 }, TbDetailPemilu: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, FileName: 1, Id: 1, IdPemilu: 1, IdPemiluDibuatOleh: 1, IdPemiluDibuatTanggal: 1, IdPemiluDieditOleh: 1, IdPemiluDieditTanggal: 1, IdPemiluFileName: 1, IdPemiluJudul: 1, IdPemiluKodeRt: 1, IdPemiluSystemStatus: 1, Kandidat: 1, NoUrut: 1, SystemStatus: 1 }, TbDokumentasiDetailJenisKegiatan: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdDetailJenisKegiatan: 1, IdDetailJenisKegiatanDeskripsi: 1, IdDetailJenisKegiatanDibuatOleh: 1, IdDetailJenisKegiatanDibuatTanggal: 1, IdDetailJenisKegiatanDieditOleh: 1, IdDetailJenisKegiatanDieditTanggal: 1, IdDetailJenisKegiatanIdJenisKegiatan: 1, IdDetailJenisKegiatanLevelArea: 1, IdDetailJenisKegiatanLokasi: 1, IdDetailJenisKegiatanNamaKegiatan: 1, IdDetailJenisKegiatanSystemStatus: 1, IdDetailJenisKegiatanTanggalKegiatan: 1, IdDetailJenisKegiatanWarnaLatar: 1, NamaFile: 1, SystemStatus: 1 }, TbEmailTemplate: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, KodeTemplate: 1, Subject: 1, SystemStatus: 1, Template: 1 }, TbGalery: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, KodeRt: 1, LevelArea: 1, Photos: 1, Thumbnail: 1 }, TbHistoricalUserLogin: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IsMobile: 1, Login: 1, Logout: 1, Nik: 1, SystemStatus: 1 }, TbJabatan: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, NamaJabatan: 1, SystemStatus: 1 }, TbJadwalSiskamlim: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, Nama: 1, Nik: 1, SystemStatus: 1, Tanggal: 1 }, TbJenisInformasi: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, JenisInformasi: 1, KodeRt: 1, SystemStatus: 1, tbDetailJenisInformasiRow: 1 }, TbJenisKegiatan: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, JenisKegiatan: 1, KodeRt: 1, SystemStatus: 1, tbDetailJenisKegiatanRow: 1 }, TbKecamatan: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdKota: 1, IdKotaDibuatOleh: 1, IdKotaDibuatTanggal: 1, IdKotaDieditOleh: 1, IdKotaDieditTanggal: 1, IdKotaIdProvinsi: 1, IdKotaKodeKota: 1, IdKotaNamaKota: 1, IdKotaSystemStatus: 1, KodeKecamatan: 1, NamaKecamatan: 1, SystemStatus: 1 }, TbKelurahan: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdKecamatan: 1, IdKecamatanDibuatOleh: 1, IdKecamatanDibuatTanggal: 1, IdKecamatanDieditOleh: 1, IdKecamatanDieditTanggal: 1, IdKecamatanIdKota: 1, IdKecamatanKodeKecamatan: 1, IdKecamatanNamaKecamatan: 1, IdKecamatanSystemStatus: 1, KodeKelurahan: 1, NamaKelurahan: 1, SystemStatus: 1 }, TbKota: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdProvinsi: 1, IdProvinsiDibuatOleh: 1, IdProvinsiDibuatTanggal: 1, IdProvinsiDieditOleh: 1, IdProvinsiDieditTanggal: 1, IdProvinsiKodeProvinsi: 1, IdProvinsiNamaProvinsi: 1, IdProvinsiSystemStatus: 1, KodeKota: 1, NamaKota: 1, SystemStatus: 1 }, TbKtp: { Agama: 1, Alamat: 1, AlamatTinggal: 1, Attachment: 1, DataStatus: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, GolonganDarah: 1, Id: 1, IdKecamatan: 1, IdKecamatanTinggal: 1, IdKelurahan: 1, IdKelurahanTinggal: 1, IdKota: 1, IdKotaTinggal: 1, IdProvinsi: 1, IdProvinsiTinggal: 1, JenisKelamin: 1, JenisPekerjaan: 1, Kewarganegaraan: 1, Kk: 1, KodePos: 1, KodeRt: 1, Nama: 1, NamaAyah: 1, NamaIbu: 1, Nik: 1, Pendidikan: 1, PhotoKtp: 1, PhotoRumah: 1, Rt: 1, RtTinggal: 1, Rw: 1, RwTinggal: 1, SignatureKtp: 1, StatusPerkawinan: 1, SystemStatus: 1, TanggalLahir: 1, TanggalPerkawinan: 1, TempatLahir: 1 }, TbLaporanKas: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, KodeRt: 1, SystemStatus: 1, Tanggal: 1, Tipe: 1, Total: 1 }, TbListOfValue: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Group: 1, Id: 1, Kode: 1, SystemStatus: 1, Value: 1 }, TbMailLog: { Body: 1, Cc: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, ErrorMessage: 1, From: 1, Id: 1, Status: 1, Subject: 1, To: 1 }, TbParameter: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, Kode: 1, SystemStatus: 1, Value: 1 }, TbPemilu: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, FileName: 1, Id: 1, Judul: 1, KodeRt: 1, SystemStatus: 1, tbDetailPemiluRow: 1 }, TbPhotoKtp: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, NamaFile: 1, SystemStatus: 1 }, TbPollingPemilu: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdDetailPemilu: 1, IdDetailPemiluDibuatOleh: 1, IdDetailPemiluDibuatTanggal: 1, IdDetailPemiluDieditOleh: 1, IdDetailPemiluDieditTanggal: 1, IdDetailPemiluFileName: 1, IdDetailPemiluIdPemilu: 1, IdDetailPemiluKandidat: 1, IdDetailPemiluNoUrut: 1, IdDetailPemiluSystemStatus: 1, Nik: 1, NikAgama: 1, NikAlamat: 1, NikAlamatTinggal: 1, NikDibuatOleh: 1, NikDibuatTanggal: 1, NikDieditOleh: 1, NikDieditTanggal: 1, NikGolonganDarah: 1, NikId: 1, NikIdKelurahan: 1, NikIdKelurahanTinggal: 1, NikIdPhotoKtp: 1, NikIdSignatureKtp: 1, NikJenisKelamin: 1, NikJenisPekerjaan: 1, NikKewarganegaraan: 1, NikKk: 1, NikKodePos: 1, NikKodeRt: 1, NikNama: 1, NikNamaAyah: 1, NikNamaIbu: 1, NikPendidikan: 1, NikRt: 1, NikRtTinggal: 1, NikRw: 1, NikRwTinggal: 1, NikStatusPerkawinan: 1, NikSystemStatus: 1, NikTanggalLahir: 1, NikTanggalPerkawinan: 1, NikTempatLahir: 1, SystemStatus: 1 }, TbProvinsi: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, KodeProvinsi: 1, NamaProvinsi: 1, SystemStatus: 1 }, TbRt: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Facebook: 1, Id: 1, IdRw: 1, IdRwKodeRw: 1, IdRwNamaRw: 1, Instagram: 1, KodeLogin: 1, KodeRt: 1, Misi: 1, NamaRt: 1, Nik: 1, NoRt: 1, Photo: 1, Quotes: 1, SystemStatus: 1, Twitter: 1, Visi: 1, Whatsapp: 1 }, TbRw: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Facebook: 1, Footer: 1, Header: 1, Id: 1, IdKecamatan: 1, IdKelurahan: 1, IdKota: 1, IdProvinsi: 1, Instagram: 1, KodeRw: 1, Misi: 1, NamaRw: 1, Nik: 1, NoRw: 1, Photo: 1, Quotes: 1, SystemStatus: 1, Twitter: 1, Visi: 1, Whatsapp: 1 }, TbSlideShow: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, FileName: 1, Id: 1, Judul: 1, KodeRt: 1, PathUrl: 1, Posisi: 1, SystemStatus: 1, Tipe: 1 }, TbStruktur: { AkhirPeriode: 1, AwalPeriode: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdJabatan: 1, IdJabatanDibuatOleh: 1, IdJabatanDibuatTanggal: 1, IdJabatanDieditOleh: 1, IdJabatanDieditTanggal: 1, IdJabatanNamaJabatan: 1, IdJabatanSystemStatus: 1, IdKtp: 1, SystemStatus: 1 }, TbTanyaRt: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, Judul: 1, KtpIdKtp: 1, KtpKodeRt: 1, KtpNama: 1, KtpPhotoKtp: 1, SystemStatus: 1, tbTanyaRtDetailRow: 1 }, TbTanyaRtDetail: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdTanyaRt: 1, IdTanyaRtDibuatOleh: 1, IdTanyaRtDibuatTanggal: 1, IdTanyaRtDieditOleh: 1, IdTanyaRtDieditTanggal: 1, IdTanyaRtJudul: 1, IdTanyaRtSystemStatus: 1, SystemStatus: 1 }, TbTestimoni: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, Nik: 1, SystemStatus: 1 }, TbTransactionDocumentCode: { Description: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, DocumentCode: 1, Id: 1 }, TbTransactionFlow: { Code: 1, Description: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, DocumentCode: 1, Id: 1, IsActive: 1, tbTransactionFlowDetailRow: 1 }, TbTransactionFlowDetail: { AccessButton: 1, CcCreator: 1, CcRequestor: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, FinalStatus: 1, Id: 1, IsSendEmail: 1, Name: 1, NextStatus: 1, PopupMessage: 1, SendEmailTo: 1, SendEmailType: 1, StartStatus: 1, TemplateEmailType: 1, TransactionFlowId: 1, TransactionStatusCode: 1 }, TbTransactionStatus: { Code: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, DocumentCode: 1, External: 1, Id: 1, Internal: 1 }, TbUser: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Email: 1, Id: 1, IdRole: 1, IsMobile: 1, KodeVerifikasi: 1, Nik: 1, Sandi: 1, Status: 1, SystemStatus: 1 }, TbUserApi: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdUser: 1, NamaApi: 1, Sandi: 1, Status: 1, SystemStatus: 1 } } }, Forms: { Membership: { ChangePassword: { FormTitle: 1, SubmitButton: 1, Success: 1 }, ForgotPassword: { BackToLogin: 1, FormInfo: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, Login: { FacebookButton: 1, ForgotPassword: 1, FormTitle: 1, GoogleButton: 1, OR: 1, RememberMe: 1, SignInButton: 1, SignUpButton: 1 }, ResetPassword: { BackToLogin: 1, EmailSubject: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, SignUp: { AcceptTerms: 1, ActivateEmailSubject: 1, ActivationCompleteMessage: 1, BackToLogin: 1, ConfirmEmail: 1, ConfirmPassword: 1, DisplayName: 1, Email: 1, FormInfo: 1, FormTitle: 1, Password: 1, SubmitButton: 1, Success: 1 } } }, Site: { AccessDenied: { ClickToChangeUser: 1, ClickToLogin: 1, LackPermissions: 1, NotLoggedIn: 1, PageTitle: 1 }, BasicProgressDialog: { CancelTitle: 1, PleaseWait: 1 }, BulkServiceAction: { AllHadErrorsFormat: 1, AllSuccessFormat: 1, ConfirmationFormat: 1, ErrorCount: 1, NothingToProcess: 1, SomeHadErrorsFormat: 1, SuccessCount: 1 }, Dashboard: { ContentDescription: 1 }, Layout: { FooterCopyright: 1, FooterInfo: 1, FooterRights: 1, GeneralSettings: 1, Language: 1, Theme: 1, ThemeBlack: 1, ThemeBlackLight: 1, ThemeBlue: 1, ThemeBlueLight: 1, ThemeGreen: 1, ThemeGreenLight: 1, ThemePurple: 1, ThemePurpleLight: 1, ThemeRed: 1, ThemeRedLight: 1, ThemeYellow: 1, ThemeYellowLight: 1 }, RolePermissionDialog: { DialogTitle: 1, EditButton: 1, SaveSuccess: 1 }, UserDialog: { EditPermissionsButton: 1, EditRolesButton: 1 }, UserPermissionDialog: { DialogTitle: 1, Grant: 1, Permission: 1, Revoke: 1, SaveSuccess: 1 }, UserRoleDialog: { DialogTitle: 1, SaveSuccess: 1 }, ValidationError: { Title: 1 } }, Validation: { AuthenticationError: 1, CantFindUserWithEmail: 1, CurrentPasswordMismatch: 1, DeleteForeignKeyError: 1, EmailConfirm: 1, EmailInUse: 1, InvalidActivateToken: 1, InvalidResetToken: 1, MinRequiredPasswordLength: 1, NorthwindPhone: 1, NorthwindPhoneMultiple: 1, SavePrimaryKeyError: 1 } });
     })(Texts = AbidzarFrm.Texts || (AbidzarFrm.Texts = {}));
 })(AbidzarFrm || (AbidzarFrm = {}));
 var AbidzarFrm;
@@ -4632,6 +5003,11 @@ var AbidzarFrm;
             return ud.Username === 'admin' || !!ud.Permissions[permissionKey];
         }
         Authorization.hasPermission = hasPermission;
+        function hasRoles(roleName) {
+            var ud = Authorization.userDefinition;
+            return ud.Username === 'admin' || ud.Roles.indexOf(roleName) > -1;
+        }
+        Authorization.hasRoles = hasRoles;
     })(Authorization = AbidzarFrm.Authorization || (AbidzarFrm.Authorization = {}));
 })(AbidzarFrm || (AbidzarFrm = {}));
 var AbidzarFrm;
@@ -8938,6 +9314,22 @@ var AbidzarFrm;
                 return TypePosisiIklanEditor;
             }(Serenity.Select2Editor));
             Editor.TypePosisiIklanEditor = TypePosisiIklanEditor;
+            var DataStatusEditor = /** @class */ (function (_super) {
+                __extends(DataStatusEditor, _super);
+                function DataStatusEditor(container) {
+                    var _this = _super.call(this, container, null) || this;
+                    _this.addOption("0", "Draft");
+                    _this.addOption("1", "Request");
+                    _this.addOption("2", "Verified");
+                    _this.addOption("3", "Rejected");
+                    return _this;
+                }
+                DataStatusEditor = __decorate([
+                    Serenity.Decorators.registerEditor([Serenity.ISetEditValue])
+                ], DataStatusEditor);
+                return DataStatusEditor;
+            }(Serenity.Select2Editor));
+            Editor.DataStatusEditor = DataStatusEditor;
             var TypeSlideshowEditor = /** @class */ (function (_super) {
                 __extends(TypeSlideshowEditor, _super);
                 function TypeSlideshowEditor(container) {
@@ -9036,6 +9428,19 @@ var AbidzarFrm;
                 return PendidikanEditor;
             }(Serenity.Select2Editor));
             Editor.PendidikanEditor = PendidikanEditor;
+            var SelectEditor = /** @class */ (function (_super) {
+                __extends(SelectEditor, _super);
+                function SelectEditor(container) {
+                    var _this = _super.call(this, container, null) || this;
+                    _this.addOption("", "Select");
+                    return _this;
+                }
+                SelectEditor = __decorate([
+                    Serenity.Decorators.registerEditor([Serenity.ISetEditValue])
+                ], SelectEditor);
+                return SelectEditor;
+            }(Serenity.Select2Editor));
+            Editor.SelectEditor = SelectEditor;
             var WarnaEditor = /** @class */ (function (_super) {
                 __extends(WarnaEditor, _super);
                 function WarnaEditor(container) {
@@ -9188,6 +9593,70 @@ var AbidzarFrm;
                 return JabatanEditor;
             }(Serenity.Select2Editor));
             Editor.JabatanEditor = JabatanEditor;
+            var TransactionDocumentCodeEditor = /** @class */ (function (_super) {
+                __extends(TransactionDocumentCodeEditor, _super);
+                function TransactionDocumentCodeEditor(hidden) {
+                    var _this = _super.call(this, hidden, null) || this;
+                    var items = Q.getLookup("Rukuntangga.TransactionDocumentCode").items;
+                    items.forEach(function (x, index) {
+                        _super.prototype.addItem.call(_this, { id: x.DocumentCode.toString(), source: x.DocumentCode, text: x.DocumentCode, disabled: false });
+                    });
+                    return _this;
+                }
+                TransactionDocumentCodeEditor = __decorate([
+                    Serenity.Decorators.registerEditor()
+                ], TransactionDocumentCodeEditor);
+                return TransactionDocumentCodeEditor;
+            }(Serenity.Select2Editor));
+            Editor.TransactionDocumentCodeEditor = TransactionDocumentCodeEditor;
+            var EmailTemplateEditor = /** @class */ (function (_super) {
+                __extends(EmailTemplateEditor, _super);
+                function EmailTemplateEditor(hidden) {
+                    var _this = _super.call(this, hidden, null) || this;
+                    var items = Q.getLookup("Rukuntangga.EmailTemplate").items;
+                    items.forEach(function (x, index) {
+                        _super.prototype.addItem.call(_this, { id: x.KodeTemplate.toString(), source: x.KodeTemplate, text: x.KodeTemplate, disabled: false });
+                    });
+                    return _this;
+                }
+                EmailTemplateEditor = __decorate([
+                    Serenity.Decorators.registerEditor()
+                ], EmailTemplateEditor);
+                return EmailTemplateEditor;
+            }(Serenity.Select2Editor));
+            Editor.EmailTemplateEditor = EmailTemplateEditor;
+            var AdministrationRoleEditor = /** @class */ (function (_super) {
+                __extends(AdministrationRoleEditor, _super);
+                function AdministrationRoleEditor(hidden) {
+                    var _this = _super.call(this, hidden, null) || this;
+                    var items = Q.getLookup("Administration.Role").items;
+                    items.forEach(function (x, index) {
+                        _super.prototype.addItem.call(_this, { id: x.RoleName, source: x.RoleName, text: x.RoleName, disabled: false });
+                    });
+                    return _this;
+                }
+                AdministrationRoleEditor = __decorate([
+                    Serenity.Decorators.registerEditor()
+                ], AdministrationRoleEditor);
+                return AdministrationRoleEditor;
+            }(Serenity.Select2Editor));
+            Editor.AdministrationRoleEditor = AdministrationRoleEditor;
+            var TransactionStatusEditor = /** @class */ (function (_super) {
+                __extends(TransactionStatusEditor, _super);
+                function TransactionStatusEditor(hidden) {
+                    var _this = _super.call(this, hidden, null) || this;
+                    var items = Q.getLookup("Rukuntangga.TransactionStatus").items;
+                    items.forEach(function (x, index) {
+                        _super.prototype.addItem.call(_this, { id: x.Code, source: x.Internal, text: x.Internal, disabled: false });
+                    });
+                    return _this;
+                }
+                TransactionStatusEditor = __decorate([
+                    Serenity.Decorators.registerEditor()
+                ], TransactionStatusEditor);
+                return TransactionStatusEditor;
+            }(Serenity.Select2Editor));
+            Editor.TransactionStatusEditor = TransactionStatusEditor;
         })(Editor = Common.Editor || (Common.Editor = {}));
     })(Common = AbidzarFrm.Common || (AbidzarFrm.Common = {}));
 })(AbidzarFrm || (AbidzarFrm = {}));
@@ -9239,6 +9708,38 @@ var AbidzarFrm;
                 return TypeSlideshowFormatter;
             }());
             Formatter.TypeSlideshowFormatter = TypeSlideshowFormatter;
+            var DataStatusFormatter = /** @class */ (function () {
+                function DataStatusFormatter() {
+                }
+                DataStatusFormatter.prototype.format = function (ctx) {
+                    var result = ctx.value;
+                    var classStatus = '';
+                    switch (ctx.value) {
+                        case "0":
+                            result = "Draft";
+                            classStatus = 'label label-warning';
+                            break;
+                        case "1":
+                            result = "Request";
+                            classStatus = 'label label-default';
+                            break;
+                        case "2":
+                            result = "Verified";
+                            classStatus = 'label label-success';
+                            break;
+                        case "3":
+                            result = "Rejected";
+                            classStatus = 'label label-danger';
+                            break;
+                    }
+                    return '<span class="' + classStatus + '">' + Q.htmlEncode(result) + '</span>';
+                };
+                DataStatusFormatter = __decorate([
+                    Serenity.Decorators.registerFormatter()
+                ], DataStatusFormatter);
+                return DataStatusFormatter;
+            }());
+            Formatter.DataStatusFormatter = DataStatusFormatter;
             var ProvinsiFormatter = /** @class */ (function () {
                 function ProvinsiFormatter() {
                 }
@@ -9530,7 +10031,7 @@ var AbidzarFrm;
                 return {
                     hint: Q.coalesce(options.hint, 'Excel'),
                     title: Q.coalesce(options.title, ''),
-                    cssClass: 'export-xlsx-button',
+                    cssClass: Q.coalesce(options.title, 'export-xlsx-button'),
                     onClick: function () {
                         if (!options.onViewSubmit()) {
                             return;
@@ -11039,6 +11540,344 @@ var AbidzarFrm;
 (function (AbidzarFrm) {
     var Rukuntangga;
     (function (Rukuntangga) {
+        var TbGaleryDialog = /** @class */ (function (_super) {
+            __extends(TbGaleryDialog, _super);
+            function TbGaleryDialog() {
+                return _super !== null && _super.apply(this, arguments) || this;
+            }
+            TbGaleryDialog.prototype.getFormKey = function () { return Rukuntangga.TbGaleryForm.formKey; };
+            TbGaleryDialog.prototype.getIdProperty = function () { return Rukuntangga.TbGaleryRow.idProperty; };
+            TbGaleryDialog.prototype.getLocalTextPrefix = function () { return Rukuntangga.TbGaleryRow.localTextPrefix; };
+            TbGaleryDialog.prototype.getNameProperty = function () { return Rukuntangga.TbGaleryRow.nameProperty; };
+            TbGaleryDialog.prototype.getService = function () { return Rukuntangga.TbGaleryService.baseUrl; };
+            TbGaleryDialog.prototype.getDeletePermission = function () { return Rukuntangga.TbGaleryRow.insertPermission; };
+            TbGaleryDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], TbGaleryDialog);
+            return TbGaleryDialog;
+        }(Serenity.EntityDialog));
+        Rukuntangga.TbGaleryDialog = TbGaleryDialog;
+    })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
+})(AbidzarFrm || (AbidzarFrm = {}));
+/// <reference path="../tbgalery/tbgalerydialog.ts" />
+var AbidzarFrm;
+(function (AbidzarFrm) {
+    var Rukuntangga;
+    (function (Rukuntangga) {
+        /**
+         * A version of order dialog converted to a panel by adding Serenity.Decorators.panel decorator.
+         */
+        var Galery = /** @class */ (function (_super) {
+            __extends(Galery, _super);
+            function Galery() {
+                var _this = _super.call(this) || this;
+                _this.form = new Rukuntangga.TbGaleryForm(_this.idPrefix);
+                return _this;
+            }
+            Galery.prototype.updateInterface = function () {
+                _super.prototype.updateInterface.call(this);
+                this.deleteButton.hide();
+                this.applyChangesButton.hide();
+                this.saveAndCloseButton.hide();
+            };
+            Galery.prototype.afterLoadEntity = function () {
+                _super.prototype.afterLoadEntity.call(this);
+                this.element.find(jQuery(".Deskripsi")).hide();
+                this.element.find(jQuery(".LevelArea")).hide();
+                this.element.find(jQuery(".Thumbnail")).hide();
+                this.element.find(jQuery(".delete")).hide();
+                this.element.find(jQuery(".s-Toolbar")).hide();
+                this.element.find(jQuery(".caption")).hide();
+            };
+            Galery.prototype.onSaveSuccess = function (response) {
+                this.showSaveSuccessMessage(response);
+            };
+            Galery = __decorate([
+                Serenity.Decorators.panel()
+            ], Galery);
+            return Galery;
+        }(Rukuntangga.TbGaleryDialog));
+        Rukuntangga.Galery = Galery;
+    })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
+})(AbidzarFrm || (AbidzarFrm = {}));
+var AbidzarFrm;
+(function (AbidzarFrm) {
+    var Rukuntangga;
+    (function (Rukuntangga) {
+        var VMRegistrationsRole;
+        (function (VMRegistrationsRole) {
+            VMRegistrationsRole.SA = 'SA';
+            VMRegistrationsRole.RW = 'RW';
+            VMRegistrationsRole.RT = 'RT';
+            VMRegistrationsRole.WARGA = 'WARGA';
+        })(VMRegistrationsRole = Rukuntangga.VMRegistrationsRole || (Rukuntangga.VMRegistrationsRole = {}));
+        var StatusCode;
+        (function (StatusCode) {
+            StatusCode.Draft = 0;
+            StatusCode.Requested = 1;
+            StatusCode.Verified = 2;
+            StatusCode.Rejected = 3;
+        })(StatusCode = Rukuntangga.StatusCode || (Rukuntangga.StatusCode = {}));
+        var TbKtpDialog = /** @class */ (function (_super) {
+            __extends(TbKtpDialog, _super);
+            function TbKtpDialog() {
+                var _this = _super.call(this) || this;
+                _this.form = new Rukuntangga.TbKtpForm(_this.idPrefix);
+                _this.form.IdProvinsi.changeSelect2(function (e) {
+                    _this.form.IdKota.value = "";
+                    _this.form.IdKecamatan.value = "";
+                    _this.form.IdKelurahan.value = "";
+                    _this.form.IdKota.items = [];
+                    _this.form.IdKecamatan.items = [];
+                    _this.form.IdKelurahan.items = [];
+                    _this.SetKota();
+                });
+                _this.form.IdKota.changeSelect2(function (e) {
+                    _this.form.IdKecamatan.value = "";
+                    _this.form.IdKelurahan.value = "";
+                    _this.form.IdKecamatan.items = [];
+                    _this.form.IdKelurahan.items = [];
+                    _this.SetKecamatan();
+                });
+                _this.form.IdKecamatan.changeSelect2(function (e) {
+                    _this.form.IdKelurahan.value = "";
+                    _this.form.IdKelurahan.items = [];
+                    _this.SetKelurahan();
+                });
+                _this.form.IdProvinsiTinggal.changeSelect2(function (e) {
+                    _this.form.IdKotaTinggal.value = "";
+                    _this.form.IdKecamatanTinggal.value = "";
+                    _this.form.IdKelurahanTinggal.value = "";
+                    _this.form.IdKotaTinggal.items = [];
+                    _this.form.IdKecamatanTinggal.items = [];
+                    _this.form.IdKelurahanTinggal.items = [];
+                    _this.SetKotaTinggal();
+                });
+                _this.form.IdKotaTinggal.changeSelect2(function (e) {
+                    _this.form.IdKecamatanTinggal.value = "";
+                    _this.form.IdKelurahanTinggal.value = "";
+                    _this.form.IdKecamatanTinggal.items = [];
+                    _this.form.IdKelurahanTinggal.items = [];
+                    _this.SetKecamatanTinggal();
+                });
+                _this.form.IdKecamatanTinggal.changeSelect2(function (e) {
+                    _this.form.IdKelurahanTinggal.value = "";
+                    _this.form.IdKelurahanTinggal.items = [];
+                    _this.SetKelurahanTinggal();
+                });
+                _this.form.StatusPerkawinan.changeSelect2(function (e) {
+                    Serenity.EditorUtils.setRequired(_this.form.TanggalPerkawinan, _this.form.StatusPerkawinan.value == "K");
+                });
+                return _this;
+            }
+            TbKtpDialog.prototype.getFormKey = function () { return Rukuntangga.TbKtpForm.formKey; };
+            TbKtpDialog.prototype.getIdProperty = function () { return Rukuntangga.TbKtpRow.idProperty; };
+            TbKtpDialog.prototype.getLocalTextPrefix = function () { return Rukuntangga.TbKtpRow.localTextPrefix; };
+            TbKtpDialog.prototype.getNameProperty = function () { return Rukuntangga.TbKtpRow.nameProperty; };
+            TbKtpDialog.prototype.getService = function () { return Rukuntangga.TbKtpService.baseUrl; };
+            TbKtpDialog.prototype.getDeletePermission = function () { return Rukuntangga.TbKtpRow.insertPermission; };
+            TbKtpDialog.prototype.hasRole = function (role) {
+                return AbidzarFrm.Authorization.userDefinition.Roles.indexOf(role) > -1;
+            };
+            TbKtpDialog.prototype.updateInterface = function () {
+                _super.prototype.updateInterface.call(this);
+                Serenity.EditorUtils.setRequired(this.form.TanggalPerkawinan, this.form.StatusPerkawinan.value == "K");
+            };
+            TbKtpDialog.prototype.afterLoadEntity = function () {
+                _super.prototype.afterLoadEntity.call(this);
+                //if (this.isEditMode()) {
+                //    this.SetKota();
+                //    this.form.IdKota.value = "4";
+                //    this.SetKecamatan();
+                //    this.form.IdKecamatan.value = "8";
+                //    this.SetKelurahan();
+                //    this.form.IdKelurahan.value = "4";
+                //    this.SetKotaTinggal();
+                //    this.form.IdKotaTinggal.value = this.entity.IdKotaTinggal.toString();
+                //    this.SetKecamatanTinggal();
+                //    this.form.IdKecamatanTinggal.value = this.entity.IdKecamatanTinggal.toString();
+                //    this.SetKelurahanTinggal();
+                //    this.form.IdKelurahanTinggal.value = this.entity.IdKelurahanTinggal.toString();
+                //}
+            };
+            TbKtpDialog.prototype.validateBeforeSave = function () {
+                _super.prototype.validateBeforeSave.call(this);
+                if (!this.OnlyNumberRegex(this.form.Nik.value, 16)) {
+                    Q.alert("Nik harus 16 digit");
+                    return false;
+                }
+                if (!this.OnlyNumberRegex(this.form.Kk.value, 16)) {
+                    Q.alert("Kk harus 10 digit");
+                    return false;
+                }
+                return true;
+            };
+            TbKtpDialog.prototype.OnlyNumberRegex = function (str, digit) {
+                if (str != null && str != "" && str != "-") {
+                    var pattern = new RegExp("^\\d{" + digit + "}$");
+                    return pattern.test(str);
+                }
+                else {
+                    return true;
+                }
+            };
+            TbKtpDialog.prototype.getToolbarButtons = function () {
+                var buttons = _super.prototype.getToolbarButtons.call(this);
+                buttons.push({
+                    icon: "fa-arrow-circle-right text-blue",
+                    hint: "Submit",
+                    title: "Submit",
+                    cssClass: "btn-submit-boq",
+                    onClick: function () {
+                        //if (this.IsValidPartialPassthrough()) {
+                        //    if (!this.ValidateBeforeSubmitPartialPassthrough()) {
+                        //        Q.alert("Please input PR Log No or Passthrough PR Log No ")
+                        //        return;
+                        //    } else {
+                        //        let msg: string = this.ValidateLenghtPartialPassthrough();
+                        //        if (msg != "") {
+                        //            Q.alert(msg)
+                        //            return;
+                        //        }
+                        //    }
+                        //}
+                    }
+                });
+                return buttons;
+            };
+            TbKtpDialog.prototype.SetKota = function () {
+                var idProvinsi = parseInt(this.form.IdProvinsi.value);
+                var listData = AbidzarFrm.Rukuntangga.TbKotaRow.getLookup().items.filter(function (x) { return x.IdProvinsi == idProvinsi; });
+                var filtered = [];
+                listData.forEach(function (y) {
+                    filtered.push({ id: y.Id.toString(), source: y.NamaKota, text: y.NamaKota });
+                });
+                this.form.IdKota.items = filtered;
+                if (this.isEditMode()) {
+                    this.form.IdKota.value = this.entity.IdKota.toString();
+                }
+            };
+            TbKtpDialog.prototype.SetKecamatan = function () {
+                var idKota = parseInt(this.form.IdKota.value);
+                var listData = AbidzarFrm.Rukuntangga.TbKecamatanRow.getLookup().items.filter(function (x) { return x.IdKota == idKota; });
+                var filtered = [];
+                listData.forEach(function (y) {
+                    filtered.push({ id: y.Id.toString(), source: y.NamaKecamatan, text: y.NamaKecamatan });
+                });
+                this.form.IdKecamatan.items = filtered;
+                if (this.isEditMode()) {
+                    this.form.IdKecamatan.value = this.entity.IdKecamatan.toString();
+                }
+            };
+            TbKtpDialog.prototype.SetKelurahan = function () {
+                var idKecamatan = parseInt(this.form.IdKecamatan.value);
+                var listData = AbidzarFrm.Rukuntangga.TbKelurahanRow.getLookup().items.filter(function (x) { return x.IdKecamatan == idKecamatan; });
+                var filtered = [];
+                listData.forEach(function (y) {
+                    filtered.push({ id: y.Id.toString(), source: y.NamaKelurahan, text: y.NamaKelurahan });
+                });
+                this.form.IdKelurahan.items = filtered;
+                if (this.isEditMode()) {
+                    this.form.IdKelurahan.value = this.entity.IdKelurahan.toString();
+                }
+            };
+            TbKtpDialog.prototype.SetKotaTinggal = function () {
+                var idProvinsi = parseInt(this.form.IdProvinsiTinggal.value);
+                var listData = AbidzarFrm.Rukuntangga.TbKotaRow.getLookup().items.filter(function (x) { return x.IdProvinsi == idProvinsi; });
+                var filtered = [];
+                listData.forEach(function (y) {
+                    filtered.push({ id: y.Id.toString(), source: y.NamaKota, text: y.NamaKota });
+                });
+                this.form.IdKotaTinggal.items = filtered;
+            };
+            TbKtpDialog.prototype.SetKecamatanTinggal = function () {
+                var idKota = parseInt(this.form.IdKotaTinggal.value);
+                var listData = AbidzarFrm.Rukuntangga.TbKecamatanRow.getLookup().items.filter(function (x) { return x.IdKota == idKota; });
+                var filtered = [];
+                listData.forEach(function (y) {
+                    filtered.push({ id: y.Id.toString(), source: y.NamaKecamatan, text: y.NamaKecamatan });
+                });
+                this.form.IdKecamatanTinggal.items = filtered;
+            };
+            TbKtpDialog.prototype.SetKelurahanTinggal = function () {
+                var idKecamatan = parseInt(this.form.IdKecamatanTinggal.value);
+                var listData = AbidzarFrm.Rukuntangga.TbKelurahanRow.getLookup().items.filter(function (x) { return x.IdKecamatan == idKecamatan; });
+                var filtered = [];
+                listData.forEach(function (y) {
+                    filtered.push({ id: y.Id.toString(), source: y.NamaKelurahan, text: y.NamaKelurahan });
+                });
+                this.form.IdKelurahanTinggal.items = filtered;
+            };
+            Object.defineProperty(TbKtpDialog.prototype, "isDraft", {
+                get: function () {
+                    return this.entity.DataStatus == StatusCode.Draft;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(TbKtpDialog.prototype, "isRequest", {
+                get: function () {
+                    return this.entity.DataStatus == StatusCode.Requested;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(TbKtpDialog.prototype, "isVerified", {
+                get: function () {
+                    return this.entity.DataStatus == StatusCode.Verified;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(TbKtpDialog.prototype, "isRejected", {
+                get: function () {
+                    return this.entity.DataStatus == StatusCode.Requested;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            TbKtpDialog = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.panel()
+            ], TbKtpDialog);
+            return TbKtpDialog;
+        }(Serenity.EntityDialog));
+        Rukuntangga.TbKtpDialog = TbKtpDialog;
+    })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
+})(AbidzarFrm || (AbidzarFrm = {}));
+/// <reference path="../tbktp/tbktpdialog.ts" />
+var AbidzarFrm;
+(function (AbidzarFrm) {
+    var Rukuntangga;
+    (function (Rukuntangga) {
+        /**
+         * A version of order dialog converted to a panel by adding Serenity.Decorators.panel decorator.
+         */
+        var Registrasi = /** @class */ (function (_super) {
+            __extends(Registrasi, _super);
+            function Registrasi() {
+                return _super.call(this) || this;
+            }
+            Registrasi.prototype.updateInterface = function () {
+                _super.prototype.updateInterface.call(this);
+                this.deleteButton.hide();
+                this.applyChangesButton.hide();
+            };
+            Registrasi.prototype.onSaveSuccess = function (response) {
+                this.showSaveSuccessMessage(response);
+            };
+            Registrasi = __decorate([
+                Serenity.Decorators.panel()
+            ], Registrasi);
+            return Registrasi;
+        }(Rukuntangga.TbKtpDialog));
+        Rukuntangga.Registrasi = Registrasi;
+    })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
+})(AbidzarFrm || (AbidzarFrm = {}));
+var AbidzarFrm;
+(function (AbidzarFrm) {
+    var Rukuntangga;
+    (function (Rukuntangga) {
         var TbAutentikasiTokenDialog = /** @class */ (function (_super) {
             __extends(TbAutentikasiTokenDialog, _super);
             function TbAutentikasiTokenDialog() {
@@ -11163,7 +12002,8 @@ var AbidzarFrm;
             TbDetailJenisInformasiDialog.prototype.getLocalTextPrefix = function () { return Rukuntangga.TbDetailJenisInformasiRow.localTextPrefix; };
             TbDetailJenisInformasiDialog = __decorate([
                 Serenity.Decorators.registerClass(),
-                Serenity.Decorators.maximizable()
+                Serenity.Decorators.maximizable(),
+                Serenity.Decorators.panel()
             ], TbDetailJenisInformasiDialog);
             return TbDetailJenisInformasiDialog;
         }(AbidzarFrm.Common.GridEditorDialog));
@@ -11293,7 +12133,9 @@ var AbidzarFrm;
             //protected getIdProperty() { return TbDetailPemiluRow.idProperty; }
             TbDetailPemiluDialog.prototype.getLocalTextPrefix = function () { return Rukuntangga.TbDetailPemiluRow.localTextPrefix; };
             TbDetailPemiluDialog = __decorate([
-                Serenity.Decorators.registerClass()
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.panel(),
+                Serenity.Decorators.maximizable()
             ], TbDetailPemiluDialog);
             return TbDetailPemiluDialog;
         }(AbidzarFrm.Common.GridEditorDialog));
@@ -11475,6 +12317,27 @@ var AbidzarFrm;
             return TbErrorLogsGrid;
         }(Serenity.EntityGrid));
         Rukuntangga.TbErrorLogsGrid = TbErrorLogsGrid;
+    })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
+})(AbidzarFrm || (AbidzarFrm = {}));
+var AbidzarFrm;
+(function (AbidzarFrm) {
+    var Rukuntangga;
+    (function (Rukuntangga) {
+        var TbGaleryGrid = /** @class */ (function (_super) {
+            __extends(TbGaleryGrid, _super);
+            function TbGaleryGrid() {
+                return _super !== null && _super.apply(this, arguments) || this;
+            }
+            TbGaleryGrid.prototype.getColumnsKey = function () { return 'Rukuntangga.TbGalery'; };
+            TbGaleryGrid.prototype.getDialogType = function () { return Rukuntangga.TbGaleryDialog; };
+            TbGaleryGrid.prototype.getIdProperty = function () { return Rukuntangga.TbGaleryRow.idProperty; };
+            TbGaleryGrid.prototype.getInsertPermission = function () { return Rukuntangga.TbGaleryRow.insertPermission; };
+            TbGaleryGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], TbGaleryGrid);
+            return TbGaleryGrid;
+        }(Serenity.EntityGrid));
+        Rukuntangga.TbGaleryGrid = TbGaleryGrid;
     })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
 })(AbidzarFrm || (AbidzarFrm = {}));
 var AbidzarFrm;
@@ -11835,45 +12698,29 @@ var AbidzarFrm;
 (function (AbidzarFrm) {
     var Rukuntangga;
     (function (Rukuntangga) {
-        var TbKtpDialog = /** @class */ (function (_super) {
-            __extends(TbKtpDialog, _super);
-            function TbKtpDialog() {
-                return _super !== null && _super.apply(this, arguments) || this;
-            }
-            TbKtpDialog.prototype.getFormKey = function () { return Rukuntangga.TbKtpForm.formKey; };
-            TbKtpDialog.prototype.getIdProperty = function () { return Rukuntangga.TbKtpRow.idProperty; };
-            TbKtpDialog.prototype.getLocalTextPrefix = function () { return Rukuntangga.TbKtpRow.localTextPrefix; };
-            TbKtpDialog.prototype.getNameProperty = function () { return Rukuntangga.TbKtpRow.nameProperty; };
-            TbKtpDialog.prototype.getService = function () { return Rukuntangga.TbKtpService.baseUrl; };
-            TbKtpDialog.prototype.getDeletePermission = function () { return Rukuntangga.TbKtpRow.insertPermission; };
-            TbKtpDialog = __decorate([
-                Serenity.Decorators.registerClass(),
-                Serenity.Decorators.panel()
-            ], TbKtpDialog);
-            return TbKtpDialog;
-        }(Serenity.EntityDialog));
-        Rukuntangga.TbKtpDialog = TbKtpDialog;
-    })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
-})(AbidzarFrm || (AbidzarFrm = {}));
-var AbidzarFrm;
-(function (AbidzarFrm) {
-    var Rukuntangga;
-    (function (Rukuntangga) {
         var TbKtpGrid = /** @class */ (function (_super) {
             __extends(TbKtpGrid, _super);
             function TbKtpGrid(container) {
                 return _super.call(this, container) || this;
-                //this.treeMixin = new Serenity.TreeGridMixin({
-                //    grid: this,
-                //    initialCollapse: () => true,
-                //    toggleField: TbKtpRow.Fields.Kk,
-                //    getParentId: x => x.IdKelurahan,
-                //});
             }
             TbKtpGrid.prototype.getColumnsKey = function () { return 'Rukuntangga.TbKtp'; };
             TbKtpGrid.prototype.getDialogType = function () { return Rukuntangga.TbKtpDialog; };
             TbKtpGrid.prototype.getIdProperty = function () { return Rukuntangga.TbKtpRow.idProperty; };
             TbKtpGrid.prototype.getInsertPermission = function () { return Rukuntangga.TbKtpRow.insertPermission; };
+            TbKtpGrid.prototype.getButtons = function () {
+                var _this = this;
+                var buttons = _super.prototype.getButtons.call(this);
+                buttons.push(AbidzarFrm.Common.ExcelExportHelper.createToolButton({
+                    grid: this,
+                    onViewSubmit: function () { return _this.onViewSubmit(); },
+                    service: 'Rukuntangga/TbKtp/ListExcel',
+                    separator: false,
+                    title: "Export to Excell",
+                    hint: "Export to Excell",
+                    cssClass: "export-xlsx-button"
+                }));
+                return buttons;
+            };
             TbKtpGrid = __decorate([
                 Serenity.Decorators.registerClass(),
                 Serenity.Decorators.filterable()
@@ -12728,6 +13575,208 @@ var AbidzarFrm;
             return TbTestimoniGrid;
         }(Serenity.EntityGrid));
         Rukuntangga.TbTestimoniGrid = TbTestimoniGrid;
+    })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
+})(AbidzarFrm || (AbidzarFrm = {}));
+var AbidzarFrm;
+(function (AbidzarFrm) {
+    var Rukuntangga;
+    (function (Rukuntangga) {
+        var TbTransactionDocumentCodeDialog = /** @class */ (function (_super) {
+            __extends(TbTransactionDocumentCodeDialog, _super);
+            function TbTransactionDocumentCodeDialog() {
+                return _super !== null && _super.apply(this, arguments) || this;
+            }
+            TbTransactionDocumentCodeDialog.prototype.getFormKey = function () { return Rukuntangga.TbTransactionDocumentCodeForm.formKey; };
+            TbTransactionDocumentCodeDialog.prototype.getIdProperty = function () { return Rukuntangga.TbTransactionDocumentCodeRow.idProperty; };
+            TbTransactionDocumentCodeDialog.prototype.getLocalTextPrefix = function () { return Rukuntangga.TbTransactionDocumentCodeRow.localTextPrefix; };
+            TbTransactionDocumentCodeDialog.prototype.getNameProperty = function () { return Rukuntangga.TbTransactionDocumentCodeRow.nameProperty; };
+            TbTransactionDocumentCodeDialog.prototype.getService = function () { return Rukuntangga.TbTransactionDocumentCodeService.baseUrl; };
+            TbTransactionDocumentCodeDialog.prototype.getDeletePermission = function () { return Rukuntangga.TbTransactionDocumentCodeRow.insertPermission; };
+            TbTransactionDocumentCodeDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], TbTransactionDocumentCodeDialog);
+            return TbTransactionDocumentCodeDialog;
+        }(Serenity.EntityDialog));
+        Rukuntangga.TbTransactionDocumentCodeDialog = TbTransactionDocumentCodeDialog;
+    })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
+})(AbidzarFrm || (AbidzarFrm = {}));
+var AbidzarFrm;
+(function (AbidzarFrm) {
+    var Rukuntangga;
+    (function (Rukuntangga) {
+        var TbTransactionDocumentCodeGrid = /** @class */ (function (_super) {
+            __extends(TbTransactionDocumentCodeGrid, _super);
+            function TbTransactionDocumentCodeGrid() {
+                return _super !== null && _super.apply(this, arguments) || this;
+            }
+            TbTransactionDocumentCodeGrid.prototype.getColumnsKey = function () { return 'Rukuntangga.TbTransactionDocumentCode'; };
+            TbTransactionDocumentCodeGrid.prototype.getDialogType = function () { return Rukuntangga.TbTransactionDocumentCodeDialog; };
+            TbTransactionDocumentCodeGrid.prototype.getIdProperty = function () { return Rukuntangga.TbTransactionDocumentCodeRow.idProperty; };
+            TbTransactionDocumentCodeGrid.prototype.getInsertPermission = function () { return Rukuntangga.TbTransactionDocumentCodeRow.insertPermission; };
+            TbTransactionDocumentCodeGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], TbTransactionDocumentCodeGrid);
+            return TbTransactionDocumentCodeGrid;
+        }(Serenity.EntityGrid));
+        Rukuntangga.TbTransactionDocumentCodeGrid = TbTransactionDocumentCodeGrid;
+    })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
+})(AbidzarFrm || (AbidzarFrm = {}));
+var AbidzarFrm;
+(function (AbidzarFrm) {
+    var Rukuntangga;
+    (function (Rukuntangga) {
+        var TbTransactionFlowDialog = /** @class */ (function (_super) {
+            __extends(TbTransactionFlowDialog, _super);
+            function TbTransactionFlowDialog() {
+                return _super !== null && _super.apply(this, arguments) || this;
+            }
+            TbTransactionFlowDialog.prototype.getFormKey = function () { return Rukuntangga.TbTransactionFlowForm.formKey; };
+            TbTransactionFlowDialog.prototype.getIdProperty = function () { return Rukuntangga.TbTransactionFlowRow.idProperty; };
+            TbTransactionFlowDialog.prototype.getLocalTextPrefix = function () { return Rukuntangga.TbTransactionFlowRow.localTextPrefix; };
+            TbTransactionFlowDialog.prototype.getNameProperty = function () { return Rukuntangga.TbTransactionFlowRow.nameProperty; };
+            TbTransactionFlowDialog.prototype.getService = function () { return Rukuntangga.TbTransactionFlowService.baseUrl; };
+            TbTransactionFlowDialog.prototype.getDeletePermission = function () { return Rukuntangga.TbTransactionFlowRow.insertPermission; };
+            TbTransactionFlowDialog = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.maximizable()
+            ], TbTransactionFlowDialog);
+            return TbTransactionFlowDialog;
+        }(Serenity.EntityDialog));
+        Rukuntangga.TbTransactionFlowDialog = TbTransactionFlowDialog;
+    })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
+})(AbidzarFrm || (AbidzarFrm = {}));
+var AbidzarFrm;
+(function (AbidzarFrm) {
+    var Rukuntangga;
+    (function (Rukuntangga) {
+        var TbTransactionFlowGrid = /** @class */ (function (_super) {
+            __extends(TbTransactionFlowGrid, _super);
+            function TbTransactionFlowGrid() {
+                return _super !== null && _super.apply(this, arguments) || this;
+            }
+            TbTransactionFlowGrid.prototype.getColumnsKey = function () { return 'Rukuntangga.TbTransactionFlow'; };
+            TbTransactionFlowGrid.prototype.getDialogType = function () { return Rukuntangga.TbTransactionFlowDialog; };
+            TbTransactionFlowGrid.prototype.getIdProperty = function () { return Rukuntangga.TbTransactionFlowRow.idProperty; };
+            TbTransactionFlowGrid.prototype.getInsertPermission = function () { return Rukuntangga.TbTransactionFlowRow.insertPermission; };
+            TbTransactionFlowGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], TbTransactionFlowGrid);
+            return TbTransactionFlowGrid;
+        }(Serenity.EntityGrid));
+        Rukuntangga.TbTransactionFlowGrid = TbTransactionFlowGrid;
+    })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
+})(AbidzarFrm || (AbidzarFrm = {}));
+var AbidzarFrm;
+(function (AbidzarFrm) {
+    var Rukuntangga;
+    (function (Rukuntangga) {
+        var TbTransactionFlowDetailDialog = /** @class */ (function (_super) {
+            __extends(TbTransactionFlowDetailDialog, _super);
+            //protected getNameProperty() { return TbTransactionFlowDetailRow.nameProperty; }
+            //protected getService() { return TbTransactionFlowDetailService.baseUrl; }
+            //protected getDeletePermission() { return TbTransactionFlowDetailRow.insertPermission; }
+            function TbTransactionFlowDetailDialog(container) {
+                return _super.call(this, container) || this;
+            }
+            TbTransactionFlowDetailDialog.prototype.getFormKey = function () { return Rukuntangga.TbTransactionFlowDetailForm.formKey; };
+            //protected getIdProperty() { return TbTransactionFlowDetailRow.idProperty; }
+            TbTransactionFlowDetailDialog.prototype.getLocalTextPrefix = function () { return Rukuntangga.TbTransactionFlowDetailRow.localTextPrefix; };
+            TbTransactionFlowDetailDialog = __decorate([
+                Serenity.Decorators.registerClass(),
+                Serenity.Decorators.maximizable()
+            ], TbTransactionFlowDetailDialog);
+            return TbTransactionFlowDetailDialog;
+        }(AbidzarFrm.Common.GridEditorDialog));
+        Rukuntangga.TbTransactionFlowDetailDialog = TbTransactionFlowDetailDialog;
+    })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
+})(AbidzarFrm || (AbidzarFrm = {}));
+/// <reference path="../../common/helpers/grideditorbase.ts" />
+var AbidzarFrm;
+(function (AbidzarFrm) {
+    var Rukuntangga;
+    (function (Rukuntangga) {
+        var TbTransactionFlowDetailEditor = /** @class */ (function (_super) {
+            __extends(TbTransactionFlowDetailEditor, _super);
+            function TbTransactionFlowDetailEditor(container) {
+                return _super.call(this, container) || this;
+            }
+            TbTransactionFlowDetailEditor.prototype.getColumnsKey = function () { return "Rukuntangga.TbTransactionFlowDetail"; };
+            TbTransactionFlowDetailEditor.prototype.getDialogType = function () { return Rukuntangga.TbTransactionFlowDetailDialog; };
+            TbTransactionFlowDetailEditor.prototype.getLocalTextPrefix = function () { return Rukuntangga.TbTransactionFlowDetailRow.localTextPrefix; };
+            TbTransactionFlowDetailEditor.prototype.validateEntity = function (row, id) {
+                return true;
+            };
+            TbTransactionFlowDetailEditor = __decorate([
+                Serenity.Decorators.registerClass()
+            ], TbTransactionFlowDetailEditor);
+            return TbTransactionFlowDetailEditor;
+        }(AbidzarFrm.Common.GridEditorBase));
+        Rukuntangga.TbTransactionFlowDetailEditor = TbTransactionFlowDetailEditor;
+    })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
+})(AbidzarFrm || (AbidzarFrm = {}));
+var AbidzarFrm;
+(function (AbidzarFrm) {
+    var Rukuntangga;
+    (function (Rukuntangga) {
+        var TbTransactionFlowDetailGrid = /** @class */ (function (_super) {
+            __extends(TbTransactionFlowDetailGrid, _super);
+            function TbTransactionFlowDetailGrid() {
+                return _super !== null && _super.apply(this, arguments) || this;
+            }
+            TbTransactionFlowDetailGrid.prototype.getColumnsKey = function () { return 'Rukuntangga.TbTransactionFlowDetail'; };
+            TbTransactionFlowDetailGrid.prototype.getDialogType = function () { return Rukuntangga.TbTransactionFlowDetailDialog; };
+            TbTransactionFlowDetailGrid.prototype.getIdProperty = function () { return Rukuntangga.TbTransactionFlowDetailRow.idProperty; };
+            TbTransactionFlowDetailGrid.prototype.getInsertPermission = function () { return Rukuntangga.TbTransactionFlowDetailRow.insertPermission; };
+            TbTransactionFlowDetailGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], TbTransactionFlowDetailGrid);
+            return TbTransactionFlowDetailGrid;
+        }(Serenity.EntityGrid));
+        Rukuntangga.TbTransactionFlowDetailGrid = TbTransactionFlowDetailGrid;
+    })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
+})(AbidzarFrm || (AbidzarFrm = {}));
+var AbidzarFrm;
+(function (AbidzarFrm) {
+    var Rukuntangga;
+    (function (Rukuntangga) {
+        var TbTransactionStatusDialog = /** @class */ (function (_super) {
+            __extends(TbTransactionStatusDialog, _super);
+            function TbTransactionStatusDialog() {
+                return _super !== null && _super.apply(this, arguments) || this;
+            }
+            TbTransactionStatusDialog.prototype.getFormKey = function () { return Rukuntangga.TbTransactionStatusForm.formKey; };
+            TbTransactionStatusDialog.prototype.getIdProperty = function () { return Rukuntangga.TbTransactionStatusRow.idProperty; };
+            TbTransactionStatusDialog.prototype.getLocalTextPrefix = function () { return Rukuntangga.TbTransactionStatusRow.localTextPrefix; };
+            TbTransactionStatusDialog.prototype.getNameProperty = function () { return Rukuntangga.TbTransactionStatusRow.nameProperty; };
+            TbTransactionStatusDialog.prototype.getService = function () { return Rukuntangga.TbTransactionStatusService.baseUrl; };
+            TbTransactionStatusDialog.prototype.getDeletePermission = function () { return Rukuntangga.TbTransactionStatusRow.insertPermission; };
+            TbTransactionStatusDialog = __decorate([
+                Serenity.Decorators.registerClass()
+            ], TbTransactionStatusDialog);
+            return TbTransactionStatusDialog;
+        }(Serenity.EntityDialog));
+        Rukuntangga.TbTransactionStatusDialog = TbTransactionStatusDialog;
+    })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
+})(AbidzarFrm || (AbidzarFrm = {}));
+var AbidzarFrm;
+(function (AbidzarFrm) {
+    var Rukuntangga;
+    (function (Rukuntangga) {
+        var TbTransactionStatusGrid = /** @class */ (function (_super) {
+            __extends(TbTransactionStatusGrid, _super);
+            function TbTransactionStatusGrid() {
+                return _super !== null && _super.apply(this, arguments) || this;
+            }
+            TbTransactionStatusGrid.prototype.getColumnsKey = function () { return 'Rukuntangga.TbTransactionStatus'; };
+            TbTransactionStatusGrid.prototype.getDialogType = function () { return Rukuntangga.TbTransactionStatusDialog; };
+            TbTransactionStatusGrid.prototype.getIdProperty = function () { return Rukuntangga.TbTransactionStatusRow.idProperty; };
+            TbTransactionStatusGrid.prototype.getInsertPermission = function () { return Rukuntangga.TbTransactionStatusRow.insertPermission; };
+            TbTransactionStatusGrid = __decorate([
+                Serenity.Decorators.registerClass()
+            ], TbTransactionStatusGrid);
+            return TbTransactionStatusGrid;
+        }(Serenity.EntityGrid));
+        Rukuntangga.TbTransactionStatusGrid = TbTransactionStatusGrid;
     })(Rukuntangga = AbidzarFrm.Rukuntangga || (AbidzarFrm.Rukuntangga = {}));
 })(AbidzarFrm || (AbidzarFrm = {}));
 var AbidzarFrm;

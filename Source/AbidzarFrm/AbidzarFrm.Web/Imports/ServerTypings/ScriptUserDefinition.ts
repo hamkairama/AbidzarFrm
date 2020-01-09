@@ -4,6 +4,9 @@
         DisplayName?: string;
         IsAdmin?: boolean;
         Permissions?: { [key: string]: boolean };
+        Roles?: string;
+        UserId?: number;
+        Email?: string;
     }
 }
 

@@ -12,18 +12,23 @@
 
         constructor(container: JQuery) {
             super(container);
-
-            //this.treeMixin = new Serenity.TreeGridMixin({
-            //    grid: this,
-            //    initialCollapse: () => true,
-            //    toggleField: TbKtpRow.Fields.Kk,
-            //    getParentId: x => x.IdKelurahan,
-            //});
         }
 
-        //protected usePager() {
-        //    return false;
-        //}
+        protected getButtons() {
+            let buttons = super.getButtons();
+
+            buttons.push(AbidzarFrm.Common.ExcelExportHelper.createToolButton({
+                grid: this,
+                onViewSubmit: () => this.onViewSubmit(),
+                service: 'Rukuntangga/TbKtp/ListExcel',
+                separator: false,
+                title: "Export to Excell",
+                hint: "Export to Excell",
+                cssClass: "export-xlsx-button"
+            }));           
+
+            return buttons;
+        }
 
 
     }

@@ -2,7 +2,7 @@
     export interface TbDetailJenisInformasiForm {
         Judul: Serenity.StringEditor;
         NamaFile: Serenity.ImageUploadEditor;
-        Deskripsi: Serenity.TextAreaEditor;
+        Deskripsi: Serenity.HtmlContentEditor;
         LevelArea: Common.Editor.LevelAreaEditor;
         IsLandingPage: Serenity.BooleanEditor;
     }
@@ -20,7 +20,7 @@
                 var s = Serenity;
                 var w0 = s.StringEditor;
                 var w1 = s.ImageUploadEditor;
-                var w2 = s.TextAreaEditor;
+                var w2 = s.HtmlContentEditor;
                 var w3 = Common.Editor.LevelAreaEditor;
                 var w4 = s.BooleanEditor;
 

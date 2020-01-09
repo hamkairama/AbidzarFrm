@@ -1,0 +1,190 @@
+﻿@model List<AbidzarFrm.Rukuntangga.Entities.TbJenisKegiatanRow>
+@using AbidzarFrm.Modules.Common.Helpers
+@{
+    ViewData["Title"] = "Aktifitas";
+}
+
+@section Head {
+    <script src="~/Scripts/adminlte/demo.js"></script>
+
+    <style>
+        .overflow {
+            height: 50px;
+            overflow: hidden;
+            text-overflow: "---";
+        }
+    </style>
+}
+
+@{
+    int index = 0;
+    string indexActive = "";
+    List<AbidzarFrm.Rukuntangga.Entities.TbSlideShowRow> slideshowList = CurrentSession.Slideshow();
+    <div class="row">
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="input-group input-group-sm" style="margin-top:5px;margin-bottom:10px;">
+                        <input type="text" id="txtInput" onkeypress="return CariAktifitasKey(event)" class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-info btn-flat" onclick="CariAktifitas()" type="button">Go!</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @Html.Partial("../../Modules/Rukuntangga/Aktifitas/_AktifitasList")
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="box box-danger">
+                <div class="box-body">
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            @foreach (var item in slideshowList)
+                            {
+                                var img = (item.FileName == null || string.IsNullOrEmpty(item.FileName)) ? "../../Content/adminlte/img/avatar0.png" : VirtualPathUtility.ToAbsolute("~/upload/") + item.FileName;
+                                indexActive = "";
+                                if (index == 0)
+                                {
+                                    indexActive = "active";
+                                }
+                                <div class="item @indexActive">
+                                    <img style="display:block;margin:auto;width:100%;height:150px;" src="@img">
+                                    <div class="carousel-caption">
+                                        @item.Deskripsi
+                                    </div>
+                                </div>
+                                index++;
+                            }
+                        </div>
+                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                            <span class="fa fa-angle-left"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                            <span class="fa fa-angle-right"></span>
+                        </a>
+                    </div>
+                </div><!-- /.box-body -->
+            </div>
+            <div class="box box-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title" style="color:orange; text-shadow: 1px 1px 0 rgba(0, 0, 0, .2)">Kategori</h3>
+                </div>
+                <div class="box-body">
+                    @foreach (var item in Model)
+                    {
+                        <i class="fa fa-book margin-r-5"></i><a href="javascript:GetAktifitas(@item.Id)" style="cursor:pointer;color:black;"><strong>@item.JenisKegiatan</strong></a>
+                        <br />
+                    }
+                    <hr />
+                    <i class="fa fa-book margin-r-5"></i><a href="javascript:GetTerbaru()" style="cursor:pointer;color:black;"><strong>Terbaru</strong></a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<script>
+    function GetAktifitas(idx) {
+        var path = location.origin + "/Rukuntangga/Aktifitas/GetAktifitas/";
+
+        $.ajax({
+            data: {
+                id: idx,
+            },
+            cache: false,
+            url: path,
+            //traditional: true,
+            //type: 'POST',
+            //dataType: "json",
+            async: true,
+            success: function (data) {
+                $("#divAktifitas").html(data);
+            },
+            error: function (jqXHR, textStatus, errorMessage) {
+                console.log(errorMessage);
+            }
+        });
+
+    }
+    function GetTerbaru() {
+        var path = location.origin + "/Rukuntangga/Aktifitas/Terbaru/";
+
+        $.ajax({
+            data: {},
+            cache: false,
+            url: path,
+            //traditional: true,
+            //type: 'POST',
+            //dataType: "json",
+            async: true,
+            success: function (data) {
+                $("#divAktifitas").html(data);
+            },
+            error: function (jqXHR, textStatus, errorMessage) {
+                console.log(errorMessage);
+            }
+        });
+
+    }
+    function GetDetail(idx) {
+        var path = location.origin + "/Rukuntangga/Aktifitas/Detail/";
+
+        $.ajax({
+            data: {
+                id: idx
+            },
+            cache: false,
+            url: path,
+            //traditional: true,
+            //type: 'POST',
+            //dataType: "json",
+            async: true,
+            success: function (data) {
+                $("#divAktifitas").html(data);
+            },
+            error: function (jqXHR, textStatus, errorMessage) {
+                console.log(errorMessage);
+            }
+        });
+
+    }
+
+    function CariAktifitas() {
+        var path = location.origin + "/Rukuntangga/Aktifitas/CariAktifitas/";
+        var txtWildCard = $("#txtInput").val()
+
+        $.ajax({
+            data: {
+                wildCard: txtWildCard
+            },
+            cache: false,
+            url: path,
+            //traditional: true,
+            //type: 'POST',
+            //dataType: "json",
+            async: true,
+            success: function (data) {
+                $("#divAktifitas").html(data);
+            },
+            error: function (jqXHR, textStatus, errorMessage) {
+                console.log(errorMessage);
+            }
+        });
+
+    }
+    function CariAktifitasKey(e) {
+        if (e.keyCode == 13) {
+            CariAktifitas();
+        }
+    }
+
+</script>

@@ -8252,29 +8252,33 @@ section.content > .s-DataGrid {
 .s-Rukuntangga-TbMailLogDialog .caption {
   width: 150px;
 }
-
-/*hamka*/
-.btn-pick-item {
-    /*background-position: center center;
-    background-repeat:no-repeat;*/
-    text-align: center;
-    vertical-align: middle;
+.s-Rukuntangga-TbTransactionDocumentCodeDialog > .size {
+  width: 650px;
 }
-
-.check-box.checked {
-    background-image: url(../serenity/images/tick-green.png);
-    background-position: center center;
+.s-Rukuntangga-TbTransactionDocumentCodeDialog .caption {
+  width: 150px;
 }
-
-.check-box {
-    background-image: url(../serenity/images/tick-empty.png);
-    background-position: center center;
-    width: 22px;
-    height: 22px;
-    margin: 0;
+.s-Rukuntangga-TbTransactionFlowDialog > .size {
+  width: 650px;
 }
-
-    .check-box.checked.red {
-        background-image: url(../serenity/images/tick-red.png);
-        background-position: center center;
-    }
+.s-Rukuntangga-TbTransactionFlowDialog .caption {
+  width: 150px;
+}
+.s-Rukuntangga-TbTransactionFlowDetailDialog > .size {
+  width: 650px;
+}
+.s-Rukuntangga-TbTransactionFlowDetailDialog .caption {
+  width: 150px;
+}
+.s-Rukuntangga-TbTransactionStatusDialog > .size {
+  width: 650px;
+}
+.s-Rukuntangga-TbTransactionStatusDialog .caption {
+  width: 150px;
+}
+.s-Rukuntangga-TbGaleryDialog > .size {
+  width: 650px;
+}
+.s-Rukuntangga-TbGaleryDialog .caption {
+  width: 150px;
+}

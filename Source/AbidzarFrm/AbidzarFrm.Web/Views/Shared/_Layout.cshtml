@@ -23,6 +23,7 @@
     @RenderSection("Head", false)
     <title>@(ViewData["Title"]) - AbidzarFrm</title>
     <script src="~/Scripts/common/modal.js"></script>
+    <script src="~/Scripts/common/common.js"></script>
     <link rel="stylesheet" href="~/Scripts/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" />
     <script src="~/Scripts/ckeditor/ckeditor.js"></script>
     <script src="~/Scripts/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
@@ -134,44 +135,25 @@
                 <strong>@Texts.Site.Layout.FooterCopyright</strong> @Texts.Site.Layout.FooterRights
             </footer>
 
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content" id="#modalBody">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            ...
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal fade" id="AbidzarFrameModalFormEdit" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document" style="min-width:25%">
-                    <div class="modal-content">
-                        <div class="modal-header bg-green">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <h4 class="modal-title"><span class="description"></span>&nbsp;@ViewBag.Title</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div id='AbidzarFrameModalFormContent'></div>
-                        </div>
-                        <div class="modal-footer bg-grey-steel">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" id="btnSaveForm">Save changes</button>
+            @*<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content" id="#modalBody">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                ...
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </div>*@
 
 
 
@@ -220,5 +202,26 @@
     });
         </script>
     }
+
+    <div class="modal fade" id="AbidzarFrameModalFormEdit" tabindex="-1" role="dialog" aria-hidden="true">
+        @*<div class="modal-dialog modal-dialog-centered" role="document" style="min-width:25%">
+            <div class="modal-content">
+                <div class="modal-header bg-green">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title"><span class="description"></span>&nbsp;@ViewBag.Title</h4>
+                </div>
+                <div class="modal-body">
+                    <div id='AbidzarFrameModalFormContent'></div>
+                </div>
+                <div class="modal-footer bg-grey-steel">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="btnSaveForm">Save changes</button>
+                </div>
+            </div>
+        </div>*@
+    </div>
+
 </body>
 </html>

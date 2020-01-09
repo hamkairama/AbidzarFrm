@@ -8,8 +8,11 @@
             var userImage = (item.PhotoKtp == null || string.IsNullOrEmpty(item.PhotoKtp)) ? "../../Content/adminlte/img/avatar0.png" : VirtualPathUtility.ToAbsolute("~/upload/") + item.PhotoKtp;
 
             <li>
-                <img src="@userImage" height="150" width="150" alt="User Image" />
-                <a class="users-list-name" data-toggle="modal" data-target="#AbidzarFrameModalFormEdit" href="@Url.Action("Details", "Warga", new { id = item.Id })">@item.Nama</a>
+                <a class="users-list-name" href="#AbidzarFrameModalFormEdit" onclick="Modal('Rukuntangga/Warga/Details','@item.Id','#AbidzarFrameModalFormEdit')" data-toggle="modal" title="View">
+                    <img src="@userImage" height="150" width="150" alt="User Image" />
+                </a>
+                <span style="color:orangered; text-shadow: 1px 1px 0 rgba(0, 0, 0, .2)">@item.Nama</span>
+
             </li>
         }
     }

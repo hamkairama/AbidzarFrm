@@ -5,6 +5,7 @@
         NoUrut?: number;
         Kandidat?: string;
         FileName?: string;
+        Deskripsi?: string;
         DibuatOleh?: string;
         DibuatTanggal?: string;
         DieditOleh?: string;
@@ -18,7 +19,6 @@
         IdPemiluDieditTanggal?: string;
         IdPemiluSystemStatus?: boolean;
         IdPemiluKodeRt?: string;
-        tbPollingPemiluRow?: TbPollingPemiluRow[];
     }
 
     export namespace TbDetailPemiluRow {
@@ -36,6 +36,7 @@
             NoUrut = "NoUrut",
             Kandidat = "Kandidat",
             FileName = "FileName",
+            Deskripsi = "Deskripsi",
             DibuatOleh = "DibuatOleh",
             DibuatTanggal = "DibuatTanggal",
             DieditOleh = "DieditOleh",
@@ -48,8 +49,7 @@
             IdPemiluDieditOleh = "IdPemiluDieditOleh",
             IdPemiluDieditTanggal = "IdPemiluDieditTanggal",
             IdPemiluSystemStatus = "IdPemiluSystemStatus",
-            IdPemiluKodeRt = "IdPemiluKodeRt",
-            tbPollingPemiluRow = "tbPollingPemiluRow"
+            IdPemiluKodeRt = "IdPemiluKodeRt"
         }
     }
 }

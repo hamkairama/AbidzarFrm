@@ -106,6 +106,13 @@ namespace AbidzarFrm.Administration.Entities
             set { Fields.Nik[this] = value; }
         }
 
+        [DisplayName("IdKtp"), Expression("jKtp.[Id]"), LookupInclude]
+        public Int32? KtpId
+        {
+            get { return Fields.KtpId[this]; }
+            set { Fields.KtpId[this] = value; }
+        }
+
         [DisplayName("KodeRt"), Expression("jKtp.[KodeRt]"), LookupInclude]
         public String KtpKodeRt
         {
@@ -152,6 +159,7 @@ namespace AbidzarFrm.Administration.Entities
             public StringField PasswordConfirm;
             public StringField Nik;
             public StringField KtpKodeRt;
+            public Int32Field KtpId;
         }
     }
 }

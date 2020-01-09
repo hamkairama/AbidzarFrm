@@ -32,6 +32,33 @@
     }
 
     @Serenity.Decorators.registerFormatter()
+    export class DataStatusFormatter implements Slick.Formatter {
+        format(ctx: Slick.FormatterContext) {
+            var result = ctx.value;
+            var classStatus = ''
+            switch (ctx.value) {
+                case "0":
+                    result = "Draft"
+                    classStatus = 'label label-warning'
+                    break;
+                case "1":
+                    result = "Request"
+                    classStatus = 'label label-default'
+                    break;
+                case "2":
+                    result = "Verified"
+                    classStatus = 'label label-success'
+                    break;
+                case "3":
+                    result = "Rejected"
+                    classStatus = 'label label-danger'
+                    break;
+            }
+            return '<span class="' + classStatus + '">' + Q.htmlEncode(result) + '</span>'
+        }
+    }
+
+    @Serenity.Decorators.registerFormatter()
     export class ProvinsiFormatter implements Slick.Formatter {
         format(ctx: Slick.FormatterContext) {
 

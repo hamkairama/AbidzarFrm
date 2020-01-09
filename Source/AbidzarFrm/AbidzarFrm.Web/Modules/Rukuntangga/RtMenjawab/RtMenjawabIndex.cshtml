@@ -29,7 +29,10 @@
                                             @*<span class="direct-chat-name pull-right">@CurrentSession.Ktp().Nama</span>*@
                                             <span class="direct-chat-timestamp pull-left" style="font-size:9px;">@item.DibuatTanggal.Value.ToString("dd MMM yyyy hh:mm")</span>
                                         </div>
-                                        <a class="" data-toggle="modal" data-target="#AbidzarFrameModalFormEdit" href="@Url.Action("Details", "Warga", new { id = item.KtpIdKtp })">
+                                        @*<a class="" data-toggle="modal" data-target="#AbidzarFrameModalFormEdit" href="@Url.Action("Details", "Warga", new { id = item.KtpIdKtp })">
+                                            <img class="direct-chat-img" src="@userImage" alt="message user image">
+                                        </a>*@
+                                        <a class="" href="#AbidzarFrameModalFormEdit" onclick="Modal('Rukuntangga/Warga/Details','@item.KtpIdKtp','#AbidzarFrameModalFormEdit')" data-toggle="modal" title="View">
                                             <img class="direct-chat-img" src="@userImage" alt="message user image">
                                         </a>
                                         @*<img class="direct-chat-img" src="@userImage" alt="message user image">*@

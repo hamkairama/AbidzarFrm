@@ -45,6 +45,16 @@
         }
     }
     @Serenity.Decorators.registerEditor([Serenity.ISetEditValue])
+    export class DataStatusEditor extends Serenity.Select2Editor<any, any> {
+        constructor(container: JQuery) {
+            super(container, null);
+            this.addOption("0", "Draft");
+            this.addOption("1", "Request");
+            this.addOption("2", "Verified");
+            this.addOption("3", "Rejected");
+        }
+    }
+    @Serenity.Decorators.registerEditor([Serenity.ISetEditValue])
     export class TypeSlideshowEditor extends Serenity.Select2Editor<any, any> {
         constructor(container: JQuery) {
             super(container, null);
@@ -106,6 +116,14 @@
             this.addOption("S1", "S1");
             this.addOption("S2", "S2");
             this.addOption("S3", "S3");
+        }
+    }
+
+    @Serenity.Decorators.registerEditor([Serenity.ISetEditValue])
+    export class SelectEditor extends Serenity.Select2Editor<any, any> {
+        constructor(container: JQuery) {
+            super(container, null);
+            this.addOption("", "Select");
         }
     }
 
@@ -221,4 +239,51 @@
         }
     }
 
+    @Serenity.Decorators.registerEditor()
+    export class TransactionDocumentCodeEditor extends Serenity.Select2Editor<Object, Object>
+    {
+        constructor(hidden: JQuery) {
+            super(hidden, null);
+            let items: Rukuntangga.TbTransactionDocumentCodeRow[] = Q.getLookup("Rukuntangga.TransactionDocumentCode").items;
+            items.forEach((x, index) => {
+                super.addItem({ id: x.DocumentCode.toString(), source: x.DocumentCode, text: x.DocumentCode, disabled: false });
+            });
+        }
+    }
+
+    @Serenity.Decorators.registerEditor()
+    export class EmailTemplateEditor extends Serenity.Select2Editor<Object, Object>
+    {
+        constructor(hidden: JQuery) {
+            super(hidden, null);
+            let items: Rukuntangga.TbEmailTemplateRow[] = Q.getLookup("Rukuntangga.EmailTemplate").items;
+            items.forEach((x, index) => {
+                super.addItem({ id: x.KodeTemplate.toString(), source: x.KodeTemplate, text: x.KodeTemplate, disabled: false });
+            });
+        }
+    }
+
+    @Serenity.Decorators.registerEditor()
+    export class AdministrationRoleEditor extends Serenity.Select2Editor<Object, Object>
+    {
+        constructor(hidden: JQuery) {
+            super(hidden, null);
+            let items: Administration.RoleRow[] = Q.getLookup("Administration.Role").items;
+            items.forEach((x, index) => {
+                super.addItem({ id: x.RoleName, source: x.RoleName, text: x.RoleName, disabled: false });
+            });
+        }
+    }
+
+    @Serenity.Decorators.registerEditor()
+    export class TransactionStatusEditor extends Serenity.Select2Editor<Object, Object>
+    {
+        constructor(hidden: JQuery) {
+            super(hidden, null);
+            let items: Rukuntangga.TbTransactionStatusRow[] = Q.getLookup("Rukuntangga.TransactionStatus").items;
+            items.forEach((x, index) => {
+                super.addItem({ id: x.Code, source: x.Internal, text: x.Internal, disabled: false });
+            });
+        }
+    }
 }

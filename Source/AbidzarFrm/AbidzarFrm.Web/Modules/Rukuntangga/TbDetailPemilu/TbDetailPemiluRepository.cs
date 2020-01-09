@@ -1,6 +1,7 @@
 ﻿
 namespace AbidzarFrm.Rukuntangga.Repositories
 {
+    using AbidzarFrm.Modules.Common.Helpers;
     using Serenity;
     using Serenity.Data;
     using Serenity.Services;

@@ -13,6 +13,8 @@
         DieditOleh?: string;
         DieditTanggal?: string;
         SystemStatus?: boolean;
+        NamaFile?: string;
+        Dokumentasi?: string;
         IdJenisKegiatanJenisKegiatan?: string;
         IdJenisKegiatanDeskripsi?: string;
         IdJenisKegiatanDibuatOleh?: string;
@@ -46,6 +48,8 @@
             DieditOleh = "DieditOleh",
             DieditTanggal = "DieditTanggal",
             SystemStatus = "SystemStatus",
+            NamaFile = "NamaFile",
+            Dokumentasi = "Dokumentasi",
             IdJenisKegiatanJenisKegiatan = "IdJenisKegiatanJenisKegiatan",
             IdJenisKegiatanDeskripsi = "IdJenisKegiatanDeskripsi",
             IdJenisKegiatanDibuatOleh = "IdJenisKegiatanDibuatOleh",

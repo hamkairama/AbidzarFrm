@@ -3,14 +3,15 @@
         Kk: Serenity.StringEditor;
         Nik: Serenity.StringEditor;
         Nama: Serenity.StringEditor;
+        DataStatus: Common.Editor.DataStatusEditor;
         TempatLahir: Serenity.StringEditor;
         TanggalLahir: Serenity.DateEditor;
         Agama: Common.Editor.AgamaEditor;
         JenisKelamin: Common.Editor.JenisKelaminEditor;
         IdProvinsi: Serenity.LookupEditor;
-        IdKota: Serenity.LookupEditor;
-        IdKecamatan: Serenity.LookupEditor;
-        IdKelurahan: Serenity.LookupEditor;
+        IdKota: Common.Editor.SelectEditor;
+        IdKecamatan: Common.Editor.SelectEditor;
+        IdKelurahan: Common.Editor.SelectEditor;
         Alamat: Serenity.TextAreaEditor;
         Rt: Common.Editor.Sequens3Editor;
         Rw: Common.Editor.Sequens3Editor;
@@ -25,10 +26,14 @@
         SignatureKtp: Serenity.ImageUploadEditor;
         NamaAyah: Serenity.StringEditor;
         NamaIbu: Serenity.StringEditor;
-        IdKelurahanTinggal: Serenity.IntegerEditor;
+        IdProvinsiTinggal: Serenity.LookupEditor;
+        IdKotaTinggal: Common.Editor.SelectEditor;
+        IdKecamatanTinggal: Common.Editor.SelectEditor;
+        IdKelurahanTinggal: Common.Editor.SelectEditor;
         AlamatTinggal: Serenity.StringEditor;
         RtTinggal: Common.Editor.Sequens3Editor;
         RwTinggal: Common.Editor.Sequens3Editor;
+        PhotoRumah: Serenity.ImageUploadEditor;
         KodeRt: Serenity.StringEditor;
         Attachment: Serenity.MultipleImageUploadEditor;
     }
@@ -45,53 +50,59 @@
 
                 var s = Serenity;
                 var w0 = s.StringEditor;
-                var w1 = s.DateEditor;
-                var w2 = Common.Editor.AgamaEditor;
-                var w3 = Common.Editor.JenisKelaminEditor;
-                var w4 = s.LookupEditor;
-                var w5 = s.TextAreaEditor;
-                var w6 = Common.Editor.Sequens3Editor;
-                var w7 = Common.Editor.StatusEditor;
-                var w8 = Common.Editor.WargaNegaraEditor;
-                var w9 = Common.Editor.PekerjaanEditor;
-                var w10 = Common.Editor.GolonganDarahEditor;
-                var w11 = Common.Editor.PendidikanEditor;
-                var w12 = s.ImageUploadEditor;
-                var w13 = s.IntegerEditor;
-                var w14 = s.MultipleImageUploadEditor;
+                var w1 = Common.Editor.DataStatusEditor;
+                var w2 = s.DateEditor;
+                var w3 = Common.Editor.AgamaEditor;
+                var w4 = Common.Editor.JenisKelaminEditor;
+                var w5 = s.LookupEditor;
+                var w6 = Common.Editor.SelectEditor;
+                var w7 = s.TextAreaEditor;
+                var w8 = Common.Editor.Sequens3Editor;
+                var w9 = Common.Editor.StatusEditor;
+                var w10 = Common.Editor.WargaNegaraEditor;
+                var w11 = Common.Editor.PekerjaanEditor;
+                var w12 = Common.Editor.GolonganDarahEditor;
+                var w13 = Common.Editor.PendidikanEditor;
+                var w14 = s.ImageUploadEditor;
+                var w15 = s.MultipleImageUploadEditor;
 
                 Q.initFormType(TbKtpForm, [
                     'Kk', w0,
                     'Nik', w0,
                     'Nama', w0,
+                    'DataStatus', w1,
                     'TempatLahir', w0,
-                    'TanggalLahir', w1,
-                    'Agama', w2,
-                    'JenisKelamin', w3,
-                    'IdProvinsi', w4,
-                    'IdKota', w4,
-                    'IdKecamatan', w4,
-                    'IdKelurahan', w4,
-                    'Alamat', w5,
-                    'Rt', w6,
-                    'Rw', w6,
+                    'TanggalLahir', w2,
+                    'Agama', w3,
+                    'JenisKelamin', w4,
+                    'IdProvinsi', w5,
+                    'IdKota', w6,
+                    'IdKecamatan', w6,
+                    'IdKelurahan', w6,
+                    'Alamat', w7,
+                    'Rt', w8,
+                    'Rw', w8,
                     'KodePos', w0,
-                    'StatusPerkawinan', w7,
-                    'TanggalPerkawinan', w1,
-                    'Kewarganegaraan', w8,
-                    'JenisPekerjaan', w9,
-                    'GolonganDarah', w10,
-                    'Pendidikan', w11,
-                    'PhotoKtp', w12,
-                    'SignatureKtp', w12,
+                    'StatusPerkawinan', w9,
+                    'TanggalPerkawinan', w2,
+                    'Kewarganegaraan', w10,
+                    'JenisPekerjaan', w11,
+                    'GolonganDarah', w12,
+                    'Pendidikan', w13,
+                    'PhotoKtp', w14,
+                    'SignatureKtp', w14,
                     'NamaAyah', w0,
                     'NamaIbu', w0,
-                    'IdKelurahanTinggal', w13,
+                    'IdProvinsiTinggal', w5,
+                    'IdKotaTinggal', w6,
+                    'IdKecamatanTinggal', w6,
+                    'IdKelurahanTinggal', w6,
                     'AlamatTinggal', w0,
-                    'RtTinggal', w6,
-                    'RwTinggal', w6,
+                    'RtTinggal', w8,
+                    'RwTinggal', w8,
+                    'PhotoRumah', w14,
                     'KodeRt', w0,
-                    'Attachment', w14
+                    'Attachment', w15
                 ]);
             }
         }

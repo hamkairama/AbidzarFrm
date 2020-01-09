@@ -3,6 +3,7 @@ namespace AbidzarFrm.Rukuntangga {
 
     @Serenity.Decorators.registerClass()
     @Serenity.Decorators.maximizable()
+    @Serenity.Decorators.panel()
     export class TbDetailJenisInformasiDialog extends Common.GridEditorDialog<TbDetailJenisInformasiRow> {
         protected getFormKey() { return TbDetailJenisInformasiForm.formKey; }
         //protected getIdProperty() { return TbDetailJenisInformasiRow.idProperty; }

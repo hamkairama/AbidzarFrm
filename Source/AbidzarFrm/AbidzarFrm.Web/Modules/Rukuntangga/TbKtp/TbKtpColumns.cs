@@ -9,6 +9,7 @@ namespace AbidzarFrm.Rukuntangga.Columns
     using System.Collections.Generic;
     using System.IO;
     using AbidzarFrm.Common.Editor;
+    using AbidzarFrm.Common.Formatter;
 
     [ColumnsScript("Rukuntangga.TbKtp")]
     [BasedOnRow(typeof(Entities.TbKtpRow), CheckNames = true)]
@@ -16,6 +17,8 @@ namespace AbidzarFrm.Rukuntangga.Columns
     {
         [EditLink, DisplayName("Db.Shared.RecordId"), AlignRight]
         public Int32 Id { get; set; }
+        [DataStatusFormatter]
+        public Int32 DataStatus { get; set; }
         [EditLink]
         public String Nik { get; set; }
         public String Nama { get; set; }

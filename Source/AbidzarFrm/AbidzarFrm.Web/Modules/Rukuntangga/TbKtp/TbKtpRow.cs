@@ -1,6 +1,7 @@
 ﻿
 namespace AbidzarFrm.Rukuntangga.Entities
 {
+    using AbidzarFrm.Common.Editor;
     using AbidzarFrm.Common.Lookup;
     using Serenity;
     using Serenity.ComponentModel;
@@ -17,7 +18,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
     [InsertPermission("Master", "Ktp", "Insert")]
     [DeletePermission("Master", "Ktp", "Delete")]
     [LookupScript("Rukuntangga.Ktp", Permission = "*")]
-    public sealed class TbKtpRow : Row, IIdRow, INameRow
+    public class TbKtpRow : Row, IIdRow, INameRow
     {
         [DisplayName("Id"), Identity, LookupInclude]
         public Int32? Id
@@ -74,21 +75,24 @@ namespace AbidzarFrm.Rukuntangga.Entities
             set { Fields.IdProvinsi[this] = value; }
         }
 
-        [DisplayName("Kota"), LookupEditor(typeof(KotaLookup), CascadeFrom = "IdProvinsi", CascadeField = "IdProvinsi")]
+        //[DisplayName("Kota"), LookupEditor(typeof(KotaLookup), CascadeFrom = "IdProvinsi", CascadeField = "IdProvinsi")]
+        [DisplayName("Kota"), SelectEditor]
         public Int32? IdKota
         {
             get { return Fields.IdKota[this]; }
             set { Fields.IdKota[this] = value; }
         }
 
-        [DisplayName("Kecamatan"), LookupEditor(typeof(KecamatanLookup), CascadeFrom = "IdKota", CascadeField = "IdKota")]
+        //[DisplayName("Kecamatan"), LookupEditor(typeof(KecamatanLookup), CascadeFrom = "IdKota", CascadeField = "IdKota")]
+        [DisplayName("Kecamatan"), SelectEditor]
         public Int32? IdKecamatan
         {
             get { return Fields.IdKecamatan[this]; }
             set { Fields.IdKecamatan[this] = value; }
         }
 
-        [DisplayName("Kelurahan"), NotNull, LookupEditor(typeof(KelurahanLookup), CascadeFrom = "IdKecamatan", CascadeField = "IdKecamatan", FilterField = "IdKecamatan")]
+        //[DisplayName("Kelurahan"), NotNull, LookupEditor(typeof(KelurahanLookup), CascadeFrom = "IdKecamatan", CascadeField = "IdKecamatan", FilterField = "IdKecamatan")]
+        [DisplayName("Kelurahan"), SelectEditor]
         //[DisplayName("Id Kelurahan"), NotNull, ForeignKey("[dbo].[TbKelurahan]", "Id"), LeftJoin("jIdKelurahan"), TextualField("IdKelurahanKodeKelurahan")]
         public Int32? IdKelurahan
         {
@@ -175,6 +179,14 @@ namespace AbidzarFrm.Rukuntangga.Entities
             set { Fields.SignatureKtp[this] = value; }
         }
 
+        [DisplayName("Photo Rumah")]
+        [ImageUploadEditor(FilenameFormat = "PhotoRumah/~", CopyToHistory = true)]
+        public String PhotoRumah
+        {
+            get { return Fields.PhotoRumah[this]; }
+            set { Fields.PhotoRumah[this] = value; }
+        }
+
         [DisplayName("Kode Pos"), Size(5), NotNull]
         public String KodePos
         {
@@ -209,8 +221,32 @@ namespace AbidzarFrm.Rukuntangga.Entities
             get { return Fields.AlamatTinggal[this]; }
             set { Fields.AlamatTinggal[this] = value; }
         }
+        [DisplayName("Provinsi"), LookupEditor(typeof(ProvinsiLookup))]
+        public Int32? IdProvinsiTinggal
+        {
+            get { return Fields.IdProvinsiTinggal[this]; }
+            set { Fields.IdProvinsiTinggal[this] = value; }
+        }
 
-        [DisplayName("Id Kelurahan Tinggal")]
+        //[DisplayName("Kota"), LookupEditor(typeof(KotaLookup), CascadeFrom = "IdProvinsi", CascadeField = "IdProvinsi")]
+        [DisplayName("Kota"), SelectEditor]
+        public Int32? IdKotaTinggal
+        {
+            get { return Fields.IdKotaTinggal[this]; }
+            set { Fields.IdKotaTinggal[this] = value; }
+        }
+
+        //[DisplayName("Kecamatan"), LookupEditor(typeof(KecamatanLookup), CascadeFrom = "IdKota", CascadeField = "IdKota")]
+        [DisplayName("Kecamatan"), SelectEditor]
+        public Int32? IdKecamatanTinggal
+        {
+            get { return Fields.IdKecamatanTinggal[this]; }
+            set { Fields.IdKecamatanTinggal[this] = value; }
+        }
+
+        //[DisplayName("Kelurahan"), NotNull, LookupEditor(typeof(KelurahanLookup), CascadeFrom = "IdKecamatan", CascadeField = "IdKecamatan", FilterField = "IdKecamatan")]
+        [DisplayName("Kelurahan"), SelectEditor]
+        //[DisplayName("Id Kelurahan"), NotNull, ForeignKey("[dbo].[TbKelurahan]", "Id"), LeftJoin("jIdKelurahan"), TextualField("IdKelurahanKodeKelurahan")]
         public Int32? IdKelurahanTinggal
         {
             get { return Fields.IdKelurahanTinggal[this]; }
@@ -236,6 +272,13 @@ namespace AbidzarFrm.Rukuntangga.Entities
         {
             get { return Fields.Attachment[this]; }
             set { Fields.Attachment[this] = value; }
+        }
+
+        [DisplayName("Data Status")]
+        public Int32? DataStatus
+        {
+            get { return Fields.DataStatus[this]; }
+            set { Fields.DataStatus[this] = value; }
         }
 
         [DisplayName("Dibuat Oleh"), Size(20), NotNull]
@@ -377,11 +420,15 @@ namespace AbidzarFrm.Rukuntangga.Entities
             public StringField Pendidikan;
             public StringField PhotoKtp;
             public StringField SignatureKtp;
+            public StringField PhotoRumah;
             public StringField KodePos;
             public StringField NamaAyah;
             public StringField NamaIbu;
             public StringField Kk;
             public StringField AlamatTinggal;
+            public Int32Field IdKecamatanTinggal;
+            public Int32Field IdKotaTinggal;
+            public Int32Field IdProvinsiTinggal;
             public Int32Field IdKelurahanTinggal;
             public StringField RtTinggal;
             public StringField RwTinggal;
@@ -392,6 +439,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
             public DateTimeField DieditTanggal;
             public BooleanField SystemStatus;
             public StringField KodeRt;
+            public Int32Field DataStatus;
 
             //public Int32Field IdKelurahanIdKecamatan;
             //public StringField IdKelurahanKodeKelurahan;

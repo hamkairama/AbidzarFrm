@@ -13,6 +13,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
     [DisplayName("Email Template"), InstanceName("Email Template")]
     [ReadPermission("Security:EmailTemplate")]
     [ModifyPermission("Security:EmailTemplate")]
+    [LookupScript("Rukuntangga.EmailTemplate", Permission = "*")]
     public sealed class TbEmailTemplateRow : Row, IIdRow, INameRow
     {
         [DisplayName("Id"), Identity]

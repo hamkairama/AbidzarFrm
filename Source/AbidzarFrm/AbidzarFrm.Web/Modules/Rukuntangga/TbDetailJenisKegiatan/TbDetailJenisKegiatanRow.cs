@@ -38,6 +38,22 @@ namespace AbidzarFrm.Rukuntangga.Entities
             set { Fields.NamaKegiatan[this] = value; }
         }
 
+        [DisplayName("Nama File"), Size(100)]
+        [ImageUploadEditor(FilenameFormat = "DetailJenisKegiatan/~", CopyToHistory = true)]
+        public String NamaFile
+        {
+            get { return Fields.NamaFile[this]; }
+            set { Fields.NamaFile[this] = value; }
+        }
+
+        [DisplayName("Dokumentasi")]
+        [MultipleFileUploadEditor(FilenameFormat = "DetailJenisKegiatanDokumentasi/~", CopyToHistory = true)]
+        public String Dokumentasi
+        {
+            get { return Fields.Dokumentasi[this]; }
+            set { Fields.Dokumentasi[this] = value; }
+        }
+
         [DisplayName("Lokasi"), Size(100), NotNull]
         public String Lokasi
         {
@@ -196,6 +212,8 @@ namespace AbidzarFrm.Rukuntangga.Entities
             public StringField DieditOleh;
             public DateTimeField DieditTanggal;
             public BooleanField SystemStatus;
+            public StringField NamaFile;
+            public StringField Dokumentasi;
 
             public StringField IdJenisKegiatanJenisKegiatan;
             public StringField IdJenisKegiatanDeskripsi;

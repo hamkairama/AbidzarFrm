@@ -1,0 +1,187 @@
+﻿@model List<AbidzarFrm.Rukuntangga.Entities.TbPemiluRow>
+@using AbidzarFrm.Modules.Common.Helpers
+@{
+    ViewData["Title"] = "Questioner";
+}
+
+@section Head {
+    <script src="~/Scripts/adminlte/demo.js"></script>
+
+    <style>
+        .overflow {
+            height: 50px;
+            overflow: hidden;
+            text-overflow: "---";
+        }
+    </style>
+}
+
+@{
+    int index = 0;
+    string indexActive = "";
+    List<AbidzarFrm.Rukuntangga.Entities.TbSlideShowRow> slideshowList = CurrentSession.Slideshow();
+    <div class="row">
+        <div class="col-md-9">
+            <div class="row">
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        var img = (item.FileName == null || string.IsNullOrEmpty(item.FileName)) ? "../../Content/adminlte/img/avatar0.png" : VirtualPathUtility.ToAbsolute("~/upload/") + item.FileName;
+
+                        <div class="col-md-3 col-md-3 col-xs-6">
+                            <div class="box box-primary">
+                                <a href="@Url.Action("Detail", "Questioner", new { id = @item.Id })" title="@item.Judul">
+                                    <div class="box-header with-border overflow" style="color:dodgerblue; text-shadow: 1px 1px 0 rgba(0, 0, 0, .2)">
+                                        <i class="fa fa-bullhorn margin-r-5">
+                                        </i>@item.Judul
+                                        <div class="box-tools pull-right">
+                                            @*<span class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></span>*@
+                                        </div>
+                                    </div>
+                                    <div class="box-body" style="height:150px;background-image: url(@img);background-repeat:no-repeat; background-size: 100% 100%;">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="box box-danger">
+                <div class="box-body">
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            @foreach (var item in slideshowList)
+                            {
+                                var img = (item.FileName == null || string.IsNullOrEmpty(item.FileName)) ? "../../Content/adminlte/img/avatar0.png" : VirtualPathUtility.ToAbsolute("~/upload/") + item.FileName;
+                                indexActive = "";
+                                if (index == 0)
+                                {
+                                    indexActive = "active";
+                                }
+                                <div class="item @indexActive">
+                                    <img style="display:block;margin:auto;width:100%;height:150px;" src="@img">
+                                    <div class="carousel-caption">
+                                        @item.Deskripsi
+                                    </div>
+                                </div>
+                                index++;
+                            }
+                        </div>
+                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                            <span class="fa fa-angle-left"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                            <span class="fa fa-angle-right"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<script>
+    function GetQuestioner(idx) {
+        var path = location.origin + "/Rukuntangga/Questioner/GetQuestioner/";
+
+        $.ajax({
+            data: {
+                id: idx,
+            },
+            cache: false,
+            url: path,
+            //traditional: true,
+            //type: 'POST',
+            //dataType: "json",
+            async: true,
+            success: function (data) {
+                $("#divQuestioner").html(data);
+            },
+            error: function (jqXHR, textStatus, errorMessage) {
+                console.log(errorMessage);
+            }
+        });
+
+    }
+    function GetTerbaru() {
+        var path = location.origin + "/Rukuntangga/Questioner/Terbaru/";
+
+        $.ajax({
+            data: {},
+            cache: false,
+            url: path,
+            //traditional: true,
+            //type: 'POST',
+            //dataType: "json",
+            async: true,
+            success: function (data) {
+                $("#divQuestioner").html(data);
+            },
+            error: function (jqXHR, textStatus, errorMessage) {
+                console.log(errorMessage);
+            }
+        });
+
+    }
+    function GetDetail(idx) {
+        var path = location.origin + "/Rukuntangga/Questioner/Detail/";
+
+        $.ajax({
+            data: {
+                id: idx
+            },
+            cache: false,
+            url: path,
+            //traditional: true,
+            //type: 'POST',
+            //dataType: "json",
+            async: true,
+            success: function (data) {
+                $("#divQuestioner").html(data);
+            },
+            error: function (jqXHR, textStatus, errorMessage) {
+                console.log(errorMessage);
+            }
+        });
+
+    }
+
+    function CariQuestioner() {
+        var path = location.origin + "/Rukuntangga/Questioner/CariQuestioner/";
+        var txtWildCard = $("#txtInput").val()
+
+        $.ajax({
+            data: {
+                wildCard: txtWildCard
+            },
+            cache: false,
+            url: path,
+            //traditional: true,
+            //type: 'POST',
+            //dataType: "json",
+            async: true,
+            success: function (data) {
+                $("#divQuestioner").html(data);
+            },
+            error: function (jqXHR, textStatus, errorMessage) {
+                console.log(errorMessage);
+            }
+        });
+
+    }
+    function CariQuestionerKey(e) {
+        if (e.keyCode == 13) {
+            CariQuestioner();
+        }
+    }
+
+</script>

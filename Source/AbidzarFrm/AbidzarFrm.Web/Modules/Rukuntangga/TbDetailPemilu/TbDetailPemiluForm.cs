@@ -17,9 +17,11 @@ namespace AbidzarFrm.Rukuntangga.Forms
         public String Kandidat { get; set; }
         public String FileName { get; set; }
 
+        [HtmlContentEditor(Rows = 10)]
+        public String Deskripsi { get; set; }
 
-        [Category("Polling Pemilu"), Collapsible(true, Collapsed = false)]
-        [TbPollingPemiluEditor, DisplayName("Detail")]
-        public List<Entities.TbPollingPemiluRow> tbPollingPemiluRow { get; set; }
+        //[Category("Polling Pemilu"), Collapsible(true, Collapsed = false)]
+        //[TbPollingPemiluEditor, DisplayName("Detail")]
+        //public List<Entities.TbPollingPemiluRow> tbPollingPemiluRow { get; set; }
     }
 }

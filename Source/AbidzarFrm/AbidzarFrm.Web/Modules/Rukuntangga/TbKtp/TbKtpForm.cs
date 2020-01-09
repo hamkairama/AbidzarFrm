@@ -20,7 +20,10 @@ namespace AbidzarFrm.Rukuntangga.Forms
         public String Kk { get; set; }
         [HalfWidth]
         public String Nik { get; set; }
+        [HalfWidth]
         public String Nama { get; set; }
+        [HalfWidth, DataStatusEditor]
+        public Int32 DataStatus { get; set; }
         [HalfWidth]
         public String TempatLahir { get; set; }
         [HalfWidth]
@@ -31,13 +34,13 @@ namespace AbidzarFrm.Rukuntangga.Forms
         [HalfWidth]
         [JenisKelaminEditor]
         public String JenisKelamin { get; set; }
-        [HalfWidth]
+        [HalfWidth, Required(true)]
         public Int32 IdProvinsi { get; set; }
-        [HalfWidth]
+        [HalfWidth, Required(true)]
         public Int32 IdKota { get; set; }
-        [HalfWidth]
+        [HalfWidth, Required(true)]
         public Int32 IdKecamatan { get; set; }
-        [HalfWidth]
+        [HalfWidth, Required(true)]
         public Int32 IdKelurahan { get; set; }
         [TextAreaEditor(Rows = 3)]
         public String Alamat { get; set; }
@@ -56,12 +59,15 @@ namespace AbidzarFrm.Rukuntangga.Forms
         public DateTime TanggalPerkawinan { get; set; }
         [MediumQuarterWidth]
         [WargaNegaraEditor]
+        [DisplayName("Warga")]
         public String Kewarganegaraan { get; set; }
         [MediumQuarterWidth]
         [PekerjaanEditor]
+        [DisplayName("Pekerjaan")]
         public String JenisPekerjaan { get; set; }
         [MediumQuarterWidth]
         [GolonganDarahEditor]
+        [DisplayName("Gol. Darah")]
         public String GolonganDarah { get; set; }
         [MediumQuarterWidth]
         [PendidikanEditor]
@@ -75,8 +81,13 @@ namespace AbidzarFrm.Rukuntangga.Forms
         [HalfWidth]
         public String NamaIbu { get; set; }
         [Tab("Alamat Tinggal")]
-        [HalfWidth]
-        [DisplayName("Kelurahan")]
+        [HalfWidth, Required(true)]
+        public Int32 IdProvinsiTinggal { get; set; }
+        [HalfWidth, Required(true)]
+        public Int32 IdKotaTinggal { get; set; }
+        [HalfWidth, Required(true)]
+        public Int32 IdKecamatanTinggal { get; set; }
+        [HalfWidth, Required(true)]
         public Int32 IdKelurahanTinggal { get; set; }
         [HalfWidth]
         [DisplayName("Alamat")]
@@ -87,6 +98,7 @@ namespace AbidzarFrm.Rukuntangga.Forms
         [HalfWidth, Sequens3Editor]
         [DisplayName("RW")]
         public String RwTinggal { get; set; }
+        public String PhotoRumah { get; set; }
         [Category("Kode RT ")]
         public String KodeRt { get; set; }
         [Tab("Dokumen")]

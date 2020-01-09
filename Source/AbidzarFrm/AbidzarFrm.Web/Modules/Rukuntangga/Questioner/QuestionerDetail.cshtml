@@ -1,0 +1,137 @@
+﻿@model List<AbidzarFrm.Rukuntangga.Entities.TbDetailPemiluRow>
+@using AbidzarFrm.Modules.Common.Helpers
+
+@section Head {
+    <link href="~/Content/sweetalert/sweetalert.css" rel="stylesheet" />
+
+    <style>
+        .overflow {
+            height: 50px;
+            overflow: hidden;
+            text-overflow: "---";
+        }
+    </style>}
+
+@{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        var img = (item.FileName == null || string.IsNullOrEmpty(item.FileName)) ? "../../Content/adminlte/img/avatar0.png" : VirtualPathUtility.ToAbsolute("~/upload/") + item.FileName;
+
+                        <div class="col-md-3 col-md-3 col-xs-6">
+                            <div class="box box-warning">
+                                <div class="box-header with-border overflow" style="color:orange; text-shadow: 1px 1px 0 rgba(0, 0, 0, .2);text-align:center">
+                                    <h4>@item.Kandidat</h4>
+                                    <div class="box-tools pull-right">
+                                        @*<span class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></span>*@
+                                    </div>
+                                </div>
+
+                                <a class="" href="#AbidzarFrameModalFormEdit" onclick="Modal('Rukuntangga/Questioner/DetailPemilu','@item.Id','#AbidzarFrameModalFormEdit')" data-toggle="modal" title="View">
+                                    @*<div class="box-body" style="height:200px; max-height: 200px; max-width: 200px;  display: block;margin-left: auto; margin-right: auto;width: 100%; background-image: url(@img);background-repeat:no-repeat; background-size: 100% 100%;">
+                                    </div>*@
+                                    <div class="box-body" style="height:150px;background-image: url(@img);background-repeat:no-repeat; background-size: 100% 100%;">
+                                    </div>
+                                </a>
+
+                                <div class="box-footer" style="text-align:center">
+
+                                    @*<a class="btn btn-app" href="javascript:pilih(@item.IdPemilu, @item.Id)">
+                                        <i class="fa fa-edit"></i>
+                                    </a>*@
+                                    <button class="btn btn-block btn-primary" onclick="javascript:pilih(@item.IdPemilu, @item.Id)">Pilih</button>
+
+                                    @*<a class="btn btn-app">
+                                        <i class="fa fa-bar-chart"></i>
+                                    </a>*@
+
+                                    @*<a href="javascript:GetBerita(@item.IdPemilu)"><h7 class="text-muted">@item.NoUrut</h7></a>*@
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
+}
+
+<script src="~/Content/sweetalert/sweetalert.min.js"></script>
+<script src="~/Content/sweetalert/ui-sweetalert.min.js"></script>
+<script>
+    function pilih(idPemilux, idDetailPemilux) {
+        swal({
+            title: "Anda yakin memilih ini ?",
+            text: "Apa yang ada anda pilih tidak bisa dibatalkan",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Pilih",
+            cancelButtonText: "Tutup",
+            closeOnConfirm: false,
+            closeOnCancel: true
+        },
+            function (isConfirm) {
+                if (isConfirm) {
+                    votting(idPemilux, idDetailPemilux);
+                }
+            });
+    }
+    function votting(idPemilux, idDetailPemilux) {
+        var rs = $.xResponse(fullOrigin + '/Rukuntangga/Questioner/IsVoted//', { idPemilu: idPemilux });
+        if (rs) {
+            swal("Ooppss", "Maaf, Anda sudah pernah memilih", "error");
+        } else {
+            Vote(idDetailPemilux);
+        }
+    }
+
+    function Vote(idDetailPemilux) {
+        var path = location.origin + "/Rukuntangga/Questioner/Vote";
+
+        $.ajax({
+            data: { idDetailPemilu: idDetailPemilux },
+            cache: false,
+            url: path,
+            //traditional: true,
+            //type: 'POST',
+            //dataType: "json",
+            async: true,
+            success: function (data) {
+
+                swal("Sukses!", "Terimakasih sudah melakukan vote", "success");
+            },
+            error: function (jqXHR, textStatus, errorMessage) {
+                console.log(errorMessage);
+            }
+        });
+
+    }
+    //function IsVoted(idx) {
+    //    var path = location.origin + "/Rukuntangga/Questioner/IsVoted/";
+
+    //    $.ajax({
+    //        data: { idDetailPemilu: idx },
+    //        cache: false,
+    //        url: path,
+    //        //traditional: true,
+    //        //type: 'POST',
+    //        //dataType: "json",
+    //        async: true,
+    //        success: function (data) {
+    //            swal("Sukses!", "Terimakasih sudah melakukan vote", "success");
+    //        },
+    //        error: function (jqXHR, textStatus, errorMessage) {
+    //            console.log(errorMessage);
+    //        }
+    //    });
+
+    //}
+
+
+</script>

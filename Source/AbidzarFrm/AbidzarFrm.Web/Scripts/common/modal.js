@@ -1,31 +1,43 @@
-﻿$(document).ready(function () {
-    $('.modal-dialog').draggable();
-    $('#AbidzarFrameModalFormEdit').on('show.bs.modal', function (e) {
-        if (e.target.id == 'AbidzarFrameModalFormEdit') {
-            var data = $(e.relatedTarget).data();
-            $.ajax({
-                cache: false,
-                async: false,
-                type: "POST",
-                traditional: false,
-                url: data.url,
-                contentType: "application/json; charset=utf-8",
-                data: JSON.stringify({
-                    id: data.itemId
-                }),
-                datatype: "application/json",
-                success: function (ret) {
-                    $('#AbidzarFrameModalFormContent').html(ret);
-                },
-                error: function () {
-                    $(this).modal('hide');
-                    alertError("Failed to open form, please try again");
-                }
-            })                
+﻿var fullOrigin = location.origin + "/";
 
-                //$('.description', this).text(data.itemDescription);
-                //$('#btnSaveForm', this).data('urlAction', data.urlAction);
+
+$(document).ready(function () {
+    $('.modal-dialog').draggable();
+})
+
+function Modal(url, idx, form) {
+    var link = UrlWithoutParam(fullOrigin) + url
+
+    $.ajax({
+        url: link,
+        type: 'POST',
+        dataType: 'json',
+        data: { id: idx },
+        dataType: "html",
+        success: function (result, status, xhr) {
+            $(form).html(result);
+        },
+        error: function (xhr, status, error) {
+            $(form).html("Result: " + status + " " + error + " " + xhr.status + " " + xhr.statusText)
         }
     });
+}
 
-})
+function UrlWithoutParam(route) {
+    var fields = route.split('?');
+    return fields[0];
+}
+
+function ModalRouterWithParam(url, id, form) {
+    $.get(UrlWithoutParam(fullOrigin) + url + id, { "_": $.now() }, function (data) {
+        $(form).html(data).dialog("open");
+        $(form).html(data).dialog({ draggable: false }).parent().draggable();
+    });
+}
+
+function ModalPop(url, id, form) {
+    $.get(url + id, { "_": $.now() }, function (data) {
+        $(form).html(data).dialog("open");
+        $(form).html(data).dialog({ draggable: false }).parent().draggable();
+    });
+}

@@ -3,16 +3,19 @@ using MyPages = AbidzarFrm.Rukuntangga.Pages;
 
 [assembly: NavigationMenu(int.MaxValue, "Warga", icon: "fa-users")]
 [assembly: NavigationLink(int.MaxValue, "Warga/Cari", "~/Rukuntangga/Warga/Index", permission: "", icon: "fa-search")]
+[assembly: NavigationLink(int.MaxValue, "Warga/Registrasi", typeof(MyPages.RukuntanggaDialogController), action: "Registrasi")]
+
 
 [assembly: NavigationLink(int.MaxValue, "Berita", "~/Rukuntangga/Berita/Index", permission: "", icon: "fa-book")]
+
 
 [assembly: NavigationLink(int.MaxValue, "Tanya RT", "~/Rukuntangga/RtMenjawab/Index", permission: "", icon: "fa-comments")]
 
 [assembly: NavigationLink(int.MaxValue, "KTP Ku", "~/Rukuntangga/Profile/Index", permission: "", icon: "fa-user")]
 
-[assembly: NavigationLink(int.MaxValue, "Galery", "~/Rukuntangga/Profile/Index", permission: "", icon: "fa-user")]
+[assembly: NavigationLink(int.MaxValue, "Galery", "~/Rukuntangga/Galery/Index", permission: "", icon: "fa-list-ul")]
 
-[assembly: NavigationLink(int.MaxValue, "Aktifitas", "~/Rukuntangga/Profile/Index", permission: "", icon: "fa-user")]
+[assembly: NavigationLink(int.MaxValue, "Aktifitas", "~/Rukuntangga/Aktifitas/Index", permission: "", icon: "fa-list-ul")]
 
 [assembly: NavigationMenu(int.MaxValue, "Informasi", icon: "fa-info-circle")]
 [assembly: NavigationLink(int.MaxValue, "Informasi/Jenis Informasi", typeof(MyPages.TbJenisInformasiController), icon: "fa-info-circle")]
@@ -39,11 +42,13 @@ using MyPages = AbidzarFrm.Rukuntangga.Pages;
 [assembly: NavigationLink(int.MaxValue, "Master/Tanya Rt", typeof(MyPages.TbTanyaRtController), icon: "fa-envelope-o")]
 [assembly: NavigationLink(int.MaxValue, "Master/Tanya Rt Detail", typeof(MyPages.TbTanyaRtDetailController), icon: " fa-comments")]
 [assembly: NavigationLink(int.MaxValue, "Master/Testimoni", typeof(MyPages.TbTestimoniController), icon: "fa-pencil-square-o")]
+[assembly: NavigationLink(int.MaxValue, "Master/Galery", typeof(MyPages.TbGaleryController), icon: null)]
 
 [assembly: NavigationMenu(int.MaxValue, "Questioner", icon: "fa-caret-square-o-right")]
-[assembly: NavigationLink(int.MaxValue, "Questioner/Pemilu", typeof(MyPages.TbPemiluController), icon: "fa-caret-square-o-right")]
-[assembly: NavigationLink(int.MaxValue, "Questioner/Detail Pemilu", typeof(MyPages.TbDetailPemiluController), icon: "fa-chevron-circle-right")]
-[assembly: NavigationLink(int.MaxValue, "Questioner/Polling Pemilu", typeof(MyPages.TbPollingPemiluController), icon: "fa-check-square-o")]
+[assembly: NavigationLink(int.MaxValue, "Questioner/List", typeof(MyPages.TbPemiluController), icon: "fa-caret-square-o-right")]
+//[assembly: NavigationLink(int.MaxValue, "Questioner/Detail Pemilu", typeof(MyPages.TbDetailPemiluController), icon: "fa-chevron-circle-right")]
+//[assembly: NavigationLink(int.MaxValue, "Questioner/Polling Pemilu", typeof(MyPages.TbPollingPemiluController), icon: "fa-check-square-o")]
+[assembly: NavigationLink(int.MaxValue, "Questioner/Polling", "~/Rukuntangga/Questioner/Index", permission: "", icon: "fa-check-square-o")]
 
 [assembly: NavigationMenu(int.MaxValue, "Security", icon: "fa-gears")]
 [assembly: NavigationLink(int.MaxValue, "Security/Autentikasi Token", typeof(MyPages.TbAutentikasiTokenController), icon: "fa-key")]
@@ -66,3 +71,7 @@ using MyPages = AbidzarFrm.Rukuntangga.Pages;
 //[assembly: NavigationLink(int.MaxValue, "Tb Error Logs", typeof(MyPages.TbErrorLogsController), icon: null)]
 //[assembly: NavigationLink(int.MaxValue, "Informasi/Jenis Informasi", typeof(MyPages.TbDetailJenisInformasiController), icon: null)]
 //[assembly: NavigationLink(int.MaxValue, "Kegiatan/Detail Jenis Kegiatan", typeof(MyPages.TbDetailJenisKegiatanController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "Security/Transaction Document Code", typeof(MyPages.TbTransactionDocumentCodeController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "Security/Transaction Flow", typeof(MyPages.TbTransactionFlowController), icon: null)]
+//[assembly: NavigationLink(int.MaxValue, "Security/Transaction Flow Detail", typeof(MyPages.TbTransactionFlowDetailController), icon: null)]
+[assembly: NavigationLink(int.MaxValue, "Security/Transaction Status", typeof(MyPages.TbTransactionStatusController), icon: null)]

@@ -3,7 +3,7 @@
         NoUrut: Serenity.IntegerEditor;
         Kandidat: Serenity.StringEditor;
         FileName: Serenity.ImageUploadEditor;
-        tbPollingPemiluRow: TbPollingPemiluEditor;
+        Deskripsi: Serenity.HtmlContentEditor;
     }
 
     export class TbDetailPemiluForm extends Serenity.PrefixedContext {
@@ -20,13 +20,13 @@
                 var w0 = s.IntegerEditor;
                 var w1 = s.StringEditor;
                 var w2 = s.ImageUploadEditor;
-                var w3 = TbPollingPemiluEditor;
+                var w3 = s.HtmlContentEditor;
 
                 Q.initFormType(TbDetailPemiluForm, [
                     'NoUrut', w0,
                     'Kandidat', w1,
                     'FileName', w2,
-                    'tbPollingPemiluRow', w3
+                    'Deskripsi', w3
                 ]);
             }
         }

@@ -46,6 +46,13 @@ namespace AbidzarFrm.Rukuntangga.Entities
             set { Fields.Kandidat[this] = value; }
         }
 
+        [DisplayName("Deskripsi"), Size(4000)]
+        public String Deskripsi
+        {
+            get { return Fields.Deskripsi[this]; }
+            set { Fields.Deskripsi[this] = value; }
+        }
+
         [DisplayName("File Name"), Size(500)]
         [ImageUploadEditor(FilenameFormat = "DetailPemilu/~", CopyToHistory = true)]
         public String FileName
@@ -145,12 +152,12 @@ namespace AbidzarFrm.Rukuntangga.Entities
             set { Fields.IdPemiluKodeRt[this] = value; }
         }
 
-        [DisplayName("Polling Pemilu"), MasterDetailRelation(foreignKey: "IdDetailPemilu"), NotMapped]
-        public List<TbPollingPemiluRow> tbPollingPemiluRow
-        {
-            get { return Fields.tbPollingPemiluRow[this]; }
-            set { Fields.tbPollingPemiluRow[this] = value; }
-        }
+        //[DisplayName("Polling Pemilu"), MasterDetailRelation(foreignKey: "IdDetailPemilu"), NotMapped]
+        //public List<TbPollingPemiluRow> tbPollingPemiluRow
+        //{
+        //    get { return Fields.tbPollingPemiluRow[this]; }
+        //    set { Fields.tbPollingPemiluRow[this] = value; }
+        //}
 
         IIdField IIdRow.IdField
         {
@@ -176,6 +183,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
             public Int32Field NoUrut;
             public StringField Kandidat;
             public StringField FileName;
+            public StringField Deskripsi;
             public StringField DibuatOleh;
             public DateTimeField DibuatTanggal;
             public StringField DieditOleh;
@@ -191,7 +199,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
             public BooleanField IdPemiluSystemStatus;
             public StringField IdPemiluKodeRt;
             //relationship
-            public RowListField<TbPollingPemiluRow> tbPollingPemiluRow;
+            //public RowListField<TbPollingPemiluRow> tbPollingPemiluRow;
         }
     }
 }

@@ -11,7 +11,7 @@ namespace AbidzarFrm.Administration.Entities
     [DisplayName("Roles"), InstanceName("Role")]
     [ReadPermission(AbidzarFrm.Rukuntangga.PermissionKeys.Role)]
     [ModifyPermission(AbidzarFrm.Rukuntangga.PermissionKeys.Role)]
-    [LookupScript]
+    [LookupScript("Administration.Role")]
     public sealed class RoleRow : Row, IIdRow, INameRow
     {
         [DisplayName("Role Id"), Identity, ForeignKey("Roles", "RoleId"), LeftJoin("jRole")]
@@ -21,7 +21,7 @@ namespace AbidzarFrm.Administration.Entities
             set { Fields.RoleId[this] = value; }
         }
 
-        [DisplayName("Role Name"), Size(100), NotNull, QuickSearch]
+        [DisplayName("Role Name"), Size(100), NotNull, QuickSearch, LookupInclude]
         public String RoleName
         {
             get { return Fields.RoleName[this]; }

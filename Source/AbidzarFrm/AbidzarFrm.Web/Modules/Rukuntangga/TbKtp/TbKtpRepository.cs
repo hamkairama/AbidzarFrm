@@ -16,6 +16,7 @@ namespace AbidzarFrm.Rukuntangga.Repositories
         public SaveResponse Create(IUnitOfWork uow, SaveRequest<MyRow> request)
         {
             request.Entity.DibuatOleh = CurrentSession.Ktp().Nik;
+            request.Entity.KodeRt = CurrentSession.Ktp().KodeRt;
             return new MySaveHandler().Process(uow, request, SaveRequestType.Create);
         }
 

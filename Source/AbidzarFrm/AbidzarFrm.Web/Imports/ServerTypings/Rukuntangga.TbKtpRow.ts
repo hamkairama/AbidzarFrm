@@ -22,11 +22,15 @@
         Pendidikan?: string;
         PhotoKtp?: string;
         SignatureKtp?: string;
+        PhotoRumah?: string;
         KodePos?: string;
         NamaAyah?: string;
         NamaIbu?: string;
         Kk?: string;
         AlamatTinggal?: string;
+        IdKecamatanTinggal?: number;
+        IdKotaTinggal?: number;
+        IdProvinsiTinggal?: number;
         IdKelurahanTinggal?: number;
         RtTinggal?: string;
         RwTinggal?: string;
@@ -37,6 +41,7 @@
         DieditTanggal?: string;
         SystemStatus?: boolean;
         KodeRt?: string;
+        DataStatus?: number;
     }
 
     export namespace TbKtpRow {
@@ -76,11 +81,15 @@
             Pendidikan = "Pendidikan",
             PhotoKtp = "PhotoKtp",
             SignatureKtp = "SignatureKtp",
+            PhotoRumah = "PhotoRumah",
             KodePos = "KodePos",
             NamaAyah = "NamaAyah",
             NamaIbu = "NamaIbu",
             Kk = "Kk",
             AlamatTinggal = "AlamatTinggal",
+            IdKecamatanTinggal = "IdKecamatanTinggal",
+            IdKotaTinggal = "IdKotaTinggal",
+            IdProvinsiTinggal = "IdProvinsiTinggal",
             IdKelurahanTinggal = "IdKelurahanTinggal",
             RtTinggal = "RtTinggal",
             RwTinggal = "RwTinggal",
@@ -90,7 +99,8 @@
             DieditOleh = "DieditOleh",
             DieditTanggal = "DieditTanggal",
             SystemStatus = "SystemStatus",
-            KodeRt = "KodeRt"
+            KodeRt = "KodeRt",
+            DataStatus = "DataStatus"
         }
     }
 }

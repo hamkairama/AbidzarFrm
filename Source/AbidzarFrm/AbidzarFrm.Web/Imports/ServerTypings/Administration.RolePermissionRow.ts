@@ -10,10 +10,10 @@
         export const idProperty = 'RolePermissionId';
         export const nameProperty = 'PermissionKey';
         export const localTextPrefix = 'Administration.RolePermission';
-        export const deletePermission = 'Administration:Security';
-        export const insertPermission = 'Administration:Security';
-        export const readPermission = 'Administration:Security';
-        export const updatePermission = 'Administration:Security';
+        export const deletePermission = 'Security:RolePermission';
+        export const insertPermission = 'Security:RolePermission';
+        export const readPermission = 'Security:RolePermission';
+        export const updatePermission = 'Security:RolePermission';
 
         export declare const enum Fields {
             RolePermissionId = "RolePermissionId",

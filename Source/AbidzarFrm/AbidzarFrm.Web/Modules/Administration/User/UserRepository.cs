@@ -57,6 +57,7 @@ namespace AbidzarFrm.Administration.Repositories
 
         public ListResponse<MyRow> List(IDbConnection connection, ListRequest request)
         {
+            request.IncludeField(MyRow.Fields.KtpId);
             return new MyListHandler().Process(connection, request);
         }
 

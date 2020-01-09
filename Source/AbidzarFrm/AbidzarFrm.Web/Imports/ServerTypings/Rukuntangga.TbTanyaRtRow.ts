@@ -7,6 +7,11 @@
         DieditOleh?: string;
         DieditTanggal?: string;
         SystemStatus?: boolean;
+        KtpKodeRt?: string;
+        KtpPhotoKtp?: string;
+        KtpNama?: string;
+        KtpIdKtp?: number;
+        tbTanyaRtDetailRow?: TbTanyaRtDetailRow[];
     }
 
     export namespace TbTanyaRtRow {
@@ -25,7 +30,12 @@
             DibuatTanggal = "DibuatTanggal",
             DieditOleh = "DieditOleh",
             DieditTanggal = "DieditTanggal",
-            SystemStatus = "SystemStatus"
+            SystemStatus = "SystemStatus",
+            KtpKodeRt = "KtpKodeRt",
+            KtpPhotoKtp = "KtpPhotoKtp",
+            KtpNama = "KtpNama",
+            KtpIdKtp = "KtpIdKtp",
+            tbTanyaRtDetailRow = "tbTanyaRtDetailRow"
         }
     }
 }

@@ -2,6 +2,8 @@
 namespace AbidzarFrm.Rukuntangga {
 
     @Serenity.Decorators.registerClass()
+    @Serenity.Decorators.panel()
+    @Serenity.Decorators.maximizable()
     export class TbDetailPemiluDialog extends Common.GridEditorDialog<TbDetailPemiluRow> {
         protected getFormKey() { return TbDetailPemiluForm.formKey; }
         //protected getIdProperty() { return TbDetailPemiluRow.idProperty; }

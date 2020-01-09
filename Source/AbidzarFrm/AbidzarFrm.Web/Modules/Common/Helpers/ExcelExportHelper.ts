@@ -7,6 +7,7 @@
         title?: string;
         hint?: string;
         separator?: boolean;
+        cssClass?: string;
     }
 
     export namespace ExcelExportHelper {
@@ -16,7 +17,7 @@
             return {
                 hint: Q.coalesce(options.hint, 'Excel'),
                 title: Q.coalesce(options.title, ''),
-                cssClass: 'export-xlsx-button',
+                cssClass: Q.coalesce(options.title, 'export-xlsx-button'),
                 onClick: function () {
                     if (!options.onViewSubmit()) {
                         return;

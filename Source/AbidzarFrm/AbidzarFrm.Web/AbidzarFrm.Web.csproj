@@ -202,6 +202,14 @@
     <Content Include="Content\images\expand.gif" />
     <Content Include="Content\images\header-columns-bg.gif" />
     <Content Include="Content\images\header-columns-over-bg.gif" />
+    <Content Include="Content\images\rukuntangga-logo-1.jpeg" />
+    <Content Include="Content\images\rukuntangga-logo-2.jpeg" />
+    <Content Include="Content\images\rukuntangga-logo-3.jpeg" />
+    <Content Include="Content\images\rukuntangga_logo_2 - Copy.jpg" />
+    <Content Include="Content\images\rukuntangga_logo_2.jpg" />
+    <Content Include="Content\images\rukuntangga_logo_22 - Copy.jpg" />
+    <Content Include="Content\images\rukuntangga_logo_22.jpg" />
+    <Content Include="Content\images\rumah.jpg" />
     <Content Include="Content\images\sort-asc.gif" />
     <Content Include="Content\images\sort-desc.gif" />
     <Content Include="Content\ionicons.css" />
@@ -530,6 +538,9 @@
     <Content Include="Content\slick.headerbuttons.css" />
     <Content Include="Content\slick.headermenu.css" />
     <Content Include="Content\slick.pager.css" />
+    <Content Include="Content\sweetalert\sweetalert.css" />
+    <Content Include="Content\sweetalert\sweetalert.min.js" />
+    <Content Include="Content\sweetalert\ui-sweetalert.min.js" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -766,6 +777,7 @@
     <Content Include="Scripts\ckeditor\skins\moono\images\refresh.png" />
     <Content Include="Scripts\ckeditor\skins\moono\images\spinner.gif" />
     <Content Include="Scripts\ckeditor\styles.js" />
+    <Content Include="Scripts\common\common.js" />
     <Content Include="Scripts\common\modal.js" />
     <Content Include="Scripts\flot\excanvas.js" />
     <Content Include="Scripts\flot\excanvas.min.js" />
@@ -832,6 +844,7 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="Scripts\vegas\style.css" />
     <Content Include="wkhtmltopdf-license.txt" />
     <Content Include="Modules\Rukuntangga\TbMailLog\TbMailLogIndex.cshtml" />
     <Content Include="Modules\Rukuntangga\QuickEmail\QuickEmailIndex.cshtml" />
@@ -847,6 +860,16 @@
     <Content Include="Modules\Rukuntangga\Berita\_BeritaTerbaru.cshtml" />
     <Content Include="Modules\Rukuntangga\RtMenjawab\_RtMenjawabDetail.cshtml" />
     <Content Include="Modules\Rukuntangga\RtMenjawab\RtMenjawabIndex.cshtml" />
+    <Content Include="Modules\Rukuntangga\Aktifitas\_AktifitasDetail.cshtml" />
+    <Content Include="Modules\Rukuntangga\Aktifitas\_AktifitasList.cshtml" />
+    <Content Include="Modules\Rukuntangga\Aktifitas\_AktifitasTerbaru.cshtml" />
+    <Content Include="Modules\Rukuntangga\Aktifitas\AktifitasIndex.cshtml" />
+    <Content Include="Modules\Rukuntangga\Questioner\QuestionerDetail.cshtml" />
+    <Content Include="Modules\Rukuntangga\Questioner\QuestionerIndex.cshtml" />
+    <Content Include="Modules\Rukuntangga\Questioner\_QuestionerDetailPemilu.cshtml" />
+    <Content Include="Modules\Rukuntangga\Registrasi\Index.cshtml" />
+    <Content Include="Modules\Rukuntangga\Galery\Detail.cshtml" />
+    <Content Include="Modules\Rukuntangga\Galery\Index.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -1083,6 +1106,9 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Rukuntangga.TbEmailTemplateColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Rukuntangga.TbGaleryColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Rukuntangga.TbHistoricalUserLoginColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1164,6 +1190,18 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Rukuntangga.TbTestimoniColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Rukuntangga.TbTransactionDocumentCodeColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Rukuntangga.TbTransactionFlowColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Rukuntangga.TbTransactionFlowDetailColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Rukuntangga.TbTransactionStatusColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Rukuntangga.TbUserApiColumns.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -1175,6 +1213,8 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="Modules\Common\Editor\Editor.ts" />
     <TypeScriptCompile Include="Modules\Common\Formatter\Formatter.ts" />
+    <TypeScriptCompile Include="Modules\Rukuntangga\Galery\Galery.ts" />
+    <TypeScriptCompile Include="Modules\Rukuntangga\Registrasi\Registrasi.ts" />
     <TypeScriptCompile Include="Modules\Rukuntangga\TbBiodata\TbBiodataEditor.ts" />
     <TypeScriptCompile Include="Modules\Rukuntangga\TbDetailJenisInformasi\TbDetailJenisInformasiEditor.ts" />
     <TypeScriptCompile Include="Modules\Rukuntangga\TbDetailJenisKegiatan\TbDetailJenisKegiatanEditor.ts" />
@@ -1184,6 +1224,7 @@
     <TypeScriptCompile Include="Modules\Rukuntangga\TbPollingPemilu\TbPollingPemiluEditor.ts" />
     <TypeScriptCompile Include="Modules\Rukuntangga\TbRw\PickRwDialog.ts" />
     <TypeScriptCompile Include="Modules\Rukuntangga\TbRw\PickRwGrid.ts" />
+    <TypeScriptCompile Include="Modules\Rukuntangga\TbTransactionFlowDetail\TbTransactionFlowDetailEditor.ts" />
     <TypeScriptCompile Include="Modules\Rukuntangga\Warga\WargaDialog.ts" />
     <TypeScriptCompile Include="node_modules\%40types\jquery\index.d.ts" />
     <TypeScriptCompile Include="node_modules\%40types\jqueryui\index.d.ts" />
@@ -2371,6 +2412,66 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Rukuntangga.TbUserApiForm.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Rukuntangga.TbTransactionDocumentCodeRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Rukuntangga.TbTransactionDocumentCodeService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Rukuntangga\TbTransactionDocumentCode\TbTransactionDocumentCodeIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Rukuntangga\TbTransactionDocumentCode\TbTransactionDocumentCodeDialog.ts" />
+    <TypeScriptCompile Include="Modules\Rukuntangga\TbTransactionDocumentCode\TbTransactionDocumentCodeGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Rukuntangga.TbTransactionDocumentCodeForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Rukuntangga.TbTransactionFlowRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Rukuntangga.TbTransactionFlowService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Rukuntangga\TbTransactionFlow\TbTransactionFlowIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Rukuntangga\TbTransactionFlow\TbTransactionFlowDialog.ts" />
+    <TypeScriptCompile Include="Modules\Rukuntangga\TbTransactionFlow\TbTransactionFlowGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Rukuntangga.TbTransactionFlowForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Rukuntangga.TbTransactionFlowDetailRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Rukuntangga.TbTransactionFlowDetailService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Rukuntangga\TbTransactionFlowDetail\TbTransactionFlowDetailIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Rukuntangga\TbTransactionFlowDetail\TbTransactionFlowDetailDialog.ts" />
+    <TypeScriptCompile Include="Modules\Rukuntangga\TbTransactionFlowDetail\TbTransactionFlowDetailGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Rukuntangga.TbTransactionFlowDetailForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Rukuntangga.TbTransactionStatusRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Rukuntangga.TbTransactionStatusService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Rukuntangga\TbTransactionStatus\TbTransactionStatusIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Rukuntangga\TbTransactionStatus\TbTransactionStatusDialog.ts" />
+    <TypeScriptCompile Include="Modules\Rukuntangga\TbTransactionStatus\TbTransactionStatusGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Rukuntangga.TbTransactionStatusForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Rukuntangga.TbGaleryRow.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Rukuntangga.TbGaleryService.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <Content Include="Modules\Rukuntangga\TbGalery\TbGaleryIndex.cshtml" />
+    <TypeScriptCompile Include="Modules\Rukuntangga\TbGalery\TbGaleryDialog.ts" />
+    <TypeScriptCompile Include="Modules\Rukuntangga\TbGalery\TbGaleryGrid.ts" />
+    <TypeScriptCompile Include="Imports\ServerTypings\Rukuntangga.TbGaleryForm.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -2388,7 +2489,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Imports\ClientTypes\Common.Editor.AdministrationRoleEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
     <Compile Include="Imports\ClientTypes\Common.Editor.AgamaEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ClientTypes\Common.Editor.DataStatusEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ClientTypes\Common.Editor.EmailTemplateEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
     <Compile Include="Imports\ClientTypes\Common.Editor.GolonganDarahEditorAttribute.cs">
@@ -2424,6 +2534,9 @@
     <Compile Include="Imports\ClientTypes\Common.Editor.ProvinsiEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
+    <Compile Include="Imports\ClientTypes\Common.Editor.SelectEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
     <Compile Include="Imports\ClientTypes\Common.Editor.SendEmailTypeEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
@@ -2431,6 +2544,12 @@
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
     <Compile Include="Imports\ClientTypes\Common.Editor.StatusEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ClientTypes\Common.Editor.TransactionDocumentCodeEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ClientTypes\Common.Editor.TransactionStatusEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
     <Compile Include="Imports\ClientTypes\Common.Editor.TypePosisiIklanEditorAttribute.cs">
@@ -2446,6 +2565,9 @@
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
     <Compile Include="Imports\ClientTypes\Common.Editor.YearSelectionEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ClientTypes\Common.Formatter.DataStatusFormatterAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
     <Compile Include="Imports\ClientTypes\Common.Formatter.JabatanFormatterAttribute.cs">
@@ -2488,6 +2610,9 @@
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
     <Compile Include="Imports\ClientTypes\Rukuntangga.TbPollingPemiluEditorAttribute.cs">
+      <DependentUpon>ClientTypes.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Imports\ClientTypes\Rukuntangga.TbTransactionFlowDetailEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
     <Compile Include="Modules\Administration\AdministrationNavigation.cs" />
@@ -2543,7 +2668,9 @@
     <Compile Include="Modules\BasicSamples\Grids\StoredProcedureGrid\CustomerGrossSalesEndpoint.cs" />
     <Compile Include="Modules\BasicSamples\Grids\StoredProcedureGrid\CustomerGrossSalesRepository.cs" />
     <Compile Include="Modules\Common\Helpers\AuthorizeLogin.cs" />
+    <Compile Include="Modules\Common\Helpers\ConfigKey.cs" />
     <Compile Include="Modules\Common\Helpers\CurrentSession.cs" />
+    <Compile Include="Modules\Common\Helpers\ListFile.cs" />
     <Compile Include="Modules\Common\Helpers\ResultStatusResponse.cs" />
     <Compile Include="Modules\Common\Helpers\UserAdditionalInfo.cs" />
     <Compile Include="Modules\Common\Lookup\Lookup.cs" />
@@ -2696,10 +2823,15 @@
     <Compile Include="Modules\Northwind\Supplier\SupplierCountryLookup.cs" />
     <Compile Include="Modules\Northwind\Territory\TerritoryColumns.cs" />
     <Compile Include="Modules\Northwind\NorthwindTexts.cs" />
+    <Compile Include="Modules\Rukuntangga\Aktifitas\AktifitasController.cs" />
+    <Compile Include="Modules\Rukuntangga\Dialog\Rukuntangga.Dialogs.cs" />
+    <Compile Include="Modules\Rukuntangga\Galery\GaleryController.cs" />
+    <Compile Include="Modules\Rukuntangga\Questioner\QuestionerController.cs" />
     <Compile Include="Modules\Rukuntangga\Berita\BeritaController.cs" />
     <Compile Include="Modules\Rukuntangga\Berita\BeritaObject.cs" />
     <Compile Include="Modules\Rukuntangga\Profile\ProfileController.cs" />
     <Compile Include="Modules\Rukuntangga\RtMenjawab\RtMenjawabController.cs" />
+    <Compile Include="Modules\Rukuntangga\TbKtp\TbKtpReport.cs" />
     <Compile Include="Modules\Rukuntangga\Warga\WargaController.cs" />
     <Compile Include="Modules\Rukuntangga\UserMember\UserMemberController.cs" />
     <Compile Include="Modules\Rukuntangga\QuickEmail\QuickEmailController.cs" />
@@ -3011,6 +3143,36 @@
     <Compile Include="Modules\Rukuntangga\TbUserApi\TbUserApiPage.cs" />
     <Compile Include="Modules\Rukuntangga\TbUserApi\TbUserApiColumns.cs" />
     <Compile Include="Modules\Rukuntangga\TbUserApi\TbUserApiForm.cs" />
+    <Compile Include="Modules\Rukuntangga\TbTransactionDocumentCode\TbTransactionDocumentCodeRow.cs" />
+    <Compile Include="Modules\Rukuntangga\TbTransactionDocumentCode\TbTransactionDocumentCodeRepository.cs" />
+    <Compile Include="Modules\Rukuntangga\TbTransactionDocumentCode\TbTransactionDocumentCodeEndpoint.cs" />
+    <Compile Include="Modules\Rukuntangga\TbTransactionDocumentCode\TbTransactionDocumentCodePage.cs" />
+    <Compile Include="Modules\Rukuntangga\TbTransactionDocumentCode\TbTransactionDocumentCodeColumns.cs" />
+    <Compile Include="Modules\Rukuntangga\TbTransactionDocumentCode\TbTransactionDocumentCodeForm.cs" />
+    <Compile Include="Modules\Rukuntangga\TbTransactionFlow\TbTransactionFlowRow.cs" />
+    <Compile Include="Modules\Rukuntangga\TbTransactionFlow\TbTransactionFlowRepository.cs" />
+    <Compile Include="Modules\Rukuntangga\TbTransactionFlow\TbTransactionFlowEndpoint.cs" />
+    <Compile Include="Modules\Rukuntangga\TbTransactionFlow\TbTransactionFlowPage.cs" />
+    <Compile Include="Modules\Rukuntangga\TbTransactionFlow\TbTransactionFlowColumns.cs" />
+    <Compile Include="Modules\Rukuntangga\TbTransactionFlow\TbTransactionFlowForm.cs" />
+    <Compile Include="Modules\Rukuntangga\TbTransactionFlowDetail\TbTransactionFlowDetailRow.cs" />
+    <Compile Include="Modules\Rukuntangga\TbTransactionFlowDetail\TbTransactionFlowDetailRepository.cs" />
+    <Compile Include="Modules\Rukuntangga\TbTransactionFlowDetail\TbTransactionFlowDetailEndpoint.cs" />
+    <Compile Include="Modules\Rukuntangga\TbTransactionFlowDetail\TbTransactionFlowDetailPage.cs" />
+    <Compile Include="Modules\Rukuntangga\TbTransactionFlowDetail\TbTransactionFlowDetailColumns.cs" />
+    <Compile Include="Modules\Rukuntangga\TbTransactionFlowDetail\TbTransactionFlowDetailForm.cs" />
+    <Compile Include="Modules\Rukuntangga\TbTransactionStatus\TbTransactionStatusRow.cs" />
+    <Compile Include="Modules\Rukuntangga\TbTransactionStatus\TbTransactionStatusRepository.cs" />
+    <Compile Include="Modules\Rukuntangga\TbTransactionStatus\TbTransactionStatusEndpoint.cs" />
+    <Compile Include="Modules\Rukuntangga\TbTransactionStatus\TbTransactionStatusPage.cs" />
+    <Compile Include="Modules\Rukuntangga\TbTransactionStatus\TbTransactionStatusColumns.cs" />
+    <Compile Include="Modules\Rukuntangga\TbTransactionStatus\TbTransactionStatusForm.cs" />
+    <Compile Include="Modules\Rukuntangga\TbGalery\TbGaleryRow.cs" />
+    <Compile Include="Modules\Rukuntangga\TbGalery\TbGaleryRepository.cs" />
+    <Compile Include="Modules\Rukuntangga\TbGalery\TbGaleryEndpoint.cs" />
+    <Compile Include="Modules\Rukuntangga\TbGalery\TbGaleryPage.cs" />
+    <Compile Include="Modules\Rukuntangga\TbGalery\TbGaleryColumns.cs" />
+    <Compile Include="Modules\Rukuntangga\TbGalery\TbGaleryForm.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

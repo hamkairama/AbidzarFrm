@@ -15,6 +15,11 @@
         export const idProperty = 'Id';
         export const nameProperty = 'KodeTemplate';
         export const localTextPrefix = 'Rukuntangga.TbEmailTemplate';
+        export const lookupKey = 'Rukuntangga.EmailTemplate';
+
+        export function getLookup(): Q.Lookup<TbEmailTemplateRow> {
+            return Q.getLookup<TbEmailTemplateRow>('Rukuntangga.EmailTemplate');
+        }
         export const deletePermission = 'Security:EmailTemplate';
         export const insertPermission = 'Security:EmailTemplate';
         export const readPermission = 'Security:EmailTemplate';

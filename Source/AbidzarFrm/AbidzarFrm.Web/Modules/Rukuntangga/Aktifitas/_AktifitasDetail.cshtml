@@ -1,0 +1,200 @@
+﻿@model AbidzarFrm.Rukuntangga.Entities.TbDetailJenisKegiatanRow
+@using AbidzarFrm.Modules.Common.Helpers
+<style>
+    .mySlides {
+        display: none;
+    }
+
+    .cursor {
+        cursor: pointer;
+    }
+
+    .prev,
+    .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        margin-top: -50px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        -webkit-user-select: none;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+    img {
+        margin-bottom: -4px;
+    }
+
+    .caption-container {
+        text-align: center;
+        background-color: black;
+        padding: 2px 16px;
+        color: white;
+    }
+
+    .demo {
+        opacity: 0.6;
+    }
+
+        .active,
+        .demo:hover {
+            opacity: 1;
+        }
+
+    img.hover-shadow {
+        transition: 0.3s;
+    }
+
+    .hover-shadow:hover {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+</style>
+
+
+@{
+
+    <div class="divAktifitas">
+        @if (Model != null)
+        {
+            var resultFile = Newtonsoft.Json.JsonConvert.DeserializeObject<List<FileNameResult>>(Model.Dokumentasi);
+
+            var img = (Model.NamaFile == null || string.IsNullOrEmpty(Model.NamaFile)) ? "../../Content/adminlte/img/avatar0.png" : VirtualPathUtility.ToAbsolute("~/upload/") + Model.NamaFile;
+            var dokumentasi = (Model.Dokumentasi == null || string.IsNullOrEmpty(Model.Dokumentasi)) ? "../../Content/adminlte/img/avatar0.png" : VirtualPathUtility.ToAbsolute("~/upload/") + Model.Dokumentasi;
+            <div class="col-md-4">
+                <div class="box box-warning" style="margin-bottom:50px;" >
+                    <div class="box-header with-border">
+                        <h3 class="box-title" style="color:orange; text-shadow: 1px 1px 0 rgba(0, 0, 0, .2)">@Model.NamaKegiatan</h3>
+                    </div>
+                    <div class="box-body">
+                        <strong><i class="fa fa-book margin-r-5"></i> Tanggal</strong>
+                        <p class="text-muted">
+                            @Model.TanggalKegiatan.Value.ToString("dd/MM/yyyy hh:mm")
+                        </p>
+                        <hr>
+                        <strong><i class="fa fa-map-marker margin-r-5"></i> Lokasi</strong>
+                        <p class="text-muted">@Model.Lokasi</p>
+                    </div>
+                    <div class="box-footer pull-right" style="margin-bottom:10px;">
+                        <i class="fa fa-book margin-r-5"></i><a href="javascript:GetAktifitas(@Model.IdJenisKegiatan)" style="cursor:pointer;color:dodgerblue;"><strong>@Model.IdJenisKegiatanJenisKegiatan</strong></a>
+                        <br /><span class="text-muted" style="font-size:10px;">@Model.DibuatTanggal.Value.ToString("dd/MM/yyyy hh:mm")</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title" style="color:forestgreen; text-shadow: 1px 1px 0 rgba(0, 0, 0, .2)">Dokumentasi</h3>
+                    </div>
+                    <div class="box-body">
+                        @*<img src="@dokumentasi" />*@
+                        <div class="row">
+                            @if (resultFile != null)
+                            {
+                                int index = 1;
+
+                                foreach (var item in resultFile)
+                                {
+                                    var docImg = VirtualPathUtility.ToAbsolute("~/upload/") + item.Filename;
+                                    <div class="col-md-2 col-md-2 col-xs-4">
+                                        <img src="@docImg" style="width: 100%; height: auto; display: block; " class="hover-shadow cursor thumbnail" onclick="openModal();currentSlide(@index)" />
+                                    </div>
+                                    index = index + 1;
+                                }
+
+                                <div class="modal fade" id="myModalGalery" role="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">@Model.IdJenisKegiatanJenisKegiatan</h4>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                @foreach (var item in resultFile)
+                                                {
+                                                    var docThumb = VirtualPathUtility.ToAbsolute("~/upload/") + item.Filename;
+                                                    <div class="mySlides">
+                                                        <img src="@docThumb" style="width:100%">
+                                                    </div>
+                                                }
+
+                                                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                                                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+                                                <div class="caption-container">
+                                                    <p id="caption"></p>
+                                                </div>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default btn-circle" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+}
+<script>
+    //$(function () {
+    //    hideLoading();
+    //})
+
+    function openModal() {
+        $("#myModalGalery").modal();
+    }
+
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("demo");
+        var captionText = document.getElementById("caption");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        //dots[slideIndex - 1].className += " active";
+        //captionText.innerHTML = dots[slideIndex - 1].alt;
+    }
+
+</script>
+

@@ -11,4 +11,9 @@
         let ud = userDefinition;
         return ud.Username === 'admin' || !!ud.Permissions[permissionKey];
     }
+
+    export function hasRoles(roleName: string) {
+        let ud = userDefinition;
+        return ud.Username === 'admin' || ud.Roles.indexOf(roleName) > -1;
+    }
 }

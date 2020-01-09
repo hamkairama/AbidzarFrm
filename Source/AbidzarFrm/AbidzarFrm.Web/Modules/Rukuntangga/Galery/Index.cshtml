@@ -1,0 +1,51 @@
+﻿@model List<AbidzarFrm.Rukuntangga.Entities.TbGaleryRow>
+@using AbidzarFrm.Modules.Common.Helpers
+@{
+    ViewData["Title"] = "Questioner";
+}
+
+@section Head {
+    <script src="~/Scripts/adminlte/demo.js"></script>
+
+    <style>
+        .overflow {
+            height: 50px;
+            overflow: hidden;
+            text-overflow: "---";
+        }
+    </style>
+}
+
+@{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        var img = (item.Thumbnail == null || string.IsNullOrEmpty(item.Thumbnail)) ? "../../Content/adminlte/img/avatar0.png" : VirtualPathUtility.ToAbsolute("~/upload/") + item.Thumbnail;
+
+                        <div class="col-md-3 col-md-3 col-xs-6">
+                            <div class="box box-primary">
+                                <a href="@Url.Action("Detail", "Galery", new { galeryId = @item.Id })" title="@item.Deskripsi">
+                                    <div class="box-header with-border overflow" style="color:dodgerblue; text-shadow: 1px 1px 0 rgba(0, 0, 0, .2)">
+                                        <i class="fa fa-bullhorn margin-r-5">
+                                        </i>@item.Deskripsi
+                                        <div class="box-tools pull-right">
+                                            @*<span class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></span>*@
+                                        </div>
+                                    </div>
+                                    <div class="box-body" style="height:150px;background-image: url(@img);background-repeat:no-repeat; background-size: 100% 100%;">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
+}
+
