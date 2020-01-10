@@ -68,7 +68,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
             get { return Fields.Alamat[this]; }
             set { Fields.Alamat[this] = value; }
         }
-        [DisplayName("Provinsi"), LookupEditor(typeof(ProvinsiLookup))]
+        [DisplayName("Provinsi"), LookupEditor(typeof(ProvinsiLookup)), LookupInclude]
         public Int32? IdProvinsi
         {
             get { return Fields.IdProvinsi[this]; }
@@ -76,7 +76,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
         }
 
         //[DisplayName("Kota"), LookupEditor(typeof(KotaLookup), CascadeFrom = "IdProvinsi", CascadeField = "IdProvinsi")]
-        [DisplayName("Kota"), SelectEditor]
+        [DisplayName("Kota"), SelectEditor, LookupInclude]
         public Int32? IdKota
         {
             get { return Fields.IdKota[this]; }
@@ -164,7 +164,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
         }
 
         [DisplayName("Photo Ktp")]
-        [ImageUploadEditor(FilenameFormat = "Ktp/~", CopyToHistory = true), LookupInclude]
+        [ImageUploadEditor(FilenameFormat = "Ktp/|KodeRt|/|Nik|/{4}", CopyToHistory = false), LookupInclude]
         public String PhotoKtp
         {
             get { return Fields.PhotoKtp[this]; }
@@ -172,7 +172,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
         }
 
         [DisplayName("Signature Ktp")]
-        [ImageUploadEditor(FilenameFormat = "Signature/~", CopyToHistory = true)]
+        [ImageUploadEditor(FilenameFormat = "Ktp/|KodeRt|/|Nik|/{4}", CopyToHistory = false)]
         public String SignatureKtp
         {
             get { return Fields.SignatureKtp[this]; }
@@ -180,7 +180,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
         }
 
         [DisplayName("Photo Rumah")]
-        [ImageUploadEditor(FilenameFormat = "PhotoRumah/~", CopyToHistory = true)]
+        [ImageUploadEditor(FilenameFormat = "Ktp/|KodeRt|/|Nik|/{4}", CopyToHistory = false)]
         public String PhotoRumah
         {
             get { return Fields.PhotoRumah[this]; }
@@ -267,7 +267,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
             set { Fields.RwTinggal[this] = value; }
         }
 
-        [DisplayName("Attachment"), MultipleFileUploadEditor(FilenameFormat = "KtpAttachment/~")]
+        [DisplayName("Attachment"), MultipleFileUploadEditor(FilenameFormat = "Ktp/|KodeRt|/|Nik|/Attachment/{4}")]
         public String Attachment
         {
             get { return Fields.Attachment[this]; }

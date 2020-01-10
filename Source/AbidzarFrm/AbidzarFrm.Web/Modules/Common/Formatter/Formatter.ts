@@ -37,19 +37,19 @@
             var result = ctx.value;
             var classStatus = ''
             switch (ctx.value) {
-                case "0":
+                case 0:
                     result = "Draft"
                     classStatus = 'label label-warning'
                     break;
-                case "1":
+                case 1:
                     result = "Request"
                     classStatus = 'label label-default'
                     break;
-                case "2":
+                case 2:
                     result = "Verified"
                     classStatus = 'label label-success'
                     break;
-                case "3":
+                case 3:
                     result = "Rejected"
                     classStatus = 'label label-danger'
                     break;

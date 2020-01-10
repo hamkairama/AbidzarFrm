@@ -1,11 +1,12 @@
 ﻿@model AbidzarFrm.Rukuntangga.Entities.TbDetailJenisInformasiRow
-
 @{
-    <div class="divBerita">
-        @if (Model != null)
-        {
-            var img = (Model.NamaFile == null || string.IsNullOrEmpty(Model.NamaFile)) ? "../../Content/adminlte/img/avatar0.png" : VirtualPathUtility.ToAbsolute("~/upload/") + Model.NamaFile;
-
+    ViewData["Title"] = "Berita";
+}
+@{
+    if (Model != null)
+    {
+        var img = (Model.NamaFile == null || string.IsNullOrEmpty(Model.NamaFile)) ? "../../Content/adminlte/img/avatar0.png" : VirtualPathUtility.ToAbsolute("~/upload/") + Model.NamaFile;
+        <div class="row">
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-body img-responsive" style="height:auto">
@@ -16,8 +17,8 @@
                     </div>
                 </div>
             </div>
-        }
-    </div>
+        </div>
+    }
 }
 
 

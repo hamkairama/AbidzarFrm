@@ -33,7 +33,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
         }
 
         [DisplayName("File Name"), Size(500)]
-        [ImageUploadEditor(FilenameFormat = "Pemilu/~", CopyToHistory = true)]
+        [ImageUploadEditor(FilenameFormat = "Pemilu/|KodeRt|/|Judul|/~", CopyToHistory = false)]
         public String FileName
         {
             get { return Fields.FileName[this]; }

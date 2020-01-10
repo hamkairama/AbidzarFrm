@@ -85,37 +85,29 @@ namespace AbidzarFrm.Rukuntangga {
                 this.SetKelurahanTinggal();
             });
 
-            this.form.StatusPerkawinan.changeSelect2(e => {                
+            this.form.StatusPerkawinan.changeSelect2(e => {
                 Serenity.EditorUtils.setRequired(this.form.TanggalPerkawinan, this.form.StatusPerkawinan.value == "K");
             })
         }
 
         updateInterface() {
-            super.updateInterface();            
+            super.updateInterface();
+
+            if (this.isEditMode()) {
+                this.SetKota();
+                this.SetKecamatan();
+                this.SetKelurahan();
+
+                this.SetKotaTinggal();
+                this.SetKecamatanTinggal();
+                this.SetKelurahanTinggal();
+            }
 
             Serenity.EditorUtils.setRequired(this.form.TanggalPerkawinan, this.form.StatusPerkawinan.value == "K");
         }
 
         protected afterLoadEntity() {
-            super.afterLoadEntity();
-
-            //if (this.isEditMode()) {
-            //    this.SetKota();
-            //    this.form.IdKota.value = "4";
-            //    this.SetKecamatan();
-            //    this.form.IdKecamatan.value = "8";
-            //    this.SetKelurahan();
-            //    this.form.IdKelurahan.value = "4";
-
-
-            //    this.SetKotaTinggal();
-            //    this.form.IdKotaTinggal.value = this.entity.IdKotaTinggal.toString();
-            //    this.SetKecamatanTinggal();
-            //    this.form.IdKecamatanTinggal.value = this.entity.IdKecamatanTinggal.toString();
-            //    this.SetKelurahanTinggal();
-            //    this.form.IdKelurahanTinggal.value = this.entity.IdKelurahanTinggal.toString();
-
-            //}
+            super.afterLoadEntity();        
         }
 
         validateBeforeSave(): boolean {
@@ -172,13 +164,11 @@ namespace AbidzarFrm.Rukuntangga {
 
         private SetKota() {
             let idProvinsi: number = parseInt(this.form.IdProvinsi.value);
-            let listData = AbidzarFrm.Rukuntangga.TbKotaRow.getLookup().items.filter(x => x.IdProvinsi == idProvinsi);
-            var filtered: Serenity.Select2Item[] = [];
-            listData.forEach(y => {
-                filtered.push({ id: y.Id.toString(), source: y.NamaKota, text: y.NamaKota })
-            })
+            let items: AbidzarFrm.Rukuntangga.TbKotaRow[] = AbidzarFrm.Rukuntangga.TbKotaRow.getLookup().items.filter(x => x.IdProvinsi == idProvinsi);
+            items.forEach((x, index) => {
+                this.form.IdKota.addItem({ id: x.Id.toString(), source: x.NamaKota, text: x.NamaKota, disabled: false });
+            });
 
-            this.form.IdKota.items = filtered;
             if (this.isEditMode()) {
                 this.form.IdKota.value = this.entity.IdKota.toString();
             }
@@ -186,13 +176,11 @@ namespace AbidzarFrm.Rukuntangga {
 
         private SetKecamatan() {
             let idKota: number = parseInt(this.form.IdKota.value);
-            let listData = AbidzarFrm.Rukuntangga.TbKecamatanRow.getLookup().items.filter(x => x.IdKota == idKota);
-            var filtered: Serenity.Select2Item[] = [];
-            listData.forEach(y => {
-                filtered.push({ id: y.Id.toString(), source: y.NamaKecamatan, text: y.NamaKecamatan })
-            })
+            let items: AbidzarFrm.Rukuntangga.TbKecamatanRow[] = AbidzarFrm.Rukuntangga.TbKecamatanRow.getLookup().items.filter(x => x.IdKota == idKota);
+            items.forEach((x, index) => {
+                this.form.IdKecamatan.addItem({ id: x.Id.toString(), source: x.NamaKecamatan, text: x.NamaKecamatan, disabled: false });
+            });
 
-            this.form.IdKecamatan.items = filtered;
             if (this.isEditMode()) {
                 this.form.IdKecamatan.value = this.entity.IdKecamatan.toString();
             }
@@ -200,49 +188,50 @@ namespace AbidzarFrm.Rukuntangga {
 
         private SetKelurahan() {
             let idKecamatan: number = parseInt(this.form.IdKecamatan.value);
-            let listData = AbidzarFrm.Rukuntangga.TbKelurahanRow.getLookup().items.filter(x => x.IdKecamatan == idKecamatan);
-            var filtered: Serenity.Select2Item[] = [];
-            listData.forEach(y => {
-                filtered.push({ id: y.Id.toString(), source: y.NamaKelurahan, text: y.NamaKelurahan })
-            })
+            let items: AbidzarFrm.Rukuntangga.TbKelurahanRow[] = AbidzarFrm.Rukuntangga.TbKelurahanRow.getLookup().items.filter(x => x.IdKecamatan == idKecamatan);
+            items.forEach((x, index) => {
+                this.form.IdKelurahan.addItem({ id: x.Id.toString(), source: x.NamaKelurahan, text: x.NamaKelurahan, disabled: false });
+            });
 
-            this.form.IdKelurahan.items = filtered;
             if (this.isEditMode()) {
                 this.form.IdKelurahan.value = this.entity.IdKelurahan.toString();
             }
         }
 
         private SetKotaTinggal() {
-            let idProvinsi: number = parseInt(this.form.IdProvinsiTinggal.value);
-            let listData = AbidzarFrm.Rukuntangga.TbKotaRow.getLookup().items.filter(x => x.IdProvinsi == idProvinsi);
-            var filtered: Serenity.Select2Item[] = [];
-            listData.forEach(y => {
-                filtered.push({ id: y.Id.toString(), source: y.NamaKota, text: y.NamaKota })
-            })
+            let idProvinsiTinggal: number = parseInt(this.form.IdProvinsiTinggal.value);
+            let items: AbidzarFrm.Rukuntangga.TbKotaRow[] = AbidzarFrm.Rukuntangga.TbKotaRow.getLookup().items.filter(x => x.IdProvinsi == idProvinsiTinggal);
+            items.forEach((x, index) => {
+                this.form.IdKotaTinggal.addItem({ id: x.Id.toString(), source: x.NamaKota, text: x.NamaKota, disabled: false });
+            });
 
-            this.form.IdKotaTinggal.items = filtered;
+            if (this.isEditMode()) {
+                this.form.IdKotaTinggal.value = this.entity.IdKotaTinggal.toString();
+            }
         }
 
         private SetKecamatanTinggal() {
-            let idKota: number = parseInt(this.form.IdKotaTinggal.value);
-            let listData = AbidzarFrm.Rukuntangga.TbKecamatanRow.getLookup().items.filter(x => x.IdKota == idKota);
-            var filtered: Serenity.Select2Item[] = [];
-            listData.forEach(y => {
-                filtered.push({ id: y.Id.toString(), source: y.NamaKecamatan, text: y.NamaKecamatan })
-            })
+            let idKotaTinggal: number = parseInt(this.form.IdKotaTinggal.value);
+            let items: AbidzarFrm.Rukuntangga.TbKecamatanRow[] = AbidzarFrm.Rukuntangga.TbKecamatanRow.getLookup().items.filter(x => x.IdKota == idKotaTinggal);
+            items.forEach((x, index) => {
+                this.form.IdKecamatanTinggal.addItem({ id: x.Id.toString(), source: x.NamaKecamatan, text: x.NamaKecamatan, disabled: false });
+            });
 
-            this.form.IdKecamatanTinggal.items = filtered;
+            if (this.isEditMode()) {
+                this.form.IdKecamatanTinggal.value = this.entity.IdKecamatanTinggal.toString();
+            }
         }
 
         private SetKelurahanTinggal() {
-            let idKecamatan: number = parseInt(this.form.IdKecamatanTinggal.value);
-            let listData = AbidzarFrm.Rukuntangga.TbKelurahanRow.getLookup().items.filter(x => x.IdKecamatan == idKecamatan);
-            var filtered: Serenity.Select2Item[] = [];
-            listData.forEach(y => {
-                filtered.push({ id: y.Id.toString(), source: y.NamaKelurahan, text: y.NamaKelurahan })
-            })
+            let idKecamatanTinggal: number = parseInt(this.form.IdKecamatanTinggal.value);
+            let items: AbidzarFrm.Rukuntangga.TbKelurahanRow[] = AbidzarFrm.Rukuntangga.TbKelurahanRow.getLookup().items.filter(x => x.IdKecamatan == idKecamatanTinggal);
+            items.forEach((x, index) => {
+                this.form.IdKelurahanTinggal.addItem({ id: x.Id.toString(), source: x.NamaKelurahan, text: x.NamaKelurahan, disabled: false });
+            });
 
-            this.form.IdKelurahanTinggal.items = filtered;
+            if (this.isEditMode()) {
+                this.form.IdKelurahanTinggal.value = this.entity.IdKelurahanTinggal.toString();
+            }
         }
 
 

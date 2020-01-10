@@ -168,8 +168,6 @@
       <Link>wkhtmltopdf.exe</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="App_Data\upload\Ktp\00000\00000016_2vif5nvpm4qec.png" />
-    <Content Include="App_Data\upload\Ktp\00000\avatar2.png" />
     <Content Include="Content\adminlte\img\00000002_4pduxgwx4h6v4.jpg" />
     <Content Include="Content\adminlte\img\00000003_kih45djwrvfqi.jpg" />
     <Content Include="Content\adminlte\img\00000006_ct3lurvqhf5w2.png" />
@@ -1134,6 +1132,9 @@
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Rukuntangga.TbKtpColumns.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Rukuntangga.TbKtpReport.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Rukuntangga.TbLaporanKasColumns.ts">
@@ -3174,7 +3175,9 @@
     <Compile Include="Modules\Rukuntangga\TbGalery\TbGaleryColumns.cs" />
     <Compile Include="Modules\Rukuntangga\TbGalery\TbGaleryForm.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\upload\" />
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

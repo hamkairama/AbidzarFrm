@@ -1,8 +1,10 @@
-﻿namespace AbidzarFrm.Rukuntangga {
+﻿/// <reference path="../../basicsamples/grids/enablingrowselection/selectableentitygrid.ts" />
+
+namespace AbidzarFrm.Rukuntangga {
 
     @Serenity.Decorators.registerClass()
     @Serenity.Decorators.filterable()
-    export class TbKtpGrid extends Serenity.EntityGrid<TbKtpRow, any> {
+    export class TbKtpGrid extends SelectableEntityGrid<TbKtpRow, any> {
         protected getColumnsKey() { return 'Rukuntangga.TbKtp'; }
         protected getDialogType() { return TbKtpDialog; }
         protected getIdProperty() { return TbKtpRow.idProperty; }
@@ -16,16 +18,12 @@
 
         protected getButtons() {
             let buttons = super.getButtons();
-
             buttons.push(AbidzarFrm.Common.ExcelExportHelper.createToolButton({
                 grid: this,
                 onViewSubmit: () => this.onViewSubmit(),
                 service: 'Rukuntangga/TbKtp/ListExcel',
-                separator: false,
-                title: "Export to Excell",
-                hint: "Export to Excell",
-                cssClass: "export-xlsx-button"
-            }));           
+                separator: true
+            }));          
 
             return buttons;
         }

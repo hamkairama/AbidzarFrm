@@ -39,7 +39,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
         }
 
         [DisplayName("Nama File"), Size(100)]
-        [ImageUploadEditor(FilenameFormat = "DetailJenisInformasi/~", CopyToHistory = true)]
+        [ImageUploadEditor(FilenameFormat = "DetailJenisInformasi/|KodeRt|/~", CopyToHistory = false)]
         public String NamaFile
         {
             get { return Fields.NamaFile[this]; }

@@ -59,7 +59,7 @@ namespace AbidzarFrm.Rukuntangga.Pages
                 response = repository.Retrieve(connection, request);
             }
 
-            return PartialView(MVC.Views.Rukuntangga.Berita._BeritaDetail, response.Entity);
+            return View(MVC.Views.Rukuntangga.Berita._BeritaDetail, response.Entity);
         }
         public ActionResult Terbaru()
         {

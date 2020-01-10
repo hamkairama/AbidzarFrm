@@ -39,7 +39,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
         }
 
         [DisplayName("Nama File"), Size(100)]
-        [ImageUploadEditor(FilenameFormat = "DetailJenisKegiatan/~", CopyToHistory = true)]
+        [ImageUploadEditor(FilenameFormat = "DetailJenisKegiatan/|KodeRt|/~", CopyToHistory = false)]
         public String NamaFile
         {
             get { return Fields.NamaFile[this]; }
@@ -47,7 +47,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
         }
 
         [DisplayName("Dokumentasi")]
-        [MultipleFileUploadEditor(FilenameFormat = "DetailJenisKegiatanDokumentasi/~", CopyToHistory = true)]
+        [MultipleFileUploadEditor(FilenameFormat = "DetailJenisKegiatan/|KodeRt|/Dokumentasi/~", CopyToHistory = false)]
         public String Dokumentasi
         {
             get { return Fields.Dokumentasi[this]; }
