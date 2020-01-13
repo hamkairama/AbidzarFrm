@@ -19,7 +19,8 @@
 @{
     int index = 0;
     string indexActive = "";
-    List<AbidzarFrm.Rukuntangga.Entities.TbSlideShowRow> slideshowList = CurrentSession.Slideshow();
+    var ud = (UserDefinition)Serenity.Authorization.UserDefinition;
+    List<AbidzarFrm.Rukuntangga.Entities.TbSlideShowRow> slideshowList = ud.SlideShow;
     <div class="row">
         <div class="col-md-9">
             <div class="row">

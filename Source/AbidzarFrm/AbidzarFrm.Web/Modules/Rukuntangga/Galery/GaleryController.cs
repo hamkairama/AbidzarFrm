@@ -29,7 +29,8 @@ namespace AbidzarFrm.Rukuntangga.Pages
             ListRequest request = new ListRequest();
             ListResponse<TbGaleryRow> response = new ListResponse<TbGaleryRow>();
             TbGaleryRepository repository = new TbGaleryRepository();
-            var kodeRt = CurrentSession.Ktp().KodeRt;
+            var ud = (UserDefinition)Serenity.Authorization.UserDefinition;
+            var kodeRt = ud.Ktp.KodeRt;
             //ViewBag.IdJenisInformasi = id;
             using (var connection = SqlConnections.NewByKey("Rukuntangga"))
             {

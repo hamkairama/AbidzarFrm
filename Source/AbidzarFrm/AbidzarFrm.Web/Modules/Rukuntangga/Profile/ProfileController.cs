@@ -18,7 +18,8 @@ namespace AbidzarFrm.Rukuntangga.Pages
             RetrieveResponse<TbKtpRow> response = new RetrieveResponse<TbKtpRow>();
             using (var connection = SqlConnections.NewByKey("Rukuntangga"))
             {
-                request.EntityId = CurrentSession.Ktp().Id;
+                var ud = (UserDefinition)Serenity.Authorization.UserDefinition;
+                request.EntityId = ud.Ktp.Id;
                 response = repo.Retrieve(connection, request);
             }
 

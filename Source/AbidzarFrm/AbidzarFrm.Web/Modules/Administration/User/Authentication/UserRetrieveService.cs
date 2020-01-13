@@ -1,10 +1,13 @@
 ﻿namespace AbidzarFrm.Administration
 {
+    using AbidzarFrm.Rukuntangga.Entities;
     using Serenity;
     using Serenity.Abstractions;
     using Serenity.Data;
     using System;
+    using System.Collections.Generic;
     using System.Data;
+    using System.Linq;
     using MyRow = Entities.UserRow;
 
     public class UserRetrieveService : IUserRetrieveService
@@ -15,6 +18,14 @@
         {
             var user = connection.TrySingle<Entities.UserRow>(criteria);
             if (user != null)
+            {
+                TbKtpRow dataKtp = GetDataKtp(user.Username);
+                List<TbSlideShowRow> dataSlideshow = new List<TbSlideShowRow>();
+                if (dataKtp.KodeRt != null && dataKtp.KodeRt != "")
+                {
+                    dataSlideshow = GetSlideshow(dataKtp.KodeRt);
+                }
+
                 return new UserDefinition
                 {
                     UserId = user.UserId.Value,
@@ -27,8 +38,12 @@
                     PasswordHash = user.PasswordHash,
                     PasswordSalt = user.PasswordSalt,
                     UpdateDate = user.UpdateDate,
-                    LastDirectoryUpdate = user.LastDirectoryUpdate
+                    LastDirectoryUpdate = user.LastDirectoryUpdate,
+                    Ktp = dataKtp,
+                    SlideShow = dataSlideshow
                 };
+            }
+
 
             return null;
         }
@@ -47,7 +62,7 @@
             if (username.IsEmptyOrNull())
                 return null;
 
-            return TwoLevelCache.Get<UserDefinition>("UserByName_" + username.ToLowerInvariant(), 
+            return TwoLevelCache.Get<UserDefinition>("UserByName_" + username.ToLowerInvariant(),
                 TimeSpan.Zero, TimeSpan.FromDays(1), fld.GenerationKey, () =>
             {
                 using (var connection = SqlConnections.NewByKey("Rukuntangga"))
@@ -62,6 +77,38 @@
 
             if (username != null)
                 TwoLevelCache.Remove("UserByName_" + username.ToLowerInvariant());
+        }
+
+
+
+        private TbKtpRow GetDataKtp(string userName)
+        {
+            TbKtpRow result = new TbKtpRow();
+            using (var connection = SqlConnections.NewByKey("Rukuntangga"))
+            {
+                var data = connection.Query<TbKtpRow>("SpGetKtpFromUsername", param: new { UserName = userName }, commandType: System.Data.CommandType.StoredProcedure);
+                if (data != null)
+                {
+                    result = data.FirstOrDefault();
+                }
+            }
+
+            return result;
+        }
+
+        private List<TbSlideShowRow> GetSlideshow(string kodeRt)
+        {
+            List<TbSlideShowRow> result = new List<TbSlideShowRow>();
+            using (var connection = SqlConnections.NewByKey("Rukuntangga"))
+            {
+                List<TbSlideShowRow> data = connection.List<TbSlideShowRow>(x => x.SelectTableFields().Where(string.Format("KodeRt = '{0}'", kodeRt)));
+                if (data.Count > 0)
+                {
+                    result = data;
+                }
+            }
+
+            return result;
         }
     }
 }

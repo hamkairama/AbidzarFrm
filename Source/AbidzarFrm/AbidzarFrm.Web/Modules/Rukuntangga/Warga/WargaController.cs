@@ -4,6 +4,7 @@ namespace AbidzarFrm.Rukuntangga.Pages
     using AbidzarFrm.Modules.Common.Helpers;
     using AbidzarFrm.Rukuntangga.Entities;
     using AbidzarFrm.Rukuntangga.Repositories;
+    using Serenity;
     using Serenity.Data;
     using Serenity.Services;
     using System.Collections.Generic;
@@ -32,9 +33,10 @@ namespace AbidzarFrm.Rukuntangga.Pages
             TbKtpRepository repo = new TbKtpRepository();
             ListRequest request = new ListRequest();
             ListResponse<TbKtpRow> response = new ListResponse<TbKtpRow>();
+            var ud = (UserDefinition)Authorization.UserDefinition;
             using (var connection = SqlConnections.NewByKey("Rukuntangga"))
             {
-                request.Criteria = new Criteria("KodeRt") == CurrentSession.Ktp().KodeRt & (new Criteria("Nama").Like("%" + filter + "%") | new Criteria("Nik").Like("%" + filter + "%"));
+                request.Criteria = new Criteria("KodeRt") == ud.Ktp.KodeRt & (new Criteria("Nama").Like("%" + filter + "%") | new Criteria("Nik").Like("%" + filter + "%"));
                 request.Take = totalCount;
                 response = repo.List(connection, request);
             }

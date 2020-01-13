@@ -9,9 +9,9 @@
     var theme = themeCookie != null && !themeCookie.Value.IsEmptyOrNull() ? themeCookie.Value : "blue";
     var darkSidebar = theme != null && theme.IndexOf("light") < 0;
     var rtl = System.Globalization.CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft;
-    //var user = (UserDefinition)Serenity.Authorization.UserDefinition;
-    var user = CurrentSession.Ktp();
-    var userImage = string.IsNullOrEmpty(user.PhotoKtp) ? "../../Content/adminlte/img/avatar0.png" : VirtualPathUtility.ToAbsolute("~/upload/") + user.PhotoKtp;
+    var user = (UserDefinition)Serenity.Authorization.UserDefinition;
+    //var user = CurrentSession.Ktp();
+    var userImage = string.IsNullOrEmpty(user.Ktp.PhotoKtp) ? "../../Content/adminlte/img/avatar0.png" : VirtualPathUtility.ToAbsolute("~/upload/") + user.Ktp.PhotoKtp;
 }
 <!--[if IE 8]> <html lang="@UICulture" class="ie8 no-js"> <![endif]-->
 <!--[if IE 9]> <html lang="@UICulture" class="ie9 no-js"> <![endif]-->
@@ -71,7 +71,7 @@
 
                                         <a href="@Url.Action("Index", "Profile")" style="color:orange; text-shadow: 1px 1px 0 rgba(0, 0, 0, .2);background-color:transparent;" @*style="background-color:transparent;color:black"*@>
                                             <p>
-                                                @(user != null ? user.Nama : "")
+                                                @(user != null ? user.Ktp.Nama : "")
                                             </p>
                                         </a>
 

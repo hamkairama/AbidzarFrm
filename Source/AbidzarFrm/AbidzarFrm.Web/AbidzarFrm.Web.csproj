@@ -868,6 +868,7 @@
     <Content Include="Modules\Rukuntangga\Registrasi\Index.cshtml" />
     <Content Include="Modules\Rukuntangga\Galery\Detail.cshtml" />
     <Content Include="Modules\Rukuntangga\Galery\Index.cshtml" />
+    <Content Include="Modules\Common\Dashboard\DashboardIndexCopy.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

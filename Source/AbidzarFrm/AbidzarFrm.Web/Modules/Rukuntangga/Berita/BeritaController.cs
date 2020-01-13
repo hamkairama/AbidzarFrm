@@ -30,7 +30,8 @@ namespace AbidzarFrm.Rukuntangga.Pages
             ListRequest request = new ListRequest();
             ListResponse<TbJenisInformasiRow> response = new ListResponse<TbJenisInformasiRow>();
             TbJenisInformasiRepository repository = new TbJenisInformasiRepository();
-            var kodeRt = CurrentSession.Ktp().KodeRt;
+            var ud = (UserDefinition)Serenity.Authorization.UserDefinition;
+            var kodeRt = ud.Ktp.KodeRt;
             //ViewBag.IdJenisInformasi = id;
             using (var connection = SqlConnections.NewByKey("Rukuntangga"))
             {
@@ -64,7 +65,8 @@ namespace AbidzarFrm.Rukuntangga.Pages
         public ActionResult Terbaru()
         {
             List<TbDetailJenisInformasiRow> response = new List<TbDetailJenisInformasiRow>();
-            var kodeRt = CurrentSession.Ktp().KodeRt;
+            var ud = (UserDefinition)Serenity.Authorization.UserDefinition;
+            var kodeRt = ud.Ktp.KodeRt;
             using (var connection = SqlConnections.NewByKey("Rukuntangga"))
             {
                 var parameterValue = connection.TrySingle<TbParameterRow>(q => q.SelectTableFields().Where(new Criteria(TbParameterRow.Fields.Kode) == "002")).Value;
@@ -83,7 +85,8 @@ namespace AbidzarFrm.Rukuntangga.Pages
             ListRequest request = new ListRequest();
             ListResponse<TbDetailJenisInformasiRow> response = new ListResponse<TbDetailJenisInformasiRow>();
             TbDetailJenisInformasiRepository repository = new TbDetailJenisInformasiRepository();
-            var kodeRt = CurrentSession.Ktp().KodeRt;
+            //var ud = (UserDefinition)Serenity.Authorization.UserDefinition;
+            //var kodeRt = ud.Ktp.KodeRt;
             using (var connection = SqlConnections.NewByKey("Rukuntangga"))
             {
                 request.Criteria = new Criteria("Judul").Like("%" + wildCard + "%");

@@ -2,6 +2,7 @@
 namespace AbidzarFrm.Rukuntangga.Pages
 {
     using AbidzarFrm.Modules.Common.Helpers;
+    using Serenity;
     using Serenity.Data;
     using Serenity.Services;
     using System.Web.Mvc;
@@ -30,9 +31,10 @@ namespace AbidzarFrm.Rukuntangga.Pages
             Administration.Repositories.UserRepository repo = new Administration.Repositories.UserRepository();
             ListRequest request = new ListRequest();
             ListResponse<Administration.Entities.UserRow> response = new ListResponse<Administration.Entities.UserRow>();
+            var ud = (UserDefinition)Authorization.UserDefinition;
             using (var connection = SqlConnections.NewByKey("Rukuntangga"))
             {
-                request.Criteria = new Criteria("KtpKodeRt") == CurrentSession.Ktp().KodeRt & (new Criteria("DisplayName").Like("%" + filter + "%") | new Criteria("Nik").Like("%" + filter + "%"));
+                request.Criteria = new Criteria("KtpKodeRt") == ud.Ktp.KodeRt & (new Criteria("DisplayName").Like("%" + filter + "%") | new Criteria("Nik").Like("%" + filter + "%"));
                 request.Take = totalCount;
                 response = repo.List(connection, request);
             }

@@ -16,14 +16,16 @@ namespace AbidzarFrm.Rukuntangga.Repositories
 
         public SaveResponse Create(IUnitOfWork uow, SaveRequest<MyRow> request)
         {
-            request.Entity.DibuatOleh = CurrentSession.Ktp().Nik;
-            request.Entity.KodeRt = CurrentSession.Ktp().KodeRt;
+            var ud = (UserDefinition)Authorization.UserDefinition;
+            request.Entity.DibuatOleh = ud.Ktp.Nik;
+            request.Entity.KodeRt = ud.Ktp.KodeRt;
             return new MySaveHandler().Process(uow, request, SaveRequestType.Create);
         }
 
         public SaveResponse Update(IUnitOfWork uow, SaveRequest<MyRow> request)
         {
-            request.Entity.DieditOleh = CurrentSession.Ktp().Nik;
+            var ud = (UserDefinition)Authorization.UserDefinition;
+            request.Entity.DieditOleh = ud.Ktp.Nik;
             request.Entity.DieditTanggal = DateTime.Now;
             return new MySaveHandler().Process(uow, request, SaveRequestType.Update);
         }

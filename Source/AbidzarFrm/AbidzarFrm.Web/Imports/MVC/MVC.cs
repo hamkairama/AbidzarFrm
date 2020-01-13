@@ -273,6 +273,7 @@ namespace MVC
             public static class Dashboard
             {
                 public const string DashboardIndex = "~/Modules/Common/Dashboard/DashboardIndex.cshtml";
+                public const string DashboardIndexCopy = "~/Modules/Common/Dashboard/DashboardIndexCopy.cshtml";
             }
 
             public static class Reporting

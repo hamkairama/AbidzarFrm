@@ -11,22 +11,23 @@ namespace AbidzarFrm.Modules.Common.Helpers
 {
     public class CurrentSession : AuthorizeLogin
     {
-        public static TbKtpRow Ktp()
-        {
-            TbKtpRow result = (TbKtpRow)HttpContext.Current.Session["DataKtp"];
-            if (result != null)
-                return result;
-            else
-                return null;
-        }
-        public static List<TbSlideShowRow> Slideshow()
-        {
-            List<TbSlideShowRow> result = (List<TbSlideShowRow>)HttpContext.Current.Session["DataSlideshow"];
-            if (result != null)
-                return result;
-            else
-                return null;
-        }
+        //public static TbKtpRow Ktp()
+        //{
+        //    var user = (UserDefinition)Serenity.Authorization.UserDefinition;
+        //    TbKtpRow result = (TbKtpRow)HttpContext.Current.Session["DataKtp"];
+        //    if (result != null)
+        //        return result;
+        //    else
+        //        return null;
+        //}
+        //public static List<TbSlideShowRow> Slideshow()
+        //{
+        //    List<TbSlideShowRow> result = (List<TbSlideShowRow>)HttpContext.Current.Session["DataSlideshow"];
+        //    if (result != null)
+        //        return result;
+        //    else
+        //        return null;
+        //}
 
     }
 }

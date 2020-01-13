@@ -4,6 +4,7 @@ namespace AbidzarFrm.Rukuntangga.Pages
     using AbidzarFrm.Modules.Common.Helpers;
     using AbidzarFrm.Rukuntangga.Entities;
     using AbidzarFrm.Rukuntangga.Repositories;
+    using Serenity;
     using Serenity.Data;
     using Serenity.Services;
     using System.Collections.Generic;
@@ -30,7 +31,8 @@ namespace AbidzarFrm.Rukuntangga.Pages
             ListRequest request = new ListRequest();
             ListResponse<TbJenisKegiatanRow> response = new ListResponse<TbJenisKegiatanRow>();
             TbJenisKegiatanRepository repository = new TbJenisKegiatanRepository();
-            var kodeRt = CurrentSession.Ktp().KodeRt;
+            var ud = (UserDefinition)Authorization.UserDefinition;
+            var kodeRt = ud.Ktp.KodeRt;
             //ViewBag.IdJenisKegiatan = id;
             using (var connection = SqlConnections.NewByKey("Rukuntangga"))
             {
@@ -64,7 +66,8 @@ namespace AbidzarFrm.Rukuntangga.Pages
         public ActionResult Terbaru()
         {
             List<TbDetailJenisKegiatanRow> response = new List<TbDetailJenisKegiatanRow>();
-            var kodeRt = CurrentSession.Ktp().KodeRt;
+            var ud = (UserDefinition)Authorization.UserDefinition;
+            var kodeRt = ud.Ktp.KodeRt;
             using (var connection = SqlConnections.NewByKey("Rukuntangga"))
             {
                 var parameterValue = connection.TrySingle<TbParameterRow>(q => q.SelectTableFields().Where(new Criteria(TbParameterRow.Fields.Kode) == "002")).Value;
@@ -83,7 +86,8 @@ namespace AbidzarFrm.Rukuntangga.Pages
             ListRequest request = new ListRequest();
             ListResponse<TbDetailJenisKegiatanRow> response = new ListResponse<TbDetailJenisKegiatanRow>();
             TbDetailJenisKegiatanRepository repository = new TbDetailJenisKegiatanRepository();
-            var kodeRt = CurrentSession.Ktp().KodeRt;
+            var ud = (UserDefinition)Authorization.UserDefinition;
+            var kodeRt = ud.Ktp.KodeRt;
             using (var connection = SqlConnections.NewByKey("Rukuntangga"))
             {
                 request.Criteria = new Criteria("NamaKegiatan").Like("%" + wildCard + "%");

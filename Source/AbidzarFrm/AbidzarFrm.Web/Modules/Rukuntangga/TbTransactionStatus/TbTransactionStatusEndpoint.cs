@@ -18,14 +18,16 @@ namespace AbidzarFrm.Rukuntangga.Endpoints
         [HttpPost, AuthorizeCreate(typeof(MyRow))]
         public SaveResponse Create(IUnitOfWork uow, SaveRequest<MyRow> request)
         {
-            request.Entity.DibuatOleh = CurrentSession.Ktp().Nik;
+            var ud = (UserDefinition)Authorization.UserDefinition;
+            request.Entity.DibuatOleh = ud.Ktp.Nik;
             return new MyRepository().Create(uow, request);
         }
 
         [HttpPost, AuthorizeUpdate(typeof(MyRow))]
         public SaveResponse Update(IUnitOfWork uow, SaveRequest<MyRow> request)
         {
-            request.Entity.DieditOleh = CurrentSession.Ktp().Nik;
+            var ud = (UserDefinition)Authorization.UserDefinition;
+            request.Entity.DieditOleh = ud.Ktp.Nik;
             request.Entity.DieditTanggal = DateTime.Now;
             return new MyRepository().Update(uow, request);
         }

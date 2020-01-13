@@ -30,7 +30,8 @@ namespace AbidzarFrm.Rukuntangga.Pages
             ListRequest request = new ListRequest();
             ListResponse<TbPemiluRow> response = new ListResponse<TbPemiluRow>();
             TbPemiluRepository repository = new TbPemiluRepository();
-            var kodeRt = CurrentSession.Ktp().KodeRt;
+            var ud = (UserDefinition)Serenity.Authorization.UserDefinition;
+            var kodeRt = ud.Ktp.KodeRt;
             //ViewBag.IdPemilu = id;
             using (var connection = SqlConnections.NewByKey("Rukuntangga"))
             {
@@ -101,7 +102,8 @@ namespace AbidzarFrm.Rukuntangga.Pages
             RetrieveResponse<TbPollingPemiluRow> response = new RetrieveResponse<TbPollingPemiluRow>();
             TbPollingPemiluRepository repository = new TbPollingPemiluRepository();
             bool result = false;
-            string nik = CurrentSession.Ktp().Nik;
+            var ud = (UserDefinition)Serenity.Authorization.UserDefinition;
+            string nik = ud.Ktp.Nik;
             //string conString = ConfigurationManager.ConnectionStrings["Rukuntangga"].ConnectionString;
             //using (SqlConnection connection = new SqlConnection(conString))
             //{ }
@@ -113,11 +115,6 @@ namespace AbidzarFrm.Rukuntangga.Pages
                 {
                     result = true;
                 }
-                //var site = connection.TrySingle<TbPollingPemiluRow>(q => q.SelectTableFields().Where(new Criteria(TbPollingPemiluRow.Fields.IdDetailPemilu) == idDetailPemilu & new Criteria(TbPollingPemiluRow.Fields.Nik) == CurrentSession.Ktp().Nik));
-                //if (site != null)
-                //{
-                //    result = true;
-                //}
             }
 
             return Json(result);
