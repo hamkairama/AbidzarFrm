@@ -32,8 +32,8 @@ namespace AbidzarFrm.Rukuntangga.Entities
             set { Fields.Judul[this] = value; }
         }
 
-        [DisplayName("File Name"), Size(500)]
-        [ImageUploadEditor(FilenameFormat = "Pemilu/|KodeRt|/|Judul|/~", CopyToHistory = false)]
+        [DisplayName("Photo"), Size(500)]
+        [ImageUploadEditor(FilenameFormat = "Questioner/|KodeRt|/|Judul|/{4}", CopyToHistory = false)]
         public String FileName
         {
             get { return Fields.FileName[this]; }

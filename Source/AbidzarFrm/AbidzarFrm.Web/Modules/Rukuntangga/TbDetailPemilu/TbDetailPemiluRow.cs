@@ -53,8 +53,8 @@ namespace AbidzarFrm.Rukuntangga.Entities
             set { Fields.Deskripsi[this] = value; }
         }
 
-        [DisplayName("File Name"), Size(500)]
-        [ImageUploadEditor(FilenameFormat = "DetailPemilu/|KodeRt|/~", CopyToHistory = false)]
+        [DisplayName("Photo"), Size(500)]
+        [ImageUploadEditor(FilenameFormat = "Questioner/|KodeRt|/|IdPemiluJudul|/{4}", CopyToHistory = false)]
         public String FileName
         {
             get { return Fields.FileName[this]; }

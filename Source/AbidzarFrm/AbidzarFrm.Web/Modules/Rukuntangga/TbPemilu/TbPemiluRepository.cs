@@ -39,7 +39,8 @@ namespace AbidzarFrm.Rukuntangga.Repositories
             return new MyListHandler().Process(connection, request);
         }
 
-        private class MySaveHandler : SaveRequestHandler<MyRow> {
+        private class MySaveHandler : SaveRequestHandler<MyRow>
+        {
             protected override void AfterSave()
             {
                 #region DetailJenisInformasi
@@ -47,10 +48,25 @@ namespace AbidzarFrm.Rukuntangga.Repositories
                 {
                     string idIn = "";
                     int i = 0;
+                    string setFolderDetail = "";
+                    setFolderDetail = "Questioner/" + this.Row.KodeRt + "/" + this.Row.Judul + "/";
+
                     foreach (TbDetailPemiluRow detailRow in this.Row.tbDetailPemiluRow)
                     {
                         detailRow.IdPemilu = this.Row.Id;
                         detailRow.DibuatOleh = this.Row.DibuatOleh;
+                        string source = detailRow.FileName;
+
+                        if (source != null)
+                        {
+                            var fileName = source.Split('/');
+
+                            string destination = setFolderDetail + fileName[fileName.Length - 1];
+                            FileChanger.Move(source, destination);
+
+                            detailRow.FileName = destination;
+                        }
+
                         if (detailRow.Id != null)
                         {
                             this.Connection.UpdateById(detailRow);
@@ -68,6 +84,7 @@ namespace AbidzarFrm.Rukuntangga.Repositories
                         {
                             idIn += ",";
                         }
+
                     }
 
                     this.Connection.Execute(string.Format("DELETE dbo.TbDetailPemilu WHERE Id Not In ({0}) and IdPemilu = {1}", idIn, this.Row.Id));
