@@ -64,7 +64,7 @@ namespace AbidzarFrm.Administration.Entities
         }
 
         [DisplayName("User Image"), Size(100)]
-        [ImageUploadEditor(FilenameFormat = "UserImage/|Username|/{4}", CopyToHistory = false)]
+        [ImageUploadEditor(FilenameFormat = "|KtpKodeRt|/UserImage/|Username|/{4}", CopyToHistory = false)]
         public String UserImage
         {
             get { return Fields.UserImage[this]; }

@@ -164,7 +164,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
         }
 
         [DisplayName("Photo Ktp")]
-        [ImageUploadEditor(FilenameFormat = "Ktp/|KodeRt|/|Nik|/{4}", CopyToHistory = false), LookupInclude]
+        [ImageUploadEditor(FilenameFormat = "|KodeRt|/Ktp/|Nik|/{4}", CopyToHistory = false), LookupInclude]
         public String PhotoKtp
         {
             get { return Fields.PhotoKtp[this]; }
@@ -172,7 +172,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
         }
 
         [DisplayName("Signature Ktp")]
-        [ImageUploadEditor(FilenameFormat = "Ktp/|KodeRt|/|Nik|/{4}", CopyToHistory = false)]
+        [ImageUploadEditor(FilenameFormat = "|KodeRt|/Ktp/|Nik|/{4}", CopyToHistory = false)]
         public String SignatureKtp
         {
             get { return Fields.SignatureKtp[this]; }
@@ -180,7 +180,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
         }
 
         [DisplayName("Photo Rumah")]
-        [ImageUploadEditor(FilenameFormat = "Ktp/|KodeRt|/|Nik|/{4}", CopyToHistory = false)]
+        [ImageUploadEditor(FilenameFormat = "|KodeRt|/Ktp/|Nik|/{4}", CopyToHistory = false)]
         public String PhotoRumah
         {
             get { return Fields.PhotoRumah[this]; }
@@ -267,7 +267,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
             set { Fields.RwTinggal[this] = value; }
         }
 
-        [DisplayName("Attachment"), MultipleFileUploadEditor(FilenameFormat = "Ktp/|KodeRt|/|Nik|/Attachment/{4}")]
+        [DisplayName("Attachment"), MultipleFileUploadEditor(FilenameFormat = "|KodeRt|/Ktp/|Nik|/Attachment/{4}")]
         public String Attachment
         {
             get { return Fields.Attachment[this]; }

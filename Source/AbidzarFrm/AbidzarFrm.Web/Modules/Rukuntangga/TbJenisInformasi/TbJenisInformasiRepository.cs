@@ -7,6 +7,7 @@ namespace AbidzarFrm.Rukuntangga.Repositories
     using Serenity.Data;
     using Serenity.Services;
     using System;
+    using System.Collections.Generic;
     using System.Data;
     using MyRow = Entities.TbJenisInformasiRow;
 
@@ -48,17 +49,39 @@ namespace AbidzarFrm.Rukuntangga.Repositories
 
         private class MySaveHandler : SaveRequestHandler<MyRow>
         {
+            string setFolder, source, destination;
+
+            protected override void BeforeSave()
+            {
+                #region header
+                #endregion
+            }
+
             protected override void AfterSave()
             {
-                #region DetailJenisInformasi
+                #region detail
                 if (this.Row.tbDetailJenisInformasiRow.Count > 0)
                 {
                     string idIn = "";
                     int i = 0;
+
                     foreach (TbDetailJenisInformasiRow detailRow in this.Row.tbDetailJenisInformasiRow)
                     {
+                        setFolder = this.Row.KodeRt + "/" + "Informasi/" + this.Row.JenisInformasi + "/" + detailRow.Judul + "/";
+                        FileChanger.CreateFolder(setFolder);
                         detailRow.IdJenisInformasi = this.Row.Id;
                         detailRow.DibuatOleh = this.Row.DibuatOleh;
+                        source = detailRow.NamaFile;
+
+                        if (source != null)
+                        {
+                            var splt = source.Split('/');
+                            destination = setFolder + splt[splt.Length - 1];
+                            FileChanger.Move(source, destination);
+
+                            detailRow.NamaFile = destination;
+                        }
+
                         if (detailRow.Id != null)
                         {
                             this.Connection.UpdateById(detailRow);
@@ -88,7 +111,23 @@ namespace AbidzarFrm.Rukuntangga.Repositories
 
             }
         }
-        private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
+        private class MyDeleteHandler : DeleteRequestHandler<MyRow> {
+            protected override void OnBeforeDelete()
+            {
+                List<TbDetailJenisInformasiRow> detail = Connection.List<TbDetailJenisInformasiRow>(x => x.SelectTableFields().Where(string.Format("IdJenisInformasi = {0}", Row.Id)));
+
+                if (detail.Count > 0)
+                {
+                    foreach (var item in detail)
+                    {
+                        if (item.NamaFile != null)
+                            FileChanger.Delete(item.NamaFile);
+                    }
+                    this.Connection.Execute(string.Format("DELETE dbo.TbDetailJenisInformasi WHERE IdJenisInformasi = {0} ", this.Row.Id));
+                }
+            }
+
+        }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
         private class MyListHandler : ListRequestHandler<MyRow> { }
     }

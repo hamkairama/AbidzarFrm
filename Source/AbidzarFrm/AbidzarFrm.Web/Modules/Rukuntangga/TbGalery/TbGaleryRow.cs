@@ -40,7 +40,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
         }
 
         [DisplayName("Photos")]
-        [MultipleFileUploadEditor(FilenameFormat = "Galery/|KodeRt|/~", CopyToHistory = false)]
+        [MultipleFileUploadEditor(FilenameFormat = "|KodeRt|/Galery/~", CopyToHistory = false)]
         public String Photos
         {
             get { return Fields.Photos[this]; }
@@ -48,7 +48,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
         }
 
         [DisplayName("Thumbnail")]
-        [FileUploadEditor(FilenameFormat = "Galery/|KodeRt|/Thumbnail/~", CopyToHistory = false)]
+        [FileUploadEditor(FilenameFormat = "|KodeRt|/Galery/Thumbnail/~", CopyToHistory = false)]
         public String Thumbnail
         {
             get { return Fields.Thumbnail[this]; }

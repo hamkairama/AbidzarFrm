@@ -31,7 +31,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
             set { Fields.IdJenisInformasi[this] = value; }
         }
 
-        [DisplayName("Judul"), Size(100), QuickSearch]
+        [DisplayName("Judul"), Size(100), QuickSearch, NotNull]
         public String Judul
         {
             get { return Fields.Judul[this]; }
@@ -39,7 +39,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
         }
 
         [DisplayName("Nama File"), Size(100)]
-        [ImageUploadEditor(FilenameFormat = "DetailJenisInformasi/|KodeRt|/~", CopyToHistory = false)]
+        [ImageUploadEditor(CopyToHistory = false)]
         public String NamaFile
         {
             get { return Fields.NamaFile[this]; }

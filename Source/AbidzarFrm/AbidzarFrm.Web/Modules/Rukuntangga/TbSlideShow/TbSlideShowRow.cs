@@ -39,7 +39,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
         }
 
         [DisplayName("File Name"), Size(500)]
-        [ImageUploadEditor(FilenameFormat = "Slideshow/|KodeRt|/~", CopyToHistory = false)]
+        [ImageUploadEditor(FilenameFormat = "|KodeRt|/Slideshow/~", CopyToHistory = false)]
         public String FileName
         {
             get { return Fields.FileName[this]; }

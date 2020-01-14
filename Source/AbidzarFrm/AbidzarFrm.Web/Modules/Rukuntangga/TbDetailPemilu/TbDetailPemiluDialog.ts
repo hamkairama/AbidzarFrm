@@ -11,5 +11,7 @@ namespace AbidzarFrm.Rukuntangga {
         //protected getNameProperty() { return TbDetailPemiluRow.nameProperty; }
         //protected getService() { return TbDetailPemiluService.baseUrl; }
         //protected getDeletePermission() { return TbDetailPemiluRow.insertPermission; }
+
+        protected form = new TbDetailPemiluForm(this.idPrefix);
     }
 }

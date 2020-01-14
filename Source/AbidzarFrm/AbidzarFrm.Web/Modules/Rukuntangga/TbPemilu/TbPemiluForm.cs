@@ -16,8 +16,6 @@ namespace AbidzarFrm.Rukuntangga.Forms
     {
         public String Judul { get; set; }
         public String FileName { get; set; }
-        public String KodeRt { get; set; }
-
 
         [Category("Detail Pemilu"), Collapsible(true, Collapsed = false)]
         [TbDetailPemiluEditor, DisplayName("Detail")]

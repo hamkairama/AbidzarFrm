@@ -16,7 +16,6 @@ namespace AbidzarFrm.Rukuntangga.Forms
     {
         public String JenisKegiatan { get; set; }
         public String Deskripsi { get; set; }
-        public String KodeRt { get; set; }
 
         [Category("Detail Jenis Kegiatan"), Collapsible(true, Collapsed = false)]
         [TbDetailJenisKegiatanEditor, DisplayName("Detail")]

@@ -2,7 +2,6 @@
     export interface TbPemiluForm {
         Judul: Serenity.StringEditor;
         FileName: Serenity.ImageUploadEditor;
-        KodeRt: Serenity.StringEditor;
         tbDetailPemiluRow: TbDetailPemiluEditor;
     }
 
@@ -24,7 +23,6 @@
                 Q.initFormType(TbPemiluForm, [
                     'Judul', w0,
                     'FileName', w1,
-                    'KodeRt', w0,
                     'tbDetailPemiluRow', w2
                 ]);
             }

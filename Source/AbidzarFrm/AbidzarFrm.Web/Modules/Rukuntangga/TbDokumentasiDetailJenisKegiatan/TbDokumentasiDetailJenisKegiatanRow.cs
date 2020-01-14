@@ -32,7 +32,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
         }
 
         [DisplayName("Nama File"), Size(500), NotNull, QuickSearch]
-        [ImageUploadEditor(FilenameFormat = "DokumentasiKegiatan/|KodeRt|/~", CopyToHistory = false)]
+        [ImageUploadEditor(FilenameFormat = "|KodeRt|/DokumentasiKegiatan/~", CopyToHistory = false)]
         public String NamaFile
         {
             get { return Fields.NamaFile[this]; }

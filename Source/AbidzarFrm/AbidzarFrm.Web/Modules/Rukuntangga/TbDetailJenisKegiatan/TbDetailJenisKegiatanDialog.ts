@@ -9,5 +9,8 @@ namespace AbidzarFrm.Rukuntangga {
         //protected getNameProperty() { return TbDetailJenisKegiatanRow.nameProperty; }
         //protected getService() { return TbDetailJenisKegiatanService.baseUrl; }
         //protected getDeletePermission() { return TbDetailJenisKegiatanRow.insertPermission; }
+
+        protected form = new TbDetailJenisKegiatanForm(this.idPrefix);
+
     }
 }

@@ -2,7 +2,6 @@
     export interface TbJenisKegiatanForm {
         JenisKegiatan: Serenity.StringEditor;
         Deskripsi: Serenity.StringEditor;
-        KodeRt: Serenity.StringEditor;
         tbDetailJenisKegiatanRow: TbDetailJenisKegiatanEditor;
     }
 
@@ -23,7 +22,6 @@
                 Q.initFormType(TbJenisKegiatanForm, [
                     'JenisKegiatan', w0,
                     'Deskripsi', w0,
-                    'KodeRt', w0,
                     'tbDetailJenisKegiatanRow', w1
                 ]);
             }

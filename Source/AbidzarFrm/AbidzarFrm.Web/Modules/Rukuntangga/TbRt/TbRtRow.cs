@@ -67,7 +67,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
         }
 
         [DisplayName("Photo")]
-        [ImageUploadEditor(FilenameFormat = "Rt/|KodeRt|/~", CopyToHistory = false)]
+        [ImageUploadEditor(FilenameFormat = "|KodeRt|/Rt/~", CopyToHistory = false)]
         public String Photo
         {
             get { return Fields.Photo[this]; }

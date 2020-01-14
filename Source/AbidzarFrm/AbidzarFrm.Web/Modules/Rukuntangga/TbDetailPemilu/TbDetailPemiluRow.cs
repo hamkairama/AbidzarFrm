@@ -54,7 +54,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
         }
 
         [DisplayName("Photo"), Size(500)]
-        [ImageUploadEditor(FilenameFormat = "Questioner/|KodeRt|/|IdPemiluJudul|/{4}", CopyToHistory = false)]
+        [ImageUploadEditor(CopyToHistory = false)]
         public String FileName
         {
             get { return Fields.FileName[this]; }
