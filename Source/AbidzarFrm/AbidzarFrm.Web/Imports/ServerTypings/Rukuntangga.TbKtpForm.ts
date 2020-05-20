@@ -31,11 +31,13 @@
         IdKotaTinggal: Common.Editor.SelectEditor;
         IdKecamatanTinggal: Common.Editor.SelectEditor;
         IdKelurahanTinggal: Common.Editor.SelectEditor;
-        AlamatTinggal: Serenity.StringEditor;
-        RtTinggal: Common.Editor.Sequens3Editor;
         RwTinggal: Common.Editor.Sequens3Editor;
-        PhotoRumah: Serenity.ImageUploadEditor;
+        RtTinggal: Common.Editor.Sequens3Editor;
         KodeRt: Serenity.StringEditor;
+        AlamatTinggal: Serenity.StringEditor;
+        Latitude: Serenity.DecimalEditor;
+        Longitude: Serenity.DecimalEditor;
+        PhotoRumah: Serenity.ImageUploadEditor;
         Attachment: Serenity.MultipleImageUploadEditor;
     }
 
@@ -66,7 +68,8 @@
                 var w13 = Common.Editor.PendidikanEditor;
                 var w14 = s.ImageUploadEditor;
                 var w15 = Common.Editor.YesNoEditor;
-                var w16 = s.MultipleImageUploadEditor;
+                var w16 = s.DecimalEditor;
+                var w17 = s.MultipleImageUploadEditor;
 
                 Q.initFormType(TbKtpForm, [
                     'Kk', w0,
@@ -100,12 +103,14 @@
                     'IdKotaTinggal', w6,
                     'IdKecamatanTinggal', w6,
                     'IdKelurahanTinggal', w6,
-                    'AlamatTinggal', w0,
-                    'RtTinggal', w8,
                     'RwTinggal', w8,
-                    'PhotoRumah', w14,
+                    'RtTinggal', w8,
                     'KodeRt', w0,
-                    'Attachment', w16
+                    'AlamatTinggal', w0,
+                    'Latitude', w16,
+                    'Longitude', w16,
+                    'PhotoRumah', w14,
+                    'Attachment', w17
                 ]);
             }
         }

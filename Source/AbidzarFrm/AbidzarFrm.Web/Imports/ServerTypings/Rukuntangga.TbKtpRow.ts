@@ -43,6 +43,8 @@
         KodeRt?: string;
         DataStatus?: number;
         TinggalSesuaiKtp?: number;
+        Latitude?: number;
+        Longitude?: number;
     }
 
     export namespace TbKtpRow {
@@ -102,7 +104,9 @@
             SystemStatus = "SystemStatus",
             KodeRt = "KodeRt",
             DataStatus = "DataStatus",
-            TinggalSesuaiKtp = "TinggalSesuaiKtp"
+            TinggalSesuaiKtp = "TinggalSesuaiKtp",
+            Latitude = "Latitude",
+            Longitude = "Longitude"
         }
     }
 }

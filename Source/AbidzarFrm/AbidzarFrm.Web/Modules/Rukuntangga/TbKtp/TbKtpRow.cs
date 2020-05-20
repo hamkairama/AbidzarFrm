@@ -330,6 +330,20 @@ namespace AbidzarFrm.Rukuntangga.Entities
             set { Fields.TinggalSesuaiKtp[this] = value; }
         }
 
+        [DisplayName("Latitude")]
+        public Decimal? Latitude
+        {
+            get { return Fields.Latitude[this]; }
+            set { Fields.Latitude[this] = value; }
+        }
+
+        [DisplayName("Longitude")]
+        public Decimal? Longitude
+        {
+            get { return Fields.Longitude[this]; }
+            set { Fields.Longitude[this] = value; }
+        }
+
         //[DisplayName("Id Kelurahan Id Kecamatan"), Expression("jIdKelurahan.[IdKecamatan]")]
         //public Int32? IdKelurahanIdKecamatan
         //{
@@ -448,6 +462,8 @@ namespace AbidzarFrm.Rukuntangga.Entities
             public StringField KodeRt;
             public Int32Field DataStatus;
             public Int32Field TinggalSesuaiKtp;
+            public DecimalField Latitude;
+            public DecimalField Longitude;
 
             //public Int32Field IdKelurahanIdKecamatan;
             //public StringField IdKelurahanKodeKelurahan;

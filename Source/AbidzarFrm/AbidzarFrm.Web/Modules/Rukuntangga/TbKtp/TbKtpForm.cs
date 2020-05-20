@@ -91,18 +91,19 @@ namespace AbidzarFrm.Rukuntangga.Forms
         public Int32 IdKecamatanTinggal { get; set; }
         [HalfWidth, Required(true)]
         public Int32 IdKelurahanTinggal { get; set; }
-        [HalfWidth]
-        [DisplayName("Alamat")]
-        public String AlamatTinggal { get; set; }
-        [HalfWidth, Sequens3Editor]
-        [DisplayName("RT")]
-        public String RtTinggal { get; set; }
         [HalfWidth, Sequens3Editor]
         [DisplayName("RW")]
         public String RwTinggal { get; set; }
-        public String PhotoRumah { get; set; }
-        [Category("Kode RT ")]
+        [HalfWidth, Sequens3Editor]
+        [DisplayName("RT")]
+        public String RtTinggal { get; set; }
+        [HalfWidth]
+        [DisplayName("Alamat")]
         public String KodeRt { get; set; }
+        public String AlamatTinggal { get; set; }
+        public Decimal Latitude { get; set; }
+        public Decimal Longitude { get; set; }
+        public String PhotoRumah { get; set; }
         [Tab("Dokumen")]
         public String Attachment { get; set; }
     }
