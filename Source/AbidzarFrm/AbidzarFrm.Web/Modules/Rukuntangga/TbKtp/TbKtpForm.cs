@@ -81,6 +81,8 @@ namespace AbidzarFrm.Rukuntangga.Forms
         [HalfWidth]
         public String NamaIbu { get; set; }
         [Tab("Alamat Tinggal")]
+        [YesNoEditor]
+        public Boolean TinggalSesuaiKtp { get; set; }
         [HalfWidth, Required(true)]
         public Int32 IdProvinsiTinggal { get; set; }
         [HalfWidth, Required(true)]

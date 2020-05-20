@@ -42,6 +42,7 @@
         SystemStatus?: boolean;
         KodeRt?: string;
         DataStatus?: number;
+        TinggalSesuaiKtp?: number;
     }
 
     export namespace TbKtpRow {
@@ -100,7 +101,8 @@
             DieditTanggal = "DieditTanggal",
             SystemStatus = "SystemStatus",
             KodeRt = "KodeRt",
-            DataStatus = "DataStatus"
+            DataStatus = "DataStatus",
+            TinggalSesuaiKtp = "TinggalSesuaiKtp"
         }
     }
 }

@@ -18,6 +18,16 @@ namespace AbidzarFrm.Rukuntangga.Repositories
             var ud = (UserDefinition)Authorization.UserDefinition;
             request.Entity.DibuatOleh = ud.Ktp.Nik;
             request.Entity.KodeRt = ud.Ktp.KodeRt;
+            if (request.Entity.TinggalSesuaiKtp == 1)
+            {
+                request.Entity.IdProvinsiTinggal = request.Entity.IdProvinsi;
+                request.Entity.IdKotaTinggal = request.Entity.IdKota;
+                request.Entity.IdKecamatanTinggal = request.Entity.IdKecamatan;
+                request.Entity.IdKelurahanTinggal = request.Entity.IdKelurahan;
+                request.Entity.AlamatTinggal = request.Entity.Alamat;
+                request.Entity.RtTinggal = request.Entity.Rt;
+                request.Entity.RwTinggal = request.Entity.Rw;
+            }
             return new MySaveHandler().Process(uow, request, SaveRequestType.Create);
         }
 

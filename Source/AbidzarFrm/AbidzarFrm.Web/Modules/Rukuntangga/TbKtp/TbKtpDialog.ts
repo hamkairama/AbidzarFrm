@@ -88,10 +88,24 @@ namespace AbidzarFrm.Rukuntangga {
             this.form.StatusPerkawinan.changeSelect2(e => {
                 Serenity.EditorUtils.setRequired(this.form.TanggalPerkawinan, this.form.StatusPerkawinan.value == "K");
             })
+
+            this.form.TinggalSesuaiKtp.changeSelect2(e => {
+                let flag: boolean = false;
+                if (this.form.TinggalSesuaiKtp.value == "0") {
+                    flag = true;
+                }
+                this.IsSameAddressWithKtp(flag);
+            })
         }
 
         updateInterface() {
             super.updateInterface();
+            let flag: boolean = false;
+
+            if (this.isNew()) {
+                this.form.TinggalSesuaiKtp.value = "1";
+                flag = false;
+            }
 
             if (this.isEditMode()) {
                 this.SetKota();
@@ -101,8 +115,13 @@ namespace AbidzarFrm.Rukuntangga {
                 this.SetKotaTinggal();
                 this.SetKecamatanTinggal();
                 this.SetKelurahanTinggal();
+
+                if (this.entity.TinggalSesuaiKtp == 0) {
+                    flag = true;
+                }
             }
 
+            this.IsSameAddressWithKtp(flag);
             Serenity.EditorUtils.setRequired(this.form.TanggalPerkawinan, this.form.StatusPerkawinan.value == "K");
         }
 
@@ -234,6 +253,28 @@ namespace AbidzarFrm.Rukuntangga {
             }
         }
 
+        private IsSameAddressWithKtp(flag: boolean) {
+            Serenity.EditorUtils.setRequired(this.form.IdProvinsiTinggal, flag);
+            this.element.find(".IdProvinsiTinggal").toggle(flag);
+
+            Serenity.EditorUtils.setRequired(this.form.IdKotaTinggal, flag);
+            this.element.find(".IdKotaTinggal").toggle(flag);
+
+            Serenity.EditorUtils.setRequired(this.form.IdKecamatanTinggal, flag);
+            this.element.find(".IdKecamatanTinggal").toggle(flag);
+
+            Serenity.EditorUtils.setRequired(this.form.IdKelurahanTinggal, flag);
+            this.element.find(".IdKelurahanTinggal").toggle(flag);
+
+            Serenity.EditorUtils.setRequired(this.form.AlamatTinggal, flag);
+            this.element.find(".AlamatTinggal").toggle(flag);
+
+            Serenity.EditorUtils.setRequired(this.form.RtTinggal, flag);
+            this.element.find(".RtTinggal").toggle(flag);
+
+            Serenity.EditorUtils.setRequired(this.form.RwTinggal, flag);
+            this.element.find(".RwTinggal").toggle(flag);
+        }
 
         get isDraft() {
             return this.entity.DataStatus == StatusCode.Draft;

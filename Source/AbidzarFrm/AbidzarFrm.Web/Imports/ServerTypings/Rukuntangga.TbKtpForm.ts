@@ -26,6 +26,7 @@
         SignatureKtp: Serenity.ImageUploadEditor;
         NamaAyah: Serenity.StringEditor;
         NamaIbu: Serenity.StringEditor;
+        TinggalSesuaiKtp: Common.Editor.YesNoEditor;
         IdProvinsiTinggal: Serenity.LookupEditor;
         IdKotaTinggal: Common.Editor.SelectEditor;
         IdKecamatanTinggal: Common.Editor.SelectEditor;
@@ -64,7 +65,8 @@
                 var w12 = Common.Editor.GolonganDarahEditor;
                 var w13 = Common.Editor.PendidikanEditor;
                 var w14 = s.ImageUploadEditor;
-                var w15 = s.MultipleImageUploadEditor;
+                var w15 = Common.Editor.YesNoEditor;
+                var w16 = s.MultipleImageUploadEditor;
 
                 Q.initFormType(TbKtpForm, [
                     'Kk', w0,
@@ -93,6 +95,7 @@
                     'SignatureKtp', w14,
                     'NamaAyah', w0,
                     'NamaIbu', w0,
+                    'TinggalSesuaiKtp', w15,
                     'IdProvinsiTinggal', w5,
                     'IdKotaTinggal', w6,
                     'IdKecamatanTinggal', w6,
@@ -102,7 +105,7 @@
                     'RwTinggal', w8,
                     'PhotoRumah', w14,
                     'KodeRt', w0,
-                    'Attachment', w15
+                    'Attachment', w16
                 ]);
             }
         }
