@@ -275,7 +275,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
         }
 
         [DisplayName("Data Status")]
-        public Int32? DataStatus
+        public String DataStatus
         {
             get { return Fields.DataStatus[this]; }
             set { Fields.DataStatus[this] = value; }
@@ -342,6 +342,13 @@ namespace AbidzarFrm.Rukuntangga.Entities
         {
             get { return Fields.Longitude[this]; }
             set { Fields.Longitude[this] = value; }
+        }
+
+        [DisplayName("DocumentCode"), Size(5)]
+        public String DocumentCode
+        {
+            get { return Fields.DocumentCode[this]; }
+            set { Fields.DocumentCode[this] = value; }
         }
 
         //[DisplayName("Id Kelurahan Id Kecamatan"), Expression("jIdKelurahan.[IdKecamatan]")]
@@ -460,10 +467,11 @@ namespace AbidzarFrm.Rukuntangga.Entities
             public DateTimeField DieditTanggal;
             public BooleanField SystemStatus;
             public StringField KodeRt;
-            public Int32Field DataStatus;
+            public StringField DataStatus;
             public Int32Field TinggalSesuaiKtp;
             public DecimalField Latitude;
             public DecimalField Longitude;
+            public StringField DocumentCode;
 
             //public Int32Field IdKelurahanIdKecamatan;
             //public StringField IdKelurahanKodeKelurahan;

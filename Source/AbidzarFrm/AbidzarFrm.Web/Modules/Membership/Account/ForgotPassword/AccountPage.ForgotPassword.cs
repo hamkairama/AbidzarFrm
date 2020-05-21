@@ -64,8 +64,8 @@ namespace AbidzarFrm.Membership.Pages
                 var emailBody = TemplateHelper.RenderTemplate(
                     MVC.Views.Membership.Account.ResetPassword.AccountResetPasswordEmail, emailModel);
 
-                bool resultSendEmail = false;
-                EmailHelper.Send(ref resultSendEmail, emailSubject, emailBody, user.Email);
+                //bool resultSendEmail = false;
+                EmailHelper.Send(emailSubject, emailBody, user.Email);
 
                 return new ServiceResponse();
             });

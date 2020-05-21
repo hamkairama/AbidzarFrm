@@ -1066,6 +1066,33 @@
     <TypeScriptCompile Include="Imports\ServerTypings\Administration.PermissionKeys.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Modules.Common.Abstraction.AccessButtonObj.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Modules.Common.Abstraction.AccessButtonRequest.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Modules.Common.Abstraction.AccessButtonResponse.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Modules.Common.Abstraction.CommonRequestObj.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Modules.Common.Abstraction.CommonResponseObj.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Modules.Common.Abstraction.EntityRequest.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Modules.Common.Abstraction.NextStatusRequest.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Modules.Common.Abstraction.NextStatusResponse.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="Imports\ServerTypings\Modules.Common.Abstraction.ProcessNextStatusRequest.ts">
+      <DependentUpon>ServerTypings.tt</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="Imports\ServerTypings\Modules.Common.Helpers.ResultStatusResponse.ts">
       <DependentUpon>ServerTypings.tt</DependentUpon>
     </TypeScriptCompile>
@@ -2672,6 +2699,7 @@
     <Compile Include="Modules\BasicSamples\Grids\StoredProcedureGrid\CustomerGrossSalesListRequest.cs" />
     <Compile Include="Modules\BasicSamples\Grids\StoredProcedureGrid\CustomerGrossSalesEndpoint.cs" />
     <Compile Include="Modules\BasicSamples\Grids\StoredProcedureGrid\CustomerGrossSalesRepository.cs" />
+    <Compile Include="Modules\Common\Abstraction\ATransaction.cs" />
     <Compile Include="Modules\Common\Helpers\AuthorizeLogin.cs" />
     <Compile Include="Modules\Common\Helpers\ConfigKey.cs" />
     <Compile Include="Modules\Common\Helpers\CurrentSession.cs" />
@@ -2679,6 +2707,7 @@
     <Compile Include="Modules\Common\Helpers\FileChanger.cs" />
     <Compile Include="Modules\Common\Helpers\ResultStatusResponse.cs" />
     <Compile Include="Modules\Common\Helpers\UserAdditionalInfo.cs" />
+    <Compile Include="Modules\Common\Interface\ITransaction.cs" />
     <Compile Include="Modules\Common\Lookup\Lookup.cs" />
     <Compile Include="Modules\Northwind\Customer\CustomerGrossSalesRow.cs" />
     <Compile Include="Modules\BasicSamples\Grids\VSGalleryQA\VSGalleryQAColumns.cs" />

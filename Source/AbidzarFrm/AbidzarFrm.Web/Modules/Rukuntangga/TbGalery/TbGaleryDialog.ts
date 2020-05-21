@@ -9,3 +9,6 @@ namespace AbidzarFrm.Rukuntangga {
         protected getNameProperty() { return TbGaleryRow.nameProperty; }
         protected getService() { return TbGaleryService.baseUrl; }
         protected getDeletePermission() { return TbGaleryRow.insertPermission; }
+
+    }
+}

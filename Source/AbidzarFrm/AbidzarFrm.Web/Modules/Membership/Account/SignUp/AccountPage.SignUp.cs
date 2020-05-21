@@ -95,8 +95,8 @@ namespace AbidzarFrm.Membership.Pages
                     var emailBody = TemplateHelper.RenderTemplate(
                         MVC.Views.Membership.Account.SignUp.AccountActivateEmail, emailModel);
 
-                    bool resultSendEmail = false;
-                    EmailHelper.Send(ref resultSendEmail, emailSubject, emailBody, email);
+                    //bool resultSendEmail = false;
+                    EmailHelper.Send(emailSubject, emailBody, email);
 
                     uow.Commit();
                     UserRetrieveService.RemoveCachedUser(userId, username);

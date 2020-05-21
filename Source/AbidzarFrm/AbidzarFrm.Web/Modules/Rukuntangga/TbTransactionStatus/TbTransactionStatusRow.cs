@@ -79,6 +79,20 @@ namespace AbidzarFrm.Rukuntangga.Entities
             set { Fields.DieditTanggal[this] = value; }
         }
 
+        [DisplayName("Icon"), Size(100), LookupInclude]
+        public String Icon
+        {
+            get { return Fields.Icon[this]; }
+            set { Fields.Icon[this] = value; }
+        }
+
+        [DisplayName("Label"), Size(100), LookupInclude]
+        public String Label
+        {
+            get { return Fields.Label[this]; }
+            set { Fields.Label[this] = value; }
+        }
+
         IIdField IIdRow.IdField
         {
             get { return Fields.Id; }
@@ -107,6 +121,8 @@ namespace AbidzarFrm.Rukuntangga.Entities
             public DateTimeField DibuatTanggal;
             public StringField DieditOleh;
             public DateTimeField DieditTanggal;
+            public StringField Icon;
+            public StringField Label;
         }
     }
 }

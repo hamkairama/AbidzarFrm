@@ -7,10 +7,10 @@ namespace AbidzarFrm.Rukuntangga {
         export const WARGA = 'WARGA';
     }
     export namespace StatusCode {
-        export const Draft = 0;
-        export const Requested = 1;
-        export const Verified = 2;
-        export const Rejected = 3;
+        export const Draft = "TS01";
+        export const Requested = "TS02";
+        export const Verified = "TS03";
+        export const Rejected = "TS04";
     }
 
     @Serenity.Decorators.registerClass()
@@ -27,6 +27,7 @@ namespace AbidzarFrm.Rukuntangga {
         private map;
         private marker;
         private circle;
+        protected commonResponseObj: NextStatusResponse.CommonResponseObj;
 
         public hasRole(role: string): boolean {
             return Authorization.userDefinition.Roles.indexOf(role) > -1;
@@ -363,6 +364,8 @@ namespace AbidzarFrm.Rukuntangga {
             this.IsSameAddressWithKtp(flag);
             Serenity.EditorUtils.setRequired(this.form.TanggalPerkawinan, this.form.StatusPerkawinan.value == "K");
             this.UpdateContent();
+
+            this.GetTransactionAccessButton();
         }
 
         protected afterLoadEntity() {
@@ -396,27 +399,23 @@ namespace AbidzarFrm.Rukuntangga {
         protected getToolbarButtons(): Serenity.ToolButton[] {
             let buttons = super.getToolbarButtons();
 
-            buttons.push({
-                icon: "fa-arrow-circle-right text-blue",
-                hint: "Submit",
-                title: "Submit",
-                cssClass: "btn-submit-boq",
-                onClick: () => {
-                    //if (this.IsValidPartialPassthrough()) {
-                    //    if (!this.ValidateBeforeSubmitPartialPassthrough()) {
-                    //        Q.alert("Please input PR Log No or Passthrough PR Log No ")
-                    //        return;
-                    //    } else {
-                    //        let msg: string = this.ValidateLenghtPartialPassthrough();
-                    //        if (msg != "") {
-                    //            Q.alert(msg)
-                    //            return;
-                    //        }
-                    //    }
-                    //}
-                }
+            let dataBtn = TbTransactionStatusRow.getLookup().items.filter(x => x.DocumentCode == 'KTP');
+            if (dataBtn.length > 0) {
+                for (var i = 0; i < dataBtn.length; i++) {
+                    let nextStatus = dataBtn[i].Code;
+                    buttons.push({
+                        icon: dataBtn[i].Icon,
+                        hint: dataBtn[i].Label,
+                        title: dataBtn[i].Label,
+                        cssClass: "btn-" + dataBtn[i].Code + " btn-custom",
+                        onClick: () => {
+                            this.GetNextStatus(nextStatus);
+                            this.UpdateNextStatus();
 
-            });
+                        }
+                    });
+                }
+            }
 
             return buttons;
         }
@@ -526,6 +525,76 @@ namespace AbidzarFrm.Rukuntangga {
             this.form.Latitude.value = lat;
             this.form.Longitude.value = long;
         }
+
+        private GetTransactionAccessButton() {
+            this.toolbar.findButton("btn-custom").toggle(false);
+
+            TbKtpService.GetTransactionAccessButton(
+                {
+                    TransactionId: this.entity.Id,
+                    DocumentCode: "KTP"
+                },
+                response => {
+                    for (var i = 0; i < response.ListAccessButtonRespose.length; i++) {
+                        var item = response.ListAccessButtonRespose[i];
+                        var className = "btn-" + item.TransactionStatusCode;
+                        this.toolbar.findButton(className).toggle(this.hasRole(item.AccessButton));
+
+                    }
+                },
+                {
+                    async: false
+                }
+            );
+        }
+
+        protected GetNextStatus(nextStatusCode: string) {
+            TbKtpService.GetNextStatus(
+                {
+                    TransactionId: this.entity.Id,
+                    DocumentCode: this.entity.DocumentCode,
+                    NextStatusCode: nextStatusCode
+                },
+                response => {
+                    this.commonResponseObj = response;
+                },
+                {
+                    async: false
+                });
+        }
+
+        public UpdateNextStatus() {
+            this.form.DataStatus.value = this.commonResponseObj.TransactionStatusCode;
+
+            this.save(res => {
+                TbKtpService.UpdateNextStatus(
+                    {
+                        TransactionId: this.entity.Id,
+                        DocumentCode: this.entity.DocumentCode,
+                        NextStatusCode: this.commonResponseObj.TransactionStatusCode,
+                        InsertUserId: Authorization.userDefinition.UserId,
+                        Entity: this.entity,
+                        SendEmailTo: this.commonResponseObj.SendEmailTo,
+                        CcCreator: this.commonResponseObj.CcCreator,
+                        CcRequestor: this.commonResponseObj.CcRequestor,
+                        IsSendEmail: this.commonResponseObj.IsSendEmail,
+                        TemplateEmailType: this.commonResponseObj.TemplateEmailType
+                    },
+                    response => {
+                        if (response.Status == 0) {
+                            Q.notifySuccess(this.commonResponseObj.PopupMessage);
+                            this.dialogClose();
+                            this.element.triggerHandler("ondatachange", response);
+                        } else {
+                            Q.notifySuccess(response.MessageText);
+                        }
+                    },
+                    {
+                        async: false
+                    });
+            });
+        }
+
 
         get isDraft() {
             return this.entity.DataStatus == StatusCode.Draft;

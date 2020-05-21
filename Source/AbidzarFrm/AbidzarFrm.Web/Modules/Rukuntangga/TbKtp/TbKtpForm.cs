@@ -22,8 +22,8 @@ namespace AbidzarFrm.Rukuntangga.Forms
         public String Nik { get; set; }
         [HalfWidth]
         public String Nama { get; set; }
-        [HalfWidth, DataStatusEditor]
-        public Int32 DataStatus { get; set; }
+        [HalfWidth]
+        public String DataStatus { get; set; }
         [HalfWidth]
         public String TempatLahir { get; set; }
         [HalfWidth]

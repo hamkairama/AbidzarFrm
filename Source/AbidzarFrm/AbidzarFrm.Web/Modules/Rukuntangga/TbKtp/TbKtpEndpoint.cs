@@ -1,6 +1,10 @@
 ﻿
 namespace AbidzarFrm.Rukuntangga.Endpoints
 {
+    using AbidzarFrm.Modules.Common.Abstraction;
+    using AbidzarFrm.Modules.Common.Helpers;
+    using AbidzarFrm.Modules.Common.Interface;
+    using AbidzarFrm.Rukuntangga.Entities;
     using Serenity;
     using Serenity.Data;
     using Serenity.Reporting;
@@ -11,10 +15,11 @@ namespace AbidzarFrm.Rukuntangga.Endpoints
     using System.Web.Mvc;
     using MyRepository = Repositories.TbKtpRepository;
     using MyRow = Entities.TbKtpRow;
+    using System.Configuration;
 
     [RoutePrefix("Services/Rukuntangga/TbKtp"), Route("{action}")]
     [ConnectionKey(typeof(MyRow)), ServiceAuthorize(typeof(MyRow))]
-    public class TbKtpController : ServiceEndpoint
+    public class TbKtpController : ATransaction, ITransaction
     {
         [HttpPost, AuthorizeCreate(typeof(MyRow))]
         public SaveResponse Create(IUnitOfWork uow, SaveRequest<MyRow> request)
@@ -76,5 +81,126 @@ namespace AbidzarFrm.Rukuntangga.Endpoints
             return ExcelContentResult.Create(bytes, MyRow.Fields.AliasName.ToString() + "_" + DateTime.Now.ToString("ddMMyyyy_HHmmss") + ".xlsx");
         }
 
+
+        public AccessButtonResponse GetTransactionAccessButton(IDbConnection connection, AccessButtonRequest request)
+        {
+            return ActionTransactionAccessButton(connection, request);
+        }
+
+        public NextStatusResponse GetNextStatus(IDbConnection connection, NextStatusRequest request)
+        {
+            request.DocumentCode = request.DocumentCode ?? "KTP";
+            return ActionGetNextStatus(connection, request);
+        }
+
+        public ResultStatusResponse UpdateNextStatus(IDbConnection connection, NextStatusRequest request)
+        {
+            ResultStatusResponse rs = new ResultStatusResponse();
+            rs.SetSuccessStatus();
+
+            using (var uow = new UnitOfWork(connection))
+            {
+                if (rs.IsSuccess && request.IsSendEmail && (request.NextStatusCode == "Verified" || request.NextStatusCode == "Rejected"))
+                {
+                    rs = SendEmail(connection, request);
+                }
+
+                if (rs.IsSuccess)
+                {
+                    uow.Commit();
+                }
+            }
+
+            return rs;
+        }
+
+
+        public ResultStatusResponse SendEmail(IDbConnection connection, NextStatusRequest request)
+        {
+            ResultStatusResponse response = new ResultStatusResponse();
+            try
+            {
+                if (request.NextStatusCode == "Complete")
+                {
+                    SendEmailComplete(connection, request);
+                }
+
+                if (request.NextStatusCode == "Rejected")
+                {
+                    SendEmailRejected(connection, request);
+                }
+
+                response.SetSuccessStatus();
+            }
+            catch (System.Exception ex)
+            {
+                response.SetSuccessStatus(ex.Message.ToString());
+            }
+
+            return response;
+        }
+
+        private void SendEmailComplete(IDbConnection connection, NextStatusRequest request)
+        {
+            MyRow newyRow = new MyRow();
+            newyRow = Newtonsoft.Json.JsonConvert.DeserializeObject<MyRow>(request.Entity.ToString());
+            //string siteName = GetSiteName(newyRow.SiteId);
+
+            TbEmailTemplateRow emailTemplate = EmailHelper.GetEmailTemplate(request.TemplateEmailType);
+            if (emailTemplate != null)
+            {
+                string subjectHeader = emailTemplate.Subject.ToString();
+
+                string textValue = emailTemplate.Template.ToString();
+                string content = textValue;
+
+                //set sendEmailCc
+                request.Entity = newyRow;
+                request.SendEmailCc = GetSendEmailCc(request);
+
+                //set Attachment
+                request.Attachments = SetAttachment(connection, (Int32)newyRow.Id);
+
+                //swith sendEmailTo tobe CC and sendEmailCc to be To
+                string param1 = request.SendEmailTo;
+                string param2 = request.SendEmailCc;
+
+                request.SendEmailTo = param2;
+                request.SendEmailCc = param1;
+
+                ActionSendEmail(subjectHeader, content, request, ConfigurationManager.AppSettings["Email.SMTPVMRegistration"]);
+            }
+        }
+
+        private void SendEmailRejected(IDbConnection connection, NextStatusRequest request)
+        {
+            MyRow newyRow = new MyRow();
+            newyRow = Newtonsoft.Json.JsonConvert.DeserializeObject<MyRow>(request.Entity.ToString());
+
+            TbEmailTemplateRow emailTemplate = EmailHelper.GetEmailTemplate(request.TemplateEmailType);
+            if (emailTemplate != null)
+            {
+                string subjectHeader = emailTemplate.Subject.ToString();
+
+                string textValue = emailTemplate.Template.ToString();
+                string content = textValue;
+
+                //set sendEmailCc
+                request.Entity = newyRow;
+                request.SendEmailCc = GetSendEmailCc(request);
+
+                //set Attachment                
+                request.Attachments = SetAttachment(connection, (Int32)newyRow.Id);
+
+                //swith sendEmailTo tobe CC and sendEmailCc to be To
+                string param1 = request.SendEmailTo;
+                string param2 = request.SendEmailCc;
+
+                request.SendEmailTo = param2;
+                request.SendEmailCc = param1;
+
+                ActionSendEmail(subjectHeader, content, request, ConfigurationManager.AppSettings["Email.SMTPVMRegistration"]);
+            }
+        }
     }
 }

@@ -9,3 +9,5 @@ namespace AbidzarFrm.Rukuntangga {
         protected getNameProperty() { return AppointmentDiaryRow.nameProperty; }
         protected getService() { return AppointmentDiaryService.baseUrl; }
         protected getDeletePermission() { return AppointmentDiaryRow.insertPermission; }
+    }
+}

@@ -41,10 +41,11 @@
         DieditTanggal?: string;
         SystemStatus?: boolean;
         KodeRt?: string;
-        DataStatus?: number;
+        DataStatus?: string;
         TinggalSesuaiKtp?: number;
         Latitude?: number;
         Longitude?: number;
+        DocumentCode?: string;
     }
 
     export namespace TbKtpRow {
@@ -106,7 +107,8 @@
             DataStatus = "DataStatus",
             TinggalSesuaiKtp = "TinggalSesuaiKtp",
             Latitude = "Latitude",
-            Longitude = "Longitude"
+            Longitude = "Longitude",
+            DocumentCode = "DocumentCode"
         }
     }
 }

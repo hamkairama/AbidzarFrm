@@ -2,6 +2,7 @@
 namespace AbidzarFrm.Rukuntangga.Repositories
 {
     using AbidzarFrm.Modules.Common.Helpers;
+    using AbidzarFrm.Rukuntangga.Entities;
     using Serenity;
     using Serenity.Data;
     using Serenity.Services;
@@ -54,7 +55,22 @@ namespace AbidzarFrm.Rukuntangga.Repositories
             return new MyListHandler().Process(connection, request);
         }
 
-        private class MySaveHandler : SaveRequestHandler<MyRow> { }
+        private class MySaveHandler : SaveRequestHandler<MyRow> {
+            protected override void BeforeSave()
+            {
+                base.BeforeSave();
+                if (this.IsCreate)
+                {
+                    var transactionFlow = this.Connection.TrySingle<TbTransactionFlowRow>(q => q.Select(TbTransactionFlowRow.Fields.Id).Where(new Criteria(TbTransactionFlowRow.Fields.DocumentCode) == "KTP" & new Criteria(TbTransactionFlowRow.Fields.IsActive) == "1"));
+
+                    if (Row.DataStatus == null)
+                    {
+                        var transactionFlowDetail = this.Connection.TrySingle<TbTransactionFlowDetailRow>(q => q.Select(TbTransactionFlowDetailRow.Fields.TransactionStatusCode).Where(new Criteria(TbTransactionFlowDetailRow.Fields.TransactionFlowId) == transactionFlow.Id.ToString() & new Criteria(TbTransactionFlowDetailRow.Fields.StartStatus) == 1));
+                        this.Row.DataStatus = transactionFlowDetail.TransactionStatusCode;
+                    }
+                }
+            }
+        }
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }
         private class MyListHandler : ListRequestHandler<MyRow> { }

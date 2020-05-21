@@ -2953,63 +2953,62 @@ var AbidzarFrm;
                     TbKtpForm.init = true;
                     var s = Serenity;
                     var w0 = s.StringEditor;
-                    var w1 = AbidzarFrm.Common.Editor.DataStatusEditor;
-                    var w2 = s.DateEditor;
-                    var w3 = AbidzarFrm.Common.Editor.AgamaEditor;
-                    var w4 = AbidzarFrm.Common.Editor.JenisKelaminEditor;
-                    var w5 = s.LookupEditor;
-                    var w6 = AbidzarFrm.Common.Editor.SelectEditor;
-                    var w7 = s.TextAreaEditor;
-                    var w8 = AbidzarFrm.Common.Editor.Sequens3Editor;
-                    var w9 = AbidzarFrm.Common.Editor.StatusEditor;
-                    var w10 = AbidzarFrm.Common.Editor.WargaNegaraEditor;
-                    var w11 = AbidzarFrm.Common.Editor.PekerjaanEditor;
-                    var w12 = AbidzarFrm.Common.Editor.GolonganDarahEditor;
-                    var w13 = AbidzarFrm.Common.Editor.PendidikanEditor;
-                    var w14 = s.ImageUploadEditor;
-                    var w15 = AbidzarFrm.Common.Editor.YesNoEditor;
-                    var w16 = s.DecimalEditor;
-                    var w17 = s.MultipleImageUploadEditor;
+                    var w1 = s.DateEditor;
+                    var w2 = AbidzarFrm.Common.Editor.AgamaEditor;
+                    var w3 = AbidzarFrm.Common.Editor.JenisKelaminEditor;
+                    var w4 = s.LookupEditor;
+                    var w5 = AbidzarFrm.Common.Editor.SelectEditor;
+                    var w6 = s.TextAreaEditor;
+                    var w7 = AbidzarFrm.Common.Editor.Sequens3Editor;
+                    var w8 = AbidzarFrm.Common.Editor.StatusEditor;
+                    var w9 = AbidzarFrm.Common.Editor.WargaNegaraEditor;
+                    var w10 = AbidzarFrm.Common.Editor.PekerjaanEditor;
+                    var w11 = AbidzarFrm.Common.Editor.GolonganDarahEditor;
+                    var w12 = AbidzarFrm.Common.Editor.PendidikanEditor;
+                    var w13 = s.ImageUploadEditor;
+                    var w14 = AbidzarFrm.Common.Editor.YesNoEditor;
+                    var w15 = s.DecimalEditor;
+                    var w16 = s.MultipleImageUploadEditor;
                     Q.initFormType(TbKtpForm, [
                         'Kk', w0,
                         'Nik', w0,
                         'Nama', w0,
-                        'DataStatus', w1,
+                        'DataStatus', w0,
                         'TempatLahir', w0,
-                        'TanggalLahir', w2,
-                        'Agama', w3,
-                        'JenisKelamin', w4,
-                        'IdProvinsi', w5,
-                        'IdKota', w6,
-                        'IdKecamatan', w6,
-                        'IdKelurahan', w6,
-                        'Alamat', w7,
-                        'Rt', w8,
-                        'Rw', w8,
+                        'TanggalLahir', w1,
+                        'Agama', w2,
+                        'JenisKelamin', w3,
+                        'IdProvinsi', w4,
+                        'IdKota', w5,
+                        'IdKecamatan', w5,
+                        'IdKelurahan', w5,
+                        'Alamat', w6,
+                        'Rt', w7,
+                        'Rw', w7,
                         'KodePos', w0,
-                        'StatusPerkawinan', w9,
-                        'TanggalPerkawinan', w2,
-                        'Kewarganegaraan', w10,
-                        'JenisPekerjaan', w11,
-                        'GolonganDarah', w12,
-                        'Pendidikan', w13,
-                        'PhotoKtp', w14,
-                        'SignatureKtp', w14,
+                        'StatusPerkawinan', w8,
+                        'TanggalPerkawinan', w1,
+                        'Kewarganegaraan', w9,
+                        'JenisPekerjaan', w10,
+                        'GolonganDarah', w11,
+                        'Pendidikan', w12,
+                        'PhotoKtp', w13,
+                        'SignatureKtp', w13,
                         'NamaAyah', w0,
                         'NamaIbu', w0,
-                        'TinggalSesuaiKtp', w15,
-                        'IdProvinsiTinggal', w5,
-                        'IdKotaTinggal', w6,
-                        'IdKecamatanTinggal', w6,
-                        'IdKelurahanTinggal', w6,
-                        'RwTinggal', w8,
-                        'RtTinggal', w8,
+                        'TinggalSesuaiKtp', w14,
+                        'IdProvinsiTinggal', w4,
+                        'IdKotaTinggal', w5,
+                        'IdKecamatanTinggal', w5,
+                        'IdKelurahanTinggal', w5,
+                        'RwTinggal', w7,
+                        'RtTinggal', w7,
                         'KodeRt', w0,
                         'AlamatTinggal', w0,
-                        'Latitude', w16,
-                        'Longitude', w16,
-                        'PhotoRumah', w14,
-                        'Attachment', w17
+                        'Latitude', w15,
+                        'Longitude', w15,
+                        'PhotoRumah', w13,
+                        'Attachment', w16
                     ]);
                 }
                 return _this;
@@ -3053,7 +3052,11 @@ var AbidzarFrm;
                 'Update',
                 'Delete',
                 'Retrieve',
-                'List'
+                'List',
+                'GetTransactionAccessButton',
+                'GetNextStatus',
+                'UpdateNextStatus',
+                'SendEmail'
             ].forEach(function (x) {
                 TbKtpService[x] = function (r, s, o) {
                     return Q.serviceRequest(TbKtpService.baseUrl + '/' + x, r, s, o);
@@ -4518,7 +4521,7 @@ var AbidzarFrm;
 (function (AbidzarFrm) {
     var Texts;
     (function (Texts) {
-        AbidzarFrm['Texts'] = Q.proxyTexts(Texts, '', { Db: { Administration: { Language: { Id: 1, LanguageId: 1, LanguageName: 1 }, Role: { RoleId: 1, RoleName: 1 }, RolePermission: { PermissionKey: 1, RoleId: 1, RolePermissionId: 1, RoleRoleName: 1 }, Translation: { CustomText: 1, EntityPlural: 1, Key: 1, OverrideConfirmation: 1, SaveChangesButton: 1, SourceLanguage: 1, SourceText: 1, TargetLanguage: 1, TargetText: 1 }, User: { DisplayName: 1, Email: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, KtpId: 1, KtpKodeRt: 1, LastDirectoryUpdate: 1, Nik: 1, Password: 1, PasswordConfirm: 1, PasswordHash: 1, PasswordSalt: 1, Source: 1, UpdateDate: 1, UpdateUserId: 1, UserId: 1, UserImage: 1, Username: 1 }, UserPermission: { Granted: 1, PermissionKey: 1, User: 1, UserId: 1, UserPermissionId: 1, Username: 1 }, UserRole: { RoleId: 1, RoleName: 1, User: 1, UserId: 1, UserRoleId: 1, Username: 1 } }, Common: { UserPreference: { Name: 1, PreferenceType: 1, UserId: 1, UserPreferenceId: 1, Value: 1 } }, Northwind: { Category: { CategoryID: 1, CategoryName: 1, Description: 1, Picture: 1 }, CategoryLang: { CategoryId: 1, CategoryName: 1, Description: 1, Id: 1, LanguageId: 1 }, Customer: { Address: 1, City: 1, CompanyName: 1, ContactName: 1, ContactTitle: 1, Country: 1, CustomerID: 1, Email: 1, Fax: 1, ID: 1, LastContactDate: 1, LastContactedBy: 1, NoteList: 1, Phone: 1, PostalCode: 1, Region: 1, Representatives: 1, SendBulletin: 1 }, CustomerCustomerDemo: { CustomerAddress: 1, CustomerCity: 1, CustomerCompanyName: 1, CustomerContactName: 1, CustomerContactTitle: 1, CustomerCountry: 1, CustomerFax: 1, CustomerID: 1, CustomerPhone: 1, CustomerPostalCode: 1, CustomerRegion: 1, CustomerTypeCustomerDesc: 1, CustomerTypeID: 1, ID: 1 }, CustomerDemographic: { CustomerDesc: 1, CustomerTypeID: 1, ID: 1 }, CustomerDetails: { Email: 1, Id: 1, LastContactDate: 1, LastContactedBy: 1, LastContactedByAddress: 1, LastContactedByBirthDate: 1, LastContactedByCity: 1, LastContactedByCountry: 1, LastContactedByExtension: 1, LastContactedByFirstName: 1, LastContactedByHireDate: 1, LastContactedByHomePhone: 1, LastContactedByLastName: 1, LastContactedByNotes: 1, LastContactedByPhoto: 1, LastContactedByPhotoPath: 1, LastContactedByPostalCode: 1, LastContactedByRegion: 1, LastContactedByReportsTo: 1, LastContactedByTitle: 1, LastContactedByTitleOfCourtesy: 1, SendBulletin: 1 }, CustomerGrossSales: { ContactName: 1, CustomerId: 1, GrossAmount: 1, ProductId: 1, ProductName: 1 }, CustomerRepresentatives: { CustomerId: 1, EmployeeId: 1, RepresentativeId: 1 }, DragDropSample: { Id: 1, ParentId: 1, Title: 1 }, Employee: { Address: 1, BirthDate: 1, City: 1, Country: 1, EmployeeID: 1, Extension: 1, FirstName: 1, FullName: 1, Gender: 1, HireDate: 1, HomePhone: 1, LastName: 1, Notes: 1, Photo: 1, PhotoPath: 1, PostalCode: 1, Region: 1, ReportsTo: 1, ReportsToAddress: 1, ReportsToBirthDate: 1, ReportsToCity: 1, ReportsToCountry: 1, ReportsToExtension: 1, ReportsToFirstName: 1, ReportsToFullName: 1, ReportsToHireDate: 1, ReportsToHomePhone: 1, ReportsToLastName: 1, ReportsToNotes: 1, ReportsToPhoto: 1, ReportsToPhotoPath: 1, ReportsToPostalCode: 1, ReportsToRegion: 1, ReportsToReportsTo: 1, ReportsToTitle: 1, ReportsToTitleOfCourtesy: 1, Title: 1, TitleOfCourtesy: 1 }, EmployeeTerritory: { EmployeeAddress: 1, EmployeeBirthDate: 1, EmployeeCity: 1, EmployeeCountry: 1, EmployeeExtension: 1, EmployeeFirstName: 1, EmployeeHireDate: 1, EmployeeHomePhone: 1, EmployeeID: 1, EmployeeLastName: 1, EmployeeNotes: 1, EmployeePhoto: 1, EmployeePhotoPath: 1, EmployeePostalCode: 1, EmployeeRegion: 1, EmployeeReportsTo: 1, EmployeeTitle: 1, EmployeeTitleOfCourtesy: 1, TerritoryID: 1, TerritoryRegionID: 1, TerritoryTerritoryDescription: 1 }, Note: { EntityId: 1, EntityType: 1, InsertDate: 1, InsertUserDisplayName: 1, InsertUserId: 1, NoteId: 1, Text: 1 }, Order: { CustomerCity: 1, CustomerCompanyName: 1, CustomerContactName: 1, CustomerContactTitle: 1, CustomerCountry: 1, CustomerFax: 1, CustomerID: 1, CustomerPhone: 1, CustomerRegion: 1, DetailList: 1, EmployeeFullName: 1, EmployeeGender: 1, EmployeeID: 1, EmployeeReportsToFullName: 1, Freight: 1, OrderDate: 1, OrderID: 1, RequiredDate: 1, ShipAddress: 1, ShipCity: 1, ShipCountry: 1, ShipName: 1, ShipPostalCode: 1, ShipRegion: 1, ShipVia: 1, ShipViaCompanyName: 1, ShipViaPhone: 1, ShippedDate: 1, ShippingState: 1 }, OrderDetail: { DetailID: 1, Discount: 1, LineTotal: 1, OrderCustomerID: 1, OrderDate: 1, OrderEmployeeID: 1, OrderID: 1, OrderShipCity: 1, OrderShipCountry: 1, OrderShipVia: 1, OrderShippedDate: 1, ProductDiscontinued: 1, ProductID: 1, ProductName: 1, ProductQuantityPerUnit: 1, ProductSupplierID: 1, ProductUnitPrice: 1, Quantity: 1, UnitPrice: 1 }, Product: { CategoryDescription: 1, CategoryID: 1, CategoryName: 1, CategoryPicture: 1, Discontinued: 1, ProductID: 1, ProductImage: 1, ProductName: 1, QuantityPerUnit: 1, ReorderLevel: 1, SupplierAddress: 1, SupplierCity: 1, SupplierCompanyName: 1, SupplierContactName: 1, SupplierContactTitle: 1, SupplierCountry: 1, SupplierFax: 1, SupplierHomePage: 1, SupplierID: 1, SupplierPhone: 1, SupplierPostalCode: 1, SupplierRegion: 1, UnitPrice: 1, UnitsInStock: 1, UnitsOnOrder: 1 }, ProductLang: { Id: 1, LanguageId: 1, ProductId: 1, ProductName: 1 }, ProductLog: { CategoryID: 1, ChangingUserId: 1, Discontinued: 1, OperationType: 1, ProductID: 1, ProductImage: 1, ProductLogID: 1, ProductName: 1, QuantityPerUnit: 1, ReorderLevel: 1, SupplierID: 1, UnitPrice: 1, UnitsInStock: 1, UnitsOnOrder: 1, ValidFrom: 1, ValidUntil: 1 }, Region: { RegionDescription: 1, RegionID: 1 }, SalesByCategory: { CategoryId: 1, CategoryName: 1, ProductName: 1, ProductSales: 1 }, Shipper: { CompanyName: 1, Phone: 1, ShipperID: 1 }, Supplier: { Address: 1, City: 1, CompanyName: 1, ContactName: 1, ContactTitle: 1, Country: 1, Fax: 1, HomePage: 1, Phone: 1, PostalCode: 1, Region: 1, SupplierID: 1 }, Territory: { ID: 1, RegionDescription: 1, RegionID: 1, TerritoryDescription: 1, TerritoryID: 1 } }, Rukuntangga: { AppointmentDiary: { AppointmentLength: 1, DateTimeScheduled: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, KodeRt: 1, SomeImportantKey: 1, StatusEnum: 1, SystemStatus: 1, Title: 1 }, TbAutentikasiToken: { Aplikasi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, SystemStatus: 1, Token: 1 }, TbBiodata: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Gelar: 1, Id: 1, Nik: 1, SystemStatus: 1, Tahun: 1 }, TbDetailJenisInformasi: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdJenisInformasi: 1, IdJenisInformasiDibuatOleh: 1, IdJenisInformasiDibuatTanggal: 1, IdJenisInformasiDieditOleh: 1, IdJenisInformasiDieditTanggal: 1, IdJenisInformasiJenisInformasi: 1, IdJenisInformasiKodeRt: 1, IdJenisInformasiSystemStatus: 1, IsLandingPage: 1, Judul: 1, LevelArea: 1, NamaFile: 1, SystemStatus: 1 }, TbDetailJenisKegiatan: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Dokumentasi: 1, Id: 1, IdJenisKegiatan: 1, IdJenisKegiatanDeskripsi: 1, IdJenisKegiatanDibuatOleh: 1, IdJenisKegiatanDibuatTanggal: 1, IdJenisKegiatanDieditOleh: 1, IdJenisKegiatanDieditTanggal: 1, IdJenisKegiatanJenisKegiatan: 1, IdJenisKegiatanKodeRt: 1, IdJenisKegiatanSystemStatus: 1, LevelArea: 1, Lokasi: 1, NamaFile: 1, NamaKegiatan: 1, SystemStatus: 1, TanggalKegiatan: 1, WarnaLatar: 1 }, TbDetailPemilu: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, FileName: 1, Id: 1, IdPemilu: 1, IdPemiluDibuatOleh: 1, IdPemiluDibuatTanggal: 1, IdPemiluDieditOleh: 1, IdPemiluDieditTanggal: 1, IdPemiluFileName: 1, IdPemiluJudul: 1, IdPemiluKodeRt: 1, IdPemiluSystemStatus: 1, Kandidat: 1, NoUrut: 1, SystemStatus: 1 }, TbDokumentasiDetailJenisKegiatan: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdDetailJenisKegiatan: 1, IdDetailJenisKegiatanDeskripsi: 1, IdDetailJenisKegiatanDibuatOleh: 1, IdDetailJenisKegiatanDibuatTanggal: 1, IdDetailJenisKegiatanDieditOleh: 1, IdDetailJenisKegiatanDieditTanggal: 1, IdDetailJenisKegiatanIdJenisKegiatan: 1, IdDetailJenisKegiatanLevelArea: 1, IdDetailJenisKegiatanLokasi: 1, IdDetailJenisKegiatanNamaKegiatan: 1, IdDetailJenisKegiatanSystemStatus: 1, IdDetailJenisKegiatanTanggalKegiatan: 1, IdDetailJenisKegiatanWarnaLatar: 1, NamaFile: 1, SystemStatus: 1 }, TbEmailTemplate: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, KodeTemplate: 1, Subject: 1, SystemStatus: 1, Template: 1 }, TbGalery: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, KodeRt: 1, LevelArea: 1, Photos: 1, Thumbnail: 1 }, TbHistoricalUserLogin: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IsMobile: 1, Login: 1, Logout: 1, Nik: 1, SystemStatus: 1 }, TbJabatan: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, NamaJabatan: 1, SystemStatus: 1 }, TbJadwalSiskamlim: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, Nama: 1, Nik: 1, SystemStatus: 1, Tanggal: 1 }, TbJenisInformasi: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, JenisInformasi: 1, KodeRt: 1, SystemStatus: 1, tbDetailJenisInformasiRow: 1 }, TbJenisKegiatan: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, JenisKegiatan: 1, KodeRt: 1, SystemStatus: 1, tbDetailJenisKegiatanRow: 1 }, TbKecamatan: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdKota: 1, IdKotaDibuatOleh: 1, IdKotaDibuatTanggal: 1, IdKotaDieditOleh: 1, IdKotaDieditTanggal: 1, IdKotaIdProvinsi: 1, IdKotaKodeKota: 1, IdKotaNamaKota: 1, IdKotaSystemStatus: 1, KodeKecamatan: 1, NamaKecamatan: 1, SystemStatus: 1 }, TbKelurahan: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdKecamatan: 1, IdKecamatanDibuatOleh: 1, IdKecamatanDibuatTanggal: 1, IdKecamatanDieditOleh: 1, IdKecamatanDieditTanggal: 1, IdKecamatanIdKota: 1, IdKecamatanKodeKecamatan: 1, IdKecamatanNamaKecamatan: 1, IdKecamatanSystemStatus: 1, KodeKelurahan: 1, NamaKelurahan: 1, SystemStatus: 1 }, TbKota: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdProvinsi: 1, IdProvinsiDibuatOleh: 1, IdProvinsiDibuatTanggal: 1, IdProvinsiDieditOleh: 1, IdProvinsiDieditTanggal: 1, IdProvinsiKodeProvinsi: 1, IdProvinsiNamaProvinsi: 1, IdProvinsiSystemStatus: 1, KodeKota: 1, NamaKota: 1, SystemStatus: 1 }, TbKtp: { Agama: 1, Alamat: 1, AlamatTinggal: 1, Attachment: 1, DataStatus: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, GolonganDarah: 1, Id: 1, IdKecamatan: 1, IdKecamatanTinggal: 1, IdKelurahan: 1, IdKelurahanTinggal: 1, IdKota: 1, IdKotaTinggal: 1, IdProvinsi: 1, IdProvinsiTinggal: 1, JenisKelamin: 1, JenisPekerjaan: 1, Kewarganegaraan: 1, Kk: 1, KodePos: 1, KodeRt: 1, Latitude: 1, Longitude: 1, Nama: 1, NamaAyah: 1, NamaIbu: 1, Nik: 1, Pendidikan: 1, PhotoKtp: 1, PhotoRumah: 1, Rt: 1, RtTinggal: 1, Rw: 1, RwTinggal: 1, SignatureKtp: 1, StatusPerkawinan: 1, SystemStatus: 1, TanggalLahir: 1, TanggalPerkawinan: 1, TempatLahir: 1, TinggalSesuaiKtp: 1 }, TbLaporanKas: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, KodeRt: 1, SystemStatus: 1, Tanggal: 1, Tipe: 1, Total: 1 }, TbListOfValue: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Group: 1, Id: 1, Kode: 1, SystemStatus: 1, Value: 1 }, TbMailLog: { Body: 1, Cc: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, ErrorMessage: 1, From: 1, Id: 1, Status: 1, Subject: 1, To: 1 }, TbParameter: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, Kode: 1, SystemStatus: 1, Value: 1 }, TbPemilu: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, FileName: 1, Id: 1, Judul: 1, KodeRt: 1, SystemStatus: 1, tbDetailPemiluRow: 1 }, TbPhotoKtp: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, NamaFile: 1, SystemStatus: 1 }, TbPollingPemilu: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdDetailPemilu: 1, IdDetailPemiluDibuatOleh: 1, IdDetailPemiluDibuatTanggal: 1, IdDetailPemiluDieditOleh: 1, IdDetailPemiluDieditTanggal: 1, IdDetailPemiluFileName: 1, IdDetailPemiluIdPemilu: 1, IdDetailPemiluKandidat: 1, IdDetailPemiluNoUrut: 1, IdDetailPemiluSystemStatus: 1, Nik: 1, NikAgama: 1, NikAlamat: 1, NikAlamatTinggal: 1, NikDibuatOleh: 1, NikDibuatTanggal: 1, NikDieditOleh: 1, NikDieditTanggal: 1, NikGolonganDarah: 1, NikId: 1, NikIdKelurahan: 1, NikIdKelurahanTinggal: 1, NikIdPhotoKtp: 1, NikIdSignatureKtp: 1, NikJenisKelamin: 1, NikJenisPekerjaan: 1, NikKewarganegaraan: 1, NikKk: 1, NikKodePos: 1, NikKodeRt: 1, NikNama: 1, NikNamaAyah: 1, NikNamaIbu: 1, NikPendidikan: 1, NikRt: 1, NikRtTinggal: 1, NikRw: 1, NikRwTinggal: 1, NikStatusPerkawinan: 1, NikSystemStatus: 1, NikTanggalLahir: 1, NikTanggalPerkawinan: 1, NikTempatLahir: 1, SystemStatus: 1 }, TbProvinsi: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, KodeProvinsi: 1, NamaProvinsi: 1, SystemStatus: 1 }, TbRt: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Facebook: 1, Id: 1, IdRw: 1, IdRwKodeRw: 1, IdRwNamaRw: 1, Instagram: 1, KodeLogin: 1, KodeRt: 1, Misi: 1, NamaRt: 1, Nik: 1, NoRt: 1, Photo: 1, Quotes: 1, SystemStatus: 1, Twitter: 1, Visi: 1, Whatsapp: 1 }, TbRw: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Facebook: 1, Footer: 1, Header: 1, Id: 1, IdKecamatan: 1, IdKelurahan: 1, IdKota: 1, IdProvinsi: 1, Instagram: 1, KodeRw: 1, Misi: 1, NamaRw: 1, Nik: 1, NoRw: 1, Photo: 1, Quotes: 1, SystemStatus: 1, Twitter: 1, Visi: 1, Whatsapp: 1 }, TbSlideShow: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, FileName: 1, Id: 1, Judul: 1, KodeRt: 1, PathUrl: 1, Posisi: 1, SystemStatus: 1, Tipe: 1 }, TbStruktur: { AkhirPeriode: 1, AwalPeriode: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdJabatan: 1, IdJabatanDibuatOleh: 1, IdJabatanDibuatTanggal: 1, IdJabatanDieditOleh: 1, IdJabatanDieditTanggal: 1, IdJabatanNamaJabatan: 1, IdJabatanSystemStatus: 1, IdKtp: 1, SystemStatus: 1 }, TbTanyaRt: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, Judul: 1, KtpIdKtp: 1, KtpKodeRt: 1, KtpNama: 1, KtpPhotoKtp: 1, SystemStatus: 1, tbTanyaRtDetailRow: 1 }, TbTanyaRtDetail: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdTanyaRt: 1, IdTanyaRtDibuatOleh: 1, IdTanyaRtDibuatTanggal: 1, IdTanyaRtDieditOleh: 1, IdTanyaRtDieditTanggal: 1, IdTanyaRtJudul: 1, IdTanyaRtSystemStatus: 1, SystemStatus: 1 }, TbTestimoni: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, Nik: 1, SystemStatus: 1 }, TbTransactionDocumentCode: { Description: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, DocumentCode: 1, Id: 1 }, TbTransactionFlow: { Code: 1, Description: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, DocumentCode: 1, Id: 1, IsActive: 1, tbTransactionFlowDetailRow: 1 }, TbTransactionFlowDetail: { AccessButton: 1, CcCreator: 1, CcRequestor: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, FinalStatus: 1, Id: 1, IsSendEmail: 1, Name: 1, NextStatus: 1, PopupMessage: 1, SendEmailTo: 1, SendEmailType: 1, StartStatus: 1, TemplateEmailType: 1, TransactionFlowId: 1, TransactionStatusCode: 1 }, TbTransactionStatus: { Code: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, DocumentCode: 1, External: 1, Id: 1, Internal: 1 }, TbUser: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Email: 1, Id: 1, IdRole: 1, IsMobile: 1, KodeVerifikasi: 1, Nik: 1, Sandi: 1, Status: 1, SystemStatus: 1 }, TbUserApi: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdUser: 1, NamaApi: 1, Sandi: 1, Status: 1, SystemStatus: 1 } } }, Forms: { Membership: { ChangePassword: { FormTitle: 1, SubmitButton: 1, Success: 1 }, ForgotPassword: { BackToLogin: 1, FormInfo: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, Login: { FacebookButton: 1, ForgotPassword: 1, FormTitle: 1, GoogleButton: 1, OR: 1, RememberMe: 1, SignInButton: 1, SignUpButton: 1 }, ResetPassword: { BackToLogin: 1, EmailSubject: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, SignUp: { AcceptTerms: 1, ActivateEmailSubject: 1, ActivationCompleteMessage: 1, BackToLogin: 1, ConfirmEmail: 1, ConfirmPassword: 1, DisplayName: 1, Email: 1, FormInfo: 1, FormTitle: 1, Password: 1, SubmitButton: 1, Success: 1 } } }, Site: { AccessDenied: { ClickToChangeUser: 1, ClickToLogin: 1, LackPermissions: 1, NotLoggedIn: 1, PageTitle: 1 }, BasicProgressDialog: { CancelTitle: 1, PleaseWait: 1 }, BulkServiceAction: { AllHadErrorsFormat: 1, AllSuccessFormat: 1, ConfirmationFormat: 1, ErrorCount: 1, NothingToProcess: 1, SomeHadErrorsFormat: 1, SuccessCount: 1 }, Dashboard: { ContentDescription: 1 }, Layout: { FooterCopyright: 1, FooterInfo: 1, FooterRights: 1, GeneralSettings: 1, Language: 1, Theme: 1, ThemeBlack: 1, ThemeBlackLight: 1, ThemeBlue: 1, ThemeBlueLight: 1, ThemeGreen: 1, ThemeGreenLight: 1, ThemePurple: 1, ThemePurpleLight: 1, ThemeRed: 1, ThemeRedLight: 1, ThemeYellow: 1, ThemeYellowLight: 1 }, RolePermissionDialog: { DialogTitle: 1, EditButton: 1, SaveSuccess: 1 }, UserDialog: { EditPermissionsButton: 1, EditRolesButton: 1 }, UserPermissionDialog: { DialogTitle: 1, Grant: 1, Permission: 1, Revoke: 1, SaveSuccess: 1 }, UserRoleDialog: { DialogTitle: 1, SaveSuccess: 1 }, ValidationError: { Title: 1 } }, Validation: { AuthenticationError: 1, CantFindUserWithEmail: 1, CurrentPasswordMismatch: 1, DeleteForeignKeyError: 1, EmailConfirm: 1, EmailInUse: 1, InvalidActivateToken: 1, InvalidResetToken: 1, MinRequiredPasswordLength: 1, NorthwindPhone: 1, NorthwindPhoneMultiple: 1, SavePrimaryKeyError: 1 } });
+        AbidzarFrm['Texts'] = Q.proxyTexts(Texts, '', { Db: { Administration: { Language: { Id: 1, LanguageId: 1, LanguageName: 1 }, Role: { RoleId: 1, RoleName: 1 }, RolePermission: { PermissionKey: 1, RoleId: 1, RolePermissionId: 1, RoleRoleName: 1 }, Translation: { CustomText: 1, EntityPlural: 1, Key: 1, OverrideConfirmation: 1, SaveChangesButton: 1, SourceLanguage: 1, SourceText: 1, TargetLanguage: 1, TargetText: 1 }, User: { DisplayName: 1, Email: 1, InsertDate: 1, InsertUserId: 1, IsActive: 1, KtpId: 1, KtpKodeRt: 1, LastDirectoryUpdate: 1, Nik: 1, Password: 1, PasswordConfirm: 1, PasswordHash: 1, PasswordSalt: 1, Source: 1, UpdateDate: 1, UpdateUserId: 1, UserId: 1, UserImage: 1, Username: 1 }, UserPermission: { Granted: 1, PermissionKey: 1, User: 1, UserId: 1, UserPermissionId: 1, Username: 1 }, UserRole: { RoleId: 1, RoleName: 1, User: 1, UserId: 1, UserRoleId: 1, Username: 1 } }, Common: { UserPreference: { Name: 1, PreferenceType: 1, UserId: 1, UserPreferenceId: 1, Value: 1 } }, Northwind: { Category: { CategoryID: 1, CategoryName: 1, Description: 1, Picture: 1 }, CategoryLang: { CategoryId: 1, CategoryName: 1, Description: 1, Id: 1, LanguageId: 1 }, Customer: { Address: 1, City: 1, CompanyName: 1, ContactName: 1, ContactTitle: 1, Country: 1, CustomerID: 1, Email: 1, Fax: 1, ID: 1, LastContactDate: 1, LastContactedBy: 1, NoteList: 1, Phone: 1, PostalCode: 1, Region: 1, Representatives: 1, SendBulletin: 1 }, CustomerCustomerDemo: { CustomerAddress: 1, CustomerCity: 1, CustomerCompanyName: 1, CustomerContactName: 1, CustomerContactTitle: 1, CustomerCountry: 1, CustomerFax: 1, CustomerID: 1, CustomerPhone: 1, CustomerPostalCode: 1, CustomerRegion: 1, CustomerTypeCustomerDesc: 1, CustomerTypeID: 1, ID: 1 }, CustomerDemographic: { CustomerDesc: 1, CustomerTypeID: 1, ID: 1 }, CustomerDetails: { Email: 1, Id: 1, LastContactDate: 1, LastContactedBy: 1, LastContactedByAddress: 1, LastContactedByBirthDate: 1, LastContactedByCity: 1, LastContactedByCountry: 1, LastContactedByExtension: 1, LastContactedByFirstName: 1, LastContactedByHireDate: 1, LastContactedByHomePhone: 1, LastContactedByLastName: 1, LastContactedByNotes: 1, LastContactedByPhoto: 1, LastContactedByPhotoPath: 1, LastContactedByPostalCode: 1, LastContactedByRegion: 1, LastContactedByReportsTo: 1, LastContactedByTitle: 1, LastContactedByTitleOfCourtesy: 1, SendBulletin: 1 }, CustomerGrossSales: { ContactName: 1, CustomerId: 1, GrossAmount: 1, ProductId: 1, ProductName: 1 }, CustomerRepresentatives: { CustomerId: 1, EmployeeId: 1, RepresentativeId: 1 }, DragDropSample: { Id: 1, ParentId: 1, Title: 1 }, Employee: { Address: 1, BirthDate: 1, City: 1, Country: 1, EmployeeID: 1, Extension: 1, FirstName: 1, FullName: 1, Gender: 1, HireDate: 1, HomePhone: 1, LastName: 1, Notes: 1, Photo: 1, PhotoPath: 1, PostalCode: 1, Region: 1, ReportsTo: 1, ReportsToAddress: 1, ReportsToBirthDate: 1, ReportsToCity: 1, ReportsToCountry: 1, ReportsToExtension: 1, ReportsToFirstName: 1, ReportsToFullName: 1, ReportsToHireDate: 1, ReportsToHomePhone: 1, ReportsToLastName: 1, ReportsToNotes: 1, ReportsToPhoto: 1, ReportsToPhotoPath: 1, ReportsToPostalCode: 1, ReportsToRegion: 1, ReportsToReportsTo: 1, ReportsToTitle: 1, ReportsToTitleOfCourtesy: 1, Title: 1, TitleOfCourtesy: 1 }, EmployeeTerritory: { EmployeeAddress: 1, EmployeeBirthDate: 1, EmployeeCity: 1, EmployeeCountry: 1, EmployeeExtension: 1, EmployeeFirstName: 1, EmployeeHireDate: 1, EmployeeHomePhone: 1, EmployeeID: 1, EmployeeLastName: 1, EmployeeNotes: 1, EmployeePhoto: 1, EmployeePhotoPath: 1, EmployeePostalCode: 1, EmployeeRegion: 1, EmployeeReportsTo: 1, EmployeeTitle: 1, EmployeeTitleOfCourtesy: 1, TerritoryID: 1, TerritoryRegionID: 1, TerritoryTerritoryDescription: 1 }, Note: { EntityId: 1, EntityType: 1, InsertDate: 1, InsertUserDisplayName: 1, InsertUserId: 1, NoteId: 1, Text: 1 }, Order: { CustomerCity: 1, CustomerCompanyName: 1, CustomerContactName: 1, CustomerContactTitle: 1, CustomerCountry: 1, CustomerFax: 1, CustomerID: 1, CustomerPhone: 1, CustomerRegion: 1, DetailList: 1, EmployeeFullName: 1, EmployeeGender: 1, EmployeeID: 1, EmployeeReportsToFullName: 1, Freight: 1, OrderDate: 1, OrderID: 1, RequiredDate: 1, ShipAddress: 1, ShipCity: 1, ShipCountry: 1, ShipName: 1, ShipPostalCode: 1, ShipRegion: 1, ShipVia: 1, ShipViaCompanyName: 1, ShipViaPhone: 1, ShippedDate: 1, ShippingState: 1 }, OrderDetail: { DetailID: 1, Discount: 1, LineTotal: 1, OrderCustomerID: 1, OrderDate: 1, OrderEmployeeID: 1, OrderID: 1, OrderShipCity: 1, OrderShipCountry: 1, OrderShipVia: 1, OrderShippedDate: 1, ProductDiscontinued: 1, ProductID: 1, ProductName: 1, ProductQuantityPerUnit: 1, ProductSupplierID: 1, ProductUnitPrice: 1, Quantity: 1, UnitPrice: 1 }, Product: { CategoryDescription: 1, CategoryID: 1, CategoryName: 1, CategoryPicture: 1, Discontinued: 1, ProductID: 1, ProductImage: 1, ProductName: 1, QuantityPerUnit: 1, ReorderLevel: 1, SupplierAddress: 1, SupplierCity: 1, SupplierCompanyName: 1, SupplierContactName: 1, SupplierContactTitle: 1, SupplierCountry: 1, SupplierFax: 1, SupplierHomePage: 1, SupplierID: 1, SupplierPhone: 1, SupplierPostalCode: 1, SupplierRegion: 1, UnitPrice: 1, UnitsInStock: 1, UnitsOnOrder: 1 }, ProductLang: { Id: 1, LanguageId: 1, ProductId: 1, ProductName: 1 }, ProductLog: { CategoryID: 1, ChangingUserId: 1, Discontinued: 1, OperationType: 1, ProductID: 1, ProductImage: 1, ProductLogID: 1, ProductName: 1, QuantityPerUnit: 1, ReorderLevel: 1, SupplierID: 1, UnitPrice: 1, UnitsInStock: 1, UnitsOnOrder: 1, ValidFrom: 1, ValidUntil: 1 }, Region: { RegionDescription: 1, RegionID: 1 }, SalesByCategory: { CategoryId: 1, CategoryName: 1, ProductName: 1, ProductSales: 1 }, Shipper: { CompanyName: 1, Phone: 1, ShipperID: 1 }, Supplier: { Address: 1, City: 1, CompanyName: 1, ContactName: 1, ContactTitle: 1, Country: 1, Fax: 1, HomePage: 1, Phone: 1, PostalCode: 1, Region: 1, SupplierID: 1 }, Territory: { ID: 1, RegionDescription: 1, RegionID: 1, TerritoryDescription: 1, TerritoryID: 1 } }, Rukuntangga: { AppointmentDiary: { AppointmentLength: 1, DateTimeScheduled: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, KodeRt: 1, SomeImportantKey: 1, StatusEnum: 1, SystemStatus: 1, Title: 1 }, TbAutentikasiToken: { Aplikasi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, SystemStatus: 1, Token: 1 }, TbBiodata: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Gelar: 1, Id: 1, Nik: 1, SystemStatus: 1, Tahun: 1 }, TbDetailJenisInformasi: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdJenisInformasi: 1, IdJenisInformasiDibuatOleh: 1, IdJenisInformasiDibuatTanggal: 1, IdJenisInformasiDieditOleh: 1, IdJenisInformasiDieditTanggal: 1, IdJenisInformasiJenisInformasi: 1, IdJenisInformasiKodeRt: 1, IdJenisInformasiSystemStatus: 1, IsLandingPage: 1, Judul: 1, LevelArea: 1, NamaFile: 1, SystemStatus: 1 }, TbDetailJenisKegiatan: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Dokumentasi: 1, Id: 1, IdJenisKegiatan: 1, IdJenisKegiatanDeskripsi: 1, IdJenisKegiatanDibuatOleh: 1, IdJenisKegiatanDibuatTanggal: 1, IdJenisKegiatanDieditOleh: 1, IdJenisKegiatanDieditTanggal: 1, IdJenisKegiatanJenisKegiatan: 1, IdJenisKegiatanKodeRt: 1, IdJenisKegiatanSystemStatus: 1, LevelArea: 1, Lokasi: 1, NamaFile: 1, NamaKegiatan: 1, SystemStatus: 1, TanggalKegiatan: 1, WarnaLatar: 1 }, TbDetailPemilu: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, FileName: 1, Id: 1, IdPemilu: 1, IdPemiluDibuatOleh: 1, IdPemiluDibuatTanggal: 1, IdPemiluDieditOleh: 1, IdPemiluDieditTanggal: 1, IdPemiluFileName: 1, IdPemiluJudul: 1, IdPemiluKodeRt: 1, IdPemiluSystemStatus: 1, Kandidat: 1, NoUrut: 1, SystemStatus: 1 }, TbDokumentasiDetailJenisKegiatan: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdDetailJenisKegiatan: 1, IdDetailJenisKegiatanDeskripsi: 1, IdDetailJenisKegiatanDibuatOleh: 1, IdDetailJenisKegiatanDibuatTanggal: 1, IdDetailJenisKegiatanDieditOleh: 1, IdDetailJenisKegiatanDieditTanggal: 1, IdDetailJenisKegiatanIdJenisKegiatan: 1, IdDetailJenisKegiatanLevelArea: 1, IdDetailJenisKegiatanLokasi: 1, IdDetailJenisKegiatanNamaKegiatan: 1, IdDetailJenisKegiatanSystemStatus: 1, IdDetailJenisKegiatanTanggalKegiatan: 1, IdDetailJenisKegiatanWarnaLatar: 1, NamaFile: 1, SystemStatus: 1 }, TbEmailTemplate: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, KodeTemplate: 1, Subject: 1, SystemStatus: 1, Template: 1 }, TbGalery: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, KodeRt: 1, LevelArea: 1, Photos: 1, Thumbnail: 1 }, TbHistoricalUserLogin: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IsMobile: 1, Login: 1, Logout: 1, Nik: 1, SystemStatus: 1 }, TbJabatan: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, NamaJabatan: 1, SystemStatus: 1 }, TbJadwalSiskamlim: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, Nama: 1, Nik: 1, SystemStatus: 1, Tanggal: 1 }, TbJenisInformasi: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, JenisInformasi: 1, KodeRt: 1, SystemStatus: 1, tbDetailJenisInformasiRow: 1 }, TbJenisKegiatan: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, JenisKegiatan: 1, KodeRt: 1, SystemStatus: 1, tbDetailJenisKegiatanRow: 1 }, TbKecamatan: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdKota: 1, IdKotaDibuatOleh: 1, IdKotaDibuatTanggal: 1, IdKotaDieditOleh: 1, IdKotaDieditTanggal: 1, IdKotaIdProvinsi: 1, IdKotaKodeKota: 1, IdKotaNamaKota: 1, IdKotaSystemStatus: 1, KodeKecamatan: 1, NamaKecamatan: 1, SystemStatus: 1 }, TbKelurahan: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdKecamatan: 1, IdKecamatanDibuatOleh: 1, IdKecamatanDibuatTanggal: 1, IdKecamatanDieditOleh: 1, IdKecamatanDieditTanggal: 1, IdKecamatanIdKota: 1, IdKecamatanKodeKecamatan: 1, IdKecamatanNamaKecamatan: 1, IdKecamatanSystemStatus: 1, KodeKelurahan: 1, NamaKelurahan: 1, SystemStatus: 1 }, TbKota: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdProvinsi: 1, IdProvinsiDibuatOleh: 1, IdProvinsiDibuatTanggal: 1, IdProvinsiDieditOleh: 1, IdProvinsiDieditTanggal: 1, IdProvinsiKodeProvinsi: 1, IdProvinsiNamaProvinsi: 1, IdProvinsiSystemStatus: 1, KodeKota: 1, NamaKota: 1, SystemStatus: 1 }, TbKtp: { Agama: 1, Alamat: 1, AlamatTinggal: 1, Attachment: 1, DataStatus: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, DocumentCode: 1, GolonganDarah: 1, Id: 1, IdKecamatan: 1, IdKecamatanTinggal: 1, IdKelurahan: 1, IdKelurahanTinggal: 1, IdKota: 1, IdKotaTinggal: 1, IdProvinsi: 1, IdProvinsiTinggal: 1, JenisKelamin: 1, JenisPekerjaan: 1, Kewarganegaraan: 1, Kk: 1, KodePos: 1, KodeRt: 1, Latitude: 1, Longitude: 1, Nama: 1, NamaAyah: 1, NamaIbu: 1, Nik: 1, Pendidikan: 1, PhotoKtp: 1, PhotoRumah: 1, Rt: 1, RtTinggal: 1, Rw: 1, RwTinggal: 1, SignatureKtp: 1, StatusPerkawinan: 1, SystemStatus: 1, TanggalLahir: 1, TanggalPerkawinan: 1, TempatLahir: 1, TinggalSesuaiKtp: 1 }, TbLaporanKas: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, KodeRt: 1, SystemStatus: 1, Tanggal: 1, Tipe: 1, Total: 1 }, TbListOfValue: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Group: 1, Id: 1, Kode: 1, SystemStatus: 1, Value: 1 }, TbMailLog: { Body: 1, Cc: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, ErrorMessage: 1, From: 1, Id: 1, Status: 1, Subject: 1, To: 1 }, TbParameter: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, Kode: 1, SystemStatus: 1, Value: 1 }, TbPemilu: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, FileName: 1, Id: 1, Judul: 1, KodeRt: 1, SystemStatus: 1, tbDetailPemiluRow: 1 }, TbPhotoKtp: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, NamaFile: 1, SystemStatus: 1 }, TbPollingPemilu: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdDetailPemilu: 1, IdDetailPemiluDibuatOleh: 1, IdDetailPemiluDibuatTanggal: 1, IdDetailPemiluDieditOleh: 1, IdDetailPemiluDieditTanggal: 1, IdDetailPemiluFileName: 1, IdDetailPemiluIdPemilu: 1, IdDetailPemiluKandidat: 1, IdDetailPemiluNoUrut: 1, IdDetailPemiluSystemStatus: 1, Nik: 1, NikAgama: 1, NikAlamat: 1, NikAlamatTinggal: 1, NikDibuatOleh: 1, NikDibuatTanggal: 1, NikDieditOleh: 1, NikDieditTanggal: 1, NikGolonganDarah: 1, NikId: 1, NikIdKelurahan: 1, NikIdKelurahanTinggal: 1, NikIdPhotoKtp: 1, NikIdSignatureKtp: 1, NikJenisKelamin: 1, NikJenisPekerjaan: 1, NikKewarganegaraan: 1, NikKk: 1, NikKodePos: 1, NikKodeRt: 1, NikNama: 1, NikNamaAyah: 1, NikNamaIbu: 1, NikPendidikan: 1, NikRt: 1, NikRtTinggal: 1, NikRw: 1, NikRwTinggal: 1, NikStatusPerkawinan: 1, NikSystemStatus: 1, NikTanggalLahir: 1, NikTanggalPerkawinan: 1, NikTempatLahir: 1, SystemStatus: 1 }, TbProvinsi: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, KodeProvinsi: 1, NamaProvinsi: 1, SystemStatus: 1 }, TbRt: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Facebook: 1, Id: 1, IdRw: 1, IdRwKodeRw: 1, IdRwNamaRw: 1, Instagram: 1, KodeLogin: 1, KodeRt: 1, Misi: 1, NamaRt: 1, Nik: 1, NoRt: 1, Photo: 1, Quotes: 1, SystemStatus: 1, Twitter: 1, Visi: 1, Whatsapp: 1 }, TbRw: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Facebook: 1, Footer: 1, Header: 1, Id: 1, IdKecamatan: 1, IdKelurahan: 1, IdKota: 1, IdProvinsi: 1, Instagram: 1, KodeRw: 1, Misi: 1, NamaRw: 1, Nik: 1, NoRw: 1, Photo: 1, Quotes: 1, SystemStatus: 1, Twitter: 1, Visi: 1, Whatsapp: 1 }, TbSlideShow: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, FileName: 1, Id: 1, Judul: 1, KodeRt: 1, PathUrl: 1, Posisi: 1, SystemStatus: 1, Tipe: 1 }, TbStruktur: { AkhirPeriode: 1, AwalPeriode: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdJabatan: 1, IdJabatanDibuatOleh: 1, IdJabatanDibuatTanggal: 1, IdJabatanDieditOleh: 1, IdJabatanDieditTanggal: 1, IdJabatanNamaJabatan: 1, IdJabatanSystemStatus: 1, IdKtp: 1, SystemStatus: 1 }, TbTanyaRt: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, Judul: 1, KtpIdKtp: 1, KtpKodeRt: 1, KtpNama: 1, KtpPhotoKtp: 1, SystemStatus: 1, tbTanyaRtDetailRow: 1 }, TbTanyaRtDetail: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdTanyaRt: 1, IdTanyaRtDibuatOleh: 1, IdTanyaRtDibuatTanggal: 1, IdTanyaRtDieditOleh: 1, IdTanyaRtDieditTanggal: 1, IdTanyaRtJudul: 1, IdTanyaRtSystemStatus: 1, SystemStatus: 1 }, TbTestimoni: { Deskripsi: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, Nik: 1, SystemStatus: 1 }, TbTransactionDocumentCode: { Description: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, DocumentCode: 1, Id: 1 }, TbTransactionFlow: { Code: 1, Description: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, DocumentCode: 1, Id: 1, IsActive: 1, tbTransactionFlowDetailRow: 1 }, TbTransactionFlowDetail: { AccessButton: 1, CcCreator: 1, CcRequestor: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, FinalStatus: 1, Id: 1, IsSendEmail: 1, Name: 1, NextStatus: 1, PopupMessage: 1, SendEmailTo: 1, SendEmailType: 1, StartStatus: 1, TemplateEmailType: 1, TransactionFlowId: 1, TransactionStatusCode: 1 }, TbTransactionStatus: { Code: 1, DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, DocumentCode: 1, External: 1, Icon: 1, Id: 1, Internal: 1, Label: 1 }, TbUser: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Email: 1, Id: 1, IdRole: 1, IsMobile: 1, KodeVerifikasi: 1, Nik: 1, Sandi: 1, Status: 1, SystemStatus: 1 }, TbUserApi: { DibuatOleh: 1, DibuatTanggal: 1, DieditOleh: 1, DieditTanggal: 1, Id: 1, IdUser: 1, NamaApi: 1, Sandi: 1, Status: 1, SystemStatus: 1 } } }, Forms: { Membership: { ChangePassword: { FormTitle: 1, SubmitButton: 1, Success: 1 }, ForgotPassword: { BackToLogin: 1, FormInfo: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, Login: { FacebookButton: 1, ForgotPassword: 1, FormTitle: 1, GoogleButton: 1, OR: 1, RememberMe: 1, SignInButton: 1, SignUpButton: 1 }, ResetPassword: { BackToLogin: 1, EmailSubject: 1, FormTitle: 1, SubmitButton: 1, Success: 1 }, SignUp: { AcceptTerms: 1, ActivateEmailSubject: 1, ActivationCompleteMessage: 1, BackToLogin: 1, ConfirmEmail: 1, ConfirmPassword: 1, DisplayName: 1, Email: 1, FormInfo: 1, FormTitle: 1, Password: 1, SubmitButton: 1, Success: 1 } } }, Site: { AccessDenied: { ClickToChangeUser: 1, ClickToLogin: 1, LackPermissions: 1, NotLoggedIn: 1, PageTitle: 1 }, BasicProgressDialog: { CancelTitle: 1, PleaseWait: 1 }, BulkServiceAction: { AllHadErrorsFormat: 1, AllSuccessFormat: 1, ConfirmationFormat: 1, ErrorCount: 1, NothingToProcess: 1, SomeHadErrorsFormat: 1, SuccessCount: 1 }, Dashboard: { ContentDescription: 1 }, Layout: { FooterCopyright: 1, FooterInfo: 1, FooterRights: 1, GeneralSettings: 1, Language: 1, Theme: 1, ThemeBlack: 1, ThemeBlackLight: 1, ThemeBlue: 1, ThemeBlueLight: 1, ThemeGreen: 1, ThemeGreenLight: 1, ThemePurple: 1, ThemePurpleLight: 1, ThemeRed: 1, ThemeRedLight: 1, ThemeYellow: 1, ThemeYellowLight: 1 }, RolePermissionDialog: { DialogTitle: 1, EditButton: 1, SaveSuccess: 1 }, UserDialog: { EditPermissionsButton: 1, EditRolesButton: 1 }, UserPermissionDialog: { DialogTitle: 1, Grant: 1, Permission: 1, Revoke: 1, SaveSuccess: 1 }, UserRoleDialog: { DialogTitle: 1, SaveSuccess: 1 }, ValidationError: { Title: 1 } }, Validation: { AuthenticationError: 1, CantFindUserWithEmail: 1, CurrentPasswordMismatch: 1, DeleteForeignKeyError: 1, EmailConfirm: 1, EmailInUse: 1, InvalidActivateToken: 1, InvalidResetToken: 1, MinRequiredPasswordLength: 1, NorthwindPhone: 1, NorthwindPhoneMultiple: 1, SavePrimaryKeyError: 1 } });
     })(Texts = AbidzarFrm.Texts || (AbidzarFrm.Texts = {}));
 })(AbidzarFrm || (AbidzarFrm = {}));
 var AbidzarFrm;
@@ -9732,19 +9735,19 @@ var AbidzarFrm;
                     var result = ctx.value;
                     var classStatus = '';
                     switch (ctx.value) {
-                        case 0:
+                        case "TS01":
                             result = "Draft";
                             classStatus = 'label label-warning';
                             break;
-                        case 1:
+                        case "TS02":
                             result = "Request";
                             classStatus = 'label label-default';
                             break;
-                        case 2:
+                        case "TS03":
                             result = "Verified";
                             classStatus = 'label label-success';
                             break;
-                        case 3:
+                        case "TS04":
                             result = "Rejected";
                             classStatus = 'label label-danger';
                             break;
@@ -11630,10 +11633,10 @@ var AbidzarFrm;
         })(VMRegistrationsRole = Rukuntangga.VMRegistrationsRole || (Rukuntangga.VMRegistrationsRole = {}));
         var StatusCode;
         (function (StatusCode) {
-            StatusCode.Draft = 0;
-            StatusCode.Requested = 1;
-            StatusCode.Verified = 2;
-            StatusCode.Rejected = 3;
+            StatusCode.Draft = "TS01";
+            StatusCode.Requested = "TS02";
+            StatusCode.Verified = "TS03";
+            StatusCode.Rejected = "TS04";
         })(StatusCode = Rukuntangga.StatusCode || (Rukuntangga.StatusCode = {}));
         var TbKtpDialog = /** @class */ (function (_super) {
             __extends(TbKtpDialog, _super);
@@ -11914,6 +11917,7 @@ var AbidzarFrm;
                 this.IsSameAddressWithKtp(flag);
                 Serenity.EditorUtils.setRequired(this.form.TanggalPerkawinan, this.form.StatusPerkawinan.value == "K");
                 this.UpdateContent();
+                this.GetTransactionAccessButton();
             };
             TbKtpDialog.prototype.afterLoadEntity = function () {
                 _super.prototype.afterLoadEntity.call(this);
@@ -11940,27 +11944,27 @@ var AbidzarFrm;
                 }
             };
             TbKtpDialog.prototype.getToolbarButtons = function () {
+                var _this = this;
                 var buttons = _super.prototype.getToolbarButtons.call(this);
-                buttons.push({
-                    icon: "fa-arrow-circle-right text-blue",
-                    hint: "Submit",
-                    title: "Submit",
-                    cssClass: "btn-submit-boq",
-                    onClick: function () {
-                        //if (this.IsValidPartialPassthrough()) {
-                        //    if (!this.ValidateBeforeSubmitPartialPassthrough()) {
-                        //        Q.alert("Please input PR Log No or Passthrough PR Log No ")
-                        //        return;
-                        //    } else {
-                        //        let msg: string = this.ValidateLenghtPartialPassthrough();
-                        //        if (msg != "") {
-                        //            Q.alert(msg)
-                        //            return;
-                        //        }
-                        //    }
-                        //}
+                var dataBtn = Rukuntangga.TbTransactionStatusRow.getLookup().items.filter(function (x) { return x.DocumentCode == 'KTP'; });
+                if (dataBtn.length > 0) {
+                    var _loop_1 = function () {
+                        var nextStatus = dataBtn[i].Code;
+                        buttons.push({
+                            icon: dataBtn[i].Icon,
+                            hint: dataBtn[i].Label,
+                            title: dataBtn[i].Label,
+                            cssClass: "btn-" + dataBtn[i].Code + " btn-custom",
+                            onClick: function () {
+                                _this.GetNextStatus(nextStatus);
+                                _this.UpdateNextStatus();
+                            }
+                        });
+                    };
+                    for (var i = 0; i < dataBtn.length; i++) {
+                        _loop_1();
                     }
-                });
+                }
                 return buttons;
             };
             TbKtpDialog.prototype.SetKota = function () {
@@ -12053,6 +12057,63 @@ var AbidzarFrm;
             TbKtpDialog.prototype.UpdateLatLong = function (lat, long) {
                 this.form.Latitude.value = lat;
                 this.form.Longitude.value = long;
+            };
+            TbKtpDialog.prototype.GetTransactionAccessButton = function () {
+                var _this = this;
+                this.toolbar.findButton("btn-custom").toggle(false);
+                Rukuntangga.TbKtpService.GetTransactionAccessButton({
+                    TransactionId: this.entity.Id,
+                    DocumentCode: "KTP"
+                }, function (response) {
+                    for (var i = 0; i < response.ListAccessButtonRespose.length; i++) {
+                        var item = response.ListAccessButtonRespose[i];
+                        var className = "btn-" + item.TransactionStatusCode;
+                        _this.toolbar.findButton(className).toggle(_this.hasRole(item.AccessButton));
+                    }
+                }, {
+                    async: false
+                });
+            };
+            TbKtpDialog.prototype.GetNextStatus = function (nextStatusCode) {
+                var _this = this;
+                Rukuntangga.TbKtpService.GetNextStatus({
+                    TransactionId: this.entity.Id,
+                    DocumentCode: this.entity.DocumentCode,
+                    NextStatusCode: nextStatusCode
+                }, function (response) {
+                    _this.commonResponseObj = response;
+                }, {
+                    async: false
+                });
+            };
+            TbKtpDialog.prototype.UpdateNextStatus = function () {
+                var _this = this;
+                this.form.DataStatus.value = this.commonResponseObj.TransactionStatusCode;
+                this.save(function (res) {
+                    Rukuntangga.TbKtpService.UpdateNextStatus({
+                        TransactionId: _this.entity.Id,
+                        DocumentCode: _this.entity.DocumentCode,
+                        NextStatusCode: _this.commonResponseObj.TransactionStatusCode,
+                        InsertUserId: AbidzarFrm.Authorization.userDefinition.UserId,
+                        Entity: _this.entity,
+                        SendEmailTo: _this.commonResponseObj.SendEmailTo,
+                        CcCreator: _this.commonResponseObj.CcCreator,
+                        CcRequestor: _this.commonResponseObj.CcRequestor,
+                        IsSendEmail: _this.commonResponseObj.IsSendEmail,
+                        TemplateEmailType: _this.commonResponseObj.TemplateEmailType
+                    }, function (response) {
+                        if (response.Status == 0) {
+                            Q.notifySuccess(_this.commonResponseObj.PopupMessage);
+                            _this.dialogClose();
+                            _this.element.triggerHandler("ondatachange", response);
+                        }
+                        else {
+                            Q.notifySuccess(response.MessageText);
+                        }
+                    }, {
+                        async: false
+                    });
+                });
             };
             Object.defineProperty(TbKtpDialog.prototype, "isDraft", {
                 get: function () {

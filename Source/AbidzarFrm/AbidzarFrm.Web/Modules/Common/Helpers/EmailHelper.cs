@@ -8,14 +8,16 @@ using Serenity.Services;
 using Serenity;
 using Serenity.Data;
 using System.Data;
+using AbidzarFrm.Rukuntangga.Entities;
 
 namespace AbidzarFrm
 {
     public class EmailHelper
     {
-        public static void Send(ref bool result, string subject, string body, string sendEmailTo, string sendEmailcc = "", IDictionary<string, string> attachmentsParam = null, string displayName = "")
+        public static void Send(string subject, string body, string sendEmailTo, string sendEmailcc = "", IDictionary<string, string> attachmentsParam = null, string displayName = "")
         {
             var message = new MailMessage();
+
             try
             {
                 if (sendEmailTo != null && sendEmailTo != "")
@@ -61,36 +63,34 @@ namespace AbidzarFrm
 
                 var client = new SmtpClient();
 
-                //if (client.DeliveryMethod == SmtpDeliveryMethod.SpecifiedPickupDirectory &&
-                //    string.IsNullOrEmpty(client.PickupDirectoryLocation))
-                //{
-                //    var pickupPath = HostingEnvironment.MapPath("~/App_Data");
-                //    pickupPath = Path.Combine(pickupPath, "Mail");
-                //    Directory.CreateDirectory(pickupPath);
-                //    client.PickupDirectoryLocation = pickupPath;
-                //}
-                //else if (client.DeliveryMethod == SmtpDeliveryMethod.Network)
-                //{
-                //    client.Host = ConfigurationManager.AppSettings["Email.SMTPHost"];
-                //    client.Credentials = new System.Net.NetworkCredential
-                //            (ConfigurationManager.AppSettings["Email.SMTPUser"], ConfigurationManager.AppSettings["Email.SMTPPassword"]);
+                if (client.DeliveryMethod == SmtpDeliveryMethod.SpecifiedPickupDirectory &&
+                    string.IsNullOrEmpty(client.PickupDirectoryLocation))
+                {
+                    var pickupPath = HostingEnvironment.MapPath("~/App_Data");
+                    pickupPath = Path.Combine(pickupPath, "Mail");
+                    Directory.CreateDirectory(pickupPath);
+                    client.PickupDirectoryLocation = pickupPath;
+                }
+                else if (client.DeliveryMethod == SmtpDeliveryMethod.Network)
+                {
+                    client.Host = ConfigurationManager.AppSettings["Email.SMTPHost"];
+                    client.Credentials = new System.Net.NetworkCredential
+                            (ConfigurationManager.AppSettings["Email.SMTPUser"], ConfigurationManager.AppSettings["Email.SMTPPassword"]);
 
-                //    client.UseDefaultCredentials = false;
-                //}
+                    client.UseDefaultCredentials = false;
+                }
 
                 client.Send(message);
-                WriteMailLog(subject, body, displayName, sendEmailTo, sendEmailcc, true, "Sukses");
-                result = true;
+                WriteMailLog(subject, body, sendEmailTo, sendEmailcc, true, "Sukses");
             }
             catch (Exception e)
             {
                 string unableReceipient = "";
-                //if (((System.Net.Mail.SmtpFailedRecipientException)e).FailedRecipient != null)
-                //{
-                //    unableReceipient = ((System.Net.Mail.SmtpFailedRecipientException)e).FailedRecipient;
-                //}
-                WriteMailLog(subject, body, displayName, sendEmailTo, sendEmailcc, false, e.Message.ToString() + unableReceipient + " | " + e.StackTrace.ToString());
-                result = false;
+                if (((System.Net.Mail.SmtpFailedRecipientException)e).FailedRecipient != null)
+                {
+                    unableReceipient = ((System.Net.Mail.SmtpFailedRecipientException)e).FailedRecipient;
+                }
+                WriteMailLog(subject, body, sendEmailTo, sendEmailcc, false, e.Message.ToString() + unableReceipient + " | " + e.StackTrace.ToString());
             }
         }
 
@@ -111,16 +111,16 @@ namespace AbidzarFrm
             return data;
         }
 
-        private static void WriteMailLog(string subject, string body, string sendEmailFrom, string sendEmailTo, string sendEmailcc, Boolean status, string errorMessage)
+        private static void WriteMailLog(string subject, string body, string sendEmailTo, string sendEmailcc, Boolean status, string errorMessage)
         {
             SaveResponse response = new SaveResponse();
             int insertUserId = Convert.ToInt32(Authorization.UserId);
-            SaveRequest<Rukuntangga.Entities.TbMailLogRow> request = new SaveRequest<Rukuntangga.Entities.TbMailLogRow>();
-            Rukuntangga.Entities.TbMailLogRow mail = new Rukuntangga.Entities.TbMailLogRow { Subject = subject, Body = body, From = sendEmailFrom, To = sendEmailTo, Cc = sendEmailcc, Status = status, ErrorMessage = errorMessage };
+            SaveRequest<TbMailLogRow> request = new SaveRequest<TbMailLogRow>();
+            TbMailLogRow mail = new TbMailLogRow { Subject = subject, Body = body, To = sendEmailTo, Cc = sendEmailcc, Status = status, ErrorMessage = errorMessage };
             request.Entity = mail;
 
             Rukuntangga.Repositories.TbMailLogRepository repo = new Rukuntangga.Repositories.TbMailLogRepository();
-            using (var connection = SqlConnections.NewFor<Rukuntangga.Entities.TbMailLogRow>())
+            using (var connection = SqlConnections.NewFor<TbMailLogRow>())
             using (var uow = new UnitOfWork(connection))
             {
                 repo.Create(uow, request);
@@ -129,12 +129,12 @@ namespace AbidzarFrm
 
         }
 
-        public static Rukuntangga.Entities.TbEmailTemplateRow GetEmailTemplate(string kodeTemplate)
+        public static TbEmailTemplateRow GetEmailTemplate(string emailType)
         {
-            Rukuntangga.Entities.TbEmailTemplateRow emailTemplate = null;
-            using (IDbConnection conn = SqlConnections.NewByKey("PTISMNFIN"))
+            TbEmailTemplateRow emailTemplate = null;
+            using (IDbConnection conn = SqlConnections.NewByKey("Rukuntangga"))
             {
-                emailTemplate = conn.TrySingle<Rukuntangga.Entities.TbEmailTemplateRow>(q => q.SelectTableFields().Where(new Criteria(Rukuntangga.Entities.TbEmailTemplateRow.Fields.KodeTemplate) == kodeTemplate));
+                emailTemplate = conn.TrySingle<TbEmailTemplateRow>(q => q.SelectTableFields().Where(new Criteria(TbEmailTemplateRow.Fields.KodeTemplate) == emailType));
             }
 
             return emailTemplate;

@@ -46,20 +46,13 @@ namespace AbidzarFrm.Rukuntangga.Endpoints
 
         public ResultStatusResponse SendEmail(SaveRequest<MyRow> request)
         {
+
             ResultStatusResponse rs = new ResultStatusResponse();
 
             try
             {
-                bool resultSendEmail = false;
-                EmailHelper.Send(ref resultSendEmail, request.Entity.Subject, request.Entity.Body, request.Entity.To, request.Entity.Cc, null, request.Entity.From);
-                if (resultSendEmail)
-                {
-                    rs.SetSuccessStatus("Email has been sent");
-                }
-                else
-                {
-                    rs.SetErrorStatus("Email is failed to send");
-                }
+                EmailHelper.Send(request.Entity.Subject, request.Entity.Body, request.Entity.To, request.Entity.Cc, null, "IT@protelindo.net");
+                rs.SetSuccessStatus("Email has been sent");
             }
             catch (System.Exception)
             {

@@ -7,3 +7,6 @@ namespace AbidzarFrm.Rukuntangga {
         protected getDialogType() { return AppointmentDiaryDialog; }
         protected getIdProperty() { return AppointmentDiaryRow.idProperty; }
         protected getInsertPermission() { return AppointmentDiaryRow.insertPermission; }
+
+    }
+}

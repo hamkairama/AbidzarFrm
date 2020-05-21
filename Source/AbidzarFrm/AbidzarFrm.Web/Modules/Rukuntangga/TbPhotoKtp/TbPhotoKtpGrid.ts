@@ -7,3 +7,5 @@ namespace AbidzarFrm.Rukuntangga {
         protected getDialogType() { return TbPhotoKtpDialog; }
         protected getIdProperty() { return TbPhotoKtpRow.idProperty; }
         protected getInsertPermission() { return TbPhotoKtpRow.insertPermission; }
+    }
+}

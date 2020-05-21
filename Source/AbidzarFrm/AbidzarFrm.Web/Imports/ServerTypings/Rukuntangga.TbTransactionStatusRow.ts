@@ -9,6 +9,8 @@
         DibuatTanggal?: string;
         DieditOleh?: string;
         DieditTanggal?: string;
+        Icon?: string;
+        Label?: string;
     }
 
     export namespace TbTransactionStatusRow {
@@ -34,7 +36,9 @@
             DibuatOleh = "DibuatOleh",
             DibuatTanggal = "DibuatTanggal",
             DieditOleh = "DieditOleh",
-            DieditTanggal = "DieditTanggal"
+            DieditTanggal = "DieditTanggal",
+            Icon = "Icon",
+            Label = "Label"
         }
     }
 }
