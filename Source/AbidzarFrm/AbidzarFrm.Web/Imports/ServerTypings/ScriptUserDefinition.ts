@@ -1,12 +1,22 @@
 ﻿namespace AbidzarFrm {
     export interface ScriptUserDefinition {
-        Username?: string;
+        Id?: string;
         DisplayName?: string;
-        IsAdmin?: boolean;
-        Permissions?: { [key: string]: boolean };
-        Roles?: string;
-        UserId?: number;
         Email?: string;
+        UserImage?: string;
+        IsActive?: number;
+        UserId?: number;
+        Username?: string;
+        PasswordHash?: string;
+        PasswordSalt?: string;
+        Source?: string;
+        UpdateDate?: string;
+        LastDirectoryUpdate?: string;
+        UserRoles?: string;
+        Ktp?: AbidzarFrm.Rukuntangga.TbKtpRow;
+        SlideShow?: AbidzarFrm.Rukuntangga.TbSlideShowRow[];
+        Permissions?: { [key: string]: boolean };
+        IsAdmin?: boolean;
     }
 }
 

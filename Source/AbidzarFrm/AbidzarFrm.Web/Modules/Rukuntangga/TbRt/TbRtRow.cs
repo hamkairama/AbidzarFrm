@@ -15,6 +15,7 @@ namespace AbidzarFrm.Rukuntangga.Entities
     [ModifyPermission("Master", "Rt", "Modify")]
     [InsertPermission("Master", "Rt", "Insert")]
     [DeletePermission("Master", "Rt", "Delete")]
+    [LookupScript(Permission = "*")]
     public sealed class TbRtRow : Row, IIdRow, INameRow
     {
         [DisplayName("Id"), Identity]

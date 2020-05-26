@@ -2524,9 +2524,6 @@
     <Compile Include="Imports\ClientTypes\Common.Editor.AgamaEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>
-    <Compile Include="Imports\ClientTypes\Common.Editor.DataStatusEditorAttribute.cs">
-      <DependentUpon>ClientTypes.tt</DependentUpon>
-    </Compile>
     <Compile Include="Imports\ClientTypes\Common.Editor.EmailTemplateEditorAttribute.cs">
       <DependentUpon>ClientTypes.tt</DependentUpon>
     </Compile>

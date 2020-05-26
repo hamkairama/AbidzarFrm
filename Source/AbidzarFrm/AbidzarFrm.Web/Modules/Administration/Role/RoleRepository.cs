@@ -36,6 +36,15 @@ namespace AbidzarFrm.Administration.Repositories
             return new MyListHandler().Process(connection, request);
         }
 
+        public string GetRoleName(IDbConnection connection, int roleId)
+        {
+            return connection.List<MyRow>(q =>
+            {
+                q.Select(fld.RoleName, fld.RoleId)
+                    .Where(new Criteria(fld.RoleId) == roleId);
+            })[0].RoleName;
+        }
+
         private class MySaveHandler : SaveRequestHandler<MyRow> { }
         private class MyDeleteHandler : DeleteRequestHandler<MyRow> { }
         private class MyRetrieveHandler : RetrieveRequestHandler<MyRow> { }

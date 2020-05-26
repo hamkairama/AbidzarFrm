@@ -32,15 +32,15 @@ namespace AbidzarFrm.Rukuntangga.Pages
             ListRequest request = new ListRequest();
             ListResponse<Rukuntangga.Entities.TbTanyaRtRow> response = new ListResponse<Rukuntangga.Entities.TbTanyaRtRow>();
 
-            var roles = UserAdditionalInfo.GetUserRoles(Authorization.Username);
+            //var roles = UserAdditionalInfo.GetUserRoles(Authorization.Username);
             var ud = (UserDefinition)Serenity.Authorization.UserDefinition;
             using (var connection = SqlConnections.NewByKey("Rukuntangga"))
             {
-                if (roles.Contains("RT"))
+                if (ud.UserRoles.Contains("RT"))
                 {
                     request.Criteria = new Criteria("KtpKodeRt") == ud.Ktp.KodeRt;
                 }
-                else if (roles.Contains("WARGA"))
+                else if (ud.UserRoles.Contains("WARGA"))
                 {
                     request.Criteria = new Criteria("DibuatOleh") == ud.Ktp.Nik;
                 }

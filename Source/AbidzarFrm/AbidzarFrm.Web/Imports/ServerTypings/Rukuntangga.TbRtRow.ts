@@ -29,6 +29,11 @@
         export const idProperty = 'Id';
         export const nameProperty = 'KodeRt';
         export const localTextPrefix = 'Rukuntangga.TbRt';
+        export const lookupKey = 'Rukuntangga.TbRt';
+
+        export function getLookup(): Q.Lookup<TbRtRow> {
+            return Q.getLookup<TbRtRow>('Rukuntangga.TbRt');
+        }
         export const deletePermission = 'Master:Rt:Delete';
         export const insertPermission = 'Master:Rt:Insert';
         export const readPermission = 'Master:Rt:View';

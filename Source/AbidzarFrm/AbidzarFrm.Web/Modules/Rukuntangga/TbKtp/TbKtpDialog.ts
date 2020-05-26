@@ -30,7 +30,8 @@ namespace AbidzarFrm.Rukuntangga {
         protected commonResponseObj: NextStatusResponse.CommonResponseObj;
 
         public hasRole(role: string): boolean {
-            return Authorization.userDefinition.Roles.indexOf(role) > -1;
+            var xx = Authorization.userDefinition;
+            return Authorization.userDefinition.UserRoles.indexOf(role) > -1;
         }
 
         constructor() {
@@ -364,12 +365,18 @@ namespace AbidzarFrm.Rukuntangga {
             this.IsSameAddressWithKtp(flag);
             Serenity.EditorUtils.setRequired(this.form.TanggalPerkawinan, this.form.StatusPerkawinan.value == "K");
             this.UpdateContent();
-
+            
+            this.ShowStandardButton(false);
+            this.ReadOnlyAllEditor(true);
+            if (this.isNew() || (this.isEditMode() && this.form.DataStatus.text.toUpperCase() == "DRAFT")) {
+                this.ShowStandardButton(true);
+                this.ReadOnlyAllEditor(false);
+            }
             this.GetTransactionAccessButton();
         }
 
         protected afterLoadEntity() {
-            super.afterLoadEntity();        
+            super.afterLoadEntity();
         }
 
         validateBeforeSave(): boolean {
@@ -524,6 +531,16 @@ namespace AbidzarFrm.Rukuntangga {
         protected UpdateLatLong(lat: number, long: number) {
             this.form.Latitude.value = lat;
             this.form.Longitude.value = long;
+        }
+
+        private ShowStandardButton(flag: boolean) {           
+                this.toolbar.findButton("save-and-close-button").toggle(flag);
+                this.toolbar.findButton("apply-changes-button").toggle(flag);
+                this.toolbar.findButton("delete-button").toggle(flag);
+        }
+
+        private ReadOnlyAllEditor(flag: boolean) {
+            Serenity.EditorUtils.setReadonly(this.element.find(".editor"), flag);
         }
 
         private GetTransactionAccessButton() {

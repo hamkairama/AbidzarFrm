@@ -50,10 +50,15 @@ namespace AbidzarFrm.Membership.Pages
 
                 var username = request.Username;
 
+
+
                 if (WebSecurityHelper.Authenticate(ref username, request.Password, false))
                 {
                     //set session
-                    GetDataKtp(username);
+                    //var test = Authorization.UserDefinition;
+                    //var ud = Authorization.UserDefinition as UserDefinition;
+                    //Session["DataKtp"] = ud.Ktp;
+                    //Session["DataSlideshow"] = ud.SlideShow.ToList();
 
                     return new ServiceResponse();
                 }
@@ -73,30 +78,6 @@ namespace AbidzarFrm.Membership.Pages
             Session.Abandon();
             FormsAuthentication.SignOut();
             return new RedirectResult("~/");
-        }
-
-        private void GetDataKtp(string userName)
-        {
-            TbKtpRow result = new TbKtpRow();
-            using (var connection = SqlConnections.NewByKey("Rukuntangga"))
-            {
-                var data = connection.Query<TbKtpRow>("SpGetKtpFromUsername", param: new { UserName = userName }, commandType: System.Data.CommandType.StoredProcedure);
-                if (data != null)
-                {
-                    Session["DataKtp"] = data.FirstOrDefault();
-                    GetSlideshow(connection, data.FirstOrDefault().KodeRt);
-                }
-            }
-        }
-
-        private void GetSlideshow(IDbConnection connection, string kodeRt)
-        {
-            List<TbSlideShowRow> result = new List<TbSlideShowRow>();
-                result = connection.List<TbSlideShowRow>(x => x.SelectTableFields().Where(string.Format("KodeRt = '{0}'", kodeRt)));
-            if (result.Count > 0)
-            {
-                Session["DataSlideshow"] = result;
-            }
         }
     }
 }

@@ -4,7 +4,7 @@
 namespace AbidzarFrm.ScriptInitialization {
     Q.Config.responsiveDialogs = true;
     Q.Config.rootNamespaces.push('AbidzarFrm');
-    Q.Router.enabled = false;
+    //Q.Router.enabled = false; //bejos tamvan disable sub method param ulr
     Serenity.EntityDialog.defaultLanguageList = LanguageList.getValue;
     Serenity.DataGrid.defaultPersistanceStorage = new Common.UserPreferenceStorage();
 

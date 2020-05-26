@@ -23,5 +23,7 @@
         public string UserRoles { get; set; }
         public TbKtpRow Ktp { get; set; }
         public List<TbSlideShowRow> SlideShow { get; set; }
+        public Dictionary<string, bool> Permissions { get; set; }
+        public Boolean IsAdmin { get; set; }
     }
 }

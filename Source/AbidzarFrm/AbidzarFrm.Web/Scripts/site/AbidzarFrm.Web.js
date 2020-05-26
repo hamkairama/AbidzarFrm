@@ -2953,62 +2953,63 @@ var AbidzarFrm;
                     TbKtpForm.init = true;
                     var s = Serenity;
                     var w0 = s.StringEditor;
-                    var w1 = s.DateEditor;
-                    var w2 = AbidzarFrm.Common.Editor.AgamaEditor;
-                    var w3 = AbidzarFrm.Common.Editor.JenisKelaminEditor;
-                    var w4 = s.LookupEditor;
-                    var w5 = AbidzarFrm.Common.Editor.SelectEditor;
-                    var w6 = s.TextAreaEditor;
-                    var w7 = AbidzarFrm.Common.Editor.Sequens3Editor;
-                    var w8 = AbidzarFrm.Common.Editor.StatusEditor;
-                    var w9 = AbidzarFrm.Common.Editor.WargaNegaraEditor;
-                    var w10 = AbidzarFrm.Common.Editor.PekerjaanEditor;
-                    var w11 = AbidzarFrm.Common.Editor.GolonganDarahEditor;
-                    var w12 = AbidzarFrm.Common.Editor.PendidikanEditor;
-                    var w13 = s.ImageUploadEditor;
-                    var w14 = AbidzarFrm.Common.Editor.YesNoEditor;
-                    var w15 = s.DecimalEditor;
-                    var w16 = s.MultipleImageUploadEditor;
+                    var w1 = AbidzarFrm.Common.Editor.TransactionStatusEditor;
+                    var w2 = s.DateEditor;
+                    var w3 = AbidzarFrm.Common.Editor.AgamaEditor;
+                    var w4 = AbidzarFrm.Common.Editor.JenisKelaminEditor;
+                    var w5 = s.LookupEditor;
+                    var w6 = AbidzarFrm.Common.Editor.SelectEditor;
+                    var w7 = s.TextAreaEditor;
+                    var w8 = AbidzarFrm.Common.Editor.Sequens3Editor;
+                    var w9 = AbidzarFrm.Common.Editor.StatusEditor;
+                    var w10 = AbidzarFrm.Common.Editor.WargaNegaraEditor;
+                    var w11 = AbidzarFrm.Common.Editor.PekerjaanEditor;
+                    var w12 = AbidzarFrm.Common.Editor.GolonganDarahEditor;
+                    var w13 = AbidzarFrm.Common.Editor.PendidikanEditor;
+                    var w14 = s.ImageUploadEditor;
+                    var w15 = AbidzarFrm.Common.Editor.YesNoEditor;
+                    var w16 = s.DecimalEditor;
+                    var w17 = s.MultipleImageUploadEditor;
                     Q.initFormType(TbKtpForm, [
                         'Kk', w0,
                         'Nik', w0,
                         'Nama', w0,
-                        'DataStatus', w0,
+                        'DataStatus', w1,
                         'TempatLahir', w0,
-                        'TanggalLahir', w1,
-                        'Agama', w2,
-                        'JenisKelamin', w3,
-                        'IdProvinsi', w4,
-                        'IdKota', w5,
-                        'IdKecamatan', w5,
-                        'IdKelurahan', w5,
-                        'Alamat', w6,
-                        'Rt', w7,
-                        'Rw', w7,
+                        'TanggalLahir', w2,
+                        'Agama', w3,
+                        'JenisKelamin', w4,
+                        'IdProvinsi', w5,
+                        'IdKota', w6,
+                        'IdKecamatan', w6,
+                        'IdKelurahan', w6,
+                        'Alamat', w7,
+                        'Rt', w8,
+                        'Rw', w8,
                         'KodePos', w0,
-                        'StatusPerkawinan', w8,
-                        'TanggalPerkawinan', w1,
-                        'Kewarganegaraan', w9,
-                        'JenisPekerjaan', w10,
-                        'GolonganDarah', w11,
-                        'Pendidikan', w12,
-                        'PhotoKtp', w13,
-                        'SignatureKtp', w13,
+                        'StatusPerkawinan', w9,
+                        'TanggalPerkawinan', w2,
+                        'Kewarganegaraan', w10,
+                        'JenisPekerjaan', w11,
+                        'GolonganDarah', w12,
+                        'Pendidikan', w13,
+                        'PhotoKtp', w14,
+                        'SignatureKtp', w14,
                         'NamaAyah', w0,
                         'NamaIbu', w0,
-                        'TinggalSesuaiKtp', w14,
-                        'IdProvinsiTinggal', w4,
-                        'IdKotaTinggal', w5,
-                        'IdKecamatanTinggal', w5,
-                        'IdKelurahanTinggal', w5,
-                        'RwTinggal', w7,
-                        'RtTinggal', w7,
+                        'TinggalSesuaiKtp', w15,
+                        'IdProvinsiTinggal', w5,
+                        'IdKotaTinggal', w6,
+                        'IdKecamatanTinggal', w6,
+                        'IdKelurahanTinggal', w6,
+                        'RwTinggal', w8,
+                        'RtTinggal', w8,
                         'KodeRt', w0,
                         'AlamatTinggal', w0,
-                        'Latitude', w15,
-                        'Longitude', w15,
-                        'PhotoRumah', w13,
-                        'Attachment', w16
+                        'Latitude', w16,
+                        'Longitude', w16,
+                        'PhotoRumah', w14,
+                        'Attachment', w17
                     ]);
                 }
                 return _this;
@@ -3648,6 +3649,11 @@ var AbidzarFrm;
             TbRtRow.idProperty = 'Id';
             TbRtRow.nameProperty = 'KodeRt';
             TbRtRow.localTextPrefix = 'Rukuntangga.TbRt';
+            TbRtRow.lookupKey = 'Rukuntangga.TbRt';
+            function getLookup() {
+                return Q.getLookup('Rukuntangga.TbRt');
+            }
+            TbRtRow.getLookup = getLookup;
             TbRtRow.deletePermission = 'Master:Rt:Delete';
             TbRtRow.insertPermission = 'Master:Rt:Insert';
             TbRtRow.readPermission = 'Master:Rt:View';
@@ -5011,7 +5017,7 @@ var AbidzarFrm;
         Authorization.hasPermission = hasPermission;
         function hasRoles(roleName) {
             var ud = Authorization.userDefinition;
-            return ud.Username === 'admin' || ud.Roles.indexOf(roleName) > -1;
+            return ud.Username === 'admin' || ud.UserRoles.indexOf(roleName) > -1;
         }
         Authorization.hasRoles = hasRoles;
     })(Authorization = AbidzarFrm.Authorization || (AbidzarFrm.Authorization = {}));
@@ -9229,7 +9235,7 @@ var AbidzarFrm;
     (function (ScriptInitialization) {
         Q.Config.responsiveDialogs = true;
         Q.Config.rootNamespaces.push('AbidzarFrm');
-        Q.Router.enabled = false;
+        //Q.Router.enabled = false; //bejos tamvan disable sub method param ulr
         Serenity.EntityDialog.defaultLanguageList = AbidzarFrm.LanguageList.getValue;
         Serenity.DataGrid.defaultPersistanceStorage = new AbidzarFrm.Common.UserPreferenceStorage();
         if ($.fn['colorbox']) {
@@ -9320,22 +9326,6 @@ var AbidzarFrm;
                 return TypePosisiIklanEditor;
             }(Serenity.Select2Editor));
             Editor.TypePosisiIklanEditor = TypePosisiIklanEditor;
-            var DataStatusEditor = /** @class */ (function (_super) {
-                __extends(DataStatusEditor, _super);
-                function DataStatusEditor(container) {
-                    var _this = _super.call(this, container, null) || this;
-                    _this.addOption("0", "Draft");
-                    _this.addOption("1", "Request");
-                    _this.addOption("2", "Verified");
-                    _this.addOption("3", "Rejected");
-                    return _this;
-                }
-                DataStatusEditor = __decorate([
-                    Serenity.Decorators.registerEditor([Serenity.ISetEditValue])
-                ], DataStatusEditor);
-                return DataStatusEditor;
-            }(Serenity.Select2Editor));
-            Editor.DataStatusEditor = DataStatusEditor;
             var TypeSlideshowEditor = /** @class */ (function (_super) {
                 __extends(TypeSlideshowEditor, _super);
                 function TypeSlideshowEditor(container) {
@@ -11704,7 +11694,8 @@ var AbidzarFrm;
             TbKtpDialog.prototype.getService = function () { return Rukuntangga.TbKtpService.baseUrl; };
             TbKtpDialog.prototype.getDeletePermission = function () { return Rukuntangga.TbKtpRow.insertPermission; };
             TbKtpDialog.prototype.hasRole = function (role) {
-                return AbidzarFrm.Authorization.userDefinition.Roles.indexOf(role) > -1;
+                var xx = AbidzarFrm.Authorization.userDefinition;
+                return AbidzarFrm.Authorization.userDefinition.UserRoles.indexOf(role) > -1;
             };
             TbKtpDialog.prototype.onDialogOpen = function () {
                 _super.prototype.onDialogOpen.call(this);
@@ -11917,6 +11908,12 @@ var AbidzarFrm;
                 this.IsSameAddressWithKtp(flag);
                 Serenity.EditorUtils.setRequired(this.form.TanggalPerkawinan, this.form.StatusPerkawinan.value == "K");
                 this.UpdateContent();
+                this.ShowStandardButton(false);
+                this.ReadOnlyAllEditor(true);
+                if (this.isNew() || (this.isEditMode() && this.form.DataStatus.text.toUpperCase() == "DRAFT")) {
+                    this.ShowStandardButton(true);
+                    this.ReadOnlyAllEditor(false);
+                }
                 this.GetTransactionAccessButton();
             };
             TbKtpDialog.prototype.afterLoadEntity = function () {
@@ -12057,6 +12054,14 @@ var AbidzarFrm;
             TbKtpDialog.prototype.UpdateLatLong = function (lat, long) {
                 this.form.Latitude.value = lat;
                 this.form.Longitude.value = long;
+            };
+            TbKtpDialog.prototype.ShowStandardButton = function (flag) {
+                this.toolbar.findButton("save-and-close-button").toggle(flag);
+                this.toolbar.findButton("apply-changes-button").toggle(flag);
+                this.toolbar.findButton("delete-button").toggle(flag);
+            };
+            TbKtpDialog.prototype.ReadOnlyAllEditor = function (flag) {
+                Serenity.EditorUtils.setReadonly(this.element.find(".editor"), flag);
             };
             TbKtpDialog.prototype.GetTransactionAccessButton = function () {
                 var _this = this;
@@ -13035,6 +13040,30 @@ var AbidzarFrm;
                     separator: true
                 }));
                 return buttons;
+            };
+            TbKtpGrid.prototype.hasRole = function (role) {
+                return AbidzarFrm.Authorization.userDefinition.UserRoles.indexOf(role) > -1;
+            };
+            TbKtpGrid.prototype.onViewSubmit = function () {
+                if (!_super.prototype.onViewSubmit.call(this)) {
+                    return false;
+                }
+                var request = this.view.params;
+                if (this.hasRole("RT")) {
+                    var ud = AbidzarFrm.Authorization.userDefinition;
+                    request.Criteria = Serenity.Criteria.and(request.Criteria, [["KodeRt"], "=", ud.Ktp.KodeRt]);
+                }
+                else if (this.hasRole("RW")) {
+                    var listRt = Q.getLookup("Rukuntangga.TbRt").items.filter(function (f) { return f.IdRw == 4; });
+                    var listRtx = [];
+                    listRt.forEach(function (item) {
+                        listRtx.push(item.KodeRt);
+                    });
+                    if (listRtx.length < 1)
+                        listRtx.push(0);
+                    request.Criteria = Serenity.Criteria.and(request.Criteria, [['KodeRt'], 'in', [listRtx]]);
+                }
+                return true;
             };
             TbKtpGrid = __decorate([
                 Serenity.Decorators.registerClass(),

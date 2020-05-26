@@ -45,16 +45,6 @@
         }
     }
     @Serenity.Decorators.registerEditor([Serenity.ISetEditValue])
-    export class DataStatusEditor extends Serenity.Select2Editor<any, any> {
-        constructor(container: JQuery) {
-            super(container, null);
-            this.addOption("0", "Draft");
-            this.addOption("1", "Request");
-            this.addOption("2", "Verified");
-            this.addOption("3", "Rejected");
-        }
-    }
-    @Serenity.Decorators.registerEditor([Serenity.ISetEditValue])
     export class TypeSlideshowEditor extends Serenity.Select2Editor<any, any> {
         constructor(container: JQuery) {
             super(container, null);

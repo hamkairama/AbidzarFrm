@@ -34,12 +34,23 @@ namespace AbidzarFrm.Rukuntangga.Pages
             ListRequest request = new ListRequest();
             ListResponse<TbKtpRow> response = new ListResponse<TbKtpRow>();
             var ud = (UserDefinition)Authorization.UserDefinition;
+            //using (var connection = SqlConnections.NewByKey("Rukuntangga"))
+            //{
+            //    request.Criteria = new Criteria("KodeRt") == ud.Ktp.KodeRt & (new Criteria("Nama").Like("%" + filter + "%") | new Criteria("Nik").Like("%" + filter + "%"));
+            //    request.Take = totalCount;
+            //    response = repo.List(connection, request);
+            //}
+
             using (var connection = SqlConnections.NewByKey("Rukuntangga"))
             {
-                request.Criteria = new Criteria("KodeRt") == ud.Ktp.KodeRt & (new Criteria("Nama").Like("%" + filter + "%") | new Criteria("Nik").Like("%" + filter + "%"));
-                request.Take = totalCount;
-                response = repo.List(connection, request);
+                var data = (List<TbKtpRow>)connection.Query<TbKtpRow>("SpSearhWarga", param: new { nik = ud.Ktp.Nik, search = filter, takeCount = totalCount }, commandType: System.Data.CommandType.StoredProcedure);
+
+                if (data.Count > 0)
+                {
+                    response.Entities = data;
+                }
             }
+
             return response;
         }
 

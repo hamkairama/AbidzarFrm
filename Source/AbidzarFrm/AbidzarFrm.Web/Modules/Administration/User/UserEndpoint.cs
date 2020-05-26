@@ -76,6 +76,26 @@ namespace AbidzarFrm.Administration.Endpoints
             result.Username = user.Username;
             result.DisplayName = user.DisplayName;
             result.IsAdmin = user.Username == "admin";
+            result.UserRoles = user.UserRoles;
+            result.Ktp = user.Ktp;
+            result.UserRoles = user.UserRoles;
+
+            //using (var connection = SqlConnections.NewFor<UserRoleRow>())
+            //{
+            //    UserRoleListRequest request = new UserRoleListRequest();
+            //    request.UserID = user.UserId;
+            //    List<int> userRoleList = new UserRoleRepository().List(connection, request).Entities;
+            //    List<string> arrRole = new List<string>();
+            //    foreach (var roleId in userRoleList)
+            //    {
+            //        RetrieveRequest roleRequest = new RetrieveRequest();
+            //        roleRequest.EntityId = roleId;
+            //        var roleName = new RoleRepository().GetRoleName(connection, roleId);
+            //        arrRole.Add(roleName);
+            //    }
+            //    user.UserRoles = string.Join(",", arrRole.ToArray());
+            //    result.Roles = user.UserRoles;
+            //}
 
             result.Permissions = TwoLevelCache.GetLocalStoreOnly("ScriptUserPermissions:" + user.Id, TimeSpan.Zero,
                 UserPermissionRow.Fields.GenerationKey, () =>

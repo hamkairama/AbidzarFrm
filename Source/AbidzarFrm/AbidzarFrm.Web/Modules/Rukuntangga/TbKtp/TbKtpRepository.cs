@@ -19,6 +19,7 @@ namespace AbidzarFrm.Rukuntangga.Repositories
             var ud = (UserDefinition)Authorization.UserDefinition;
             request.Entity.DibuatOleh = ud.Ktp.Nik;
             request.Entity.KodeRt = ud.Ktp.KodeRt;
+            request.Entity.DocumentCode = "KTP";
             if (request.Entity.TinggalSesuaiKtp == 1)
             {
                 request.Entity.IdProvinsiTinggal = request.Entity.IdProvinsi;

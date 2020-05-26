@@ -22,7 +22,7 @@ namespace AbidzarFrm.Rukuntangga.Forms
         public String Nik { get; set; }
         [HalfWidth]
         public String Nama { get; set; }
-        [HalfWidth]
+        [HalfWidth, TransactionStatusEditor]
         public String DataStatus { get; set; }
         [HalfWidth]
         public String TempatLahir { get; set; }
@@ -98,7 +98,6 @@ namespace AbidzarFrm.Rukuntangga.Forms
         [DisplayName("RT")]
         public String RtTinggal { get; set; }
         [HalfWidth]
-        [DisplayName("Alamat")]
         public String KodeRt { get; set; }
         public String AlamatTinggal { get; set; }
         public Decimal Latitude { get; set; }

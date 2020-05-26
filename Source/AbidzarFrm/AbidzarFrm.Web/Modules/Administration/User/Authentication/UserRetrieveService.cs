@@ -1,9 +1,12 @@
 ﻿namespace AbidzarFrm.Administration
 {
+    using AbidzarFrm.Administration.Entities;
+    using AbidzarFrm.Administration.Repositories;
     using AbidzarFrm.Rukuntangga.Entities;
     using Serenity;
     using Serenity.Abstractions;
     using Serenity.Data;
+    using Serenity.Services;
     using System;
     using System.Collections.Generic;
     using System.Data;
@@ -13,6 +16,8 @@
     public class UserRetrieveService : IUserRetrieveService
     {
         private static MyRow.RowFields fld { get { return MyRow.Fields; } }
+
+        private static string[] permissionsUsedFromScript;
 
         private UserDefinition GetFirst(IDbConnection connection, BaseCriteria criteria)
         {
@@ -25,6 +30,34 @@
                 {
                     dataSlideshow = GetSlideshow(dataKtp.KodeRt);
                 }
+
+                string userRoles = GetUserRoles(user.UserId.Value);
+
+                //var permission = TwoLevelCache.GetLocalStoreOnly("ScriptUserPermissions:" + user.UserId.Value, TimeSpan.Zero,
+                //UserPermissionRow.Fields.GenerationKey, () =>
+                //{
+                //    var permissions = new Dictionary<string, bool>(StringComparer.OrdinalIgnoreCase);
+
+                //    if (permissionsUsedFromScript == null)
+                //    {
+                //        permissionsUsedFromScript = new UserPermissionRepository().ListPermissionKeys().Entities
+                //            .Where(permissionKey =>
+                //            {
+                //                // this sends permission information for all permission keys to client side.
+                //                // if you don't need all of them to be available from script, filter them here.
+                //                // this is recommended for security / performance reasons...
+                //                return true;
+                //            }).ToArray();
+                //    }
+
+                //    foreach (var permissionKey in permissionsUsedFromScript)
+                //    {
+                //        if (Authorization.HasPermission(permissionKey))
+                //            permissions[permissionKey] = true;
+                //    }
+
+                //    return permissions;
+                //});
 
                 return new UserDefinition
                 {
@@ -40,7 +73,8 @@
                     UpdateDate = user.UpdateDate,
                     LastDirectoryUpdate = user.LastDirectoryUpdate,
                     Ktp = dataKtp,
-                    SlideShow = dataSlideshow
+                    SlideShow = dataSlideshow,
+                    UserRoles = userRoles
                 };
             }
 
@@ -106,6 +140,28 @@
                 {
                     result = data;
                 }
+            }
+
+            return result;
+        }
+
+        private String GetUserRoles(int userId)
+        {
+            String result = "";
+            using (var connection = SqlConnections.NewByKey("Rukuntangga"))
+            {
+                UserRoleListRequest request = new UserRoleListRequest();
+                request.UserID = userId;
+                List<int> userRoleList = new UserRoleRepository().List(connection, request).Entities;
+                List<string> arrRole = new List<string>();
+                foreach (var roleId in userRoleList)
+                {
+                    RetrieveRequest roleRequest = new RetrieveRequest();
+                    roleRequest.EntityId = roleId;
+                    var roleName = new RoleRepository().GetRoleName(connection, roleId);
+                    arrRole.Add(roleName);
+                }
+                result = string.Join(",", arrRole.ToArray());
             }
 
             return result;
