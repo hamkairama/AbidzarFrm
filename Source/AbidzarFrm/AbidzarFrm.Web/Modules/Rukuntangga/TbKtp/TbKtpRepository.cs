@@ -68,6 +68,7 @@ namespace AbidzarFrm.Rukuntangga.Repositories
                     {
                         var transactionFlowDetail = this.Connection.TrySingle<TbTransactionFlowDetailRow>(q => q.Select(TbTransactionFlowDetailRow.Fields.TransactionStatusCode).Where(new Criteria(TbTransactionFlowDetailRow.Fields.TransactionFlowId) == transactionFlow.Id.ToString() & new Criteria(TbTransactionFlowDetailRow.Fields.StartStatus) == 1));
                         this.Row.DataStatus = transactionFlowDetail.TransactionStatusCode;
+                        this.Row.TransactionFlowId = transactionFlow.Id;
                     }
                 }
             }

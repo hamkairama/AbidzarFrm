@@ -1,5 +1,15 @@
 ﻿@model  AbidzarFrm.Rukuntangga.Entities.TbKtpRow
 @{
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet" />
+
     var userImage = (Model.PhotoKtp == null || string.IsNullOrEmpty(Model.PhotoKtp)) ? "../../Content/adminlte/img/avatar0.png" : VirtualPathUtility.ToAbsolute("~/upload/") + Model.PhotoKtp;
     var rumahImage = (Model.PhotoRumah == null || string.IsNullOrEmpty(Model.PhotoRumah)) ? "../../Content/images/rumah.jpg" : VirtualPathUtility.ToAbsolute("~/upload/") + Model.PhotoRumah;
 
@@ -23,13 +33,14 @@
                                                     <h3 class="profile-username text-center">@Model.Nama</h3>
                                                     <p class="text-muted text-center">@Model.Nik</p>
                                                     <hr />
+                                                    <b>No. Kartu Keluarga</b> <a class="pull-right">@Model.Kk</a><br />
                                                     <b>Jenis Kelamin</b> <a class="pull-right">@Model.JenisKelamin</a><br />
                                                     <b>Lahir</b> <a class="pull-right">@Model.TempatLahir, @Model.TanggalLahir.Value.ToString("dd/MM/yyyy")</a><br />
+                                                    <b>Agama</b> <a class="pull-right">@Model.Agama</a>
                                                     <b>Status</b> <a class="pull-right">@Model.StatusPerkawinan</a>
                                                     <hr />
                                                     <strong><i class="fa fa-map-marker margin-r-5"></i> Alamat</strong>
                                                     <p class="text-muted">@Model.Alamat RT @Model.Rt RW @Model.Rw</p>
-                                                    <hr>
                                                 </div>
                                             </div>
                                         </div>
@@ -41,6 +52,7 @@
                                         <div class="box-body box-profile">
                                             <img class="profile-user-img img-responsive img-circle" src="@rumahImage" alt="User profile picture">
                                             <p class="text-muted text-center">@Model.AlamatTinggal RT @Model.RtTinggal / RW @Model.RwTinggal</p>
+                                            <div id="map"></div>
                                         </div>
                                     </div>
 
@@ -57,6 +69,42 @@
         </div>
     </div>
 
+    @*<script>
+            function initMap() {
+                //var uluru = { lat: -6.1967177, lng: 106.820063 };
+                var uluru = { lat: @Model.Latitude, lng: @Model.Longitude };
+                var map = new google.maps.Map(
+                    document.getElementById('map'), { zoom: 16, center: uluru });
+                var marker = new google.maps.Marker({ position: uluru, map: map });
+            }
+        </script>
+
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3Xyb5d69gpPZ2GaWBseUS02FkMWR38dk&callback=initMap"
+                type="text/javascript"></script>*@
+    <script>
+        // Where you want to render the map.
+        var element = document.getElementById('map');
+
+        // Height has to be set. You can do this in CSS too.
+        //element.style = 'height:300px;';
+
+        // Create Leaflet map on map element.
+        var map = L.map(element);
+
+        // Add OSM tile leayer to the Leaflet map.
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Target's GPS coordinates.
+        var target = L.latLng('-6.1967177', '106.820063');
+
+        // Set map's center to target with zoom 14.
+        map.setView(target, 14);
+
+        // Place a marker on the same location.
+        L.marker(target).addTo(map);
+    </script>
 
 }
 

@@ -5,6 +5,7 @@ namespace AbidzarFrm.Rukuntangga.Pages
     using Serenity;
     using Serenity.Data;
     using Serenity.Services;
+    using System.Collections.Generic;
     using System.Web.Mvc;
 
     [Authorize, RoutePrefix("Rukuntangga/UserMember"), Route("{action=index}")]
@@ -32,12 +33,24 @@ namespace AbidzarFrm.Rukuntangga.Pages
             ListRequest request = new ListRequest();
             ListResponse<Administration.Entities.UserRow> response = new ListResponse<Administration.Entities.UserRow>();
             var ud = (UserDefinition)Authorization.UserDefinition;
+            //using (var connection = SqlConnections.NewByKey("Rukuntangga"))
+            //{
+            //    request.Criteria = new Criteria("KtpKodeRt") == ud.Ktp.KodeRt & (new Criteria("DisplayName").Like("%" + filter + "%") | new Criteria("Nik").Like("%" + filter + "%"));
+            //    request.Take = totalCount;
+            //    response = repo.List(connection, request);
+            //}
+
+
             using (var connection = SqlConnections.NewByKey("Rukuntangga"))
             {
-                request.Criteria = new Criteria("KtpKodeRt") == ud.Ktp.KodeRt & (new Criteria("DisplayName").Like("%" + filter + "%") | new Criteria("Nik").Like("%" + filter + "%"));
-                request.Take = totalCount;
-                response = repo.List(connection, request);
+                var data = (List<Administration.Entities.UserRow>)connection.Query<Administration.Entities.UserRow>("SpSearUser", param: new { nik = ud.Ktp.Nik, search = filter, takeCount = totalCount }, commandType: System.Data.CommandType.StoredProcedure);
+
+                if (data.Count > 0)
+                {
+                    response.Entities = data;
+                }
             }
+
             return response;
         }
         public ActionResult Details(int id)

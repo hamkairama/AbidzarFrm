@@ -42,7 +42,7 @@
                     classStatus = 'label label-warning'
                     break;
                 case "TS02":
-                    result = "Request"
+                    result = "Submitted"
                     classStatus = 'label label-default'
                     break;
                 case "TS03":

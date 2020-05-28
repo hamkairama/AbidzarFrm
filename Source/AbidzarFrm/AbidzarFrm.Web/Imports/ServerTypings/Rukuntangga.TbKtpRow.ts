@@ -45,6 +45,7 @@
         TinggalSesuaiKtp?: number;
         Latitude?: number;
         Longitude?: number;
+        TransactionFlowId?: number;
         DocumentCode?: string;
     }
 
@@ -108,6 +109,7 @@
             TinggalSesuaiKtp = "TinggalSesuaiKtp",
             Latitude = "Latitude",
             Longitude = "Longitude",
+            TransactionFlowId = "TransactionFlowId",
             DocumentCode = "DocumentCode"
         }
     }

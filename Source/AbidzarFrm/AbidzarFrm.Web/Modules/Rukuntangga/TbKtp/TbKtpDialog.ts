@@ -8,7 +8,7 @@ namespace AbidzarFrm.Rukuntangga {
     }
     export namespace StatusCode {
         export const Draft = "TS01";
-        export const Requested = "TS02";
+        export const Submitted = "TS02";
         export const Verified = "TS03";
         export const Rejected = "TS04";
     }
@@ -342,6 +342,7 @@ namespace AbidzarFrm.Rukuntangga {
         updateInterface() {
             super.updateInterface();
             let flag: boolean = false;
+            this.GetTransactionAccessButton();
 
             if (this.isNew()) {
                 this.form.TinggalSesuaiKtp.value = "1";
@@ -365,18 +366,31 @@ namespace AbidzarFrm.Rukuntangga {
             this.IsSameAddressWithKtp(flag);
             Serenity.EditorUtils.setRequired(this.form.TanggalPerkawinan, this.form.StatusPerkawinan.value == "K");
             this.UpdateContent();
-            
+
             this.ShowStandardButton(false);
             this.ReadOnlyAllEditor(true);
             if (this.isNew() || (this.isEditMode() && this.form.DataStatus.text.toUpperCase() == "DRAFT")) {
                 this.ShowStandardButton(true);
                 this.ReadOnlyAllEditor(false);
             }
-            this.GetTransactionAccessButton();
+
+            if (this.isEditMode() && this.hasRole("RT")) {
+                $(".btn-openUpdate").show();
+            }
         }
 
         protected afterLoadEntity() {
             super.afterLoadEntity();
+
+            //this is only for sa
+            if (this.hasRole("SA")) {
+                this.ShowStandardButton(true);
+                this.ReadOnlyAllEditor(false);
+            }
+
+            if (this.hasRole("WARGA")) {
+                Serenity.EditorUtils.setReadonly(this.element.find(".DataStatus"), true);
+            }
         }
 
         validateBeforeSave(): boolean {
@@ -423,6 +437,29 @@ namespace AbidzarFrm.Rukuntangga {
                     });
                 }
             }
+
+            buttons.push({
+                icon: "fa-arrow-circle-right text-blue",
+                hint: "Open Update",
+                title: "Open Update",
+                cssClass: "btn-openUpdate btn-custom",
+                onClick: () => {
+                    this.ReadOnlyAllEditor(false);
+                    this.ShowStandardButton(true);
+                    $(".btn-cancelUpdate").show();
+                    $(".btn-openUpdate").hide();
+                }
+            });
+
+            buttons.push({
+                icon: "fa-arrow-circle-right text-blue",
+                hint: "Cancel Update",
+                title: "Cancel Update",
+                cssClass: "btn-cancelUpdate btn-custom",
+                onClick: () => {
+                    this.reloadById();
+                }
+            });
 
             return buttons;
         }
@@ -533,10 +570,10 @@ namespace AbidzarFrm.Rukuntangga {
             this.form.Longitude.value = long;
         }
 
-        private ShowStandardButton(flag: boolean) {           
-                this.toolbar.findButton("save-and-close-button").toggle(flag);
-                this.toolbar.findButton("apply-changes-button").toggle(flag);
-                this.toolbar.findButton("delete-button").toggle(flag);
+        private ShowStandardButton(flag: boolean) {
+            this.toolbar.findButton("save-and-close-button").toggle(flag);
+            this.toolbar.findButton("apply-changes-button").toggle(flag);
+            this.toolbar.findButton("delete-button").toggle(flag);
         }
 
         private ReadOnlyAllEditor(flag: boolean) {
@@ -556,7 +593,6 @@ namespace AbidzarFrm.Rukuntangga {
                         var item = response.ListAccessButtonRespose[i];
                         var className = "btn-" + item.TransactionStatusCode;
                         this.toolbar.findButton(className).toggle(this.hasRole(item.AccessButton));
-
                     }
                 },
                 {
@@ -616,14 +652,14 @@ namespace AbidzarFrm.Rukuntangga {
         get isDraft() {
             return this.entity.DataStatus == StatusCode.Draft;
         }
-        get isRequest() {
-            return this.entity.DataStatus == StatusCode.Requested;
+        get isSubmitted() {
+            return this.entity.DataStatus == StatusCode.Submitted;
         }
         get isVerified() {
             return this.entity.DataStatus == StatusCode.Verified;
         }
         get isRejected() {
-            return this.entity.DataStatus == StatusCode.Requested;
+            return this.entity.DataStatus == StatusCode.Rejected;
         }
     }
 }

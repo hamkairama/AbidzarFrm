@@ -10,9 +10,12 @@
             <div class="col-md-12">
                 <div class="box box-primary">
                     <div class="box-body img-responsive" style="height:auto">
+                        <i class="fa fa-fast-backward text-red margin-r-5" style="cursor:pointer" onclick="window.history.go(-1); return false;"></i>
                         <i class="fa fa-book margin-r-5"></i><a href="javascript:GetBerita(@Model.IdJenisInformasi)" style="cursor:pointer;color:dodgerblue;"><strong>@Model.IdJenisInformasiJenisInformasi</strong></a>
                         <span class="text-muted">@Model.DibuatTanggal.Value.ToString("dd/MM/yyyy")</span>
                         @Html.Raw(HttpUtility.HtmlDecode(Model.Deskripsi))
+                        <hr />
+                        <i class="fa fa-fast-backward text-red pull-right" style="cursor:pointer" onclick="window.history.go(-1); return false;"></i>
 
                     </div>
                 </div>

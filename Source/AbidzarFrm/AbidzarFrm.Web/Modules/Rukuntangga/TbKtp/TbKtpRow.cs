@@ -344,68 +344,19 @@ namespace AbidzarFrm.Rukuntangga.Entities
             set { Fields.Longitude[this] = value; }
         }
 
+        [DisplayName("TransactionFlowId"), NotNull]
+        public Int32? TransactionFlowId
+        {
+            get { return Fields.TransactionFlowId[this]; }
+            set { Fields.TransactionFlowId[this] = value; }
+        }
+
         [DisplayName("DocumentCode"), Size(5)]
         public String DocumentCode
         {
             get { return Fields.DocumentCode[this]; }
             set { Fields.DocumentCode[this] = value; }
         }
-
-        //[DisplayName("Id Kelurahan Id Kecamatan"), Expression("jIdKelurahan.[IdKecamatan]")]
-        //public Int32? IdKelurahanIdKecamatan
-        //{
-        //    get { return Fields.IdKelurahanIdKecamatan[this]; }
-        //    set { Fields.IdKelurahanIdKecamatan[this] = value; }
-        //}
-
-        //[DisplayName("Id Kelurahan Kode Kelurahan"), Expression("jIdKelurahan.[KodeKelurahan]")]
-        //public String IdKelurahanKodeKelurahan
-        //{
-        //    get { return Fields.IdKelurahanKodeKelurahan[this]; }
-        //    set { Fields.IdKelurahanKodeKelurahan[this] = value; }
-        //}
-
-        //[DisplayName("Id Kelurahan Nama Kelurahan"), Expression("jIdKelurahan.[NamaKelurahan]")]
-        //public String IdKelurahanNamaKelurahan
-        //{
-        //    get { return Fields.IdKelurahanNamaKelurahan[this]; }
-        //    set { Fields.IdKelurahanNamaKelurahan[this] = value; }
-        //}
-
-        //[DisplayName("Id Kelurahan Dibuat Oleh"), Expression("jIdKelurahan.[DibuatOleh]")]
-        //public String IdKelurahanDibuatOleh
-        //{
-        //    get { return Fields.IdKelurahanDibuatOleh[this]; }
-        //    set { Fields.IdKelurahanDibuatOleh[this] = value; }
-        //}
-
-        //[DisplayName("Id Kelurahan Dibuat Tanggal"), Expression("jIdKelurahan.[DibuatTanggal]")]
-        //public DateTime? IdKelurahanDibuatTanggal
-        //{
-        //    get { return Fields.IdKelurahanDibuatTanggal[this]; }
-        //    set { Fields.IdKelurahanDibuatTanggal[this] = value; }
-        //}
-
-        //[DisplayName("Id Kelurahan Diedit Oleh"), Expression("jIdKelurahan.[DieditOleh]")]
-        //public String IdKelurahanDieditOleh
-        //{
-        //    get { return Fields.IdKelurahanDieditOleh[this]; }
-        //    set { Fields.IdKelurahanDieditOleh[this] = value; }
-        //}
-
-        //[DisplayName("Id Kelurahan Diedit Tanggal"), Expression("jIdKelurahan.[DieditTanggal]")]
-        //public DateTime? IdKelurahanDieditTanggal
-        //{
-        //    get { return Fields.IdKelurahanDieditTanggal[this]; }
-        //    set { Fields.IdKelurahanDieditTanggal[this] = value; }
-        //}
-
-        //[DisplayName("Id Kelurahan System Status"), Expression("jIdKelurahan.[SystemStatus]")]
-        //public Boolean? IdKelurahanSystemStatus
-        //{
-        //    get { return Fields.IdKelurahanSystemStatus[this]; }
-        //    set { Fields.IdKelurahanSystemStatus[this] = value; }
-        //}
 
         IIdField IIdRow.IdField
         {
@@ -471,16 +422,8 @@ namespace AbidzarFrm.Rukuntangga.Entities
             public Int32Field TinggalSesuaiKtp;
             public DecimalField Latitude;
             public DecimalField Longitude;
+            public Int32Field TransactionFlowId;
             public StringField DocumentCode;
-
-            //public Int32Field IdKelurahanIdKecamatan;
-            //public StringField IdKelurahanKodeKelurahan;
-            //public StringField IdKelurahanNamaKelurahan;
-            //public StringField IdKelurahanDibuatOleh;
-            //public DateTimeField IdKelurahanDibuatTanggal;
-            //public StringField IdKelurahanDieditOleh;
-            //public DateTimeField IdKelurahanDieditTanggal;
-            //public BooleanField IdKelurahanSystemStatus;
 
             //not mapped
         }

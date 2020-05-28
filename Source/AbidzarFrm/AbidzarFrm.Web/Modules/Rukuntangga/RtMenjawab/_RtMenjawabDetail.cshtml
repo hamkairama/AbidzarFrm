@@ -2,70 +2,73 @@
 @using AbidzarFrm.Modules.Common.Helpers
 
 @{
-    <div id="divRtMenjawab">
-        <div class="box box-warning direct-chat direct-chat-warning">
-            <div class="box-header with-border">
-                <h3 class="box-title"> @Model.FirstOrDefault().Judul</h3>
-                <div class="box-tools pull-right">
-                    <span data-toggle="tooltip" title="3 New Messages" class="badge bg-yellow">3</span>
-                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                </div>
-            </div>
-            <div class="box-body">
-                <div class="direct-chat-messages" style="height:450px;">
-                    @if (Model.Count > 0)
-                    {
-
-                        var ud = (UserDefinition)Serenity.Authorization.UserDefinition;
-                        var tanyaRtDetail = Model.FirstOrDefault();
-                        foreach (var item in tanyaRtDetail.tbTanyaRtDetailRow.OrderBy(x => x.Id).ToList())
-                        {
-                            if (item.DibuatOleh == ud.Ktp.Nik)
-                            {
-                                var userImage = (string.IsNullOrEmpty(ud.Ktp.PhotoKtp)) ? "../../Content/adminlte/img/avatar0.png" :
-                                    VirtualPathUtility.ToAbsolute("~/upload/") + ud.Ktp.PhotoKtp;
-                                <div class="direct-chat-msg right">
-                                    <div class="direct-chat-info clearfix">
-                                        <span class="direct-chat-name pull-right">@ud.Ktp.Nama</span>
-                                        <span class="direct-chat-timestamp pull-left">@item.DibuatTanggal.Value.ToString("dd MMM yyyy hh:mm")</span>
-                                    </div>
-                                    <img class="direct-chat-img" src="@userImage" alt="message user image">
-                                    <div class="direct-chat-text">
-                                        @item.Deskripsi
-                                    </div>
-                                </div>
-                            }
-                            else
-                            {
-                                var userImage = (string.IsNullOrEmpty(tanyaRtDetail.KtpPhotoKtp)) ? "../../Content/adminlte/img/avatar0.png" :
-                                    VirtualPathUtility.ToAbsolute("~/upload/") + tanyaRtDetail.KtpPhotoKtp;
-                                <div class="direct-chat-msg">
-                                    <div class="direct-chat-info clearfix">
-                                        <span class="direct-chat-name pull-left">@tanyaRtDetail.KtpNama</span>
-                                        <span class="direct-chat-timestamp pull-right">@item.DibuatTanggal.Value.ToString("dd MMM yyyy hh:mm")</span>
-                                    </div>
-                                    <img class="direct-chat-img" src="@userImage" alt="message user image">
-                                    <div class="direct-chat-text">
-                                        @item.Deskripsi
-                                    </div>
-                                </div>
-                            }
-                        }
-
-                    }
-                </div>
-            </div>
-            <div class="box-footer">
-                <form action="#" method="post">
-                    <div class="input-group">
-                        <input type="text" name="message" id="deskripsiTxt" onkeypress="return CreateDetailTanyaRtRtKey(event, @Model.FirstOrDefault().Id)" placeholder="Buat Pertanyaan ..." class="form-control">
-                        <span class="input-group-btn">
-                            <button type="button" onclick="CreateDetailTanyaRt(@Model.FirstOrDefault().Id)" class="btn btn-warning btn-flat">Send</button>
-                        </span>
+    if (Model.Count > 0)
+    {
+        <div id="divRtMenjawab">
+            <div class="box box-warning direct-chat direct-chat-warning">
+                <div class="box-header with-border">
+                    <h3 class="box-title"> @Model.FirstOrDefault().Judul</h3>
+                    <div class="box-tools pull-right">
+                        <span data-toggle="tooltip" title="3 New Messages" class="badge bg-yellow">3</span>
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                     </div>
-                </form>
+                </div>
+                <div class="box-body">
+                    <div class="direct-chat-messages" style="height:450px;">
+                        @if (Model.Count > 0)
+                        {
+
+                            var ud = (UserDefinition)Serenity.Authorization.UserDefinition;
+                            var tanyaRtDetail = Model.FirstOrDefault();
+                            foreach (var item in tanyaRtDetail.tbTanyaRtDetailRow.OrderBy(x => x.Id).ToList())
+                            {
+                                if (item.DibuatOleh == ud.Ktp.Nik)
+                                {
+                                    var userImage = (string.IsNullOrEmpty(ud.Ktp.PhotoKtp)) ? "../../Content/adminlte/img/avatar0.png" :
+                                        VirtualPathUtility.ToAbsolute("~/upload/") + ud.Ktp.PhotoKtp;
+                                    <div class="direct-chat-msg right">
+                                        <div class="direct-chat-info clearfix">
+                                            <span class="direct-chat-name pull-right">@ud.Ktp.Nama</span>
+                                            <span class="direct-chat-timestamp pull-left">@item.DibuatTanggal.Value.ToString("dd MMM yyyy hh:mm")</span>
+                                        </div>
+                                        <img class="direct-chat-img" src="@userImage" alt="message user image">
+                                        <div class="direct-chat-text">
+                                            @item.Deskripsi
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    var userImage = (string.IsNullOrEmpty(tanyaRtDetail.KtpPhotoKtp)) ? "../../Content/adminlte/img/avatar0.png" :
+                                        VirtualPathUtility.ToAbsolute("~/upload/") + tanyaRtDetail.KtpPhotoKtp;
+                                    <div class="direct-chat-msg">
+                                        <div class="direct-chat-info clearfix">
+                                            <span class="direct-chat-name pull-left">@tanyaRtDetail.KtpNama</span>
+                                            <span class="direct-chat-timestamp pull-right">@item.DibuatTanggal.Value.ToString("dd MMM yyyy hh:mm")</span>
+                                        </div>
+                                        <img class="direct-chat-img" src="@userImage" alt="message user image">
+                                        <div class="direct-chat-text">
+                                            @item.Deskripsi
+                                        </div>
+                                    </div>
+                                }
+                            }
+
+                        }
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <form action="#" method="post">
+                        <div class="input-group">
+                            <input type="text" name="message" id="deskripsiTxt" onkeypress="return CreateDetailTanyaRtRtKey(event, @Model.FirstOrDefault().Id)" placeholder="Buat Pertanyaan ..." class="form-control">
+                            <span class="input-group-btn">
+                                <button type="button" onclick="CreateDetailTanyaRt(@Model.FirstOrDefault().Id)" class="btn btn-warning btn-flat">Send</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
+    }
 }
